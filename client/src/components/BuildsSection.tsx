@@ -137,7 +137,9 @@ const BuildsSection = () => {
                   
                   <div className="mt-8">
                     <a 
-                      href="#contact" 
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSfXO6-BVQ3x1WLDlxpp7B534U8xIxymD7QbP8MId0fcf_9Yqw/viewform?usp=sharing" 
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-block bg-[#FF5722] hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
                     >
                       Richiedi Preventivo

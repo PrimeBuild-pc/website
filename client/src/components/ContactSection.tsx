@@ -50,19 +50,13 @@ const ContactSection = () => {
   const socialLinks = [
     {
       icon: <FaInstagram />,
-      url: "https://www.instagram.com/prime_build_/"
+      url: "https://www.instagram.com/prime_build_/",
+      name: "Instagram"
     },
     {
       icon: <FaDiscord />,
-      url: "https://discord.gg/jBNk2vXKKd"
-    },
-    {
-      icon: <FaFacebook />,
-      url: "#"
-    },
-    {
-      icon: <FaTwitter />,
-      url: "#"
+      url: "https://discord.gg/jBNk2vXKKd",
+      name: "Discord"
     }
   ];
 
@@ -172,18 +166,21 @@ const ContactSection = () => {
                   ))}
                   
                   <div className="pt-4">
-                    <h4 className="font-medium mb-4">Seguici sui Social</h4>
-                    <div className="flex space-x-4">
+                    <h4 className="font-medium mb-4 text-xl text-[#FF5722]">Contattaci preferibilmente tramite:</h4>
+                    <div className="flex flex-col space-y-4">
                       {socialLinks.map((link, index) => (
                         <motion.a
                           key={index}
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ y: -3 }}
-                          className="bg-neutral-800 hover:bg-[#FF5722] p-3 rounded-full flex items-center justify-center w-12 h-12 transition-colors"
+                          whileHover={{ scale: 1.05 }}
+                          className="bg-neutral-800 hover:bg-[#FF5722] p-4 rounded-lg flex items-center transition-colors"
                         >
-                          {link.icon}
+                          <div className="bg-[#FF5722]/20 p-3 rounded-full mr-4">
+                            {link.icon}
+                          </div>
+                          <span className="font-medium text-lg">{link.name}</span>
                         </motion.a>
                       ))}
                     </div>

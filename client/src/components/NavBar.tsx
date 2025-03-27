@@ -86,6 +86,7 @@ const NavBar = () => {
           <a href="#home" className="font-medium hover:text-[#FF5722] transition-colors">Home</a>
           <a href="#services" className="font-medium hover:text-[#FF5722] transition-colors">Servizi</a>
           <a href="#builds" className="font-medium hover:text-[#FF5722] transition-colors">Build</a>
+          <a href="#apps" className="font-medium hover:text-[#FF5722] transition-colors">App</a>
           <a href="#contact" className="font-medium hover:text-[#FF5722] transition-colors">Contatti</a>
           <div className="flex space-x-4 ml-4">
             <a 
@@ -129,6 +130,7 @@ const NavBar = () => {
             <a href="#home" onClick={closeMenu} className="block py-2 px-4 hover:bg-neutral-800 rounded">Home</a>
             <a href="#services" onClick={closeMenu} className="block py-2 px-4 hover:bg-neutral-800 rounded">Servizi</a>
             <a href="#builds" onClick={closeMenu} className="block py-2 px-4 hover:bg-neutral-800 rounded">Build</a>
+            <a href="#apps" onClick={closeMenu} className="block py-2 px-4 hover:bg-neutral-800 rounded">App</a>
             <a href="#contact" onClick={closeMenu} className="block py-2 px-4 hover:bg-neutral-800 rounded">Contatti</a>
             <div className="flex space-x-4 p-4">
               <a 

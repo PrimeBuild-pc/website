@@ -3,6 +3,7 @@ import ServicesSection from "@/components/ServicesSection";
 import GallerySection from "@/components/GallerySection";
 import BuildsSection from "@/components/BuildsSection";
 import ComponentsSection from "@/components/ComponentsSection";
+import AppsSection from "@/components/AppsSection";
 import ContactSection from "@/components/ContactSection";
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
       <GallerySection />
       <BuildsSection />
       <ComponentsSection />
+      <AppsSection />
       <ContactSection />
     </div>
   );

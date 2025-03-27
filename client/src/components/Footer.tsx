@@ -1,4 +1,4 @@
-import { FaInstagram, FaDiscord, FaFacebook, FaTwitter, FaPaperPlane } from "react-icons/fa";
+import { FaInstagram, FaDiscord, FaPaperPlane, FaPaypal } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -78,18 +78,6 @@ const Footer = () => {
                 >
                   <FaDiscord />
                 </a>
-                <a
-                  href="#"
-                  className="bg-neutral-800 hover:bg-[#FF5722] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
-                >
-                  <FaFacebook />
-                </a>
-                <a
-                  href="#"
-                  className="bg-neutral-800 hover:bg-[#FF5722] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
-                >
-                  <FaTwitter />
-                </a>
               </div>
             </div>
             
@@ -114,8 +102,21 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
+                  <a href="#apps" className="hover:text-[#FF5722] transition-colors">
+                    App
+                  </a>
+                </li>
+                <li>
                   <a href="#contact" className="hover:text-[#FF5722] transition-colors">
                     Contatti
+                  </a>
+                </li>
+                <li>
+                  <a href="https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[#0070BA] hover:text-[#003087] transition-colors flex items-center">
+                    <FaPaypal className="mr-2" /> Supportaci
                   </a>
                 </li>
               </ul>
@@ -174,7 +175,7 @@ const Footer = () => {
           
           <div className="border-t border-neutral-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
             <p className="text-neutral-500 text-sm order-2 md:order-1 mt-4 md:mt-0">
-              © 2023 Prime Build. Tutti i diritti riservati.
+              © {new Date().getFullYear()} Prime Build. Tutti i diritti riservati.
             </p>
             <div className="flex space-x-6 text-neutral-500 text-sm order-1 md:order-2">
               <a href="#" className="hover:text-[#FF5722] transition-colors">
