@@ -98,7 +98,7 @@ const BuildsSection = () => {
       image: "https://i.postimg.cc/Qtxg3dzR/high.jpg",
       specs: [
         { name: "Processore", value: "AMD Ryzen 9 9950X3D", performance: 94 },
-        { name: "Scheda Video", value: "NVIDIA RTX 5090", performance: 99 },
+        { name: "Scheda Video", value: "NVIDIA RTX 5080", performance: 90 },
         { name: "RAM", value: "64GB DDR5 6400MHz", performance: 97 },
         { name: "Storage", value: "NVMe SSD 4TB", performance: 92 },
         {
@@ -132,9 +132,7 @@ const BuildsSection = () => {
               <div
                 className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? "md:order-first" : ""}`}
               >
-                <div
-                  className={`${index % 2 !== 0 ? "order-2 md:order-1" : ""}`}
-                >
+                <div className="order-1">
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="text-2xl font-bold font-montserrat">
                       PRIME{" "}
@@ -176,7 +174,7 @@ const BuildsSection = () => {
                 </div>
 
                 <div
-                  className={`relative rounded-xl overflow-hidden group ${index % 2 !== 0 ? "order-1 md:order-2" : ""}`}
+                  className={`relative rounded-xl overflow-hidden group order-2 ${index % 2 !== 0 ? "md:order-1" : "md:order-2"}`}
                 >
                   <img
                     src={build.image}
