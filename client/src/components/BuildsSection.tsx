@@ -7,6 +7,7 @@ interface Build {
   tagline: string;
   description: string;
   level: string;
+  price: string;
   image: string;
   specs: {
     name: string;
@@ -53,6 +54,7 @@ const BuildsSection = () => {
       shortName: "STARTER",
       tagline: "Gaming 1080p fluido",
       level: "Entry Level",
+      price: "750€",
       description:
         "La configurazione ideale per chi vuole entrare nel mondo del gaming ad alte prestazioni senza spendere una fortuna.",
       image: "https://i.postimg.cc/ZR78Kht0/low.jpg",
@@ -69,6 +71,7 @@ const BuildsSection = () => {
       shortName: "PERFORMER",
       tagline: "Gaming 1440p premium",
       level: "Mid Range",
+      price: "1450€",
       description:
         "Potenza e prestazioni bilanciate per gaming in 1440p e multitasking intenso.",
       image: "https://i.postimg.cc/Bbjxjw4p/mid.jpg",
@@ -89,6 +92,7 @@ const BuildsSection = () => {
       shortName: "ELITE",
       tagline: "Gaming 4K | Streaming | Workstation",
       level: "High End",
+      price: "3800€",
       description:
         "La soluzione definitiva per gaming 4K, streaming professionale e carichi di lavoro intensi.",
       image: "https://i.postimg.cc/Qtxg3dzR/high.jpg",
@@ -131,10 +135,15 @@ const BuildsSection = () => {
                 <div
                   className={`${index % 2 !== 0 ? "order-2 md:order-1" : ""}`}
                 >
-                  <h3 className="text-2xl font-bold font-montserrat mb-2">
-                    PRIME{" "}
-                    <span className="text-[#FF5722]">{build.shortName}</span>
-                  </h3>
+                  <div className="flex justify-between items-center mb-2">
+                    <h3 className="text-2xl font-bold font-montserrat">
+                      PRIME{" "}
+                      <span className="text-[#FF5722]">{build.shortName}</span>
+                    </h3>
+                    <span className="text-[#FF5722] text-xl font-bold border border-[#FF5722] rounded-md px-3 py-1">
+                      {build.price}
+                    </span>
+                  </div>
                   <p className="text-neutral-300 mb-6">{build.description}</p>
 
                   <div className="space-y-4">

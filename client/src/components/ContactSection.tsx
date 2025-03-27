@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaInstagram, FaDiscord, FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaInstagram, FaDiscord } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
 
 const ContactSection = () => {
@@ -160,9 +160,9 @@ const ContactSection = () => {
                     </div>
                   ))}
                   
-                  <div className="pt-4">
-                    <h4 className="font-medium mb-4 text-xl text-[#FF5722]">Contattaci preferibilmente tramite:</h4>
-                    <div className="flex flex-col space-y-4">
+                  <div className="pt-2">
+                    <h4 className="font-medium mb-3 text-lg text-[#FF5722]">Contattaci preferibilmente su:</h4>
+                    <div className="flex flex-col space-y-3">
                       {socialLinks.map((link, index) => (
                         <motion.a
                           key={index}
@@ -170,12 +170,12 @@ const ContactSection = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
-                          className="bg-neutral-800 hover:bg-[#FF5722] p-4 rounded-lg flex items-center transition-colors"
+                          className="bg-neutral-800 hover:bg-[#FF5722] p-3 rounded-lg flex items-center transition-colors"
                         >
-                          <div className="bg-[#FF5722]/20 p-3 rounded-full mr-4">
+                          <div className="bg-[#FF5722]/20 p-2 rounded-full mr-3">
                             {link.icon}
                           </div>
-                          <span className="font-medium text-lg">{link.name}</span>
+                          <span className="font-medium">{link.name}</span>
                         </motion.a>
                       ))}
                     </div>
