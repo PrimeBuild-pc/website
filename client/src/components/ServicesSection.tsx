@@ -18,8 +18,8 @@ const ServiceCard = ({
 }) => {
   return (
     <AnimatedElement delay={delay} className="service-card bg-black p-8 rounded-xl shadow-lg overflow-hidden relative h-full">
-      <div className="absolute top-0 right-0 w-20 h-20 bg-[#FF5722] opacity-5 rounded-bl-full"></div>
-      <div className="text-4xl text-[#FF5722] mb-6 transition-transform duration-300 group-hover:scale-110">
+      <div className="absolute top-0 right-0 w-20 h-20 bg-[#ff7514] opacity-5 rounded-bl-full"></div>
+      <div className="text-4xl text-[#ff7514] mb-6 transition-transform duration-300 group-hover:scale-110">
         {icon}
       </div>
       <h3 className="text-xl font-bold font-montserrat mb-4">{title}</h3>
@@ -27,14 +27,14 @@ const ServiceCard = ({
       <ul className="text-sm text-neutral-300 space-y-2 mb-6">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center">
-            <FaCheck className="text-[#FF5722] mr-2" />
+            <FaCheck className="text-[#ff7514] mr-2" />
             {feature}
           </li>
         ))}
       </ul>
       <a
         href="#contact"
-        className="inline-block text-[#FF5722] hover:underline font-medium group"
+        className="inline-block text-[#ff7514] hover:underline font-medium group"
       >
         {cta} <FaArrowRight className="inline ml-1 transform group-hover:translate-x-1 transition-transform" />
       </a>
@@ -74,7 +74,7 @@ const ServicesSection = () => {
     <section id="services" className="py-20 bg-neutral-900">
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 text-[#FF5722] inline-block border-b-2 border-[#FF5722] pb-2">
+          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 text-[#ff7514] inline-block border-b-2 border-[#ff7514] pb-2">
             Servizi
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">

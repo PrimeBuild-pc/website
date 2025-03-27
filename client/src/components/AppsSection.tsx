@@ -35,7 +35,7 @@ const AppsSection = () => {
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            Le nostre <span className="text-[#FF5722]">app</span>
+            Le nostre <span className="text-[#ff7514]">app</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
             Strumenti esclusivi per ottimizzare la tua esperienza di gioco
@@ -56,7 +56,7 @@ const AppsSection = () => {
                 <ul className="space-y-2 mb-6">
                   {app.features.map((feature, i) => (
                     <li key={i} className="flex items-center text-sm text-neutral-300">
-                      <span className="text-[#FF5722] mr-2">•</span> {feature}
+                      <span className="text-[#ff7514] mr-2">•</span> {feature}
                     </li>
                   ))}
                 </ul>
@@ -69,7 +69,7 @@ const AppsSection = () => {
                   ) : (
                     <a 
                       href="#" 
-                      className="inline-block bg-[#FF5722] hover:bg-opacity-90 text-white px-4 py-2 rounded-md transition-all transform hover:scale-105"
+                      className="inline-block bg-[#ff7514] hover:bg-opacity-90 text-white px-4 py-2 rounded-md transition-all transform hover:scale-105"
                     >
                       <FaDownload className="inline mr-2" /> Scarica
                     </a>

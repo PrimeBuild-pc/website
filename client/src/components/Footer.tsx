@@ -10,13 +10,13 @@ const Footer = () => {
               <div className="flex items-center mb-4">
                 <div className="h-10 w-10 mr-2 relative">
                   <img 
-                    src="https://i.postimg.cc/7LxJSKSg/icon.png" 
+                    src="https://i.postimg.cc/FKyRC3Vh/logo.png" 
                     alt="Prime Build Logo" 
                     className="h-full w-full object-contain"
                   />
                 </div>
                 <span className="text-xl font-bold font-montserrat">
-                  PRIME<span className="text-[#FF5722]">BUILD</span>
+                  PRIME<span className="text-[#ff7514]">BUILD</span>
                 </span>
               </div>
               <p className="text-neutral-400 text-sm mb-6">
@@ -27,7 +27,7 @@ const Footer = () => {
                   href="https://www.instagram.com/prime_build_/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-neutral-800 hover:bg-[#FF5722] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+                  className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
                 >
                   <FaInstagram />
                 </a>
@@ -35,7 +35,7 @@ const Footer = () => {
                   href="https://discord.gg/jBNk2vXKKd"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-neutral-800 hover:bg-[#FF5722] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+                  className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
                 >
                   <FaDiscord />
                 </a>
@@ -43,32 +43,32 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-bold font-montserrat mb-4 text-[#FF5722]">
+              <h4 className="text-lg font-bold font-montserrat mb-4 text-[#ff7514]">
                 Link Rapidi
               </h4>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="#home" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#home" className="hover:text-[#ff7514] transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
                     Servizi
                   </a>
                 </li>
                 <li>
-                  <a href="#builds" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#builds" className="hover:text-[#ff7514] transition-colors">
                     Le Nostre Build
                   </a>
                 </li>
                 <li>
-                  <a href="#apps" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#apps" className="hover:text-[#ff7514] transition-colors">
                     App
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#contact" className="hover:text-[#ff7514] transition-colors">
                     Contatti
                   </a>
                 </li>
@@ -84,27 +84,27 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-bold font-montserrat mb-4 text-[#FF5722]">
+              <h4 className="text-lg font-bold font-montserrat mb-4 text-[#ff7514]">
                 Servizi
               </h4>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="#services" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
                     PC Gaming Custom
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
                     Riparazioni e Assistenza
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
                     Ottimizzazione
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-[#FF5722] transition-colors">
+                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
                     Consulenza Hardware
                   </a>
                 </li>
@@ -118,13 +118,13 @@ const Footer = () => {
               © {new Date().getFullYear()} Prime Build. Tutti i diritti riservati.
             </p>
             <div className="flex space-x-6 text-neutral-500 text-sm order-1 md:order-2">
-              <a href="#" className="hover:text-[#FF5722] transition-colors">
+              <a href="#" className="hover:text-[#ff7514] transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-[#FF5722] transition-colors">
+              <a href="#" className="hover:text-[#ff7514] transition-colors">
                 Termini di Servizio
               </a>
-              <a href="#" className="hover:text-[#FF5722] transition-colors">
+              <a href="#" className="hover:text-[#ff7514] transition-colors">
                 Cookie Policy
               </a>
             </div>

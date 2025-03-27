@@ -31,12 +31,12 @@ const ContactSection = () => {
 
   const contactInfo = [
     {
-      icon: <FaEnvelope className="text-[#FF5722]" />,
+      icon: <FaEnvelope className="text-[#ff7514]" />,
       title: "Email",
       value: "primebuild.official@gmail.com"
     },
     {
-      icon: <FaMapMarkerAlt className="text-[#FF5722]" />,
+      icon: <FaMapMarkerAlt className="text-[#ff7514]" />,
       title: "Sede",
       value: "Padova, Italia"
     }
@@ -61,7 +61,7 @@ const ContactSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             <AnimatedElement>
-              <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 text-[#FF5722] inline-block border-b-2 border-[#FF5722] pb-2">
+              <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 text-[#ff7514] inline-block border-b-2 border-[#ff7514] pb-2">
                 Contattaci
               </h2>
               <p className="text-lg text-neutral-300 mb-8">
@@ -80,7 +80,7 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Il tuo nome"
-                      className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF5722] text-white"
+                      className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
                       required
                     />
                   </div>
@@ -94,7 +94,7 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="La tua email"
-                      className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF5722] text-white"
+                      className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
                       required
                     />
                   </div>
@@ -110,7 +110,7 @@ const ContactSection = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="Oggetto del messaggio"
-                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF5722] text-white"
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
                     required
                   />
                 </div>
@@ -125,7 +125,7 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Il tuo messaggio"
-                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF5722] text-white"
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
                     required
                   ></textarea>
                 </div>
@@ -134,7 +134,7 @@ const ContactSection = () => {
                   type="submit"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-[#FF5722] hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all"
+                  className="bg-[#ff7514] hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all"
                 >
                   Invia Messaggio
                 </motion.button>
@@ -144,13 +144,13 @@ const ContactSection = () => {
             <AnimatedElement direction="right">
               <div className="bg-black p-8 rounded-xl h-full">
                 <h3 className="text-2xl font-bold font-montserrat mb-6">
-                  Informazioni di <span className="text-[#FF5722]">contatto</span>
+                  Informazioni di <span className="text-[#ff7514]">contatto</span>
                 </h3>
                 
                 <div className="space-y-6">
                   {contactInfo.map((item, index) => (
                     <div key={index} className="flex items-start">
-                      <div className="bg-[#FF5722]/10 p-3 rounded-lg mr-4">
+                      <div className="bg-[#ff7514]/10 p-3 rounded-lg mr-4">
                         {item.icon}
                       </div>
                       <div>
@@ -161,7 +161,7 @@ const ContactSection = () => {
                   ))}
                   
                   <div className="pt-2">
-                    <h4 className="font-medium mb-3 text-lg text-[#FF5722]">Contattaci preferibilmente su:</h4>
+                    <h4 className="font-medium mb-3 text-lg text-[#ff7514]">Contattaci preferibilmente su:</h4>
                     <div className="flex flex-col space-y-3">
                       {socialLinks.map((link, index) => (
                         <motion.a
@@ -170,9 +170,9 @@ const ContactSection = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
-                          className="bg-neutral-800 hover:bg-[#FF5722] p-3 rounded-lg flex items-center transition-colors"
+                          className="bg-neutral-800 hover:bg-[#ff7514] p-3 rounded-lg flex items-center transition-colors"
                         >
-                          <div className="bg-[#FF5722]/20 p-2 rounded-full mr-3">
+                          <div className="bg-[#ff7514]/20 p-2 rounded-full mr-3">
                             {link.icon}
                           </div>
                           <span className="font-medium">{link.name}</span>

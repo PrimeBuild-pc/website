@@ -31,30 +31,30 @@ const NavBar = () => {
           <a className="flex items-center">
             <div className="h-12 w-12 mr-2 relative">
               <img 
-                src="https://i.postimg.cc/7LxJSKSg/icon.png" 
+                src="https://i.postimg.cc/FKyRC3Vh/logo.png" 
                 alt="Prime Build Logo" 
                 className="h-full w-full object-contain"
               />
             </div>
             <span className="text-xl font-bold font-montserrat">
-              PRIME<span className="text-[#FF5722]">BUILD</span>
+              PRIME<span className="text-[#ff7514]">BUILD</span>
             </span>
           </a>
         </Link>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#home" className="font-medium hover:text-[#FF5722] transition-colors">Home</a>
-          <a href="#services" className="font-medium hover:text-[#FF5722] transition-colors">Servizi</a>
-          <a href="#builds" className="font-medium hover:text-[#FF5722] transition-colors">Build</a>
-          <a href="#apps" className="font-medium hover:text-[#FF5722] transition-colors">App</a>
-          <a href="#contact" className="font-medium hover:text-[#FF5722] transition-colors">Contatti</a>
+          <a href="#home" className="font-medium hover:text-[#ff7514] transition-colors">Home</a>
+          <a href="#services" className="font-medium hover:text-[#ff7514] transition-colors">Servizi</a>
+          <a href="#builds" className="font-medium hover:text-[#ff7514] transition-colors">Build</a>
+          <a href="#apps" className="font-medium hover:text-[#ff7514] transition-colors">App</a>
+          <a href="#contact" className="font-medium hover:text-[#ff7514] transition-colors">Contatti</a>
           <div className="flex space-x-4 ml-4">
             <a 
               href="https://www.instagram.com/prime_build_/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-neutral-800 hover:bg-[#FF5722] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
             >
               <FaInstagram />
             </a>
@@ -62,7 +62,7 @@ const NavBar = () => {
               href="https://discord.gg/jBNk2vXKKd" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-neutral-800 hover:bg-[#FF5722] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
             >
               <FaDiscord />
             </a>
@@ -98,7 +98,7 @@ const NavBar = () => {
                 href="https://www.instagram.com/prime_build_/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-neutral-800 hover:bg-[#FF5722] p-2 rounded-full flex items-center justify-center transition-all"
+                className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all"
               >
                 <FaInstagram />
               </a>
@@ -106,7 +106,7 @@ const NavBar = () => {
                 href="https://discord.gg/jBNk2vXKKd" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-neutral-800 hover:bg-[#FF5722] p-2 rounded-full flex items-center justify-center transition-all"
+                className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all"
               >
                 <FaDiscord />
               </a>
