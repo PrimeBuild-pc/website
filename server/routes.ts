@@ -1,8 +1,31 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import path from "path";
+import fs from "fs";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Serve SEO specific files with correct content types
+  app.get('/robots.txt', (req, res) => {
+    res.type('text/plain');
+    res.sendFile(path.resolve('./public/robots.txt'));
+  });
+
+  app.get('/sitemap.xml', (req, res) => {
+    res.type('application/xml');
+    res.sendFile(path.resolve('./public/sitemap.xml'));
+  });
+
+  app.get('/health-check.html', (req, res) => {
+    res.type('text/html');
+    res.sendFile(path.resolve('./public/health-check.html'));
+  });
+
+  app.get('/google-site-verification.html', (req, res) => {
+    res.type('text/html');
+    res.sendFile(path.resolve('./public/google-site-verification.html'));
+  });
+
   // API endpoint to handle contact form submissions
   app.post('/api/contact', async (req, res) => {
     try {
