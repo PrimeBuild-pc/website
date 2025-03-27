@@ -9,7 +9,7 @@ interface Component {
 const ComponentsSection = () => {
   const components: Component[] = [
     {
-      image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80",
+      image: "https://i.postimg.cc/W4MBFXXM/cpu.png",
       title: "Processori",
       brands: "AMD & Intel"
     },
@@ -19,24 +19,24 @@ const ComponentsSection = () => {
       brands: "NVIDIA & AMD"
     },
     {
-      image: "https://images.unsplash.com/photo-1562976540-1502c2145186?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80",
+      image: "https://i.postimg.cc/Gtk8Z0Q4/ram.png",
       title: "Memorie RAM",
       brands: "Corsair & G.Skill"
     },
     {
-      image: "https://images.unsplash.com/photo-1600348712270-5a9564fe3e62?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80",
+      image: "https://i.postimg.cc/28VgFz0j/ssd.jpg",
       title: "Storage",
       brands: "Samsung & WD"
     },
     {
       image: "https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80",
       title: "Raffreddamento",
-      brands: "NZXT & Corsair"
+      brands: "NZXT & Thermalright"
     },
     {
-      image: "https://images.unsplash.com/photo-1587202372634-32705e3bf443?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80",
+      image: "https://i.postimg.cc/FK1WyGrf/case.png",
       title: "Case",
-      brands: "Lian Li & Fractal"
+      brands: "Lian Li & Phanteks"
     }
   ];
 
@@ -45,10 +45,10 @@ const ComponentsSection = () => {
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            Componenti <span className="text-[#FF5722]">Premium</span>
+            Componenti <span className="text-[#FF5722]">premium</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
-            Utilizziamo solo hardware di alta qualità delle migliori marche
+            Utilizziamo solo hardware affidabile e performante
           </p>
         </AnimatedElement>
         

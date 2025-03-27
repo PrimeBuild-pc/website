@@ -33,17 +33,12 @@ const ContactSection = () => {
     {
       icon: <FaEnvelope className="text-[#FF5722]" />,
       title: "Email",
-      value: "info@primebuild.it"
-    },
-    {
-      icon: <FaPhone className="text-[#FF5722]" />,
-      title: "Telefono",
-      value: "+39 123 456 7890"
+      value: "primebuild.official@gmail.com"
     },
     {
       icon: <FaMapMarkerAlt className="text-[#FF5722]" />,
       title: "Sede",
-      value: "Milano, Italia"
+      value: "Padova, Italia"
     }
   ];
 
@@ -149,7 +144,7 @@ const ContactSection = () => {
             <AnimatedElement direction="right">
               <div className="bg-black p-8 rounded-xl h-full">
                 <h3 className="text-2xl font-bold font-montserrat mb-6">
-                  Informazioni di <span className="text-[#FF5722]">Contatto</span>
+                  Informazioni di <span className="text-[#FF5722]">contatto</span>
                 </h3>
                 
                 <div className="space-y-6">

@@ -17,13 +17,13 @@ const AppsSection = () => {
       comingSoon: true
     },
     {
-      name: "ChrossairEasy",
+      name: "Chrossair Easy",
       description: "Personalizza il tuo mirino per migliorare la precisione in qualsiasi gioco FPS.",
       features: ["Mirini personalizzabili", "Configurazioni per gioco", "Overlay trasparente"],
       comingSoon: true
     },
     {
-      name: "UtilBenchmark",
+      name: "Util Benchmark",
       description: "Suite completa per testare e confrontare le prestazioni del tuo sistema PC.",
       features: ["Test CPU/GPU", "Confronto risultati", "Report dettagliati"],
       comingSoon: true
@@ -35,7 +35,7 @@ const AppsSection = () => {
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            Le Nostre <span className="text-[#FF5722]">App</span>
+            Le nostre <span className="text-[#FF5722]">app</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
             Strumenti esclusivi per ottimizzare la tua esperienza di gioco
