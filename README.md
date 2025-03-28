@@ -49,6 +49,16 @@ Il sito è completamente responsivo e ottimizzato per:
 - Tablet
 - Smartphone
 
+---
+
+## 💖 Supporta il progetto
+
+Ti piace questo tool? Offrimi un caffè ☕:
+
+[![PayPal](https://img.shields.io/badge/Supporta%20su-PayPal-blue?logo=paypal)](https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT)
+
+---
+
 ## 🤝 Contribuire
 
 Se desideri contribuire al progetto, segui questi passaggi:
