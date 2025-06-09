@@ -9,6 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
+  base: "/", // 👈 necessario per dominio personalizzato (https://primebuild.website)
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -17,7 +18,7 @@ export default defineConfig({
     process.env.REPL_ID !== undefined
       ? [
           await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer(),
+            m.cartographer()
           ),
         ]
       : []),
@@ -30,11 +31,8 @@ export default defineConfig({
     },
   },
   root: path.resolve(__dirname, "client"),
-  base: "/",
-
   build: {
-    outDir: path.resolve(__dirname, "dist"),
+    outDir: path.resolve(__dirname, "client", "dist"), // 🔁 corretto per GitHub Pages
     emptyOutDir: true,
   },
-
 });
