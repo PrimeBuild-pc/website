@@ -1,4 +1,4 @@
-# PrimeBuild PC - Webapp
+# PrimeBuild PC - Website
 
 <div align="center">
   <img src="public/logo.png" alt="PrimeBuild PC Logo" width="250">
