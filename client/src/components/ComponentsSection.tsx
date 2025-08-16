@@ -45,10 +45,10 @@ const ComponentsSection = () => {
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            Componenti <span className="text-[#FF5722]">premium</span>
+            Componenti <span className="text-[#ff7514]">premium</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
-            Utilizziamo solo hardware affidabile e performante
+            Ecco alcuni dei marchi che trovi nelle nostre build
           </p>
         </AnimatedElement>
         
@@ -64,7 +64,7 @@ const ComponentsSection = () => {
                 alt={component.title} 
                 className="w-16 h-16 object-cover mx-auto mb-4 rounded-lg"
               />
-              <h3 className="font-medium text-[#FF5722]">{component.title}</h3>
+              <h3 className="font-medium text-[#ff7514]">{component.title}</h3>
               <p className="text-xs text-neutral-400">{component.brands}</p>
             </AnimatedElement>
           ))}

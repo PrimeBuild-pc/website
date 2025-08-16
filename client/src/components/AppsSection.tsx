@@ -5,28 +5,32 @@ interface App {
   name: string;
   description: string;
   features: string[];
+  url: string;
   comingSoon: boolean;
 }
 
 const AppsSection = () => {
   const apps: App[] = [
     {
-      name: "Tweaks Utility",
-      description: "Strumento avanzato per ottimizzare le prestazioni del tuo PC Gaming con tweaks personalizzati.",
-      features: ["Ottimizzazione Windows", "Boost FPS", "Personalizzazione GPU/CPU"],
-      comingSoon: true
+      name: "TreadPilot",
+      description: "Strumento leggero per gestire e monitorare funzionalità dedicate: semplice da usare, pensato per gli appassionati.",
+      features: ["Open-source su GitHub", "Documentazione e README", "Aggiornamenti continui"],
+      url: "https://github.com/PrimeBuild-pc/TreadPilot",
+      comingSoon: false
     },
     {
-      name: "Chrossair Easy",
-      description: "Personalizza il tuo mirino per migliorare la precisione in qualsiasi gioco FPS.",
-      features: ["Mirini personalizzabili", "Configurazioni per gioco", "Overlay trasparente"],
-      comingSoon: true
+      name: "LightCrosshair",
+      description: "Overlay di mirino leggero e personalizzabile per migliorare la precisione nei giochi FPS.",
+      features: ["Overlay trasparente", "Mirino personalizzabile", "Profilo per gioco"],
+      url: "https://github.com/PrimeBuild-pc/LightCrosshair",
+      comingSoon: false
     },
     {
-      name: "Util Benchmark",
-      description: "Suite completa per testare e confrontare le prestazioni del tuo sistema PC.",
-      features: ["Test CPU/GPU", "Confronto risultati", "Report dettagliati"],
-      comingSoon: true
+      name: "TweakHub",
+      description: "Hub di tweak e ottimizzazioni per Windows per ottenere prestazioni e reattività migliori in gaming.",
+      features: ["Tweaks Windows", "Ottimizzazioni sicure", "Ripristino facile"],
+      url: "https://github.com/PrimeBuild-pc/TweakHub",
+      comingSoon: false
     }
   ];
 
@@ -67,11 +71,13 @@ const AppsSection = () => {
                       In arrivo
                     </span>
                   ) : (
-                    <a 
-                      href="#" 
+                    <a
+                      href={app.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-block bg-[#ff7514] hover:bg-opacity-90 text-white px-4 py-2 rounded-md transition-all transform hover:scale-105"
                     >
-                      <FaDownload className="inline mr-2" /> Scarica
+                      <FaDownload className="inline mr-2" /> Apri su GitHub
                     </a>
                   )}
                 </div>

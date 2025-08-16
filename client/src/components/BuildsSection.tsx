@@ -59,8 +59,8 @@ const BuildsSection = () => {
         "La configurazione ideale per chi vuole entrare nel mondo del gaming ad alte prestazioni senza spendere una fortuna.",
       image: "https://i.postimg.cc/ZR78Kht0/low.jpg",
       specs: [
-        { name: "Processore", value: "AMD Ryzen 5 5600", performance: 55 },
-        { name: "Scheda Video", value: "NVIDIA RTX 4060", performance: 60 },
+        { name: "Processore", value: "AMD Ryzen 5 5700x", performance: 60 },
+        { name: "Scheda Video", value: "NVIDIA RTX 5060 8GB", performance: 62 },
         { name: "RAM", value: "32GB DDR4 3600MHz", performance: 70 },
         { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },
         { name: "Raffreddamento", value: "Air Cooling", performance: 60 },
@@ -71,15 +71,15 @@ const BuildsSection = () => {
       shortName: "PERFORMER",
       tagline: "Gaming 1440p premium",
       level: "Mid Range",
-      price: "1450€",
+      price: "1500€",
       description:
         "Potenza e prestazioni bilanciate per gaming in 1440p e multitasking intenso.",
       image: "https://i.postimg.cc/Bbjxjw4p/mid.jpg",
       specs: [
-        { name: "Processore", value: "AMD Ryzen 7 7700", performance: 70 },
-        { name: "Scheda Video", value: "NVIDIA RTX 5070", performance: 75 },
-        { name: "RAM", value: "32GB DDR5 6200MHz", performance: 80 },
-        { name: "Storage", value: "NVMe SSD 2TB", performance: 85 },
+        { name: "Processore", value: "AMD Ryzen 7 7800X3D", performance: 85 },
+        { name: "Scheda Video", value: "NVIDIA RTX 5070 12GB", performance: 80 },
+        { name: "RAM", value: "32GB DDR5 6200MHz", performance: 82 },
+        { name: "Storage", value: "NVMe SSD 2TB", performance: 88 },
         {
           name: "Raffreddamento",
           value: "AIO Liquid Cooling 360mm",
@@ -92,19 +92,19 @@ const BuildsSection = () => {
       shortName: "ELITE",
       tagline: "Gaming 4K | Streaming | Workstation",
       level: "High End",
-      price: "3800€",
+      price: "2900€",
       description:
         "La soluzione definitiva per gaming 4K, streaming professionale e carichi di lavoro intensi.",
       image: "https://i.postimg.cc/Qtxg3dzR/high.jpg",
       specs: [
-        { name: "Processore", value: "AMD Ryzen 9 9950X3D", performance: 94 },
-        { name: "Scheda Video", value: "NVIDIA RTX 5080", performance: 90 },
+        { name: "Processore", value: "AMD Ryzen 9 9950X3D", performance: 95 },
+        { name: "Scheda Video", value: "NVIDIA RTX 5080", performance: 92 },
         { name: "RAM", value: "64GB DDR5 6400MHz", performance: 97 },
-        { name: "Storage", value: "NVMe SSD 4TB", performance: 92 },
+        { name: "Storage", value: "NVMe SSD 4TB", performance: 94 },
         {
           name: "Raffreddamento",
           value: "AIO Liquid Cooling 360mm",
-          performance: 85,
+          performance: 90,
         },
       ],
     },
@@ -114,11 +114,14 @@ const BuildsSection = () => {
     <section id="builds" className="py-20 bg-neutral-900" ref={specBarsRef}>
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 text-[#ff7514] inline-block border-b-2 border-[#ff7514] pb-2">
-            Le nostre build
+          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 inline-block border-b-2 border-[#ff7514] pb-2">
+            <span className="text-white">Le</span> <span className="text-[#ff7514]">nostre build</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
             Configurazioni di PC Gaming su misura per ogni esigenza e budget
+          </p>
+          <p className="text-base max-w-2xl mx-auto text-neutral-400 mt-2">
+            Esempi di build che puoi trovare da noi
           </p>
         </AnimatedElement>
 

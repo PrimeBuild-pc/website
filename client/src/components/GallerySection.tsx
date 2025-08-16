@@ -4,6 +4,10 @@ import AnimatedElement from "@/lib/AnimatedElement";
 const GallerySection = () => {
   const galleryImages = [
     {
+      src: "https://i.postimg.cc/3wZK1FbM/1.jpg",
+      alt: "PC gaming di alta qualità"
+    },
+    {
       src: "https://i.postimg.cc/8Pqb6DF6/2.jpg",
       alt: "PC Gaming custom con illuminazione RGB"
     },
@@ -26,7 +30,7 @@ const GallerySection = () => {
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            La <span className="text-[#FF5722]">nostra galleria</span>
+            La <span className="text-[#ff7514]">nostra galleria</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
             Alcuni dei nostri lavori più recenti
