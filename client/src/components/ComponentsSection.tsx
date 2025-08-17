@@ -244,8 +244,7 @@ const ComponentsSection = () => {
 
         <div
           ref={containerRef}
-          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] flex items-center justify-center overflow-visible"
-          role="listbox"
+          className="relative max-w-6xl mx-auto px-4 h-[420px] md:h-[480px] flex items-center justify-center overflow-visible"          role="listbox"
           aria-label="Carosello componenti"
           tabIndex={0}
           onKeyDown={onKeyDown}
@@ -254,13 +253,13 @@ const ComponentsSection = () => {
             (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
             lastXRef.current = e.clientX;
           }}
-          style={{ perspective: isMobile ? "800px" : "1100px", perspectiveOrigin: "50% 50%" }}
+          style={{ perspective: isMobile ? "800px" : "1100px",perspectiveOrigin: isMobile ? "46% 50%" : "41% 50%", ["--wheel-offset" as any]: isMobile ? "-48px" : "-160px",} as React.CSSProperties}
         >
 
           {/* 3D stage with slight top-down tilt */}
           <div
             className="absolute inset-0 will-change-transform"
-            style={{ transformStyle: "preserve-3d", transform: "rotateX(20deg)" }}
+            style={{ transformStyle: "preserve-3d", transform: "translateX(var(--wheel-offset)) rotateX(20deg)", }}
           >
             {components.map((component, i) => {
               const angle = i * step + rotation;
