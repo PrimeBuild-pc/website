@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
 
 interface Component {
@@ -40,8 +41,153 @@ const ComponentsSection = () => {
     }
   ];
 
+  // 3D Wheel state and helpers
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [rotation, setRotation] = useState(0); // degrees
+  const [velocity, setVelocity] = useState(0);
+  const [radius, setRadius] = useState(300);
+  const [dragging, setDragging] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const lastXRef = useRef<number | null>(null);
+  const rafRef = useRef<number | null>(null);
+
+  const step = 360 / components.length;
+
+  const supports3D = typeof CSS !== "undefined" && CSS.supports("transform-style", "preserve-3d");
+  const prefersReduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const enable3D = supports3D && !prefersReduced;
+
+  // Compute radius responsively
+  useEffect(() => {
+    const update = () => {
+      const w = containerRef.current?.clientWidth || 1024;
+      const r = Math.max(160, Math.min(420, w * 0.3));
+      setRadius(r);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Inertia + snapping loop
+  useEffect(() => {
+    if (!enable3D) return;
+
+    const animate = () => {
+      if (!dragging) {
+        const v = velocity * 0.95;
+        if (Math.abs(v) > 0.01) {
+          setVelocity(v);
+          setRotation((r) => r + v);
+        } else {
+          // Snap to nearest card
+          const snapped = Math.round(rotation / step) * step;
+          if (Math.abs(snapped - rotation) > 0.5) {
+            setRotation(rotation + (snapped - rotation) * 0.2);
+          } else {
+            setRotation(snapped);
+          }
+        }
+      }
+      // Update active index
+      const idx = ((Math.round((-rotation) / step) % components.length) + components.length) % components.length;
+      setActiveIndex(idx);
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [dragging, velocity, rotation, step, enable3D, components.length]);
+
+  // Pointer interactions
+  useEffect(() => {
+    const onMove = (clientX: number) => {
+      if (!dragging) return;
+      if (lastXRef.current === null) {
+        lastXRef.current = clientX;
+        return;
+      }
+      const dx = clientX - lastXRef.current;
+      lastXRef.current = clientX;
+      const delta = -dx * 0.3; // sensitivity
+      setRotation((r) => r + delta);
+      setVelocity(delta);
+    };
+    const onPointerMove = (e: PointerEvent) => onMove(e.clientX);
+    const onPointerUp = () => {
+      setDragging(false);
+      lastXRef.current = null;
+    };
+    if (dragging) {
+      window.addEventListener("pointermove", onPointerMove);
+      window.addEventListener("pointerup", onPointerUp, { once: true });
+    }
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
+    };
+  }, [dragging]);
+
+  const onWheel = (e: React.WheelEvent) => {
+    if (!enable3D) return;
+    const delta = e.deltaY * 0.1;
+    setRotation((r) => r + delta);
+    setVelocity(delta);
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (!enable3D) return;
+    if (e.key === "ArrowLeft") {
+      setVelocity(0);
+      setRotation((r) => r + step);
+    } else if (e.key === "ArrowRight") {
+      setVelocity(0);
+      setRotation((r) => r - step);
+    } else if (e.key === "Enter" || e.key === " ") {
+      // Snap to active
+      const snapped = Math.round(rotation / step) * step;
+      setRotation(snapped);
+    }
+  };
+
+  // Fallback grid for no 3D or reduced motion
+  if (!enable3D) {
+    return (
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <AnimatedElement className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
+              Componenti <span className="text-[#ff7514]">premium</span>
+            </h2>
+            <p className="text-lg max-w-2xl mx-auto text-neutral-300">
+              Ecco alcuni dei marchi che trovi nelle nostre build
+            </p>
+          </AnimatedElement>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+            {components.map((component, index) => (
+              <AnimatedElement
+                key={index}
+                className="bg-neutral-900 p-5 rounded-xl text-center hover:bg-neutral-800 transition-colors"
+                delay={0.1 * index}
+              >
+                <img
+                  src={component.image}
+                  alt={component.title}
+                  className="w-16 h-16 object-cover mx-auto mb-4 rounded-lg"
+                />
+                <h3 className="font-medium text-[#ff7514]">{component.title}</h3>
+                <p className="text-xs text-neutral-400">{component.brands}</p>
+              </AnimatedElement>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="py-20 bg-black">
+    <section className="py-20 bg-black" onWheel={onWheel}>
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
@@ -51,23 +197,57 @@ const ComponentsSection = () => {
             Ecco alcuni dei marchi che trovi nelle nostre build
           </p>
         </AnimatedElement>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
-          {components.map((component, index) => (
-            <AnimatedElement 
-              key={index} 
-              className="bg-neutral-900 p-5 rounded-xl text-center hover:bg-neutral-800 transition-colors"
-              delay={0.1 * index}
-            >
-              <img 
-                src={component.image} 
-                alt={component.title} 
-                className="w-16 h-16 object-cover mx-auto mb-4 rounded-lg"
-              />
-              <h3 className="font-medium text-[#ff7514]">{component.title}</h3>
-              <p className="text-xs text-neutral-400">{component.brands}</p>
-            </AnimatedElement>
-          ))}
+
+        <div
+          ref={containerRef}
+          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px]"
+          role="listbox"
+          aria-label="Carosello componenti"
+          tabIndex={0}
+          onKeyDown={onKeyDown}
+          onPointerDown={(e) => {
+            setDragging(true);
+            (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+            lastXRef.current = e.clientX;
+          }}
+          style={{ perspective: 1000 }}
+        >
+          {/* Stand / base */}
+          <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-12 rounded-full opacity-40" style={{
+            background: "radial-gradient(closest-side, rgba(255,117,20,0.35), rgba(255,117,20,0.05) 60%, transparent 70%)"
+          }} />
+
+          {/* 3D stage */}
+          <div
+            className="absolute inset-0 will-change-transform"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            {components.map((component, i) => {
+              const angle = i * step + rotation;
+              const isActive = Math.abs(((angle % 360) + 360) % 360) < step / 2 || Math.abs((((angle + 360) % 360) - 360)) < step / 2;
+              const transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+              return (
+                <div
+                  key={i}
+                  role="option"
+                  aria-selected={isActive}
+                  aria-label={`${component.title} - ${component.brands}`}
+                  className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl text-center bg-neutral-900/80 backdrop-blur-sm border border-white/5 hover:bg-neutral-800/80 transition-colors ${isActive ? "scale-105 shadow-[0_0_30px_rgba(255,117,20,0.35)]" : "scale-95 opacity-90"}`}
+                  style={{ transform, willChange: "transform, opacity" }}
+                >
+                  <div className="p-5 w-56 md:w-64">
+                    <img
+                      src={component.image}
+                      alt={component.title}
+                      className="w-16 h-16 object-cover mx-auto mb-4 rounded-lg"
+                    />
+                    <h3 className="font-medium text-[#ff7514]">{component.title}</h3>
+                    <p className="text-xs text-neutral-400">{component.brands}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

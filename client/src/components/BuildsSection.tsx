@@ -120,7 +120,7 @@ const BuildsSection = () => {
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
             Configurazioni di PC Gaming su misura per ogni esigenza e budget
           </p>
-          <p className="text-base max-w-2xl mx-auto text-neutral-400 mt-2">
+          <p className="text-base max-w-2xl mx-auto text-neutral-400 mt-4 italic">
             Esempi di build che puoi trovare da noi
           </p>
         </AnimatedElement>

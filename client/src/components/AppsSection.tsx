@@ -27,8 +27,8 @@ const AppsSection = () => {
     },
     {
       name: "TweakHub",
-      description: "Hub di tweak e ottimizzazioni per Windows per ottenere prestazioni e reattività migliori in gaming.",
-      features: ["Tweaks Windows", "Ottimizzazioni sicure", "Ripristino facile"],
+      description: "Alternativa open source a Process Lasso per Windows. Piani energetici, priorità e modifiche di sistema per giocatori e utenti esperti. Gratuito e semplice.",
+      features: ["Affinità processi su core", "Gestione powerplans", "Controllo estremo"],
       url: "https://github.com/PrimeBuild-pc/TweakHub",
       comingSoon: false
     }

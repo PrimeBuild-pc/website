@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import AnimatedElement from "@/lib/AnimatedElement";
 
@@ -36,31 +37,76 @@ const GallerySection = () => {
             Alcuni dei nostri lavori più recenti
           </p>
         </AnimatedElement>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryImages.map((image, index) => (
-            <AnimatedElement 
-              key={index} 
-              className="rounded-lg overflow-hidden" 
-              delay={0.1 * index}
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5 }}
-                className="h-64 w-full"
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            </AnimatedElement>
-          ))}
-        </div>
+
+        <Carousel />
       </div>
     </section>
   );
 };
 
 export default GallerySection;
+
+const Carousel = () => {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollByAmount = (delta: number) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollBy({ left: delta, behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative">
+      {/* Left Arrow */}
+      <button
+        aria-label="Scroll left"
+        onClick={() => scrollByAmount(-400)}
+        className="hidden md:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full backdrop-blur-sm"
+      >
+        ‹
+      </button>
+
+      {/* Scroller */}
+      <div
+        ref={scrollerRef}
+        className="flex gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth no-scrollbar pr-2"
+        style={{ WebkitOverflowScrolling: "touch" }}
+        aria-label="Galleria di immagini"
+        role="listbox"
+      >
+        {galleryImages.map((image, index) => (
+          <AnimatedElement key={index} className="rounded-lg overflow-hidden min-w-[250px] md:min-w-[300px] lg:min-w-[360px] snap-start">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.5 }}
+              className="h-64 w-full"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </AnimatedElement>
+        ))}
+      </div>
+
+      {/* Right Arrow */}
+      <button
+        aria-label="Scroll right"
+        onClick={() => scrollByAmount(400)}
+        className="hidden md:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full backdrop-blur-sm"
+      >
+        ›
+      </button>
+
+      {/* Scroll indicator */}
+      <div className="mt-4 flex justify-center gap-1 text-neutral-500 text-xs select-none">
+        <span className="block w-8 h-1 bg-neutral-700 rounded" />
+        <span className="block w-8 h-1 bg-neutral-700 rounded" />
+        <span className="block w-8 h-1 bg-neutral-700 rounded" />
+      </div>
+    </div>
+  );
+};
+
