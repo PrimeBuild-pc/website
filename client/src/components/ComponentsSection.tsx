@@ -61,20 +61,22 @@ const ComponentsSection = () => {
   const supports3D = cssSupports("transform", "translateZ(1px)") || cssSupports("perspective", "1px");
   const prefersReduced = hasWindow && window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
   const isMobile = useIsMobile();
-  const lowMotion = prefersReduced || isMobile;
   const enable3D = supports3D; // show 3D; if reduced motion, we dampen inertia
 
-  // Compute radius responsively
+  // Compute radius responsively (smaller on mobile to reduce offscreen drawing)
   useEffect(() => {
     const update = () => {
       const w = containerRef.current?.clientWidth || 1024;
-      const r = Math.max(160, Math.min(420, w * 0.3));
+      const base = isMobile ? 0.24 : 0.3;
+      const minR = isMobile ? 140 : 160;
+      const maxR = isMobile ? 340 : 420;
+      const r = Math.max(minR, Math.min(maxR, w * base));
       setRadius(r);
     };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-  }, []);
+  }, [isMobile]);
 
   // Inertia + snapping loop
   useEffect(() => {
@@ -242,7 +244,7 @@ const ComponentsSection = () => {
 
         <div
           ref={containerRef}
-          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] transform md:-translate-x-[17%] md:-mt-4"
+          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] transform -translate-x-[6%] md:-translate-x-[24%] lg:-translate-x-[28%] md:-mt-4"
           role="listbox"
           aria-label="Carosello componenti"
           tabIndex={0}
@@ -252,30 +254,32 @@ const ComponentsSection = () => {
             (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
             lastXRef.current = e.clientX;
           }}
-          style={{ perspective: isMobile ? "800px" : "1000px" }}
+          style={{ perspective: isMobile ? "800px" : "1100px" }}
         >
           {/* Stand / base */}
           <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-12 rounded-full opacity-40" style={{
             background: "radial-gradient(closest-side, rgba(255,117,20,0.35), rgba(255,117,20,0.05) 60%, transparent 70%)"
           }} />
 
-          {/* 3D stage */}
+          {/* 3D stage with slight top-down tilt */}
           <div
             className="absolute inset-0 will-change-transform"
-            style={{ transformStyle: "preserve-3d" }}
+            style={{ transformStyle: "preserve-3d", transform: "rotateX(12deg)" }}
           >
             {components.map((component, i) => {
               const angle = i * step + rotation;
-              const isActive = Math.abs(((angle % 360) + 360) % 360) < step / 2;
-              const transform = `rotateY(${angle}deg) translateZ(${radius}px) rotateY(${-angle}deg)`;
+              const norm = ((angle % 360) + 360) % 360;
+              const isActive = Math.abs(norm) < step / 2;
+              const backface = norm > 90 && norm < 270; // backside culling
+              const transform = `rotateY(${angle}deg) translateZ(${radius}px) rotateY(${-angle}deg)`; // rotation handled; stage has rotateX for top-down
               return (
                 <div
                   key={i}
                   role="option"
                   aria-selected={isActive}
                   aria-label={`${component.title} - ${component.brands}`}
-                  className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl text-center bg-neutral-900/80 backdrop-blur-sm border border-white/5 hover:bg-neutral-800/80 transition-colors ${isActive ? "scale-105 shadow-[0_0_30px_rgba(255,117,20,0.35)]" : "scale-95 opacity-90"}`}
-                  style={{ transform, willChange: isMobile ? "auto" : "transform, opacity" }}
+                  className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl text-center ${isMobile ? 'bg-neutral-900' : 'bg-neutral-900/80 backdrop-blur-sm'} border border-white/5 transition-colors ${isActive && !isMobile ? "scale-105 shadow-[0_0_24px_rgba(255,117,20,0.25)]" : "scale-95 opacity-90"}`}
+                  style={{ transform, willChange: isMobile ? "auto" : "transform, opacity", visibility: backface ? "hidden" : "visible" }}
                 >
                   <div className="p-5 w-52 md:w-64">
                     <img
