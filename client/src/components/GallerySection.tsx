@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedElement from "@/lib/AnimatedElement";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 
 interface GalleryImage { src: string; alt: string }
@@ -156,7 +157,7 @@ const Carousel = ({ images }: { images: GalleryImage[] }) => {
       {/* Scroller */}
       <div
         ref={scrollerRef}
-        className="flex gap-8 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth no-scrollbar pr-2 cursor-grab active:cursor-grabbing md:-mt-4"
+        className="flex gap-12 md:gap-14 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth no-scrollbar pr-2 cursor-grab active:cursor-grabbing md:-mt-4"
         style={{ WebkitOverflowScrolling: "touch", perspective: "1000px", transformStyle: "preserve-3d", translate: "0 -12%" }}
         aria-label="Galleria di immagini"
         role="listbox"
@@ -214,12 +215,14 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
   const hasWindow = typeof window !== "undefined";
   const cssSupports = (prop: string, value: string) => (hasWindow && (window.CSS?.supports?.(prop, value) ?? false));
   const supports3D = cssSupports("transform", "translateZ(1px)") || cssSupports("perspective", "1px");
+
+  const isMobile = useIsMobile();
   const prefersReduced = hasWindow && window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
-  // Arc layout parameters
-  const θStep = 0.22; // ~12.6° per step
-  const rotFactor = 0.55; // inward rotation amount
-  const depthBoost = 1.0; // Z-depth multiplier
+  // Arc layout parameters (tuned for spacing and semicircular depth)
+  const θStep = isMobile ? 0.30 : 0.26; // increase spacing between cards
+  const rotFactor = isMobile ? 0.50 : 0.62; // inward rotation amount
+  const depthBoost = isMobile ? 1.30 : 1.55; // stronger semicircular depth (semicircular stage look)
   const cardWidth = 208; // 13rem = 208px
   const arrowWidth = 40; // approximate arrow button width
 
@@ -266,7 +269,7 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
       // Visual enhancements
       const absK = Math.abs(k);
       const scale = 1.06 - Math.min(0.06, 0.06 * absK);
-      const opacity = 0.55 + 0.45 * Math.max(0, 1 - absK);
+      const opacity = Math.max(0.2, 0.25 + 0.75 * Math.max(0, 1 - absK)); // stronger fade for non-active
 
       const isActive = absK < 0.5;
       const glow = isActive ? "0 0 45px rgba(255,117,20,0.55)" : "0 0 0 rgba(0,0,0,0)";
@@ -274,7 +277,7 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
       // Include centering translate to avoid overriding Tailwind's -translate utilities
       card.style.transform = `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) rotateX(-6deg) scale(${scale})`;
       card.style.opacity = String(opacity);
-      card.style.willChange = "transform, opacity";
+      card.style.willChange = isMobile ? "auto" : "transform, opacity"; // lighten on mobile
       (card.style as any).backfaceVisibility = "hidden";
       card.style.boxShadow = glow;
       // Ensure correct stacking order with center card on top
@@ -293,8 +296,9 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
     const target = targetRef.current;
     const current = currentRef.current;
     const delta = target - current;
+    const ease = isMobile ? 0.18 : 0.12; // faster settle on mobile
     if (Math.abs(delta) > 0.001) {
-      currentRef.current = current + delta * 0.12; // ease
+      currentRef.current = current + delta * ease;
       applyTransforms();
       rafRef.current = requestAnimationFrame(tick);
     } else {
@@ -342,8 +346,13 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
   };
 
   useEffect(() => {
+    let lastT = 0;
     const onMove = (ev: PointerEvent) => {
       if (!draggingRef.current) return;
+      const now = performance.now();
+      // Throttle pointer move on mobile to 60hz-ish
+      if (isMobile && now - lastT < 16) return;
+      lastT = now;
       const R = calculateArcRadius();
       const dx = ev.clientX - startXRef.current;
       // Map pixel drag to index delta based on arc step along the circumference (~R * θStep)
@@ -406,10 +415,10 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
             role="option"
             aria-current={index === activeIndex}
             className="absolute top-1/2 left-1/2 rounded-xl overflow-hidden bg-neutral-900/60 backdrop-blur-sm border border-white/5"
-            style={{ width: "13rem", height: "17rem", transformStyle: "preserve-3d", willChange: "transform, opacity", backfaceVisibility: "hidden" as any }}
+            style={{ width: isMobile ? "12rem" : "13rem", height: isMobile ? "16rem" : "17rem", transformStyle: "preserve-3d", willChange: isMobile ? "auto" : "transform, opacity", backfaceVisibility: "hidden" as any }}
           >
             <AnimatedElement>
-              <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.5 }} className="w-full h-full">
+              <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.4 }} className="w-full h-full">
                 <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
               </motion.div>
             </AnimatedElement>

@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Component {
   image: string;
@@ -45,7 +46,7 @@ const ComponentsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState(0); // degrees
   const rotationRef = useRef(0);
-  const [velocity, setVelocity] = useState(0);
+  // velocity state removed to reduce extra renders
   const velocityRef = useRef(0);
   const [radius, setRadius] = useState(300);
   const [dragging, setDragging] = useState(false);
@@ -59,6 +60,8 @@ const ComponentsSection = () => {
   const cssSupports = (prop: string, value: string) => (hasWindow && (window.CSS?.supports?.(prop, value) ?? false));
   const supports3D = cssSupports("transform", "translateZ(1px)") || cssSupports("perspective", "1px");
   const prefersReduced = hasWindow && window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  const isMobile = useIsMobile();
+  const lowMotion = prefersReduced || isMobile;
   const enable3D = supports3D; // show 3D; if reduced motion, we dampen inertia
 
   // Compute radius responsively
@@ -79,21 +82,21 @@ const ComponentsSection = () => {
 
     const animate = () => {
       if (!dragging) {
-        const v = velocityRef.current * (prefersReduced ? 0.8 : 0.95);
+        const damping = isMobile ? 0.84 : (prefersReduced ? 0.88 : 0.95);
+        const v = velocityRef.current * damping;
         if (Math.abs(v) > 0.01) {
           velocityRef.current = v;
-          setVelocity(v);
           setRotation((r) => {
             const nr = r + v;
             rotationRef.current = nr;
             return nr;
           });
         } else {
-          // Snap to nearest card
+          // Snap to nearest card (ease faster on mobile)
           const snapped = Math.round(rotationRef.current / step) * step;
           const diff = snapped - rotationRef.current;
           if (Math.abs(diff) > 0.5) {
-            const nr = rotationRef.current + diff * 0.2;
+            const nr = rotationRef.current + diff * (isMobile ? 0.35 : 0.2);
             rotationRef.current = nr;
             setRotation(nr);
           } else {
@@ -111,31 +114,39 @@ const ComponentsSection = () => {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [dragging, step, enable3D, components.length]);
+  }, [dragging, step, enable3D, components.length, isMobile, prefersReduced]);
 
   // Pointer interactions
   useEffect(() => {
+    let lastT = 0;
     const onMove = (clientX: number) => {
       if (!dragging) return;
+      const now = performance.now();
+      if (isMobile && now - lastT < 16) return; // throttle on mobile ~60fps
+      lastT = now;
       if (lastXRef.current === null) {
         lastXRef.current = clientX;
         return;
       }
       const dx = clientX - lastXRef.current;
       lastXRef.current = clientX;
-      const delta = -dx * 0.3; // sensitivity
+      const sensitivity = isMobile ? 0.22 : 0.3;
+      const delta = -dx * sensitivity;
       setRotation((r) => {
         const nr = r + delta;
         rotationRef.current = nr;
         return nr;
       });
-      setVelocity(delta);
       velocityRef.current = delta;
     };
     const onPointerMove = (e: PointerEvent) => onMove(e.clientX);
     const onPointerUp = () => {
       setDragging(false);
       lastXRef.current = null;
+      // Snap to nearest immediately on mobile to avoid idle RAF
+      const snapped = Math.round(rotationRef.current / step) * step;
+      rotationRef.current = snapped;
+      setRotation(snapped);
     };
     if (dragging) {
       window.addEventListener("pointermove", onPointerMove);
@@ -145,31 +156,30 @@ const ComponentsSection = () => {
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerup", onPointerUp);
     };
-  }, [dragging]);
+  }, [dragging, isMobile]);
 
   const onWheel = (e: React.WheelEvent) => {
     if (!enable3D) return;
-    const delta = e.deltaY * 0.1;
+    const delta = e.deltaY * (isMobile ? 0.06 : 0.1);
     setRotation((r) => {
       const nr = r + delta;
       rotationRef.current = nr;
       return nr;
     });
-    setVelocity(delta);
     velocityRef.current = delta;
   };
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (!enable3D) return;
     if (e.key === "ArrowLeft") {
-      setVelocity(0);
+      velocityRef.current = 0;
       setRotation((r) => {
         const nr = r + step;
         rotationRef.current = nr;
         return nr;
       });
     } else if (e.key === "ArrowRight") {
-      setVelocity(0);
+      velocityRef.current = 0;
       setRotation((r) => {
         const nr = r - step;
         rotationRef.current = nr;
@@ -242,7 +252,7 @@ const ComponentsSection = () => {
             (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
             lastXRef.current = e.clientX;
           }}
-          style={{ perspective: "1000px" }}
+          style={{ perspective: isMobile ? "800px" : "1000px" }}
         >
           {/* Stand / base */}
           <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-12 rounded-full opacity-40" style={{
@@ -265,13 +275,13 @@ const ComponentsSection = () => {
                   aria-selected={isActive}
                   aria-label={`${component.title} - ${component.brands}`}
                   className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl text-center bg-neutral-900/80 backdrop-blur-sm border border-white/5 hover:bg-neutral-800/80 transition-colors ${isActive ? "scale-105 shadow-[0_0_30px_rgba(255,117,20,0.35)]" : "scale-95 opacity-90"}`}
-                  style={{ transform, willChange: "transform, opacity" }}
+                  style={{ transform, willChange: isMobile ? "auto" : "transform, opacity" }}
                 >
-                  <div className="p-5 w-56 md:w-64">
+                  <div className="p-5 w-52 md:w-64">
                     <img
                       src={component.image}
                       alt={component.title}
-                      className="w-16 h-16 object-cover mx-auto mb-4 rounded-lg"
+                      className="w-14 h-14 md:w-16 md:h-16 object-cover mx-auto mb-4 rounded-lg"
                     />
                     <h3 className="font-medium text-[#ff7514]">{component.title}</h3>
                     <p className="text-xs text-neutral-400">{component.brands}</p>
