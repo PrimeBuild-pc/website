@@ -244,7 +244,7 @@ const ComponentsSection = () => {
 
         <div
           ref={containerRef}
-          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] transform -translate-x-[12%] md:-translate-x-[35%] lg:-translate-x-[40%] md:-mt-4"
+          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] flex items-center justify-center overflow-visible"
           role="listbox"
           aria-label="Carosello componenti"
           tabIndex={0}
@@ -254,12 +254,8 @@ const ComponentsSection = () => {
             (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
             lastXRef.current = e.clientX;
           }}
-          style={{ perspective: isMobile ? "800px" : "1100px" }}
+          style={{ perspective: isMobile ? "800px" : "1100px", perspectiveOrigin: "50% 50%" }}
         >
-          {/* Stand / base */}
-          <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-12 rounded-full opacity-40" style={{
-            background: "radial-gradient(closest-side, rgba(255,117,20,0.35), rgba(255,117,20,0.05) 60%, transparent 70%)"
-          }} />
 
           {/* 3D stage with slight top-down tilt */}
           <div
@@ -272,6 +268,7 @@ const ComponentsSection = () => {
               const isActive = Math.abs(norm) < step / 2;
               const backface = norm > 90 && norm < 270; // backside culling
               const transform = `rotateY(${angle}deg) translateZ(${radius}px) rotateY(${-angle}deg)`; // rotation handled; stage has rotateX for top-down
+              const depth = Math.cos((norm * Math.PI) / 180);
               return (
                 <div
                   key={i}
@@ -279,7 +276,7 @@ const ComponentsSection = () => {
                   aria-selected={isActive}
                   aria-label={`${component.title} - ${component.brands}`}
                   className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl text-center ${isMobile ? 'bg-neutral-900' : 'bg-neutral-900/80 backdrop-blur-sm'} border border-white/5 transition-colors ${isActive && !isMobile ? "scale-105 shadow-[0_0_24px_rgba(255,117,20,0.25)]" : "scale-95 opacity-90"}`}
-                  style={{ transform, willChange: isMobile ? "auto" : "transform, opacity", visibility: backface ? "hidden" : "visible" }}
+                  style={{ transform, willChange: isMobile ? "auto" : "transform, opacity",  pointerEvents: backface ? "none" : "auto",  zIndex: Math.round(1000 + depth * 1000), opacity: backface ? 0.5 : 1}}
                 >
                   <div className="p-5 w-52 md:w-64">
                     <img
