@@ -13,25 +13,28 @@ const AppsSection = () => {
   const apps: App[] = [
     {
       name: "TreadPilot",
-      description: "Strumento leggero per gestire e monitorare funzionalità dedicate: semplice da usare, pensato per gli appassionati.",
-      features: ["Open-source su GitHub", "Documentazione e README", "Aggiornamenti continui"],
+      description:
+        "Alternativa open source a Process Lasso per Windows. Piani energetici, priorità e modifiche di sistema per giocatori e utenti esperti: gratuito e semplice.",
+      features: ["Open-source", "Affinità processi su core", "Gestione powerplans"],
       url: "https://github.com/PrimeBuild-pc/TreadPilot",
-      comingSoon: false
+      comingSoon: false,
     },
     {
       name: "LightCrosshair",
-      description: "Overlay di mirino leggero e personalizzabile per migliorare la precisione nei giochi FPS.",
+      description:
+        "Overlay di mirino leggero e personalizzabile per migliorare la precisione nei giochi FPS.",
       features: ["Overlay trasparente", "Mirino personalizzabile", "Profilo per gioco"],
       url: "https://github.com/PrimeBuild-pc/LightCrosshair",
-      comingSoon: false
+      comingSoon: false,
     },
     {
       name: "TweakHub",
-      description: "Alternativa open source a Process Lasso per Windows. Piani energetici, priorità e modifiche di sistema per giocatori e utenti esperti. Gratuito e semplice.",
+      description:
+        "Alternativa open source a Process Lasso per Windows. Piani energetici, priorità e modifiche di sistema per giocatori e utenti esperti. Gratuito e semplice.",
       features: ["Affinità processi su core", "Gestione powerplans", "Controllo estremo"],
       url: "https://github.com/PrimeBuild-pc/TweakHub",
-      comingSoon: false
-    }
+      comingSoon: false,
+    },
   ];
 
   return (
@@ -45,18 +48,21 @@ const AppsSection = () => {
             Strumenti esclusivi per ottimizzare la tua esperienza di gioco
           </p>
         </AnimatedElement>
-        
+
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {apps.map((app, index) => (
             <AnimatedElement
               key={index}
-              className="glow-card bg-neutral-900 rounded-xl overflow-hidden focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#ff7514] transition-transform hover:scale-105 focus-within:scale-105"
+              className="glow-card bg-neutral-900 rounded-xl overflow-hidden h-full flex flex-col
+                         focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#ff7514]
+                         transition-transform hover:scale-105 focus-within:scale-105"
               delay={0.1 * index}
             >
-              <div className="p-6">
+              {/* wrapper interno a colonna per riempire l'altezza */}
+              <div className="p-6 flex flex-col h-full">
                 <h3 className="text-xl font-bold mb-2">{app.name}</h3>
                 <p className="text-neutral-400 mb-4">{app.description}</p>
-                
+
                 <ul className="space-y-2 mb-6">
                   {app.features.map((feature, i) => (
                     <li key={i} className="flex items-center text-sm text-neutral-300">
@@ -64,8 +70,9 @@ const AppsSection = () => {
                     </li>
                   ))}
                 </ul>
-                
-                <div className="flex justify-center">
+
+                {/* spinge il blocco pulsante in fondo alla card */}
+                <div className="flex justify-center mt-auto">
                   {app.comingSoon ? (
                     <span className="inline-block bg-neutral-800 text-neutral-300 px-4 py-2 rounded-md text-sm">
                       In arrivo
@@ -75,7 +82,10 @@ const AppsSection = () => {
                       href={app.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block bg-[#ff7514] hover:bg-opacity-90 text-white px-4 py-2 rounded-md transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7514] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+                      className="inline-block bg-[#ff7514] hover:bg-opacity-90 text-white px-4 py-2 rounded-md
+                                 transition-transform hover:scale-105 focus:outline-none
+                                 focus-visible:ring-2 focus-visible:ring-[#ff7514]
+                                 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
                     >
                       <FaDownload className="inline mr-2" /> Apri su GitHub
                     </a>
@@ -85,15 +95,16 @@ const AppsSection = () => {
             </AnimatedElement>
           ))}
         </div>
-        
+
         <AnimatedElement className="mt-16 text-center" delay={0.3}>
           <div className="max-w-2xl mx-auto bg-neutral-900 p-8 rounded-xl">
             <h3 className="text-2xl font-bold mb-4">Supporta il nostro lavoro</h3>
             <p className="text-neutral-400 mb-6">
-              Le nostre app sono in fase di sviluppo e saranno presto disponibili. Supporta il nostro lavoro con una donazione per accelerare lo sviluppo e ottenere accesso anticipato.
+              Le nostre app sono in fase di sviluppo e saranno presto disponibili. Supporta il nostro lavoro con una
+              donazione per accelerare lo sviluppo e ottenere accesso anticipato.
             </p>
-            <a 
-              href="https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT" 
+            <a
+              href="https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center bg-[#0070BA] hover:bg-[#003087] text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"

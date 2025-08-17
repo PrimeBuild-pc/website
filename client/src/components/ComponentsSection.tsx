@@ -244,7 +244,7 @@ const ComponentsSection = () => {
 
         <div
           ref={containerRef}
-          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] transform -translate-x-[6%] md:-translate-x-[24%] lg:-translate-x-[28%] md:-mt-4"
+          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] transform -translate-x-[12%] md:-translate-x-[35%] lg:-translate-x-[40%] md:-mt-4"
           role="listbox"
           aria-label="Carosello componenti"
           tabIndex={0}
@@ -264,7 +264,7 @@ const ComponentsSection = () => {
           {/* 3D stage with slight top-down tilt */}
           <div
             className="absolute inset-0 will-change-transform"
-            style={{ transformStyle: "preserve-3d", transform: "rotateX(12deg)" }}
+            style={{ transformStyle: "preserve-3d", transform: "rotateX(20deg)" }}
           >
             {components.map((component, i) => {
               const angle = i * step + rotation;
