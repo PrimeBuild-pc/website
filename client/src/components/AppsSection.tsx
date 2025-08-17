@@ -48,9 +48,9 @@ const AppsSection = () => {
         
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {apps.map((app, index) => (
-            <AnimatedElement 
-              key={index} 
-              className="bg-neutral-900 rounded-xl overflow-hidden"
+            <AnimatedElement
+              key={index}
+              className="glow-card bg-neutral-900 rounded-xl overflow-hidden focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#ff7514] transition-transform hover:scale-105 focus-within:scale-105"
               delay={0.1 * index}
             >
               <div className="p-6">
@@ -75,7 +75,7 @@ const AppsSection = () => {
                       href={app.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block bg-[#ff7514] hover:bg-opacity-90 text-white px-4 py-2 rounded-md transition-all transform hover:scale-105"
+                      className="inline-block bg-[#ff7514] hover:bg-opacity-90 text-white px-4 py-2 rounded-md transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7514] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
                     >
                       <FaDownload className="inline mr-2" /> Apri su GitHub
                     </a>

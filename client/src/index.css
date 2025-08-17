@@ -11,3 +11,73 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+
+@layer components {
+  .glow-card {
+    position: relative;
+    --glow-color: rgba(255, 117, 20, 0.45);
+    --glow-strength: 28px;
+  }
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    pointer-events: none;
+    background: radial-gradient(120% 80% at 50% 120%, var(--glow-color) 0%, rgba(255,117,20,0.0) 60%);
+    filter: blur(var(--glow-strength));
+    opacity: 0.45;
+    transform: translateZ(0);
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+  .glow-card:hover::before,
+  .glow-card:focus-within::before {
+    opacity: 0.8;
+  }
+  @media (max-width: 640px) {
+    .glow-card { --glow-strength: 18px; }
+    .glow-card::before { opacity: 0.35; }
+  }
+
+  /* Dark background gradient + optional subtle pattern */
+  .bg-dark-gradient {
+    background: radial-gradient(60% 50% at 50% 0%, #0b0b0b 0%, #000 60%);
+  }
+  .bg-diagonal-grid {
+    position: relative;
+    isolation: isolate;
+  }
+  .bg-diagonal-grid::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(transparent 0px, rgba(255,255,255,0.03) 1px), linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.03) 1px);
+    background-size: 24px 24px, 24px 24px;
+    mix-blend-mode: overlay;
+    opacity: 0.25;
+    z-index: -1;
+  }
+
+  /* Subtle noise overlay (CSS-generated, no assets) */
+  .noise-overlay { position: relative; }
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.03) 1px, rgba(0,0,0,0) 1px),
+      radial-gradient(rgba(255,255,255,0.02) 1px, rgba(0,0,0,0) 1px),
+      radial-gradient(rgba(0,0,0,0.02) 1px, rgba(0,0,0,0) 1px);
+    background-size: 3px 3px, 5px 5px, 7px 7px;
+    background-position: 0 0, 1px 2px, 2px 1px;
+    mix-blend-mode: overlay;
+    opacity: 0.08; /* subtle */
+  }
+}

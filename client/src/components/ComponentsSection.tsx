@@ -44,7 +44,9 @@ const ComponentsSection = () => {
   // 3D Wheel state and helpers
   const containerRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState(0); // degrees
+  const rotationRef = useRef(0);
   const [velocity, setVelocity] = useState(0);
+  const velocityRef = useRef(0);
   const [radius, setRadius] = useState(300);
   const [dragging, setDragging] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -53,9 +55,11 @@ const ComponentsSection = () => {
 
   const step = 360 / components.length;
 
-  const supports3D = typeof CSS !== "undefined" && CSS.supports("transform-style", "preserve-3d");
-  const prefersReduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const enable3D = supports3D && !prefersReduced;
+  const hasWindow = typeof window !== "undefined";
+  const cssSupports = (prop: string, value: string) => (hasWindow && (window.CSS?.supports?.(prop, value) ?? false));
+  const supports3D = cssSupports("transform", "translateZ(1px)") || cssSupports("perspective", "1px");
+  const prefersReduced = hasWindow && window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  const enable3D = supports3D; // show 3D; if reduced motion, we dampen inertia
 
   // Compute radius responsively
   useEffect(() => {
@@ -75,22 +79,31 @@ const ComponentsSection = () => {
 
     const animate = () => {
       if (!dragging) {
-        const v = velocity * 0.95;
+        const v = velocityRef.current * (prefersReduced ? 0.8 : 0.95);
         if (Math.abs(v) > 0.01) {
+          velocityRef.current = v;
           setVelocity(v);
-          setRotation((r) => r + v);
+          setRotation((r) => {
+            const nr = r + v;
+            rotationRef.current = nr;
+            return nr;
+          });
         } else {
           // Snap to nearest card
-          const snapped = Math.round(rotation / step) * step;
-          if (Math.abs(snapped - rotation) > 0.5) {
-            setRotation(rotation + (snapped - rotation) * 0.2);
+          const snapped = Math.round(rotationRef.current / step) * step;
+          const diff = snapped - rotationRef.current;
+          if (Math.abs(diff) > 0.5) {
+            const nr = rotationRef.current + diff * 0.2;
+            rotationRef.current = nr;
+            setRotation(nr);
           } else {
+            rotationRef.current = snapped;
             setRotation(snapped);
           }
         }
       }
       // Update active index
-      const idx = ((Math.round((-rotation) / step) % components.length) + components.length) % components.length;
+      const idx = ((Math.round((-rotationRef.current) / step) % components.length) + components.length) % components.length;
       setActiveIndex(idx);
       rafRef.current = requestAnimationFrame(animate);
     };
@@ -98,7 +111,7 @@ const ComponentsSection = () => {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [dragging, velocity, rotation, step, enable3D, components.length]);
+  }, [dragging, step, enable3D, components.length]);
 
   // Pointer interactions
   useEffect(() => {
@@ -111,8 +124,13 @@ const ComponentsSection = () => {
       const dx = clientX - lastXRef.current;
       lastXRef.current = clientX;
       const delta = -dx * 0.3; // sensitivity
-      setRotation((r) => r + delta);
+      setRotation((r) => {
+        const nr = r + delta;
+        rotationRef.current = nr;
+        return nr;
+      });
       setVelocity(delta);
+      velocityRef.current = delta;
     };
     const onPointerMove = (e: PointerEvent) => onMove(e.clientX);
     const onPointerUp = () => {
@@ -132,21 +150,35 @@ const ComponentsSection = () => {
   const onWheel = (e: React.WheelEvent) => {
     if (!enable3D) return;
     const delta = e.deltaY * 0.1;
-    setRotation((r) => r + delta);
+    setRotation((r) => {
+      const nr = r + delta;
+      rotationRef.current = nr;
+      return nr;
+    });
     setVelocity(delta);
+    velocityRef.current = delta;
   };
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (!enable3D) return;
     if (e.key === "ArrowLeft") {
       setVelocity(0);
-      setRotation((r) => r + step);
+      setRotation((r) => {
+        const nr = r + step;
+        rotationRef.current = nr;
+        return nr;
+      });
     } else if (e.key === "ArrowRight") {
       setVelocity(0);
-      setRotation((r) => r - step);
+      setRotation((r) => {
+        const nr = r - step;
+        rotationRef.current = nr;
+        return nr;
+      });
     } else if (e.key === "Enter" || e.key === " ") {
       // Snap to active
-      const snapped = Math.round(rotation / step) * step;
+      const snapped = Math.round(rotationRef.current / step) * step;
+      rotationRef.current = snapped;
       setRotation(snapped);
     }
   };
@@ -154,7 +186,7 @@ const ComponentsSection = () => {
   // Fallback grid for no 3D or reduced motion
   if (!enable3D) {
     return (
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-dark-gradient bg-diagonal-grid noise-overlay">
         <div className="container mx-auto px-4">
           <AnimatedElement className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
@@ -187,7 +219,7 @@ const ComponentsSection = () => {
   }
 
   return (
-    <section className="py-20 bg-black" onWheel={onWheel}>
+    <section className="py-20 bg-dark-gradient bg-diagonal-grid noise-overlay" onWheel={onWheel}>
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
@@ -200,7 +232,7 @@ const ComponentsSection = () => {
 
         <div
           ref={containerRef}
-          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px]"
+          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] transform md:-translate-x-[5%] md:-mt-4"
           role="listbox"
           aria-label="Carosello componenti"
           tabIndex={0}
@@ -210,7 +242,7 @@ const ComponentsSection = () => {
             (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
             lastXRef.current = e.clientX;
           }}
-          style={{ perspective: 1000 }}
+          style={{ perspective: "1000px" }}
         >
           {/* Stand / base */}
           <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-12 rounded-full opacity-40" style={{
@@ -224,8 +256,8 @@ const ComponentsSection = () => {
           >
             {components.map((component, i) => {
               const angle = i * step + rotation;
-              const isActive = Math.abs(((angle % 360) + 360) % 360) < step / 2 || Math.abs((((angle + 360) % 360) - 360)) < step / 2;
-              const transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+              const isActive = Math.abs(((angle % 360) + 360) % 360) < step / 2;
+              const transform = `rotateY(${angle}deg) translateZ(${radius}px) rotateY(${-angle}deg)`;
               return (
                 <div
                   key={i}
