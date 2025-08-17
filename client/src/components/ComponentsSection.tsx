@@ -253,7 +253,7 @@ const ComponentsSection = () => {
             (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
             lastXRef.current = e.clientX;
           }}
-          style={{ perspective: isMobile ? "800px" : "1100px",perspectiveOrigin: isMobile ? "46% 50%" : "41% 50%", ["--wheel-offset" as any]: isMobile ? "-60px" : "-160px",} as React.CSSProperties}
+          style={{ perspective: isMobile ? "800px" : "1100px",perspectiveOrigin: isMobile ? "46% 50%" : "41% 50%", ["--wheel-offset" as any]: isMobile ? "-70px" : "-160px",} as React.CSSProperties}
         >
 
           {/* 3D stage with slight top-down tilt */}
