@@ -156,8 +156,8 @@ const Carousel = ({ images }: { images: GalleryImage[] }) => {
       {/* Scroller */}
       <div
         ref={scrollerRef}
-        className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth no-scrollbar pr-2 cursor-grab active:cursor-grabbing"
-        style={{ WebkitOverflowScrolling: "touch", perspective: "1000px", transformStyle: "preserve-3d" }}
+        className="flex gap-8 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth no-scrollbar pr-2 cursor-grab active:cursor-grabbing md:-mt-4"
+        style={{ WebkitOverflowScrolling: "touch", perspective: "1000px", transformStyle: "preserve-3d", translate: "0 -12%" }}
         aria-label="Galleria di immagini"
         role="listbox"
         tabIndex={0}
@@ -195,12 +195,7 @@ const Carousel = ({ images }: { images: GalleryImage[] }) => {
         ›
       </button>
 
-      {/* Scroll indicator */}
-      <div className="mt-4 flex justify-center gap-1 text-neutral-500 text-xs select-none">
-        <span className="block w-8 h-1 bg-neutral-700 rounded" />
-        <span className="block w-8 h-1 bg-neutral-700 rounded" />
-        <span className="block w-8 h-1 bg-neutral-700 rounded" />
-      </div>
+      {/* Removed progress indicators intentionally */}
     </div>
   );
 
@@ -211,7 +206,7 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
   const stageRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(Math.floor(images.length / 2));
   const currentRef = useRef(0); // float position
   const targetRef = useRef(0); // target index
   const rafRef = useRef<number | null>(null);
@@ -221,49 +216,69 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
   const supports3D = cssSupports("transform", "translateZ(1px)") || cssSupports("perspective", "1px");
   const prefersReduced = hasWindow && window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
+  // Arc layout parameters
+  const θStep = 0.22; // ~12.6° per step
+  const rotFactor = 0.55; // inward rotation amount
+  const depthBoost = 1.0; // Z-depth multiplier
+  const cardWidth = 208; // 13rem = 208px
+  const arrowWidth = 40; // approximate arrow button width
+
   const clampIndex = (v: number) => Math.max(0, Math.min(images.length - 1, v));
   const setTargetIndex = (idx: number) => {
     targetRef.current = clampIndex(idx);
     if (!rafRef.current) rafRef.current = requestAnimationFrame(tick);
   };
 
-  const getBaseX = () => {
-    const w = containerRef.current?.clientWidth || 1024;
-    // Increase base spacing between cards for wider fan layout
-    return Math.max(160, Math.min(300, w * 0.32));
+  const calculateArcRadius = () => {
+    const containerWidth = containerRef.current?.clientWidth || 1024;
+    const availableWidth = containerWidth - (arrowWidth * 2) - 40; // padding
+    const maxX = availableWidth / 2;
+    
+    // Calculate max offset from center
+    const kmax = Math.min(3, Math.floor(images.length / 2));
+    const θMax = kmax * θStep;
+    
+    // Calculate radius to fit within bounds
+    const R = θMax > 0 ? (maxX - cardWidth/2) / Math.sin(θMax) : 300;
+    return Math.max(250, Math.min(500, R));
   };
-
-  const spread = prefersReduced ? 0.55 : 0.95; // slightly wider spacing
-  const baseRotation = 12; // deg
-  const depth = 130; // px
 
   const applyTransforms = () => {
     const current = currentRef.current;
-    const baseX = getBaseX();
+    const R = calculateArcRadius();
+    const kmax = Math.min(3, Math.floor(images.length / 2));
+    
     let bestIdx = 0;
     let bestDist = Infinity;
 
     cardRefs.current.forEach((card, i) => {
       if (!card) return;
-      const offset = i - current; // negative left, positive right
-      const s = Math.sign(offset);
-      const m = Math.abs(offset);
-      const eased = Math.pow(m, 0.8);
+      
+      const offset = i - current;
+      const k = Math.max(-kmax, Math.min(kmax, offset));
+      const θ = k * θStep;
+      
+      // Arc positioning
+      const x = R * Math.sin(θ);
+      const z = -R * (1 - Math.cos(θ)) * depthBoost; // sides recede away from the viewer
+      const rotY = -θ * rotFactor * (180 / Math.PI); // face inward toward the center
 
-      const x = s * baseX * eased * spread;
-      const rotY = s * baseRotation * eased * spread;
-      const z = -m * depth * spread;
-      const scale = 1.06 - Math.min(0.06, 0.06 * m);
-      const opacity = 0.55 + 0.45 * Math.max(0, 1 - m); // stronger fade for side cards
+      // Visual enhancements
+      const absK = Math.abs(k);
+      const scale = 1.06 - Math.min(0.06, 0.06 * absK);
+      const opacity = 0.55 + 0.45 * Math.max(0, 1 - absK);
 
-      const isActive = m < 0.5;
+      const isActive = absK < 0.5;
       const glow = isActive ? "0 0 45px rgba(255,117,20,0.55)" : "0 0 0 rgba(0,0,0,0)";
 
-      card.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) rotateX(-6deg) scale(${scale})`;
+      // Include centering translate to avoid overriding Tailwind's -translate utilities
+      card.style.transform = `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) rotateX(-6deg) scale(${scale})`;
       card.style.opacity = String(opacity);
       card.style.willChange = "transform, opacity";
       (card.style as any).backfaceVisibility = "hidden";
       card.style.boxShadow = glow;
+      // Ensure correct stacking order with center card on top
+      card.style.zIndex = String(1000 + Math.round(z));
       card.setAttribute("aria-current", isActive ? "true" : "false");
 
       const dist = Math.abs(offset);
@@ -289,12 +304,14 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
   };
 
   useEffect(() => {
-    // Ensure we start centered on the first card
-    currentRef.current = 0;
-    targetRef.current = 0;
+    // Initialize with center card
+    const mid = Math.floor(images.length / 2);
+    currentRef.current = mid;
+    targetRef.current = mid;
+    setActiveIndex(mid);
     applyTransforms();
+    
     const onResize = () => {
-      // preserve centering on resize
       applyTransforms();
     };
     window.addEventListener("resize", onResize);
@@ -302,9 +319,9 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
       window.removeEventListener("resize", onResize);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [images.length]);
 
-  // interactions
+  // Interactions
   const onWheel = (e: React.WheelEvent) => {
     if (!supports3D) return;
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
@@ -323,12 +340,15 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
     startXRef.current = e.clientX;
     startCurrentRef.current = currentRef.current;
   };
+
   useEffect(() => {
     const onMove = (ev: PointerEvent) => {
       if (!draggingRef.current) return;
-      const baseX = getBaseX();
+      const R = calculateArcRadius();
       const dx = ev.clientX - startXRef.current;
-      currentRef.current = startCurrentRef.current - dx / baseX;
+      // Map pixel drag to index delta based on arc step along the circumference (~R * θStep)
+      const pxPerIndex = R * θStep;
+      currentRef.current = startCurrentRef.current - dx / pxPerIndex;
       currentRef.current = clampIndex(currentRef.current);
       applyTransforms();
     };
@@ -353,12 +373,11 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
   };
 
   if (!supports3D) {
-    // Fallback to previous horizontal carousel
     return <Carousel images={images} />;
   }
 
   return (
-    <div className="relative" ref={containerRef}>
+    <div className="relative overflow-hidden" ref={containerRef}>
       {/* Left Arrow */}
       <button
         aria-label="Previous"
@@ -371,8 +390,8 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
       {/* Stage */}
       <div
         ref={stageRef}
-        className="relative max-w-6xl mx-auto h-[22rem] md:-mt-2"
-        style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
+        className="relative max-w-6xl mx-auto h-[26rem] md:-mt-4"
+        style={{ perspective: "1000px", transformStyle: "preserve-3d", translate: "0 -12%" }}
         role="listbox"
         tabIndex={0}
         onWheel={onWheel}
@@ -386,7 +405,7 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
             ref={(el) => (cardRefs.current[index] = el)}
             role="option"
             aria-current={index === activeIndex}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl overflow-hidden bg-neutral-900/60 backdrop-blur-sm border border-white/5"
+            className="absolute top-1/2 left-1/2 rounded-xl overflow-hidden bg-neutral-900/60 backdrop-blur-sm border border-white/5"
             style={{ width: "13rem", height: "17rem", transformStyle: "preserve-3d", willChange: "transform, opacity", backfaceVisibility: "hidden" as any }}
           >
             <AnimatedElement>
@@ -406,13 +425,6 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
       >
         ›
       </button>
-
-      {/* Scroll indicator (decorative) */}
-      <div className="mt-4 flex justify-center gap-1 text-neutral-500 text-xs select-none">
-        <span className="block w-8 h-1 bg-neutral-700 rounded" />
-        <span className="block w-8 h-1 bg-neutral-700 rounded" />
-        <span className="block w-8 h-1 bg-neutral-700 rounded" />
-      </div>
     </div>
   );
 };

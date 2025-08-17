@@ -46,22 +46,23 @@
 
   /* Dark background gradient + optional subtle pattern */
   .bg-dark-gradient {
-    background: radial-gradient(60% 50% at 50% 0%, #0b0b0b 0%, #000 60%);
+    /* Slightly stronger center shade for visible depth */
+    background: radial-gradient(65% 55% at 50% 0%, #101010 0%, #000000 80%);
   }
   .bg-diagonal-grid {
     position: relative;
     isolation: isolate;
   }
+  .bg-diagonal-grid > * { position: relative; z-index: 1; }
   .bg-diagonal-grid::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: linear-gradient(transparent 0px, rgba(255,255,255,0.03) 1px), linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.03) 1px);
+    /* use normal blending with slightly higher alpha for visibility on black */
+    background-image: linear-gradient(transparent 0px, rgba(255,255,255,0.06) 1px), linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.06) 1px);
     background-size: 24px 24px, 24px 24px;
-    mix-blend-mode: overlay;
-    opacity: 0.25;
-    z-index: -1;
+    z-index: 0;
   }
 
   /* Subtle noise overlay (CSS-generated, no assets) */
@@ -72,12 +73,12 @@
     inset: 0;
     pointer-events: none;
     background-image:
+      radial-gradient(rgba(255,255,255,0.05) 1px, rgba(0,0,0,0) 1px),
       radial-gradient(rgba(255,255,255,0.03) 1px, rgba(0,0,0,0) 1px),
-      radial-gradient(rgba(255,255,255,0.02) 1px, rgba(0,0,0,0) 1px),
-      radial-gradient(rgba(0,0,0,0.02) 1px, rgba(0,0,0,0) 1px);
+      radial-gradient(rgba(0,0,0,0.03) 1px, rgba(0,0,0,0) 1px);
     background-size: 3px 3px, 5px 5px, 7px 7px;
     background-position: 0 0, 1px 2px, 2px 1px;
-    mix-blend-mode: overlay;
-    opacity: 0.08; /* subtle */
+    opacity: 0.12; /* still subtle but visible on black */
+    z-index: 0;
   }
 }

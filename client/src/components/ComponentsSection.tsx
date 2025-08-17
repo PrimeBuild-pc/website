@@ -232,7 +232,7 @@ const ComponentsSection = () => {
 
         <div
           ref={containerRef}
-          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] transform md:-translate-x-[5%] md:-mt-4"
+          className="relative max-w-6xl mx-auto h-[420px] md:h-[480px] transform md:-translate-x-[17%] md:-mt-4"
           role="listbox"
           aria-label="Carosello componenti"
           tabIndex={0}
