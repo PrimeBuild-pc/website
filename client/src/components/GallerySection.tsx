@@ -149,7 +149,7 @@ const Carousel = ({ images }: { images: GalleryImage[] }) => {
       <button
         aria-label="Scroll left"
         onClick={() => scrollByAmount(-400)}
-        className="hidden md:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full backdrop-blur-sm"
+        className="hidden md:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full"
       >
         ‹
       </button>
@@ -171,7 +171,7 @@ const Carousel = ({ images }: { images: GalleryImage[] }) => {
             key={index}
             ref={(el) => (cardRefs.current[index] = el)}
             role="option"
-            className="rounded-lg overflow-hidden min-w-[250px] md:min-w-[300px] lg:min-w-[360px] snap-center bg-neutral-900/60 backdrop-blur-sm border border-white/5"
+            className="rounded-lg overflow-hidden min-w-[250px] md:min-w-[300px] lg:min-w-[360px] snap-center bg-neutral-900/60 border border-white/5"
             style={{ transformStyle: "preserve-3d", willChange: "transform, opacity", backfaceVisibility: "hidden" as any }}
           >
             <AnimatedElement>
@@ -191,7 +191,7 @@ const Carousel = ({ images }: { images: GalleryImage[] }) => {
       <button
         aria-label="Scroll right"
         onClick={() => scrollByAmount(400)}
-        className="hidden md:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full backdrop-blur-sm"
+        className="hidden md:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full"
       >
         ›
       </button>
@@ -220,9 +220,9 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
   const prefersReduced = hasWindow && window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
   // Arc layout parameters (tuned for spacing and semicircular depth)
-  const θStep = isMobile ? 0.30 : 0.26; // increase spacing between cards
-  const rotFactor = isMobile ? 0.50 : 0.62; // inward rotation amount
-  const depthBoost = isMobile ? 1.30 : 1.55; // stronger semicircular depth (semicircular stage look)
+  const θStep = isMobile ? 0.72 : 0.64; // increase spacing between cards
+  const rotFactor = isMobile ? 0.68 : 0.78; // inward rotation amount
+  const depthBoost = isMobile ? 1.90 : 2.20; // stronger semicircular depth (semicircular stage look)
   const cardWidth = 208; // 13rem = 208px
   const arrowWidth = 40; // approximate arrow button width
 
@@ -238,7 +238,7 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
     const maxX = availableWidth / 2;
     
     // Calculate max offset from center
-    const kmax = Math.min(3, Math.floor(images.length / 2));
+    const kmax = Math.min(2, Math.floor(images.length / 2));
     const θMax = kmax * θStep;
     
     // Calculate radius to fit within bounds
@@ -249,13 +249,15 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
   const applyTransforms = () => {
     const current = currentRef.current;
     const R = calculateArcRadius();
-    const kmax = Math.min(3, Math.floor(images.length / 2));
+    const kmax = Math.min(2, Math.floor(images.length / 2));
     
     let bestIdx = 0;
     let bestDist = Infinity;
 
     cardRefs.current.forEach((card, i) => {
       if (!card) return;
+
+      const inner = card.querySelector<HTMLElement>('[data-card-inner]');
       
       const offset = i - current;
       const k = Math.max(-kmax, Math.min(kmax, offset));
@@ -268,20 +270,32 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
 
       // Visual enhancements
       const absK = Math.abs(k);
-      const scale = 1.06 - Math.min(0.06, 0.06 * absK);
-      const opacity = Math.max(0.2, 0.25 + 0.75 * Math.max(0, 1 - absK)); // stronger fade for non-active
+      const scale   = Math.max(0.9, 1.22 - 0.12 * absK); 
+      const opacity = Math.max(0.30, 1 - 0.30 * absK);
 
       const isActive = absK < 0.5;
-      const glow = isActive ? "0 0 45px rgba(255,117,20,0.55)" : "0 0 0 rgba(0,0,0,0)";
 
       // Include centering translate to avoid overriding Tailwind's -translate utilities
-      card.style.transform = `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) rotateX(-6deg) scale(${scale})`;
+      card.style.transform = `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rotY}deg) rotateX(-6deg) `;
       card.style.opacity = String(opacity);
       card.style.willChange = isMobile ? "auto" : "transform, opacity"; // lighten on mobile
       (card.style as any).backfaceVisibility = "hidden";
-      card.style.boxShadow = glow;
+      card.style.boxShadow  = isActive
+        ? "0 16px 60px rgba(255,117,20,0.30)"                           // glow sobrio sull’attiva
+        : "0 8px 22px rgba(0,0,0,0.35)";                                 // ombra neutra sui lati
+      card.style.borderColor = isActive
+        ? "rgba(255,117,20,0.55)"                                       // contorno arancio brand
+        : "rgba(255,255,255,0.08)";   
       // Ensure correct stacking order with center card on top
       card.style.zIndex = String(1000 + Math.round(z));
+      // INNER — SOLO scale con transizione morbida
+      if (inner) {
+        inner.style.transition = prefersReduced
+          ? "transform 180ms linear, opacity 180ms linear"
+          : "transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms cubic-bezier(0.22, 1, 0.36, 1)";
+        inner.style.transform  = `translateZ(0.01px) scale(${scale})`;
+        inner.style.opacity    = String(isActive ? 1 : opacity);
+      }
       card.setAttribute("aria-current", isActive ? "true" : "false");
 
       const dist = Math.abs(offset);
@@ -296,7 +310,7 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
     const target = targetRef.current;
     const current = currentRef.current;
     const delta = target - current;
-    const ease = isMobile ? 0.18 : 0.12; // faster settle on mobile
+    const ease = isMobile ? 0.20 : 0.16; // faster settle on mobile
     if (Math.abs(delta) > 0.001) {
       currentRef.current = current + delta * ease;
       applyTransforms();
@@ -391,7 +405,7 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
       <button
         aria-label="Previous"
         onClick={() => setTargetIndex(targetRef.current - 1)}
-        className="hidden md:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full backdrop-blur-sm"
+        className="hidden md:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full"
       >
         ‹
       </button>
@@ -414,15 +428,17 @@ const DeckCarousel = ({ images }: { images: GalleryImage[] }) => {
             ref={(el) => (cardRefs.current[index] = el)}
             role="option"
             aria-current={index === activeIndex}
-            className="absolute top-1/2 left-1/2 rounded-xl overflow-hidden bg-neutral-900/60 backdrop-blur-sm border border-white/5"
-            style={{ width: isMobile ? "12rem" : "13rem", height: isMobile ? "16rem" : "17rem", transformStyle: "preserve-3d", willChange: isMobile ? "auto" : "transform, opacity", backfaceVisibility: "hidden" as any }}
+            className="absolute top-1/2 left-1/2 rounded-2xl overflow-hidden bg-neutral-900/60 border border-white/5"
+            style={{ width: isMobile ? "12rem" : "13rem", height: isMobile ? "16rem" : "17rem", transformStyle: "preserve-3d", willChange: isMobile ? "auto" : "transform, opacity", backfaceVisibility: "hidden" as any, clipPath: "inset(0 round 16px)", WebkitClipPath: "inset(0 round 16px)", }}
           >
+          <div data-card-inner className="w-full h-full" style={{ borderRadius: "inherit", overflow: "hidden" }}>
             <AnimatedElement>
-              <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.4 }} className="w-full h-full">
-                <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
+              <motion.div className="w-full h-full object-cover" style={{ borderRadius: "inherit", overflow: "hidden" }}>
+                <img src={image.src} alt={image.alt} className="w-full h-full object-cover" style={{ borderRadius: "inherit", display: "block" }} />
               </motion.div>
             </AnimatedElement>
           </div>
+        </div>
         ))}
       </div>
 
