@@ -16,7 +16,7 @@ const AppsSection = () => {
       description:
         "Alternativa open source a Process Lasso per Windows. Piani energetici, priorità e modifiche di sistema per giocatori e utenti esperti: gratuito e semplice.",
       features: ["Open-source", "Affinità processi su core", "Gestione powerplans"],
-      url: "https://github.com/PrimeBuild-pc/TreadPilot",
+  url: "https://github.com/PrimeBuild-pc/TreadPilot/releases/download/beta/ThreadPilot-v1.0-Windows-x64-Portable.zip",
       comingSoon: false,
     },
     {
@@ -24,15 +24,15 @@ const AppsSection = () => {
       description:
         "Overlay di mirino leggero e personalizzabile per migliorare la precisione nei giochi FPS.",
       features: ["Overlay trasparente", "Mirino personalizzabile", "Profilo per gioco"],
-      url: "https://github.com/PrimeBuild-pc/LightCrosshair",
+  url: "https://github.com/PrimeBuild-pc/LightCrosshair/releases/download/beta/LightCrosshair-v1.0.0.zip",
       comingSoon: false,
     },
     {
       name: "TweakHub",
       description:
-        "Alternativa open source a Process Lasso per Windows. Piani energetici, priorità e modifiche di sistema per giocatori e utenti esperti. Gratuito e semplice.",
+        "Centro di controllo all-in-one per modifiche e ottimizzazioni di Windows 11",
       features: ["Affinità processi su core", "Gestione powerplans", "Controllo estremo"],
-      url: "https://github.com/PrimeBuild-pc/TweakHub",
+  url: "https://github.com/PrimeBuild-pc/TweakHub/releases/download/beta/TweakHub-v1.0.0-win-x64-portable.zip",
       comingSoon: false,
     },
   ];
@@ -87,7 +87,7 @@ const AppsSection = () => {
                                  focus-visible:ring-2 focus-visible:ring-[#ff7514]
                                  focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
                     >
-                      <FaDownload className="inline mr-2" /> Apri su GitHub
+                      <FaDownload className="inline mr-2" /> Downlaod
                     </a>
                   )}
                 </div>
