@@ -26,7 +26,7 @@ const AppsSection = () => {
       description:
         "Overlay di mirino leggero e personalizzabile per migliorare la precisione nei giochi FPS.",
       features: ["Overlay trasparente", "Mirino personalizzabile", "Profilo per gioco"],
-  url: "https://github.com/PrimeBuild-pc/LightCrosshair/releases/download/beta/LightCrosshair-v1.0.0.zip",
+  url: "https://github.com/PrimeBuild-pc/LightCrosshair/releases/download/beta/LightCrosshair-beta-win-x64-portable.zip",
   repoUrl: "https://github.com/PrimeBuild-pc/LightCrosshair",
       comingSoon: false,
     },
