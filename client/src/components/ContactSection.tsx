@@ -15,6 +15,8 @@ const ContactSection = () => {
     website: ""
   });
 
+  const initialState = { name: "", email: "", subject: "", message: "", website: "" };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
@@ -22,46 +24,33 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formData.website) { setFormData(initialState); return; }
+
+    const raw = import.meta.env.VITE_CONTACT_ENDPOINT;
+    const endpoint = (raw && raw.trim()) ? raw.trim() : '/contact'; // fallback
+    if (!raw) {
+      console.warn('VITE_CONTACT_ENDPOINT assente, uso fallback /contact');
+    }
+
     try {
-      // Skip submission if honeypot filled
-      if (formData.website) {
-        setFormData({ name: "", email: "", subject: "", message: "", website: "" });
-        return;
-      }
-      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-      if (!endpoint) {
-        console.error('Missing VITE_CONTACT_ENDPOINT env variable');
-        toast({
-          title: "Invio non disponibile",
-          description: "Configurazione mancante. Riprova più tardi.",
-        });
-        return;
-      }
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      // Best-effort response handling
-      if (!res.ok) {
-        const txt = await res.text().catch(() => '');
-        console.error('Contact form error', txt);
-        toast({
-          title: "Errore di invio",
-          description: "Si è verificato un problema. Riprova tra qualche minuto.",
-        });
+
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok || !json.success) {
+        toast({ title: "Errore di invio", description: json.error || "Problema temporaneo." });
+        return;
       }
-      setFormData({ name: "", email: "", subject: "", message: "", website: "" });
-      toast({
-        title: "Messaggio inviato",
-        description: "Ti ricontatteremo al più presto.",
-      });
+
+      setFormData(initialState);
+      toast({ title: "Messaggio inviato", description: "Ti contatteremo al più presto." });
     } catch (err) {
-      console.error('Network error submitting contact form', err);
-      toast({
-        title: "Errore di rete",
-        description: "Controlla la connessione e riprova.",
-      });
+      console.error('Network/contact error', err);
+      toast({ title: "Errore di rete", description: "Riprova più tardi." });
     }
   };
 
