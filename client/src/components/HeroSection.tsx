@@ -18,7 +18,7 @@ const HeroSection = () => {
             className="mx-auto mb-6"
           >
             <img 
-              src="https://i.postimg.cc/FKyRC3Vh/logo.png" 
+              src="/logo.png" 
               alt="Prime Build Logo" 
               className="h-24 mx-auto object-contain"
             />

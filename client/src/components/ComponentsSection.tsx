@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { useIsMobile } from "@/hooks/use-mobile";
+import ImageWithFallback from "@/lib/ImageWithFallback";
 
 interface Component {
   image: string;
@@ -11,32 +12,32 @@ interface Component {
 const ComponentsSection = () => {
   const components: Component[] = [
     {
-      image: "https://i.postimg.cc/W4MBFXXM/cpu.png",
+      image: "/cpu.jpg",
       title: "Processori",
       brands: "AMD & Intel"
     },
     {
-      image: "https://images.unsplash.com/photo-1591405351990-4726e331f141?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80",
+      image: "/gpu.jpg",
       title: "Schede Video",
       brands: "NVIDIA & AMD"
     },
     {
-      image: "https://i.postimg.cc/Gtk8Z0Q4/ram.png",
+      image: "/ram.jpg",
       title: "Memorie RAM",
       brands: "Corsair & G.Skill"
     },
     {
-      image: "https://i.postimg.cc/28VgFz0j/ssd.jpg",
+      image: "/ssd.jpg",
       title: "Storage",
       brands: "Samsung & WD"
     },
     {
-      image: "https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80",
+      image: "/cooling.jpg",
       title: "Raffreddamento",
       brands: "NZXT & Thermalright"
     },
     {
-      image: "https://i.postimg.cc/FK1WyGrf/case.png",
+      image: "/case.jpg",
       title: "Case",
       brands: "Lian Li & Phanteks"
     }
@@ -215,7 +216,7 @@ const ComponentsSection = () => {
                 className="bg-neutral-900 p-5 rounded-xl text-center hover:bg-neutral-800 transition-colors"
                 delay={0.1 * index}
               >
-                <img
+                <ImageWithFallback
                   src={component.image}
                   alt={component.title}
                   className="w-16 h-16 object-cover mx-auto mb-4 rounded-lg"
@@ -278,7 +279,7 @@ const ComponentsSection = () => {
                   style={{ transform, willChange: isMobile ? "auto" : "transform, opacity",  pointerEvents: backface ? "none" : "auto",  zIndex: Math.round(1000 + depth * 1000), opacity: backface ? 0.5 : 1}}
                 >
                   <div className="p-5 w-52 md:w-64">
-                    <img
+                    <ImageWithFallback
                       src={component.image}
                       alt={component.title}
                       className="w-14 h-14 md:w-16 md:h-16 object-cover mx-auto mb-4 rounded-lg"

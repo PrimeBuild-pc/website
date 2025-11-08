@@ -6,8 +6,8 @@ const SchemaMarkup = () => {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Prime Build",
-      "url": "https://primebuild.replit.app/",
-      "logo": "https://i.postimg.cc/FKyRC3Vh/logo.png",
+  "url": "https://primebuild.website/",
+  "logo": "https://primebuild.website/logo.png",
       "description": "Prime Build realizza PC Gaming su misura per un'esperienza di gioco senza compromessi. Assemblaggio, assistenza tecnica e ottimizzazione PC a Padova, Italia.",
       "address": {
         "@type": "PostalAddress",

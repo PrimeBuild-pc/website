@@ -1,14 +1,4 @@
-import { defineConfig } from "drizzle-kit";
-
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL, ensure the database is provisioned");
-}
-
-export default defineConfig({
-  out: "./migrations",
-  schema: "./shared/schema.ts",
-  dialect: "postgresql",
-  dbCredentials: {
-    url: process.env.DATABASE_URL,
-  },
-});
+// Drizzle config removed for static site. Kept as empty module to avoid type errors during Vite/TS builds.
+// If you need Drizzle again, restore this file and install drizzle-kit.
+const config = {} as const;
+export default config;

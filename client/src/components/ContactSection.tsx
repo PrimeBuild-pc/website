@@ -2,13 +2,17 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkerAlt, FaInstagram, FaDiscord } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
+    // Honeypot field: real users won't see this (hidden via CSS)
+    website: ""
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -16,17 +20,49 @@ const ContactSection = () => {
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle the form submission
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
+    try {
+      // Skip submission if honeypot filled
+      if (formData.website) {
+        setFormData({ name: "", email: "", subject: "", message: "", website: "" });
+        return;
+      }
+      const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
+      if (!endpoint) {
+        console.error('Missing VITE_CONTACT_ENDPOINT env variable');
+        toast({
+          title: "Invio non disponibile",
+          description: "Configurazione mancante. Riprova più tardi.",
+        });
+        return;
+      }
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      // Best-effort response handling
+      if (!res.ok) {
+        const txt = await res.text().catch(() => '');
+        console.error('Contact form error', txt);
+        toast({
+          title: "Errore di invio",
+          description: "Si è verificato un problema. Riprova tra qualche minuto.",
+        });
+      }
+      setFormData({ name: "", email: "", subject: "", message: "", website: "" });
+      toast({
+        title: "Messaggio inviato",
+        description: "Ti ricontatteremo al più presto.",
+      });
+    } catch (err) {
+      console.error('Network error submitting contact form', err);
+      toast({
+        title: "Errore di rete",
+        description: "Controlla la connessione e riprova.",
+      });
+    }
   };
 
   const contactInfo = [
@@ -69,6 +105,12 @@ const ContactSection = () => {
               </p>
               
               <form className="space-y-6" onSubmit={handleSubmit}>
+                {/* Honeypot field (hidden) */}
+                <div style={{ position: 'absolute', left: '-9999px', top: '-9999px' }} aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input id="website" type="text" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
+                </div>
+                {/* Removed Turnstile widget for static GitHub Pages deployment. */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-1">
@@ -138,6 +180,9 @@ const ContactSection = () => {
                 >
                   Invia Messaggio
                 </motion.button>
+                <p className="text-xs text-neutral-400">
+                  Inviando questo modulo, dichiari di aver letto la nostra informativa privacy e acconsenti al trattamento dei dati forniti ai soli fini di ricontatto.
+                </p>
               </form>
             </AnimatedElement>
             

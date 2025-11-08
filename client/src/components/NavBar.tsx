@@ -31,7 +31,7 @@ const NavBar = () => {
           <a className="flex items-center">
             <div className="h-12 w-12 mr-2 relative">
               <img 
-                src="https://i.postimg.cc/FKyRC3Vh/logo.png" 
+                src="/logo.png" 
                 alt="Prime Build Logo" 
                 className="h-full w-full object-contain"
               />

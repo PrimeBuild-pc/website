@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
+import ImageWithFallback from "@/lib/ImageWithFallback";
 
 interface Build {
   name: string;
@@ -57,7 +58,7 @@ const BuildsSection = () => {
       price: "750€",
       description:
         "La configurazione ideale per chi vuole entrare nel mondo del gaming ad alte prestazioni senza spendere una fortuna.",
-      image: "https://i.postimg.cc/ZR78Kht0/low.jpg",
+  image: "/low.jpg",
       specs: [
         { name: "Processore", value: "AMD Ryzen 5 5700x", performance: 60 },
         { name: "Scheda Video", value: "NVIDIA RTX 5060 8GB", performance: 62 },
@@ -74,7 +75,7 @@ const BuildsSection = () => {
       price: "1500€",
       description:
         "Potenza e prestazioni bilanciate per gaming in 1440p e multitasking intenso.",
-      image: "https://i.postimg.cc/Bbjxjw4p/mid.jpg",
+  image: "/mid.jpg",
       specs: [
         { name: "Processore", value: "AMD Ryzen 7 7800X3D", performance: 85 },
         { name: "Scheda Video", value: "NVIDIA RTX 5070 12GB", performance: 80 },
@@ -95,7 +96,7 @@ const BuildsSection = () => {
       price: "2900€",
       description:
         "La soluzione definitiva per gaming 4K, streaming professionale e carichi di lavoro intensi.",
-      image: "https://i.postimg.cc/Qtxg3dzR/high.jpg",
+  image: "/high.jpg",
       specs: [
         { name: "Processore", value: "AMD Ryzen 9 9950X3D", performance: 95 },
         { name: "Scheda Video", value: "NVIDIA RTX 5080", performance: 92 },
@@ -179,7 +180,7 @@ const BuildsSection = () => {
                 <div
                   className={`relative rounded-xl overflow-hidden group order-2 ${index % 2 !== 0 ? "md:order-1" : "md:order-2"}`}
                 >
-                  <img
+                  <ImageWithFallback
                     src={build.image}
                     alt={build.name}
                     className="w-full h-96 object-cover"
