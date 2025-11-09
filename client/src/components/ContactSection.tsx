@@ -27,8 +27,22 @@ const ContactSection = () => {
     if (formData.website) { setFormData(initialState); return; }
 
     const raw = import.meta.env.VITE_CONTACT_ENDPOINT;
-    const endpoint = (raw && raw.trim()) ? raw.trim() : '/contact'; // fallback
-    if (!raw) {
+    const cleaned = (raw && raw.trim()) ? raw.trim() : '';
+    let endpoint = cleaned || '/contact';
+    try {
+      if (cleaned && cleaned.startsWith('http')) {
+        const targetHost = new URL(cleaned).hostname;
+        const currentHost = window.location.hostname;
+        // Se siamo in una preview pages.dev diversa dal dominio target, usa endpoint relativo per evitare CORS
+        if (targetHost !== currentHost && /\.pages\.dev$/i.test(currentHost)) {
+          console.info('[contact] Override endpoint to relative /contact to evitare CORS tra preview domains');
+          endpoint = '/contact';
+        }
+      }
+    } catch {
+      endpoint = '/contact';
+    }
+    if (!cleaned) {
       console.warn('VITE_CONTACT_ENDPOINT assente, uso fallback /contact');
     }
 
