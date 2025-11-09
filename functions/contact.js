@@ -2,22 +2,37 @@
 // Endpoint: https://<YOUR_PAGES_SUBDOMAIN>/contact
 // Handles POST form submissions with JSON body
 
+// Helper: compute allowed CORS origin (reflect if dev/pages, else whitelist)
+function computeAllowOrigin(origin, env) {
+  try {
+    if (!origin) return '*';
+    const o = new URL(origin).origin;
+    const host = new URL(origin).hostname;
+    const allowed = (env.ALLOWED_ORIGINS || '')
+      .split(',').map(s => s.trim()).filter(Boolean);
+    const isLocal = /^localhost(:\d+)?$/.test(host) || /^127\./.test(host);
+    const isPages = /\.pages\.dev$/i.test(host);
+    if (isLocal || isPages) return o; // riflette in dev / preview
+    if (allowed.length === 0) return o;
+    if (allowed.includes(o)) return o;
+    return allowed[0];
+  } catch { return '*'; }
+}
+
 export const onRequestPost = async (context) => {
   const { request, env } = context;
   const start = Date.now();
-
-  let origin = request.headers.get('Origin') || '';
-  const allowed = (env.ALLOWED_ORIGINS || '').split(',')
-    .map(s => s.trim()).filter(Boolean);
-  const allowOriginHeader = allowed.length === 0
-    ? origin
-    : (allowed.includes(origin) ? origin : allowed[0]);
+  const origin = request.headers.get('Origin') || '';
+  const allowOriginHeader = computeAllowOrigin(origin, env);
+  const strictEmail = env.EMAIL_STRICT === '1'; // se non impostato: fail-soft
+  const debugEnabled = env.DEBUG === '1';
 
   const baseHeaders = {
     'Content-Type': 'application/json; charset=utf-8',
     'Access-Control-Allow-Origin': allowOriginHeader || '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
+    'Vary': 'Origin'
   };
 
   try {
@@ -90,25 +105,29 @@ export const onRequestPost = async (context) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           personalizations: [{ to: [{ email: mailTo }] }],
-            from: { email: fromEmail, name: 'Modulo Contatti' },
-            reply_to: { email },
-            subject: `${prefix}${subject}`,
-            content: [
-              { type: 'text/plain', value: plain },
-              { type: 'text/html', value: html }
-            ],
-            headers: { 'X-Entity-Ref-ID': crypto.randomUUID() }
+          from: { email: fromEmail, name: 'Modulo Contatti' },
+          reply_to: { email },
+          subject: `${prefix}${subject}`,
+          content: [
+            { type: 'text/plain', value: plain },
+            { type: 'text/html', value: html }
+          ],
+          headers: { 'X-Entity-Ref-ID': crypto.randomUUID() }
         })
       });
 
       if (!mailResp.ok) {
         const errTxt = await mailResp.text().catch(() => '');
         console.error('MailChannels send failed', mailResp.status, errTxt);
-        return new Response(JSON.stringify({ success: false, error: 'Email send failed' }), { status: 502, headers: baseHeaders });
+        const payload = { success: strictEmail ? false : true, warning: 'Email send failed', degraded: !strictEmail };
+        if (debugEnabled) payload.debug = { status: mailResp.status, body: errTxt.slice(0, 400) };
+        return new Response(JSON.stringify(payload), { status: strictEmail ? 502 : 200, headers: baseHeaders });
       }
     } catch (e) {
       console.error('MailChannels exception', e);
-      return new Response(JSON.stringify({ success: false, error: 'Email send exception' }), { status: 502, headers: baseHeaders });
+      const payload = { success: strictEmail ? false : true, warning: 'Email send exception', degraded: !strictEmail };
+      if (debugEnabled) payload.debug = { message: (e && e.message) || String(e) };
+      return new Response(JSON.stringify(payload), { status: strictEmail ? 502 : 200, headers: baseHeaders });
     }
 
     return new Response(JSON.stringify({
@@ -119,23 +138,22 @@ export const onRequestPost = async (context) => {
 
   } catch (e) {
     console.error('Unhandled contact function error', e);
-    return new Response(JSON.stringify({ success: false, error: 'Server error' }), { status: 500, headers: baseHeaders });
+    const payload = { success: false, error: 'Server error' };
+    if (debugEnabled) payload.debug = { message: (e && e.message) || String(e) };
+    return new Response(JSON.stringify(payload), { status: 500, headers: baseHeaders });
   }
 };
 
 export const onRequestOptions = async ({ request, env }) => {
-  const origin = request.headers.get('Origin') || '';
-  const allowed = (env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
-  const allowOriginHeader = allowed.length === 0
-    ? origin
-    : (allowed.includes(origin) ? origin : allowed[0]);
+  const allow = computeAllowOrigin(request.headers.get('Origin') || '', env);
   return new Response('', {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin': allowOriginHeader || '*',
+      'Access-Control-Allow-Origin': allow || '*',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Max-Age': '86400'
+      'Access-Control-Max-Age': '86400',
+      'Vary': 'Origin'
     }
   });
 };
