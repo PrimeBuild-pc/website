@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+
+@layer components {
+  .glow-card {
+    position: relative;
+    --glow-color: rgba(255, 117, 20, 0.45);
+    --glow-strength: 28px;
+  }
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    pointer-events: none;
+    background: radial-gradient(120% 80% at 50% 120%, var(--glow-color) 0%, rgba(255,117,20,0.0) 60%);
+    filter: blur(var(--glow-strength));
+    opacity: 0.45;
+    transform: translateZ(0);
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+  .glow-card:hover::before,
+  .glow-card:focus-within::before {
+    opacity: 0.8;
+  }
+  @media (max-width: 640px) {
+    .glow-card { --glow-strength: 18px; }
+    .glow-card::before { opacity: 0.35; }
+  }
+
+  /* Dark background gradient + optional subtle pattern */
+  .bg-dark-gradient {
+    /* Slightly stronger center shade for visible depth */
+    background: radial-gradient(65% 55% at 50% 0%, #101010 0%, #000000 80%);
+  }
+  .bg-diagonal-grid {
+    position: relative;
+    isolation: isolate;
+  }
+  .bg-diagonal-grid > * { position: relative; z-index: 1; }
+  .bg-diagonal-grid::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* use normal blending with slightly higher alpha for visibility on black */
+    background-image: linear-gradient(transparent 0px, rgba(255,255,255,0.06) 1px), linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.06) 1px);
+    background-size: 24px 24px, 24px 24px;
+    z-index: 0;
+  }
+
+  /* Subtle noise overlay (CSS-generated, no assets) */
+  .noise-overlay { position: relative; }
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.05) 1px, rgba(0,0,0,0) 1px),
+      radial-gradient(rgba(255,255,255,0.03) 1px, rgba(0,0,0,0) 1px),
+      radial-gradient(rgba(0,0,0,0.03) 1px, rgba(0,0,0,0) 1px);
+    background-size: 3px 3px, 5px 5px, 7px 7px;
+    background-position: 0 0, 1px 2px, 2px 1px;
+    opacity: 0.12; /* still subtle but visible on black */
+    z-index: 0;
+  }
+}
