@@ -182,7 +182,7 @@ const BuildsSection = () => {
                 >
                   <ImageWithFallback
                     src={build.image}
-                    alt={build.name}
+                    alt={`PC Gaming ${build.name} - ${build.tagline} - Build gaming custom Prime Build`}
                     className="w-full h-96 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
