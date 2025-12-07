@@ -1,0 +1,3 @@
+# ads.txt for primebuild.website
+# This site does not run any advertising
+# placeholder file to prevent 404 errors

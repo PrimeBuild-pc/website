@@ -91,20 +91,24 @@ export const initializeAnalytics = (): void => {
   // Check if already initialized
   if (document.querySelector('script[src*="googletagmanager.com/gtag"]')) return;
 
+  // Initialize dataLayer and gtag FIRST (before script loads)
+  window.dataLayer = window.dataLayer || [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  window.gtag = function gtag(...args: any[]) {
+    window.dataLayer.push(arguments);
+  };
+
+  // Queue initial commands before script loads
+  window.gtag('js', new Date());
+  window.gtag('config', 'G-PGN2C39W72', {
+    anonymize_ip: true, // GDPR compliance
+    cookie_flags: 'SameSite=None;Secure',
+    send_page_view: true
+  });
+
   // Load gtag.js
   const script = document.createElement('script');
   script.async = true;
   script.src = 'https://www.googletagmanager.com/gtag/js?id=G-PGN2C39W72';
   document.head.appendChild(script);
-
-  // Initialize dataLayer and gtag
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer.push(args);
-  };
-  window.gtag('js', new Date());
-  window.gtag('config', 'G-PGN2C39W72', {
-    anonymize_ip: true, // GDPR compliance
-    cookie_flags: 'SameSite=None;Secure'
-  });
 };

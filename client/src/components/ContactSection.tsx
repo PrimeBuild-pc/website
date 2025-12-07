@@ -76,16 +76,25 @@ const ContactSection = () => {
     }
   };
 
+  // Obfuscate email to prevent spam harvesters
+  const getEmail = () => {
+    const user = "primebuild.official";
+    const domain = "gmail.com";
+    return `${user}@${domain}`;
+  };
+
   const contactInfo = [
     {
       icon: <FaEnvelope className="text-[#ff7514]" />,
       title: "Email",
-      value: "primebuild.official@gmail.com"
+      value: getEmail(),
+      isEmail: true
     },
     {
       icon: <FaMapMarkerAlt className="text-[#ff7514]" />,
       title: "Sede",
-      value: "Padova, Italia"
+      value: "Padova, Italia",
+      isEmail: false
     }
   ];
 
@@ -188,7 +197,7 @@ const ContactSection = () => {
                   disabled={isSubmitting}
                   whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                  className="bg-[#ff7514] hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold py-3 px-8 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
                 </motion.button>
