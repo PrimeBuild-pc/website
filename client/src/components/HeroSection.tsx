@@ -17,9 +17,11 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mx-auto mb-6"
           >
-            <img 
-              src="/logo.png" 
-              alt="Prime Build Logo" 
+            <img
+              src="/logo.png"
+              alt="Prime Build Logo"
+              width={96}
+              height={96}
               className="h-24 mx-auto object-contain"
             />
           </motion.div>
@@ -51,7 +53,7 @@ const HeroSection = () => {
           >
             <a
               href="#builds"
-              className="bg-[#ff7514] hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
+              className="bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105"
             >
               Scopri le Build
             </a>
