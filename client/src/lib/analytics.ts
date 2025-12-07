@@ -91,24 +91,29 @@ export const initializeAnalytics = (): void => {
   // Check if already initialized
   if (document.querySelector('script[src*="googletagmanager.com/gtag"]')) return;
 
-  // Initialize dataLayer and gtag FIRST (before script loads)
+  // Initialize dataLayer FIRST
   window.dataLayer = window.dataLayer || [];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  window.gtag = function gtag(...args: any[]) {
+
+  // Define gtag function - must use function declaration for 'arguments' to work
+  function gtag() {
+    // eslint-disable-next-line prefer-rest-params
     window.dataLayer.push(arguments);
-  };
+  }
+  window.gtag = gtag as typeof window.gtag;
 
   // Queue initial commands before script loads
   window.gtag('js', new Date());
   window.gtag('config', 'G-PGN2C39W72', {
-    anonymize_ip: true, // GDPR compliance
-    cookie_flags: 'SameSite=None;Secure',
-    send_page_view: true
+    anonymize_ip: true,
+    cookie_flags: 'SameSite=None;Secure'
   });
 
-  // Load gtag.js
+  // Load gtag.js script
   const script = document.createElement('script');
   script.async = true;
   script.src = 'https://www.googletagmanager.com/gtag/js?id=G-PGN2C39W72';
   document.head.appendChild(script);
+
+  // Debug log
+  console.log('[GA4] Analytics initialized with ID: G-PGN2C39W72');
 };
