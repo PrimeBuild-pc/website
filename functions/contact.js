@@ -1,6 +1,7 @@
 // Cloudflare Pages Function: /functions/contact.js
-// Endpoint: https://<YOUR_PAGES_SUBDOMAIN>/contact
+// Endpoint: https://primebuild.website/contact
 // Handles POST form submissions with JSON body
+// Uses Resend for email delivery
 
 // Helper: compute allowed CORS origin (reflect if dev/pages, else whitelist)
 function computeAllowOrigin(origin, env) {
@@ -82,14 +83,21 @@ export const onRequestPost = async (context) => {
       }
     }
 
-    // Mail sending (MailChannels)
+    // Mail sending (Resend)
     const mailTo = env.MAIL_TO;
+    const resendApiKey = env.RESEND_API_KEY;
+
     if (!mailTo) {
       console.warn('MAIL_TO missing – skipping send.');
       return new Response(JSON.stringify({ success: true, warning: 'MAIL_TO missing' }), { status: 200, headers: baseHeaders });
     }
 
-    const fromEmail = env.MAIL_FROM || `no-reply@${new URL(request.url).hostname}`;
+    if (!resendApiKey) {
+      console.warn('RESEND_API_KEY missing – skipping send.');
+      return new Response(JSON.stringify({ success: true, warning: 'RESEND_API_KEY missing' }), { status: 200, headers: baseHeaders });
+    }
+
+    const fromEmail = env.MAIL_FROM || 'onboarding@resend.dev';
     const prefix = env.MAIL_SUBJECT_PREFIX ? env.MAIL_SUBJECT_PREFIX.trim() + ' ' : '';
     const html =
       `<p><strong>Nome:</strong> ${name}</p>
@@ -100,31 +108,31 @@ export const onRequestPost = async (context) => {
       `Nome: ${name}\nEmail: ${email}\nOggetto: ${subject}\nMessaggio:\n${message}`;
 
     try {
-      const mailResp = await fetch('https://api.mailchannels.net/tx/v1/send', {
+      const mailResp = await fetch('https://api.resend.com/emails', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${resendApiKey}`
+        },
         body: JSON.stringify({
-          personalizations: [{ to: [{ email: mailTo }] }],
-          from: { email: fromEmail, name: 'Modulo Contatti' },
-          reply_to: { email },
+          from: `Modulo Contatti <${fromEmail}>`,
+          to: [mailTo],
+          reply_to: email,
           subject: `${prefix}${subject}`,
-          content: [
-            { type: 'text/plain', value: plain },
-            { type: 'text/html', value: html }
-          ],
-          headers: { 'X-Entity-Ref-ID': crypto.randomUUID() }
+          html: html,
+          text: plain
         })
       });
 
       if (!mailResp.ok) {
         const errTxt = await mailResp.text().catch(() => '');
-        console.error('MailChannels send failed', mailResp.status, errTxt);
+        console.error('Resend send failed', mailResp.status, errTxt);
         const payload = { success: strictEmail ? false : true, warning: 'Email send failed', degraded: !strictEmail };
         if (debugEnabled) payload.debug = { status: mailResp.status, body: errTxt.slice(0, 400) };
         return new Response(JSON.stringify(payload), { status: strictEmail ? 502 : 200, headers: baseHeaders });
       }
     } catch (e) {
-      console.error('MailChannels exception', e);
+      console.error('Resend exception', e);
       const payload = { success: strictEmail ? false : true, warning: 'Email send exception', degraded: !strictEmail };
       if (debugEnabled) payload.debug = { message: (e && e.message) || String(e) };
       return new Response(JSON.stringify(payload), { status: strictEmail ? 502 : 200, headers: baseHeaders });
