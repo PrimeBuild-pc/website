@@ -120,7 +120,7 @@ const AppsSection = () => {
                         rel="noopener noreferrer"
                         onClick={() => handleDownloadClick(app.name, app.url)}
                         aria-label={`Scarica ${app.name}`}
-                        className="absolute right-4 bottom10 inline-flex items-center gap-2 bg-[#ff7514] hover:bg-opacity-90 text-white px-4 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7514] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+                        className="absolute right-4 bottom10 inline-flex items-center gap-2 bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold px-4 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7514] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
                       >
                         <FaDownload className="inline mr-2" aria-hidden="true" /> Download
                       </a>
