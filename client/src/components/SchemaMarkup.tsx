@@ -2,12 +2,13 @@ import { useEffect } from "react";
 
 const SchemaMarkup = () => {
   useEffect(() => {
-    const schema = {
+    // Main Organization schema
+    const organizationSchema = {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Prime Build",
-  "url": "https://primebuild.website/",
-  "logo": "https://primebuild.website/logo.png",
+      "url": "https://primebuild.website/",
+      "logo": "https://primebuild.website/logo.png",
       "description": "Prime Build realizza PC Gaming su misura per un'esperienza di gioco senza compromessi. Assemblaggio, assistenza tecnica e ottimizzazione PC a Padova, Italia.",
       "address": {
         "@type": "PostalAddress",
@@ -19,61 +20,139 @@ const SchemaMarkup = () => {
       "sameAs": [
         "https://www.instagram.com/prime_build_/",
         "https://discord.gg/jBNk2vXKKd"
-      ],
-      "offers": [
+      ]
+    };
+
+    // LocalBusiness schema for better local SEO
+    const localBusinessSchema = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Prime Build",
+      "image": "https://primebuild.website/logo.png",
+      "url": "https://primebuild.website/",
+      "email": "primebuild.official@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Padova",
+        "addressRegion": "Veneto",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.4064349,
+        "longitude": 11.8767611
+      },
+      "priceRange": "€€",
+      "servesCuisine": "PC Gaming Custom, Assistenza Tecnica",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "PC Gaming Build",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "PRIME STARTER",
+              "description": "La configurazione ideale per chi vuole entrare nel mondo del gaming ad alte prestazioni senza spendere una fortuna."
+            },
+            "price": "750",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "PRIME PERFORMER",
+              "description": "Potenza e prestazioni bilanciate per gaming in 1440p e multitasking intenso."
+            },
+            "price": "1450",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "PRIME ELITE",
+              "description": "La soluzione definitiva per gaming 4K, streaming professionale e carichi di lavoro intensi."
+            },
+            "price": "3800",
+            "priceCurrency": "EUR"
+          }
+        ]
+      }
+    };
+
+    // FAQ Schema
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "Offer",
-          "name": "PRIME STARTER",
-          "description": "La configurazione ideale per chi vuole entrare nel mondo del gaming ad alte prestazioni senza spendere una fortuna.",
-          "price": "750",
-          "priceCurrency": "EUR"
+          "@type": "Question",
+          "name": "Quali servizi offre Prime Build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prime Build offre assemblaggio di PC Gaming custom, riparazioni e assistenza tecnica, e servizi di ottimizzazione delle prestazioni per PC."
+          }
         },
         {
-          "@type": "Offer",
-          "name": "PRIME PERFORMER",
-          "description": "Potenza e prestazioni bilanciate per gaming in 1440p e multitasking intenso.",
-          "price": "1450",
-          "priceCurrency": "EUR"
+          "@type": "Question",
+          "name": "Dove si trova Prime Build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prime Build ha sede a Padova, Italia. Puoi contattarci via email o attraverso i nostri canali social (Instagram e Discord)."
+          }
         },
         {
-          "@type": "Offer",
-          "name": "PRIME ELITE",
-          "description": "La soluzione definitiva per gaming 4K, streaming professionale e carichi di lavoro intensi.",
-          "price": "3800",
-          "priceCurrency": "EUR"
-        }
-      ],
-      "service": [
-        {
-          "@type": "Service",
-          "name": "PC Gaming Custom",
-          "description": "Assembliamo il PC Gaming dei tuoi sogni con componenti di alta qualità, selezionati in base alle tue esigenze e al tuo budget."
+          "@type": "Question",
+          "name": "Quanto costa un PC Gaming custom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I nostri PC Gaming partono da 750 euro per la configurazione PRIME STARTER, 1450 euro per PRIME PERFORMER, fino a 3800 euro per PRIME ELITE. Offriamo anche configurazioni personalizzate su richiesta."
+          }
         },
         {
-          "@type": "Service",
-          "name": "Riparazioni e Assistenza",
-          "description": "Servizio di riparazione e assistenza tecnica professionale per risolvere qualsiasi problema hardware o software del tuo PC."
-        },
-        {
-          "@type": "Service",
-          "name": "Ottimizzazione",
-          "description": "Massimizza le prestazioni del tuo PC con i nostri servizi di ottimizzazione, tweaking e boost per gaming e produttività."
+          "@type": "Question",
+          "name": "Come posso richiedere un preventivo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puoi richiedere un preventivo compilando il modulo di contatto sul nostro sito, oppure contattandoci su Instagram (@prime_build_) o Discord."
+          }
         }
       ]
     };
 
-    // Aggiunge lo schema JSON-LD alla pagina
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(schema);
-    document.head.appendChild(script);
+    // WebSite schema for sitelinks search box
+    const websiteSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Prime Build",
+      "url": "https://primebuild.website/"
+    };
+
+    const schemas = [organizationSchema, localBusinessSchema, faqSchema, websiteSchema];
+
+    const scripts: HTMLScriptElement[] = [];
+
+    schemas.forEach((schema, index) => {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = `schema-markup-${index}`;
+      script.text = JSON.stringify(schema);
+      document.head.appendChild(script);
+      scripts.push(script);
+    });
 
     return () => {
-      document.head.removeChild(script);
+      scripts.forEach(script => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      });
     };
   }, []);
 
-  return null; // Questo componente non renderizza nulla visivamente
+  return null;
 };
 
 export default SchemaMarkup;

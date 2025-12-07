@@ -38,17 +38,23 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://primebuild.website/" />
     
-    <!-- Fonts -->
+    <!-- Fonts with display=swap for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-    
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/logo.png" />
 
-    
-    <!-- Sitemap e Robots.txt -->
+    <!-- Preload critical assets for better LCP -->
+    <link rel="preload" href="/logo.png" as="image" type="image/png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+
+    <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-TileColor" content="#ff7514">
   </head>
   <body>
     <div id="root"></div>
