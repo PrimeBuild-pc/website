@@ -14,6 +14,7 @@ const SchemaMarkup = () => {
         "@type": "PostalAddress",
         "addressLocality": "Montegrotto Terme",
         "addressRegion": "PD",
+        "postalCode": "35036",
         "addressCountry": "IT"
       },
       "email": "primebuild.official@gmail.com",
