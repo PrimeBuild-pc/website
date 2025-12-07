@@ -1,5 +1,6 @@
 import { FaDownload, FaPaypal } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
+import { trackDownload, trackExternalLink } from "@/lib/analytics";
 
 interface App {
   name: string;
@@ -9,6 +10,18 @@ interface App {
   repoUrl?: string;
   comingSoon: boolean;
 }
+
+const handleDownloadClick = (appName: string, url: string) => {
+  trackDownload(appName, url);
+};
+
+const handleRepoClick = (appName: string, url: string) => {
+  trackExternalLink(`${appName} Repository`, url);
+};
+
+const handlePayPalClick = () => {
+  trackExternalLink('PayPal Donation', 'https://paypal.me/PrimeBuildOfficial');
+};
 
 const AppsSection = () => {
   const apps: App[] = [
@@ -83,9 +96,11 @@ const AppsSection = () => {
                       href={app.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => handleRepoClick(app.name, app.repoUrl!)}
+                      aria-label={`Visualizza repository GitHub di ${app.name}`}
                       className="absolute left-4 bottom10 inline-flex items-center gap-2 bg-[#24292f] hover:bg-[#444d56] text-white px-4 py-1.5 rounded-md text-sm min-h-[32px]"
                     >
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
                       </svg>
                       <span className="font-semibold">Repo</span>
@@ -103,9 +118,11 @@ const AppsSection = () => {
                         href={app.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => handleDownloadClick(app.name, app.url)}
+                        aria-label={`Scarica ${app.name}`}
                         className="absolute right-4 bottom10 inline-flex items-center gap-2 bg-[#ff7514] hover:bg-opacity-90 text-white px-4 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7514] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
                       >
-                        <FaDownload className="inline mr-2" /> Downlaod
+                        <FaDownload className="inline mr-2" aria-hidden="true" /> Download
                       </a>
                     )
                   )}
@@ -126,9 +143,11 @@ const AppsSection = () => {
               href="https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handlePayPalClick}
+              aria-label="Supportaci con una donazione su PayPal"
               className="inline-flex items-center bg-[#0070BA] hover:bg-[#003087] text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
             >
-              <FaPaypal className="mr-2 text-xl" /> Supportaci su PayPal
+              <FaPaypal className="mr-2 text-xl" aria-hidden="true" /> Supportaci su PayPal
             </a>
           </div>
         </AnimatedElement>

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkerAlt, FaInstagram, FaDiscord } from "react-icons/fa";
+import { Link } from "wouter";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { useToast } from "@/hooks/use-toast";
+import { trackFormSubmit, trackSocialClick } from "@/lib/analytics";
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,49 +25,54 @@ const ContactSection = () => {
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
+  const handleSocialClick = (platform: string, url: string) => {
+    trackSocialClick(platform, url);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.website) { setFormData(initialState); return; }
+    if (isSubmitting) return;
 
-    const raw = import.meta.env.VITE_CONTACT_ENDPOINT;
-    const cleaned = (raw && raw.trim()) ? raw.trim() : '';
-    let endpoint = cleaned || '/contact';
-    try {
-      if (cleaned && cleaned.startsWith('http')) {
-        const targetHost = new URL(cleaned).hostname;
-        const currentHost = window.location.hostname;
-        // Se siamo in una preview pages.dev diversa dal dominio target, usa endpoint relativo per evitare CORS
-        if (targetHost !== currentHost && /\.pages\.dev$/i.test(currentHost)) {
-          console.info('[contact] Override endpoint to relative /contact to evitare CORS tra preview domains');
-          endpoint = '/contact';
-        }
-      }
-    } catch {
-      endpoint = '/contact';
-    }
-    if (!cleaned) {
-      console.warn('VITE_CONTACT_ENDPOINT assente, uso fallback /contact');
-    }
+    setIsSubmitting(true);
+
+    // Use the Cloudflare Pages endpoint
+    // For primebuild.website (hosted on GitHub Pages), call Cloudflare Pages function
+    // For pages.dev domains, use relative endpoint
+    const isGitHubPages = window.location.hostname === 'primebuild.website';
+    const endpoint = isGitHubPages
+      ? 'https://website-6al.pages.dev/contact'
+      : '/contact';
 
     try {
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
       });
 
       const json = await res.json().catch(() => ({}));
 
       if (!res.ok || !json.success) {
+        trackFormSubmit('contact', false);
         toast({ title: "Errore di invio", description: json.error || "Problema temporaneo." });
         return;
       }
 
+      trackFormSubmit('contact', true);
       setFormData(initialState);
-      toast({ title: "Messaggio inviato", description: "Ti contatteremo al più presto." });
+      toast({ title: "Messaggio inviato", description: "Ti contatteremo al piu presto." });
     } catch (err) {
       console.error('Network/contact error', err);
-      toast({ title: "Errore di rete", description: "Riprova più tardi." });
+      trackFormSubmit('contact', false);
+      toast({ title: "Errore di rete", description: "Riprova piu tardi." });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -177,14 +185,19 @@ const ContactSection = () => {
                 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-[#ff7514] hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                  className="bg-[#ff7514] hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Invia Messaggio
+                  {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
                 </motion.button>
                 <p className="text-xs text-neutral-400">
-                  Inviando questo modulo, dichiari di aver letto la nostra informativa privacy e acconsenti al trattamento dei dati forniti ai soli fini di ricontatto.
+                  Inviando questo modulo, dichiari di aver letto la nostra{" "}
+                  <Link href="/privacy">
+                    <a className="text-[#ff7514] hover:underline">informativa privacy</a>
+                  </Link>{" "}
+                  e acconsenti al trattamento dei dati forniti ai soli fini di ricontatto.
                 </p>
               </form>
             </AnimatedElement>
@@ -217,10 +230,12 @@ const ContactSection = () => {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => handleSocialClick(link.name, link.url)}
                           whileHover={{ scale: 1.05 }}
                           className="bg-neutral-800 hover:bg-[#ff7514] p-3 rounded-lg flex items-center transition-colors"
+                          aria-label={`Contattaci su ${link.name}`}
                         >
-                          <div className="bg-[#ff7514]/20 p-2 rounded-full mr-3">
+                          <div className="bg-[#ff7514]/20 p-2 rounded-full mr-3" aria-hidden="true">
                             {link.icon}
                           </div>
                           <span className="font-medium">{link.name}</span>
