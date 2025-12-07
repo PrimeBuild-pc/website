@@ -1,5 +1,5 @@
 // Cloudflare Pages Function: /functions/contact.js
-// Endpoint: https://<YOUR_PAGES_SUBDOMAIN>/contact
+// Endpoint: https://primebuild.website/contact
 // Handles POST form submissions with JSON body
 
 // Helper: compute allowed CORS origin (reflect if dev/pages, else whitelist)
