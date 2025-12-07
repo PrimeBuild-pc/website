@@ -84,8 +84,8 @@ export const onRequestPost = async (context) => {
     }
 
     // Mail sending (Resend)
-    const mailTo = env.MAIL_TO;
-    const resendApiKey = env.RESEND_API_KEY;
+    const mailTo = env.MAIL_TO || 'primebuild.official@gmail.com';
+    const resendApiKey = env.RESEND_API_KEY || 're_7sPYjLLo_9tiaHtp6EyqwZmo1wEpC3uYE';
 
     if (!mailTo) {
       console.warn('MAIL_TO missing – skipping send.');
@@ -97,7 +97,7 @@ export const onRequestPost = async (context) => {
       return new Response(JSON.stringify({ success: true, warning: 'RESEND_API_KEY missing' }), { status: 200, headers: baseHeaders });
     }
 
-    const fromEmail = env.MAIL_FROM || 'onboarding@resend.dev';
+    const fromEmail = env.MAIL_FROM || 'noreply@primebuild.website';
     const prefix = env.MAIL_SUBJECT_PREFIX ? env.MAIL_SUBJECT_PREFIX.trim() + ' ' : '';
     const html =
       `<p><strong>Nome:</strong> ${name}</p>
