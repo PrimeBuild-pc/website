@@ -182,7 +182,7 @@ const BuildsSection = () => {
                 >
                   <ImageWithFallback
                     src={build.image}
-                    alt={build.name}
+                    alt={`PC Gaming ${build.name} - ${build.tagline} - Build gaming custom Prime Build`}
                     width={600}
                     height={384}
                     className="w-full h-96 object-cover"
