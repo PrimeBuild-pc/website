@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://primebuild.website/sitemap.xml
+
+# Crawl-delay (optional, be gentle with the server)
+Crawl-delay: 1
