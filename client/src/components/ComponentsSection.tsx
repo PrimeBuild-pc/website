@@ -218,7 +218,7 @@ const ComponentsSection = () => {
               >
                 <ImageWithFallback
                   src={component.image}
-                  alt={component.title}
+                  alt={`${component.title} per PC Gaming - ${component.brands} - Componenti premium Prime Build`}
                   width={64}
                   height={64}
                   className="w-16 h-16 object-cover mx-auto mb-4 rounded-lg"
@@ -283,7 +283,7 @@ const ComponentsSection = () => {
                   <div className="p-5 w-52 md:w-64">
                     <ImageWithFallback
                       src={component.image}
-                      alt={component.title}
+                      alt={`${component.title} per PC Gaming - ${component.brands} - Componenti premium Prime Build`}
                       width={64}
                       height={64}
                       className="w-14 h-14 md:w-16 md:h-16 object-cover mx-auto mb-4 rounded-lg"
