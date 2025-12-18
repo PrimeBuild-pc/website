@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
 import ImageWithFallback from "@/lib/ImageWithFallback";
+import { trackGalleryView } from "@/lib/analytics";
 
 interface GalleryImage { src: string; alt: string }
 
@@ -33,6 +34,26 @@ export default function GallerySection() {
   // Measure the exact pixel distance for half track and compute duration = distance / speed
   const trackRef = useRef<HTMLDivElement>(null);
   const [styleVars, setStyleVars] = useState<React.CSSProperties>({});
+  const hasTrackedView = useRef(false);
+
+  useEffect(() => {
+    // Analytics tracking when gallery comes into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasTrackedView.current) {
+          trackGalleryView();
+          hasTrackedView.current = true;
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (trackRef.current) {
+      observer.observe(trackRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const measure = () => {

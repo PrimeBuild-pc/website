@@ -1,5 +1,6 @@
 import { FaDesktop, FaTools, FaTachometerAlt, FaCheck, FaArrowRight } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
+import { trackCTAClick } from "@/lib/analytics";
 
 const ServiceCard = ({ 
   icon, 
@@ -34,6 +35,7 @@ const ServiceCard = ({
       </ul>
       <a
         href="#contact"
+        onClick={() => trackCTAClick(cta, 'services')}
         className="inline-block text-[#ff7514] hover:underline font-medium group"
       >
         {cta} <FaArrowRight className="inline ml-1 transform group-hover:translate-x-1 transition-transform" />
