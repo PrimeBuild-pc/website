@@ -48,8 +48,17 @@ export const onRequestPost = async (context) => {
       return new Response(JSON.stringify({ success: true, skipped: true }), { status: 200, headers: baseHeaders });
     }
 
-    const sanitize = (v, max) =>
-      String(v || '').replace(/<[^>]+>/g, '').trim().slice(0, max);
+    const sanitize = (v, max) => {
+      if (!v) return '';
+      return String(v)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+        .trim()
+        .slice(0, max);
+    };
 
     const name = sanitize(data.name, 100);
     const email = sanitize(data.email, 254);
@@ -128,13 +137,19 @@ export const onRequestPost = async (context) => {
         const errTxt = await mailResp.text().catch(() => '');
         console.error('Resend send failed', mailResp.status, errTxt);
         const payload = { success: strictEmail ? false : true, warning: 'Email send failed', degraded: !strictEmail };
-        if (debugEnabled) payload.debug = { status: mailResp.status, body: errTxt.slice(0, 400) };
-        return new Response(JSON.stringify(payload), { status: strictEmail ? 502 : 200, headers: baseHeaders });
+      if (debugEnabled) {
+        // Safe debug log to console only
+        console.debug('Resend error body:', errTxt.slice(0, 400));
+      }
+      return new Response(JSON.stringify(payload), { status: strictEmail ? 502 : 200, headers: baseHeaders });
       }
     } catch (e) {
       console.error('Resend exception', e);
       const payload = { success: strictEmail ? false : true, warning: 'Email send exception', degraded: !strictEmail };
-      if (debugEnabled) payload.debug = { message: (e && e.message) || String(e) };
+      if (debugEnabled) {
+        // Safe debug log to console only
+        console.debug('Resend exception message:', (e && e.message) || String(e));
+      }
       return new Response(JSON.stringify(payload), { status: strictEmail ? 502 : 200, headers: baseHeaders });
     }
 
@@ -147,7 +162,9 @@ export const onRequestPost = async (context) => {
   } catch (e) {
     console.error('Unhandled contact function error', e);
     const payload = { success: false, error: 'Server error' };
-    if (debugEnabled) payload.debug = { message: (e && e.message) || String(e) };
+    if (debugEnabled) {
+      console.debug('Server error details:', (e && e.message) || String(e));
+    }
     return new Response(JSON.stringify(payload), { status: 500, headers: baseHeaders });
   }
 };
