@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ParticleCanvas from "./ParticleCanvas";
 import { FaChevronDown } from "react-icons/fa";
+import { trackCTAClick } from "@/lib/analytics";
 
 const HeroSection = () => {
   return (
@@ -53,12 +54,14 @@ const HeroSection = () => {
           >
             <a
               href="#builds"
+              onClick={() => trackCTAClick('Scopri le Build', 'hero')}
               className="bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105"
             >
               Scopri le Build
             </a>
             <a
               href="#contact"
+              onClick={() => trackCTAClick('Contattaci', 'hero')}
               className="bg-transparent border-2 border-white hover:border-[#ff7514] hover:text-[#ff7514] text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
             >
               Contattaci
