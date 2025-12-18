@@ -170,7 +170,7 @@ const BuildsSection = () => {
                       href="https://docs.google.com/forms/d/e/1FAIpQLSfXO6-BVQ3x1WLDlxpp7B534U8xIxymD7QbP8MId0fcf_9Yqw/viewform?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block bg-[#ff7514] hover:bg-opacity-90 text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
+                      className="inline-block bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105"
                     >
                       Richiedi Preventivo
                     </a>
@@ -182,12 +182,14 @@ const BuildsSection = () => {
                 >
                   <ImageWithFallback
                     src={build.image}
-                    alt={build.name}
+                    alt={`PC Gaming ${build.name} - ${build.tagline} - Build gaming custom Prime Build`}
+                    width={600}
+                    height={384}
                     className="w-full h-96 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div>
-                      <span className="inline-block bg-[#ff7514] text-white text-xs px-3 py-1 rounded-full mb-3">
+                      <span className="inline-block bg-[#ff7514] text-black text-xs font-semibold px-3 py-1 rounded-full mb-3">
                         {build.level}
                       </span>
                       <h3 className="text-2xl font-bold font-montserrat">

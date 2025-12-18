@@ -77,6 +77,8 @@ export default function GallerySection() {
                   <ImageWithFallback
                     src={img.src}
                     alt={img.alt}
+                    width={225}
+                    height={400}
                     className="max-h-full max-w-full object-contain rounded-xl"
                   />
                 </div>

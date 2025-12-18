@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(npm install)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfix: SEO, security headers, accessibility and analytics improvements\n\n- Add security headers (_headers): HSTS, CSP, X-Frame-Options, Permissions-Policy\n- Add www to non-www redirect (_redirects) for canonical URL\n- Fix Google Analytics initialization order (dataLayer before script)\n- Improve color contrast on orange buttons (text-black for WCAG AA compliance)\n- Add explicit width/height to images to prevent layout shift\n- Obfuscate email address to prevent spam harvesters\n- Enhance 404 page with useful navigation links\n- Update sitemap.xml with correct primebuild.website URLs\n- Add ads.txt placeholder with correct content-type\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfix: correct Google Analytics gtag function and CSP headers\n\n- Fix gtag function to use proper ''arguments'' object (required by GA4)\n- Add debug console log for analytics initialization\n- Expand CSP connect-src to include all Google Analytics domains\n- Add region1.google-analytics.com for EU tracking\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
