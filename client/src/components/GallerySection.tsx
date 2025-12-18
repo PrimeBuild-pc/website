@@ -8,23 +8,23 @@ const SCROLL_SPEED_PX_PER_SEC = 300; // configurabile (px/s)
 
 export default function GallerySection() {
   const images: GalleryImage[] = [
-    { src: "/1.jpg", alt: "Build workstation potente" },
-    { src: "/2.jpg", alt: "Dettaglio interno build RGB" },
-    { src: "/3.jpg", alt: "Setup gaming compatto" },
-    { src: "/4.jpg", alt: "Illuminazione LED laterale" },
-    { src: "/5.jpg", alt: "Gestione cavi ordinata" },
-    { src: "/6.jpg", alt: "Ventole RGB sincronizzate" },
-    { src: "/7.jpg", alt: "Case mid tower in vetro" },
-    { src: "/8.jpg", alt: "Interno con raffreddamento AIO" },
-    { src: "/9.jpg", alt: "Setup produttività multi-monitor" },
-    { src: "/10.jpg", alt: "Dettaglio GPU montata" },
-    { src: "/11.jpg", alt: "Case compatto minimal" },
-    { src: "/12.jpg", alt: "Raffreddamento ad aria ottimizzato" },
-    { src: "/13.jpg", alt: "Build con tema bianco" },
-    { src: "/14.jpg", alt: "Case high airflow" },
-    { src: "/15.jpg", alt: "Dettaglio cable sleeving" },
-    { src: "/16.jpg", alt: "Installazione storage NVMe" },
-    { src: "/17.jpg", alt: "Panoramica setup completo" }
+    { src: "/1.jpg", alt: "Workstation potente assemblata a Montegrotto Terme" },
+    { src: "/2.jpg", alt: "Dettaglio interno PC gaming RGB Padova" },
+    { src: "/3.jpg", alt: "Setup gaming compatto custom build" },
+    { src: "/4.jpg", alt: "Illuminazione LED laterale PC gaming Veneto" },
+    { src: "/5.jpg", alt: "Cable management ordinato Prime Build" },
+    { src: "/6.jpg", alt: "Ventole RGB sincronizzate assemblaggio PC Padova" },
+    { src: "/7.jpg", alt: "Case mid tower in vetro temperato" },
+    { src: "/8.jpg", alt: "Raffreddamento a liquido AIO installato a Montegrotto" },
+    { src: "/9.jpg", alt: "Setup produttività multi-monitor professionale" },
+    { src: "/10.jpg", alt: "Scheda video gaming alta fascia" },
+    { src: "/11.jpg", alt: "PC gaming minimalista bianco" },
+    { src: "/12.jpg", alt: "Dissipatore ad aria ottimizzato" },
+    { src: "/13.jpg", alt: "Build PC full white custom" },
+    { src: "/14.jpg", alt: "Case high airflow per massime prestazioni" },
+    { src: "/15.jpg", alt: "Cavi sleevati custom PC Padova" },
+    { src: "/16.jpg", alt: "Installazione SSD NVMe veloce" },
+    { src: "/17.jpg", alt: "Postazione gaming completa Prime Build" }
   ];
 
   // Duplicate once for seamless CSS marquee
