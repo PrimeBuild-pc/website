@@ -9,18 +9,11 @@ const SchemaMarkup = () => {
       "name": "Prime Build",
       "url": "https://primebuild.website/",
       "logo": "https://primebuild.website/logo.png",
-<<<<<<< HEAD
       "description": "Prime Build realizza PC Gaming su misura per un'esperienza di gioco senza compromessi. Assemblaggio, assistenza tecnica e ottimizzazione PC a Montegrotto Terme (PD) e Padova.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Montegrotto Terme",
         "postalCode": "35036",
-=======
-      "description": "Prime Build offre servizi di assemblaggio PC Gaming su misura a Montegrotto Terme. Dall'idea alla consegna plug and play: build gaming, assistenza tecnica e ottimizzazione PC.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Montegrotto Terme",
->>>>>>> df655f8681056cd708efc75f1a85fca335620976
         "addressRegion": "PD",
         "addressCountry": "IT"
       },
@@ -44,20 +37,20 @@ const SchemaMarkup = () => {
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Montegrotto Terme",
-<<<<<<< HEAD
         "postalCode": "35036",
         "addressRegion": "PD",
-=======
-        "addressRegion": "Veneto",
-        "postalCode": "35036",
->>>>>>> df655f8681056cd708efc75f1a85fca335620976
         "addressCountry": "IT"
       },
       "geo": {
         "@type": "GeoCoordinates",
-<<<<<<< HEAD
         "latitude": 45.3166667,
         "longitude": 11.7666667
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "20:00"
       },
       "priceRange": "€€",
       "servesCuisine": "PC Gaming Custom, Assistenza Tecnica",
@@ -70,24 +63,6 @@ const SchemaMarkup = () => {
           "@type": "City",
           "name": "Padova"
         }
-=======
-        "latitude": 45.3297,
-        "longitude": 11.7883
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "08:00",
-        "closes": "20:00"
-      },
-      "priceRange": "€€",
-      "areaServed": [
-        {"@type": "City", "name": "Montegrotto Terme"},
-        {"@type": "City", "name": "Abano Terme"},
-        {"@type": "City", "name": "Padova"},
-        {"@type": "AdministrativeArea", "name": "Provincia di Padova"},
-        {"@type": "AdministrativeArea", "name": "Veneto"}
->>>>>>> df655f8681056cd708efc75f1a85fca335620976
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -218,11 +193,7 @@ const SchemaMarkup = () => {
           "name": "Dove si trova Prime Build?",
           "acceptedAnswer": {
             "@type": "Answer",
-<<<<<<< HEAD
             "text": "Prime Build ha sede a Montegrotto Terme (PD). Offriamo servizi anche su Padova. Puoi contattarci via email o attraverso i nostri canali social (Instagram e Discord)."
-=======
-            "text": "Prime Build opera a Montegrotto Terme, in provincia di Padova (Veneto). Serviamo clienti da Montegrotto Terme, Abano Terme, Padova e zone limitrofe. Puoi contattarci via email, Instagram (@prime_build_) o Discord."
->>>>>>> df655f8681056cd708efc75f1a85fca335620976
           }
         },
         {
