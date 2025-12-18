@@ -9,10 +9,11 @@ const SchemaMarkup = () => {
       "name": "Prime Build",
       "url": "https://primebuild.website/",
       "logo": "https://primebuild.website/logo.png",
-      "description": "Prime Build realizza PC Gaming su misura per un'esperienza di gioco senza compromessi. Assemblaggio, assistenza tecnica e ottimizzazione PC a Padova, Italia.",
+      "description": "Prime Build realizza PC Gaming su misura per un'esperienza di gioco senza compromessi. Assemblaggio, assistenza tecnica e ottimizzazione PC a Montegrotto Terme (PD) e Padova.",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Padova",
+        "addressLocality": "Montegrotto Terme",
+        "postalCode": "35036",
         "addressRegion": "PD",
         "addressCountry": "IT"
       },
@@ -33,17 +34,28 @@ const SchemaMarkup = () => {
       "email": "primebuild.official@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Padova",
-        "addressRegion": "Veneto",
+        "addressLocality": "Montegrotto Terme",
+        "postalCode": "35036",
+        "addressRegion": "PD",
         "addressCountry": "IT"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 45.4064349,
-        "longitude": 11.8767611
+        "latitude": 45.3166667,
+        "longitude": 11.7666667
       },
       "priceRange": "€€",
       "servesCuisine": "PC Gaming Custom, Assistenza Tecnica",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Montegrotto Terme"
+        },
+        {
+          "@type": "City",
+          "name": "Padova"
+        }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "PC Gaming Build",
@@ -100,7 +112,7 @@ const SchemaMarkup = () => {
           "name": "Dove si trova Prime Build?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Prime Build ha sede a Padova, Italia. Puoi contattarci via email o attraverso i nostri canali social (Instagram e Discord)."
+            "text": "Prime Build ha sede a Montegrotto Terme (PD). Offriamo servizi anche su Padova. Puoi contattarci via email o attraverso i nostri canali social (Instagram e Discord)."
           }
         },
         {
