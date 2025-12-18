@@ -93,12 +93,7 @@ const ContactSection = () => {
     {
       icon: <FaMapMarkerAlt className="text-[#ff7514]" />,
       title: "Sede",
-<<<<<<< HEAD
       value: "Montegrotto Terme (PD), Italia"
-=======
-      value: "Padova, Italia",
-      isEmail: false
->>>>>>> df655f8681056cd708efc75f1a85fca335620976
     }
   ];
 
