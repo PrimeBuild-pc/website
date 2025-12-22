@@ -21,7 +21,7 @@ const SchemaMarkup = () => {
       "knowsAbout": ["PC Gaming Custom", "Assemblaggio PC", "Assistenza Tecnica PC", "Ottimizzazione PC", "Build Gaming", "Workstation"],
       "sameAs": [
         "https://www.instagram.com/prime_build_/",
-        "https://discord.gg/bsqkAQQK5m"
+        "https://discord.gg/BcPsRQqJ4s"
       ]
     };
 
@@ -53,7 +53,6 @@ const SchemaMarkup = () => {
         "closes": "20:00"
       },
       "priceRange": "€€",
-      "servesCuisine": "PC Gaming Custom, Assistenza Tecnica",
       "areaServed": [
         {
           "@type": "City",
@@ -175,54 +174,6 @@ const SchemaMarkup = () => {
       }
     };
 
-    // FAQ Schema
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Quali servizi offre Prime Build?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Prime Build offre un servizio completo di assemblaggio PC Gaming custom: dalla consulenza iniziale alla consegna plug and play. Include anche assistenza tecnica, riparazioni, pulizia e ottimizzazione PC. Ogni cliente ha accesso al server Discord con guide, supporto e community."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Dove si trova Prime Build?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Prime Build ha sede a Montegrotto Terme (PD). Offriamo servizi anche su Padova. Puoi contattarci via email o attraverso i nostri canali social (Instagram e Discord)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto costa un PC Gaming custom?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "I nostri pacchetti completi (servizio + hardware) partono da circa 750€ per PRIME STARTER (gaming 1080p), 1500€ per PRIME PERFORMER (gaming 1440p), fino a 2900€ per PRIME ELITE (gaming 4K e workstation). I prezzi sono indicativi e variano in base al periodo e alla configurazione."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Come posso richiedere un preventivo?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Puoi richiedere un preventivo compilando il modulo di contatto sul nostro sito, scrivendoci via email a primebuild.official@gmail.com, su Instagram (@prime_build_) o sul nostro server Discord."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Cosa include il servizio post-vendita?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Il servizio post-vendita include accesso al server Discord dedicato con guide aggiornate, supporto tecnico, e una community attiva. L'obiettivo è rendere ogni cliente un utente consapevole e attivo, non solo un acquirente."
-          }
-        }
-      ]
-    };
-
     // BreadcrumbList Schema
     const breadcrumbSchema = {
       "@context": "https://schema.org",
@@ -244,7 +195,7 @@ const SchemaMarkup = () => {
       "description": "Servizio di assemblaggio PC Gaming su misura a Montegrotto Terme"
     };
 
-    const schemas = [organizationSchema, localBusinessSchema, serviceSchema, faqSchema, breadcrumbSchema, websiteSchema];
+    const schemas = [organizationSchema, localBusinessSchema, serviceSchema, breadcrumbSchema, websiteSchema];
 
     const scripts: HTMLScriptElement[] = [];
 
