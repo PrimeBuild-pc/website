@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <style data-vite-theme="" data-inject-first="">:root {
+      --background: 240 10% 3.9%;
+--foreground: 0 0% 98%;
+--muted: 240 3.7% 15.9%;
+--muted-foreground: 240 5% 64.9%;
+--popover: 240 10% 3.9%;
+--popover-foreground: 0 0% 98%;
+--card: 240 10% 3.9%;
+--card-foreground: 0 0% 98%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--primary: 30 100% 54%;
+--primary-foreground: 24 100% 99%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--accent: 240 3.7% 15.9%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 98%;
+--ring: 240 4.9% 83.9%;
+--radius: 0.5rem;
+  }
+  .light {
+      --background: 0 0% 100%;
+--foreground: 20 14.3% 4.1%;
+--muted: 60 4.8% 95.9%;
+--muted-foreground: 25 5.3% 44.7%;
+--popover: 0 0% 100%;
+--popover-foreground: 20 14.3% 4.1%;
+--card: 0 0% 100%;
+--card-foreground: 20 14.3% 4.1%;
+--border: 20 5.9% 90%;
+--input: 20 5.9% 90%;
+--primary: 30 100% 54%;
+--primary-foreground: 24 100% 99%;
+--secondary: 60 4.8% 95.9%;
+--secondary-foreground: 24 9.8% 10%;
+--accent: 60 4.8% 95.9%;
+--accent-foreground: 24 9.8% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 60 9.1% 97.8%;
+--ring: 20 14.3% 4.1%;
+--radius: 0.5rem;
+  }</style>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-language" content="it" />
+    <link rel="alternate" hreflang="it" href="https://primebuild.website/" />
+    <link rel="alternate" hreflang="x-default" href="https://primebuild.website/" />
+    <title>Prime Build | Custom Gaming PC & Assistenza Tecnica a Montegrotto Terme e Padova</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Prime Build realizza PC Gaming su misura per un'esperienza di gioco senza compromessi. Assemblaggio, assistenza tecnica e ottimizzazione PC a Montegrotto Terme (PD) e Padova." />
+    <meta name="keywords" content="PC Gaming Montegrotto Terme, PC Gaming Padova, Prime Build Montegrotto, Custom PC, Assemblaggio PC, Build PC, Gaming PC, Computer Gaming, Assistenza Tecnica PC, Padova, Italia, computer su misura, assistenza pc gaming, ottimizzazione pc gaming" />
+    <meta name="author" content="Prime Build" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="geo.region" content="IT-PD" />
+    <meta name="geo.placename" content="Montegrotto Terme" />
+    <meta name="geo.position" content="45.3166667;11.7666667" />
+    <meta name="ICBM" content="45.3166667, 11.7666667" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="subject" content="Servizio Assemblaggio PC Gaming Custom" />
+    <meta name="classification" content="Business" />
+    <meta name="target" content="all" />
+    <meta name="coverage" content="Italy" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="revisit-after" content="7 days" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://primebuild.website/" />
+    <meta property="og:title" content="Prime Build | PC Gaming Custom a Montegrotto Terme | Build da 750€" />
+    <meta property="og:description" content="Servizio completo di assemblaggio PC Gaming su misura. Dall'idea alla consegna plug and play. Build gaming, assistenza tecnica e community dedicata." />
+    <meta property="og:image" content="https://primebuild.website/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Prime Build - PC Gaming Custom a Montegrotto Terme" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Prime Build" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://primebuild.website/" />
+    <meta property="twitter:title" content="Prime Build | PC Gaming Custom a Montegrotto Terme | Build da 750€" />
+    <meta property="twitter:description" content="Servizio completo di assemblaggio PC Gaming su misura. Dall'idea alla consegna plug and play. Build gaming, assistenza tecnica e community dedicata." />
+    <meta property="twitter:image" content="https://primebuild.website/og-image.png" />
+    <meta name="twitter:image:alt" content="Prime Build - PC Gaming Custom a Montegrotto Terme" />
+    
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://primebuild.website/" />
+    
+    <!-- Fonts with display=swap for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Preload critical assets for better LCP -->
+    <link rel="preload" href="/logo.png" as="image" type="image/png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-TileColor" content="#ff7514">
+
+    <!-- Structured Data - LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Prime Build",
+      "description": "Assemblaggio PC Gaming su misura, assistenza tecnica e ottimizzazione computer a Montegrotto Terme e Padova. Build gaming personalizzate da 750€.",
+      "url": "https://primebuild.website",
+      "logo": "https://primebuild.website/logo.png",
+      "image": "https://primebuild.website/og-image.png",
+      "telephone": "",
+      "email": "primebuild.official@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Montegrotto Terme",
+        "postalCode": "35036",
+        "addressRegion": "PD",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "45.3166667",
+        "longitude": "11.7666667"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Montegrotto Terme"
+        },
+        {
+          "@type": "City",
+          "name": "Padova"
+        },
+        {
+          "@type": "State",
+          "name": "Veneto"
+        }
+      ],
+      "serviceType": ["Assemblaggio PC Gaming", "Assistenza Tecnica PC", "Ottimizzazione PC", "Build PC Custom"],
+      "priceRange": "€€",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      "sameAs": [
+        "https://www.instagram.com/prime_build_/",
+        "https://discord.gg/BcPsRQqJ4s",
+        "https://github.com/PrimeBuild-pc"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - WebSite with SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Prime Build",
+      "url": "https://primebuild.website",
+      "description": "PC Gaming Custom a Montegrotto Terme e Padova",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Prime Build",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://primebuild.website/logo.png"
+        }
+      }
+    }
+    </script>
+
+    <!-- Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Perché nasce PrimeBuild?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PrimeBuild nasce con l'obiettivo di rendere il PC Gaming accessibile a tutti, superando l'idea che sia un settore di nicchia riservato solo a configurazioni costose o sovradimensionate. In un mercato spesso orientato a vendere build inutilmente care, PrimeBuild mette al centro le reali esigenze del cliente, offrendo consulenza, assemblaggio e ottimizzazione su misura in base al budget e all'utilizzo reale. Non vendiamo semplicemente hardware, ma un servizio completo: aiutiamo il cliente a scegliere i componenti migliori al giusto prezzo, seguiamo l'andamento del mercato e realizziamo PC equilibrati, performanti ed esteticamente curati. L'obiettivo è semplificare tutto il processo, far risparmiare tempo e denaro e dimostrare che un buon PC Gaming è possibile con qualsiasi budget realistico."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove si trova Prime Build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prime Build ha sede a Montegrotto Terme (PD), ma opera in tutta Italia grazie a spedizioni e servizi da remoto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come posso contattare Prime Build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puoi contattarci tramite Instagram (@prime_build_) o unirti al nostro server Discord per assistenza diretta e preventivi personalizzati."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa un PC Gaming assemblato da Prime Build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I nostri PC Gaming partono indicativamente da 750€ per configurazioni entry-level. Il prezzo può variare in base al mercato, alla disponibilità dei componenti e alle esigenze specifiche. Non esiste una soglia minima fissa: valutiamo ogni caso, anche utilizzando componenti già in possesso del cliente, parti usate o ricondizionate, per realizzare la miglior configurazione possibile in base al budget. Preventivi gratuiti e personalizzati."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Offrite assistenza tecnica per PC già assemblati?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, offriamo assistenza tecnica completa: diagnostica, riparazioni, upgrade hardware, overclock, ottimizzazione software e pulizia. Serviamo sia PC assemblati da noi che da altri."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo ci vuole per assemblare un PC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generalmente consegniamo/spediamo il PC assemblato, testato e ottimizzato entro 3-5 giorni lavorativi dalla ricezione dei componenti."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Fornite garanzia sui PC assemblati?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, tutti i componenti hanno la garanzia del produttore (generalmente dai 2 anni e oltre per alcuni componenti). Inoltre offriamo supporto post-vendita gratuito per configurazione e ottimizzazione."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso scegliere i componenti del mio PC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Assolutamente sì! Lavoriamo insieme a te per selezionare i componenti migliori in base al tuo budget e alle tue esigenze, che sia gaming, streaming, editing video o lavoro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Offrite servizi a domicilio o da remoto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, offriamo assistenza a domicilio nella zona di Padova, Montegrotto Terme e comuni limitrofi, sia per assemblaggio PC che per assistenza e servizi legati al PC Gaming. Forniamo anche servizi da remoto, che ci permettono di operare in tutta Italia. Per quanto riguarda i computer assemblati o riparati, il ritiro può avvenire in sede, con consegna a domicilio su richiesta, oppure tramite spedizione assicurata."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - Product (PC Gaming Builds) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "PC Gaming Custom Prime Build",
+      "description": "Configurazioni PC Gaming assemblate su misura a Montegrotto Terme e Padova",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Product",
+            "name": "PRIME STARTER - PC Gaming Entry Level",
+            "description": "PC Gaming entry level per gaming 1080p. Include consulenza, assemblaggio, configurazione e ottimizzazione. Ideale per chi si avvicina al PC Gaming.",
+            "brand": {
+              "@type": "Brand",
+              "name": "Prime Build"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "750",
+              "priceCurrency": "EUR",
+              "priceValidUntil": "2025-12-31",
+              "availability": "https://schema.org/InStock",
+              "url": "https://primebuild.website/#builds"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Product",
+            "name": "PRIME PERFORMER - PC Gaming Mid Range",
+            "description": "PC Gaming mid range per gaming 1440p ad alte prestazioni. Include consulenza, assemblaggio, configurazione e ottimizzazione. Perfetto per gamer esigenti.",
+            "brand": {
+              "@type": "Brand",
+              "name": "Prime Build"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "1500",
+              "priceCurrency": "EUR",
+              "priceValidUntil": "2025-12-31",
+              "availability": "https://schema.org/InStock",
+              "url": "https://primebuild.website/#builds"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Product",
+            "name": "PRIME ELITE - PC Gaming High End",
+            "description": "PC Gaming high end per gaming 4K, streaming e workstation professionale. Include consulenza, assemblaggio, configurazione e ottimizzazione. Il massimo delle prestazioni.",
+            "brand": {
+              "@type": "Brand",
+              "name": "Prime Build"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "2900",
+              "priceCurrency": "EUR",
+              "priceValidUntil": "2025-12-31",
+              "availability": "https://schema.org/InStock",
+              "url": "https://primebuild.website/#builds"
+            }
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-EfulSR1g.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-ClBoD70t.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
