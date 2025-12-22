@@ -8,52 +8,42 @@ interface FAQ {
 
 const faqs: FAQ[] = [
   {
+    question: "Perché nasce PrimeBuild?",
+    answer: "PrimeBuild nasce con l'obiettivo di rendere il PC Gaming accessibile a tutti, superando l'idea che sia un settore di nicchia riservato solo a configurazioni costose o sovradimensionate. In un mercato spesso orientato a vendere build inutilmente care, PrimeBuild mette al centro le reali esigenze del cliente, offrendo consulenza, assemblaggio e ottimizzazione su misura in base al budget e all'utilizzo reale. Non vendiamo semplicemente hardware, ma un servizio completo: aiutiamo il cliente a scegliere i componenti migliori al giusto prezzo, seguiamo l'andamento del mercato e realizziamo PC equilibrati, performanti ed esteticamente curati. L'obiettivo è semplificare tutto il processo, far risparmiare tempo e denaro e dimostrare che un buon PC Gaming è possibile con qualsiasi budget realistico."
+  },
+  {
     question: "Dove si trova Prime Build?",
-    answer: "Prime Build opera a Montegrotto Terme, in provincia di Padova (Veneto). Serviamo clienti in tutta la zona di Padova e comuni limitrofi."
+    answer: "Prime Build ha sede a Montegrotto Terme (PD), ma opera in tutta Italia grazie a spedizioni e servizi da remoto."
   },
   {
     question: "Come posso contattare Prime Build?",
-    answer: "Puoi contattarci tramite Instagram (@primebuild.pc) o unirti al nostro server Discord per assistenza diretta e preventivi personalizzati."
+    answer: "Puoi contattarci tramite Instagram (@prime_build_) o unirti al nostro server Discord per assistenza diretta e preventivi personalizzati."
   },
   {
     question: "Quanto costa un PC Gaming assemblato da Prime Build?",
-    answer: "I nostri PC Gaming partono da 750€ per configurazioni entry-level. Il prezzo varia in base ai componenti scelti e alle tue esigenze specifiche. Offriamo preventivi gratuiti e personalizzati."
+    answer: "I nostri PC Gaming partono indicativamente da 750€ per configurazioni entry-level. Il prezzo può variare in base al mercato, alla disponibilità dei componenti e alle esigenze specifiche. Non esiste una soglia minima fissa: valutiamo ogni caso, anche utilizzando componenti già in possesso del cliente, parti usate o ricondizionate, per realizzare la miglior configurazione possibile in base al budget. Preventivi gratuiti e personalizzati."
   },
   {
     question: "Offrite assistenza tecnica per PC già assemblati?",
-    answer: "Sì, offriamo assistenza tecnica completa: diagnostica, riparazioni, upgrade hardware, ottimizzazione software e pulizia. Serviamo sia PC assemblati da noi che da altri."
+    answer: "Sì, offriamo assistenza tecnica completa: diagnostica, riparazioni, upgrade hardware, overclock, ottimizzazione software e pulizia. Serviamo sia PC assemblati da noi che da altri."
   },
   {
     question: "Quanto tempo ci vuole per assemblare un PC?",
-    answer: "Generalmente consegniamo il PC assemblato e testato entro 3-7 giorni lavorativi dalla conferma dell'ordine, a seconda della disponibilità dei componenti."
+    answer: "Generalmente consegniamo/spediamo il PC assemblato, testato e ottimizzato entro 3-5 giorni lavorativi dalla ricezione dei componenti."
   },
   {
     question: "Fornite garanzia sui PC assemblati?",
-    answer: "Sì, tutti i componenti hanno la garanzia del produttore (generalmente 2-3 anni). Inoltre offriamo supporto post-vendita gratuito per configurazione e ottimizzazione."
+    answer: "Sì, tutti i componenti hanno la garanzia del produttore (generalmente dai 2 anni e oltre per alcuni componenti). Inoltre offriamo supporto post-vendita gratuito per configurazione e ottimizzazione."
   },
   {
     question: "Posso scegliere i componenti del mio PC?",
     answer: "Assolutamente sì! Lavoriamo insieme a te per selezionare i componenti migliori in base al tuo budget e alle tue esigenze, che sia gaming, streaming, editing video o lavoro."
   },
   {
-    question: "Fate consegne a domicilio?",
-    answer: "Sì, offriamo consegna a domicilio nella zona di Padova e Montegrotto Terme. Per altre zone, possiamo organizzare la spedizione assicurata."
+    question: "Offrite servizi a domicilio o da remoto?",
+    answer: "Sì, offriamo assistenza a domicilio nella zona di Padova, Montegrotto Terme e comuni limitrofi, sia per assemblaggio PC che per assistenza e servizi legati al PC Gaming. Forniamo anche servizi da remoto, che ci permettono di operare in tutta Italia. Per quanto riguarda i computer assemblati o riparati, il ritiro può avvenire in sede, con consegna a domicilio su richiesta, oppure tramite spedizione assicurata."
   }
 ];
-
-// Generate FAQ Schema for SEO
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -64,16 +54,10 @@ const FAQSection = () => {
 
   return (
     <section id="faq" className="py-20 bg-gradient-to-b from-black via-neutral-950 to-black">
-      {/* Inject FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            Domande <span className="text-[#ff7514]">Frequenti</span>
+            Domande <span className="text-[#ff7514]">frequenti</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
             Tutto quello che devi sapere su Prime Build e i nostri servizi
@@ -110,7 +94,7 @@ const FAQSection = () => {
           <p className="text-neutral-400 mb-4">Hai altre domande?</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://www.instagram.com/primebuild.pc/"
+              href="https://www.instagram.com/prime_build_/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"
