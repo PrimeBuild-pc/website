@@ -9,23 +9,25 @@ const SCROLL_SPEED_PX_PER_SEC = 300; // configurabile (px/s)
 
 export default function GallerySection() {
   const images: GalleryImage[] = [
-    { src: "/1.jpg", alt: "Workstation potente assemblata a Montegrotto Terme" },
-    { src: "/2.jpg", alt: "Dettaglio interno PC gaming RGB Padova" },
-    { src: "/3.jpg", alt: "Setup gaming compatto custom build" },
-    { src: "/4.jpg", alt: "Illuminazione LED laterale PC gaming Veneto" },
-    { src: "/5.jpg", alt: "Cable management ordinato Prime Build" },
-    { src: "/6.jpg", alt: "Ventole RGB sincronizzate assemblaggio PC Padova" },
-    { src: "/7.jpg", alt: "Case mid tower in vetro temperato" },
-    { src: "/8.jpg", alt: "Raffreddamento a liquido AIO installato a Montegrotto" },
-    { src: "/9.jpg", alt: "Setup produttività multi-monitor professionale" },
-    { src: "/10.jpg", alt: "Scheda video gaming alta fascia" },
-    { src: "/11.jpg", alt: "PC gaming minimalista bianco" },
-    { src: "/12.jpg", alt: "Dissipatore ad aria ottimizzato" },
-    { src: "/13.jpg", alt: "Build PC full white custom" },
-    { src: "/14.jpg", alt: "Case high airflow per massime prestazioni" },
-    { src: "/15.jpg", alt: "Cavi sleevati custom PC Padova" },
-    { src: "/16.jpg", alt: "Installazione SSD NVMe veloce" },
-    { src: "/17.jpg", alt: "Postazione gaming completa Prime Build" }
+    { src: "/1.webp", alt: "Workstation potente assemblata a Montegrotto Terme" },
+    { src: "/2.webp", alt: "Dettaglio interno PC gaming RGB Padova" },
+    { src: "/3.webp", alt: "Setup gaming compatto custom build" },
+    { src: "/4.webp", alt: "Illuminazione LED laterale PC gaming Veneto" },
+    { src: "/5.webp", alt: "Cable management ordinato Prime Build" },
+    { src: "/6.webp", alt: "Ventole RGB sincronizzate assemblaggio PC Padova" },
+    { src: "/7.webp", alt: "Case mid tower in vetro temperato" },
+    { src: "/8.webp", alt: "Raffreddamento a liquido AIO installato a Montegrotto" },
+    { src: "/9.webp", alt: "Setup produttività multi-monitor professionale" },
+    { src: "/10.webp", alt: "Scheda video gaming alta fascia" },
+    { src: "/11.webp", alt: "PC gaming minimalista bianco" },
+    { src: "/12.webp", alt: "Dissipatore ad aria ottimizzato" },
+    { src: "/13.webp", alt: "Build PC full white custom" },
+    { src: "/14.webp", alt: "Case high airflow per massime prestazioni" },
+    { src: "/15.webp", alt: "Cavi sleevati custom PC Padova" },
+    { src: "/16.webp", alt: "Installazione SSD NVMe veloce" },
+    { src: "/17.webp", alt: "Postazione gaming completa Prime Build" },
+    { src: "/18.webp", alt: "PC gaming con illuminazione LED arancione e GeForce RTX" },
+    { src: "/19.webp", alt: "PC gaming con illuminazione LED rossa e Radeon" },
   ];
 
   // Duplicate once for seamless CSS marquee
@@ -87,7 +89,7 @@ export default function GallerySection() {
           <style>{`
             @keyframes marqueeX { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--marquee-distance))); } }
           `}</style>
-          <div ref={trackRef} className="flex gap-4 flex-nowrap will-change-transform" style={{ ...styleVars, animation: `marqueeX var(--marquee-duration) linear infinite` }}>
+          <div ref={trackRef} className="marquee-animate flex gap-4 flex-nowrap will-change-transform" style={{ ...styleVars, animation: `marqueeX var(--marquee-duration) linear infinite` }}>
             {loopImages.map((img, i) => (
               <div
                 key={i}
