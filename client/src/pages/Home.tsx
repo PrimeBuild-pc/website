@@ -5,6 +5,7 @@ import GallerySection from "@/components/GallerySection";
 import BuildsSection from "@/components/BuildsSection";
 import ComponentsSection from "@/components/ComponentsSection";
 import AppsSection from "@/components/AppsSection";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import { trackSectionView } from "@/lib/analytics";
 
@@ -45,6 +46,7 @@ const Home = () => {
       <BuildsSection />
       <ComponentsSection />
       <AppsSection />
+      <FAQSection />
       <ContactSection />
     </div>
   );
