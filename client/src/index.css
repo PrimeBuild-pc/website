@@ -11,9 +11,9 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 
-  /* Respect user's reduced motion preferences */
+  /* Respect user's reduced motion preferences (except marquee gallery) */
   @media (prefers-reduced-motion: reduce) {
-    *,
+    *:not(.marquee-animate),
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
