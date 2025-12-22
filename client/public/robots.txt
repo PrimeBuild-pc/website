@@ -1,8 +1,8 @@
+# robots.txt for primebuild.website
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap location
 Sitemap: https://primebuild.website/sitemap.xml
-
-# Crawl-delay (optional, be gentle with the server)
-Crawl-delay: 1
