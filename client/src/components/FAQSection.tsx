@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
+import { SectionHeader } from "./SectionHeader";
 
 interface FAQ {
   question: string;
@@ -55,13 +56,13 @@ const FAQSection = () => {
   return (
     <section id="faq" className="py-20 bg-gradient-to-b from-black via-neutral-950 to-black">
       <div className="container mx-auto px-4">
-        <AnimatedElement className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            Domande <span className="text-[#ff7514]">frequenti</span>
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto text-neutral-300">
-            Tutto quello che devi sapere su Prime Build e i nostri servizi
-          </p>
+        <AnimatedElement>
+          <SectionHeader
+            title="Domande"
+            highlight="frequenti"
+            subtitle="Tutto quello che devi sapere su Prime Build e i nostri servizi"
+            underline={false}
+          />
         </AnimatedElement>
 
         <div className="max-w-3xl mx-auto space-y-4">

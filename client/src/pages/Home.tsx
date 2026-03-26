@@ -1,13 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, lazy, Suspense } from "react";
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import GallerySection from "@/components/GallerySection";
-import BuildsSection from "@/components/BuildsSection";
-import ComponentsSection from "@/components/ComponentsSection";
-import AppsSection from "@/components/AppsSection";
-import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
 import { trackSectionView } from "@/lib/analytics";
+
+// Lazy load section components per migliorare le performance nel First Load
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const GallerySection = lazy(() => import("@/components/GallerySection"));
+const BuildsSection = lazy(() => import("@/components/BuildsSection"));
+const ComponentsSection = lazy(() => import("@/components/ComponentsSection"));
+const AppsSection = lazy(() => import("@/components/AppsSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
 
 const Home = () => {
   const sectionsRef = useRef<Map<string, boolean>>(new Map());
@@ -41,13 +43,16 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
       <HeroSection />
-      <ServicesSection />
-      <GallerySection />
-      <BuildsSection />
-      <ComponentsSection />
-      <AppsSection />
-      <FAQSection />
-      <ContactSection />
+      
+      <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#ff7514]"></div></div>}>
+        <ServicesSection />
+        <GallerySection />
+        <BuildsSection />
+        <ComponentsSection />
+        <AppsSection />
+        <FAQSection />
+        <ContactSection />
+      </Suspense>
     </div>
   );
 };

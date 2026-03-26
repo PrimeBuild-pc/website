@@ -1,6 +1,7 @@
 import { FaDesktop, FaTools, FaTachometerAlt, FaCheck, FaArrowRight } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { trackCTAClick } from "@/lib/analytics";
+import { SectionHeader } from "./SectionHeader";
 
 const ServiceCard = ({ 
   icon, 
@@ -75,13 +76,12 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-20 bg-neutral-900">
       <div className="container mx-auto px-4">
-        <AnimatedElement className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 text-[#ff7514] inline-block border-b-2 border-[#ff7514] pb-2">
-            Servizi
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto text-neutral-300">
-            Offriamo una gamma completa di servizi per soddisfare ogni tua esigenza nel mondo PC Gaming
-          </p>
+        <AnimatedElement>
+          <SectionHeader
+            title=""
+            highlight="Servizi"
+            subtitle="Offriamo una gamma completa di servizi per soddisfare ogni tua esigenza nel mondo PC Gaming"
+          />
         </AnimatedElement>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">

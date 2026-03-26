@@ -31,10 +31,11 @@ const HeroSection = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-4xl md:text-6xl font-bold font-montserrat mb-4"
+            className="text-4xl md:text-6xl font-bold font-montserrat mb-4 flex flex-col items-center"
           >
-            <span className="block">PRIME</span>
+            <span>PRIME</span>
             <span className="text-[#ff7514]">BUILD</span>
+            <span className="sr-only"> - Assemblaggio PC Gaming su misura</span>
           </motion.h1>
           
           <motion.p

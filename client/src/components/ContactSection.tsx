@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { useToast } from "@/hooks/use-toast";
 import { trackFormSubmit, trackSocialClick } from "@/lib/analytics";
+import { SectionHeader } from "./SectionHeader";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -116,12 +117,12 @@ const ContactSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             <AnimatedElement>
-              <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 text-[#ff7514] inline-block border-b-2 border-[#ff7514] pb-2">
-                Contattaci
-              </h2>
-              <p className="text-lg text-neutral-300 mb-8">
-                Sei interessato ai nostri servizi o hai domande? Contattaci per ricevere un preventivo personalizzato o per maggiori informazioni.
-              </p>
+              <SectionHeader
+                title=""
+                highlight="Contattaci"
+                subtitle="Sei interessato ai nostri servizi o hai domande? Contattaci per ricevere un preventivo personalizzato o per maggiori informazioni."
+                alignment="left"
+              />
               
               <form className="space-y-6" onSubmit={handleSubmit}>
                 {/* Honeypot field (hidden) */}
@@ -141,6 +142,7 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Il tuo nome"
+                      aria-required="true"
                       className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
                       required
                     />
@@ -155,6 +157,7 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="La tua email"
+                      aria-required="true"
                       className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
                       required
                     />
@@ -171,6 +174,7 @@ const ContactSection = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="Oggetto del messaggio"
+                    aria-required="true"
                     className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
                     required
                   />
@@ -186,6 +190,7 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Il tuo messaggio"
+                    aria-required="true"
                     className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
                     required
                   ></textarea>

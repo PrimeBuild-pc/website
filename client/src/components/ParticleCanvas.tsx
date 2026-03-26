@@ -29,7 +29,9 @@ const ParticleCanvas = () => {
       }
     };
 
-    const particleCount = 100;
+    const isMobile = window.innerWidth < 768;
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const particleCount = isMobile ? 30 : (isReducedMotion ? 20 : 80);
 
     const initParticles = () => {
       particlesRef.current = [];
@@ -71,23 +73,30 @@ const ParticleCanvas = () => {
       });
       
       // Draw connections between particles that are close to each other
-      particlesRef.current.forEach((particle, i) => {
-        for (let j = i + 1; j < particlesRef.current.length; j++) {
-          const particle2 = particlesRef.current[j];
-          const dx = particle.x - particle2.x;
-          const dy = particle.y - particle2.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 100) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 87, 34, ${0.2 - distance / 500})`;
-            ctx.lineWidth = 1;
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(particle2.x, particle2.y);
-            ctx.stroke();
+      // Optimization: Skip checking connections entirely on mobile or if reduced motion
+      const shouldDrawConnections = !isMobile && !isReducedMotion;
+      
+      if (shouldDrawConnections) {
+        particlesRef.current.forEach((particle, i) => {
+          for (let j = i + 1; j < particlesRef.current.length; j++) {
+            const particle2 = particlesRef.current[j];
+            const dx = particle.x - particle2.x;
+            const dy = particle.y - particle2.y;
+            // Optimization: avoid Math.sqrt by comparing square distance
+            const distanceSq = dx * dx + dy * dy;
+            
+            if (distanceSq < 10000) { // 100 * 100
+              const distance = Math.sqrt(distanceSq);
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(255, 87, 34, ${0.2 - distance / 500})`;
+              ctx.lineWidth = 1;
+              ctx.moveTo(particle.x, particle.y);
+              ctx.lineTo(particle2.x, particle2.y);
+              ctx.stroke();
+            }
           }
-        }
-      });
+        });
+      }
       
       animationFrameRef.current = requestAnimationFrame(drawParticles);
     };
