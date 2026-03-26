@@ -29,23 +29,21 @@ const AnimatedText = ({ text, className, once = true, delay = 0 }: AnimatedTextP
       whileInView="visible"
       viewport={{ once }}
       variants={{
+        hidden: {
+          opacity: 0,
+          y: 20
+        },
         visible: {
+          opacity: 1,
+          y: 0,
           transition: {
-            staggerChildren: 0.1,
-            delayChildren: delay,
+            duration: 0.6,
+            delay: delay
           },
         },
       }}
     >
-      {text.split(" ").map((word, index) => (
-        <motion.span
-          key={index}
-          className="inline-block"
-          variants={defaultAnimations}
-        >
-          {word}&nbsp;
-        </motion.span>
-      ))}
+      {text}
     </motion.p>
   );
 };

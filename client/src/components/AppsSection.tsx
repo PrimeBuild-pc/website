@@ -1,6 +1,7 @@
 import { FaDownload, FaPaypal } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { trackDownload, trackExternalLink } from "@/lib/analytics";
+import { SectionHeader } from "./SectionHeader";
 
 interface App {
   name: string;
@@ -66,13 +67,13 @@ const AppsSection = () => {
   return (
     <section id="apps" className="py-20 bg-black">
       <div className="container mx-auto px-4">
-        <AnimatedElement className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            Le nostre <span className="text-[#ff7514]">app</span>
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto text-neutral-300">
-            Strumenti esclusivi per ottimizzare la tua esperienza di gioco
-          </p>
+        <AnimatedElement>
+          <SectionHeader
+            title="Le nostre"
+            highlight="app"
+            subtitle="Strumenti esclusivi per ottimizzare la tua esperienza di gioco"
+            underline={false}
+          />
         </AnimatedElement>
 
         <div className="flex gap-6 max-w-6xl mx-auto overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible">

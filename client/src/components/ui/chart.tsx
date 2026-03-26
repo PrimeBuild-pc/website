@@ -76,6 +76,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 
   return (
     <style
+      // Safe: Il codice generato proviene unicamente dalla configurazione interna del tema (interfaccia ChartConfig) e non utilizza dati in input dall'utente (XSS safe).
       dangerouslySetInnerHTML={{
         __html: Object.entries(THEMES)
           .map(

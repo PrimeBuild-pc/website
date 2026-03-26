@@ -5,19 +5,25 @@
 
 // Helper: compute allowed CORS origin (reflect if dev/pages, else whitelist)
 function computeAllowOrigin(origin, env) {
+  const allowed = (env.ALLOWED_ORIGINS || '')
+    .split(',').map(s => s.trim()).filter(Boolean);
+  const fallbackOrigin = allowed.length > 0 ? allowed[0] : 'https://primebuild.website';
+  
   try {
-    if (!origin) return '*';
+    if (!origin) return fallbackOrigin;
     const o = new URL(origin).origin;
     const host = new URL(origin).hostname;
-    const allowed = (env.ALLOWED_ORIGINS || '')
-      .split(',').map(s => s.trim()).filter(Boolean);
+    
     const isLocal = /^localhost(:\d+)?$/.test(host) || /^127\./.test(host);
     const isPages = /\.pages\.dev$/i.test(host);
     if (isLocal || isPages) return o; // riflette in dev / preview
+    
     if (allowed.length === 0) return o;
     if (allowed.includes(o)) return o;
-    return allowed[0];
-  } catch { return '*'; }
+    return fallbackOrigin;
+  } catch { 
+    return fallbackOrigin; 
+  }
 }
 
 export const onRequestPost = async (context) => {
@@ -94,7 +100,7 @@ export const onRequestPost = async (context) => {
 
     // Mail sending (Resend)
     const mailTo = env.MAIL_TO || 'primebuild.official@gmail.com';
-    const resendApiKey = env.RESEND_API_KEY || 're_7sPYjLLo_9tiaHtp6EyqwZmo1wEpC3uYE';
+    const resendApiKey = env.RESEND_API_KEY;
 
     if (!mailTo) {
       console.warn('MAIL_TO missing – skipping send.');

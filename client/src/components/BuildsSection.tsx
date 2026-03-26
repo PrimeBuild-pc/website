@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
 import ImageWithFallback from "@/lib/ImageWithFallback";
+import { SectionHeader } from "./SectionHeader";
 
 interface Build {
   name: string;
@@ -49,7 +50,7 @@ const BuildsSection = () => {
     };
   }, []);
 
-  const builds: Build[] = [
+  const builds: Build[] = useMemo(() => [
     {
       name: "PRIME STARTER",
       shortName: "STARTER",
@@ -109,21 +110,18 @@ const BuildsSection = () => {
         },
       ],
     },
-  ];
+  ], []);
 
   return (
     <section id="builds" className="py-20 bg-neutral-900" ref={specBarsRef}>
       <div className="container mx-auto px-4">
-        <AnimatedElement className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4 inline-block border-b-2 border-[#ff7514] pb-2">
-            <span className="text-white">Le</span> <span className="text-[#ff7514]">nostre build</span>
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto text-neutral-300">
-            Configurazioni di PC Gaming su misura per ogni esigenza e budget
-          </p>
-          <p className="text-base max-w-2xl mx-auto text-neutral-400 mt-4 italic">
-            Esempi di build che puoi trovare da noi
-          </p>
+        <AnimatedElement>
+          <SectionHeader
+            title="Le"
+            highlight="nostre build"
+            subtitle="Configurazioni di PC Gaming su misura per ogni esigenza e budget"
+            italicText="Esempi di build che puoi trovare da noi"
+          />
         </AnimatedElement>
 
         <div className="max-w-6xl mx-auto">
