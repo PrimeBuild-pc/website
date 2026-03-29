@@ -31,7 +31,7 @@ const AppsSection = () => {
       description:
         "Alternativa open source a Process Lasso per Windows. Modifiche di sistema per utenti esperti.",
       features: ["Open-source", "Affinità processi su core", "Gestione powerplans"],
-      url: "https://github.com/PrimeBuild-pc/ThreadPilot/releases/download/v0.1.0-beta/ThreadPilot_Setup.exe",
+      url: "https://github.com/PrimeBuild-pc/ThreadPilot/releases",
       repoUrl: "https://github.com/PrimeBuild-pc/ThreadPilot",
       comingSoon: false,
     },
@@ -40,7 +40,7 @@ const AppsSection = () => {
       description:
         "Overlay di mirino leggero e personalizzabile per migliorare la precisione nei giochi FPS.",
       features: ["Overlay trasparente", "Mirino personalizzabile", "Profilo per gioco"],
-      url: "https://github.com/PrimeBuild-pc/LightCrosshair/releases/download/v1.0.0/LightCrosshair-Setup.exe",
+      url: "https://github.com/PrimeBuild-pc/LightCrosshair/releases",
       repoUrl: "https://github.com/PrimeBuild-pc/LightCrosshair",
       comingSoon: false,
     },
@@ -49,7 +49,7 @@ const AppsSection = () => {
       description:
         "Centro di controllo all-in-one per modifiche e ottimizzazioni di Windows 11.",
       features: ["Affinità processi su core", "Gestione powerplans", "Controllo estremo"],
-      url: "https://github.com/PrimeBuild-pc/TweakHub/releases/download/v0.1.0-beta/TweakHub-Setup-0.1.0-beta.exe",
+      url: "https://github.com/PrimeBuild-pc/TweakHub/releases",
       repoUrl: "https://github.com/PrimeBuild-pc/TweakHub",
       comingSoon: false,
     },
@@ -58,7 +58,7 @@ const AppsSection = () => {
       description:
         "App per veloci tweaks su Windows 11, ideale per ottimizzazioni base su una fresh install.",
       features: ["Tweaks rapidi", "Ottimizzazione Win11", "Fresh install"],
-      url: "https://github.com/PrimeBuild-pc/ZapTweaks/releases/download/v1.0.0/ZapTweaks_v1.0.0_Setup.exe",
+      url: "https://github.com/PrimeBuild-pc/ZapTweaks/releases",
       repoUrl: "https://github.com/PrimeBuild-pc/ZapTweaks",
       comingSoon: false,
     },
