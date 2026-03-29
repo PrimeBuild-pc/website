@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkerAlt, FaInstagram, FaDiscord } from "react-icons/fa";
 import { Link } from "wouter";
@@ -7,9 +7,31 @@ import { useToast } from "@/hooks/use-toast";
 import { trackFormSubmit, trackSocialClick } from "@/lib/analytics";
 import { SectionHeader } from "./SectionHeader";
 
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: {
+          sitekey: string;
+          theme?: "light" | "dark" | "auto";
+          callback?: (token: string) => void;
+          "expired-callback"?: () => void;
+          "error-callback"?: () => void;
+        }
+      ) => string;
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
+
 const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetIdRef = useRef<string | null>(null);
+  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,6 +42,49 @@ const ContactSection = () => {
   });
 
   const initialState = { name: "", email: "", subject: "", message: "", website: "" };
+
+  useEffect(() => {
+    if (!turnstileSiteKey || !turnstileRef.current) return;
+
+    const renderWidget = () => {
+      if (!window.turnstile || !turnstileRef.current || turnstileWidgetIdRef.current) return;
+
+      turnstileWidgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: turnstileSiteKey,
+        theme: "dark",
+        callback: (token: string) => setTurnstileToken(token),
+        "expired-callback": () => setTurnstileToken(""),
+        "error-callback": () => setTurnstileToken(""),
+      });
+    };
+
+    if (window.turnstile) {
+      renderWidget();
+      return;
+    }
+
+    const scriptId = "cf-turnstile-script";
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+
+    if (!script) {
+      script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    script.addEventListener("load", renderWidget);
+    return () => script?.removeEventListener("load", renderWidget);
+  }, [turnstileSiteKey]);
+
+  const resetTurnstile = () => {
+    if (window.turnstile && turnstileWidgetIdRef.current) {
+      window.turnstile.reset(turnstileWidgetIdRef.current);
+    }
+    setTurnstileToken("");
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -34,6 +99,16 @@ const ContactSection = () => {
     e.preventDefault();
     if (formData.website) { setFormData(initialState); return; }
     if (isSubmitting) return;
+
+    if (!turnstileSiteKey) {
+      toast({ title: "Verifica sicurezza non configurata", description: "Contattaci via Instagram/Discord mentre sistemiamo il modulo." });
+      return;
+    }
+
+    if (!turnstileToken) {
+      toast({ title: "Verifica richiesta", description: "Completa il controllo anti-bot prima di inviare." });
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -53,7 +128,8 @@ const ContactSection = () => {
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
-          message: formData.message
+          message: formData.message,
+          turnstileToken
         })
       });
 
@@ -61,16 +137,19 @@ const ContactSection = () => {
 
       if (!res.ok || !json.success) {
         trackFormSubmit('contact', false);
+        resetTurnstile();
         toast({ title: "Errore di invio", description: json.error || "Problema temporaneo." });
         return;
       }
 
       trackFormSubmit('contact', true);
       setFormData(initialState);
+      resetTurnstile();
       toast({ title: "Messaggio inviato", description: "Ti contatteremo al piu presto." });
     } catch (err) {
       console.error('Network/contact error', err);
       trackFormSubmit('contact', false);
+      resetTurnstile();
       toast({ title: "Errore di rete", description: "Riprova piu tardi." });
     } finally {
       setIsSubmitting(false);
@@ -130,7 +209,17 @@ const ContactSection = () => {
                   <label htmlFor="website">Website</label>
                   <input id="website" type="text" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
                 </div>
-                {/* Removed Turnstile widget for static GitHub Pages deployment. */}
+                <div>
+                  <label className="block text-sm font-medium text-neutral-300 mb-1">
+                    Verifica sicurezza
+                  </label>
+                  <div ref={turnstileRef} className="min-h-[65px]" />
+                  {!turnstileSiteKey && (
+                    <p className="text-xs text-red-400 mt-2">
+                      Turnstile non configurato: imposta VITE_TURNSTILE_SITE_KEY in ambiente build.
+                    </p>
+                  )}
+                </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-1">
