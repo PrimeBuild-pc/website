@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: 24 100% 50%;
+  --ring: 24 100% 50%;
+  --orange: 24 100% 50%;
+}
+
+.dark {
+  --primary: 24 100% 50%;
+  --ring: 24 100% 50%;
+  --orange: 24 100% 50%;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -46,7 +58,7 @@
 @layer components {
   .glow-card {
     position: relative;
-    --glow-color: rgba(255, 117, 20, 0.45);
+    --glow-color: hsl(var(--primary) / 0.5);
     --glow-strength: 28px;
   }
   .glow-card::before {
@@ -54,7 +66,7 @@
     position: absolute;
     inset: -20%;
     pointer-events: none;
-    background: radial-gradient(120% 80% at 50% 120%, var(--glow-color) 0%, rgba(255,117,20,0.0) 60%);
+    background: radial-gradient(120% 80% at 50% 120%, var(--glow-color) 0%, hsl(var(--primary) / 0.0) 60%);
     filter: blur(var(--glow-strength));
     opacity: 0.45;
     transform: translateZ(0);
@@ -107,3 +119,5 @@
     z-index: 0;
   }
 }
+
+

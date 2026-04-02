@@ -203,7 +203,7 @@ const ComponentsSection = () => {
         <div className="container mx-auto px-4">
           <AnimatedElement className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-              Componenti <span className="text-[#ff7514]">premium</span>
+              Componenti <span className="text-primary">premium</span>
             </h2>
             <p className="text-lg max-w-2xl mx-auto text-neutral-300">
               Ecco alcuni dei marchi che trovi nelle nostre build
@@ -223,7 +223,7 @@ const ComponentsSection = () => {
                   height={64}
                   className="w-16 h-16 object-cover mx-auto mb-4 rounded-lg"
                 />
-                <h3 className="font-medium text-[#ff7514]">{component.title}</h3>
+                <h3 className="font-medium text-primary">{component.title}</h3>
                 <p className="text-xs text-neutral-400">{component.brands}</p>
               </AnimatedElement>
             ))}
@@ -238,7 +238,7 @@ const ComponentsSection = () => {
       <div className="container mx-auto px-4">
         <AnimatedElement className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
-            Componenti <span className="text-[#ff7514]">premium</span>
+            Componenti <span className="text-primary">premium</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-neutral-300">
             Ecco alcuni dei marchi che trovi nelle nostre build
@@ -277,7 +277,7 @@ const ComponentsSection = () => {
                   role="option"
                   aria-selected={isActive}
                   aria-label={`${component.title} - ${component.brands}`}
-                  className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl text-center ${isMobile ? 'bg-neutral-900' : 'bg-neutral-900/80 backdrop-blur-sm'} border border-white/5 transition-colors ${isActive && !isMobile ? "scale-105 shadow-[0_0_24px_rgba(255,117,20,0.25)]" : "scale-95 opacity-90"}`}
+                  className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl text-center ${isMobile ? 'bg-neutral-900' : 'bg-neutral-900/80 backdrop-blur-sm'} border border-white/5 transition-colors ${isActive && !isMobile ? "scale-105 shadow-[0_0_24px_hsl(var(--primary) / 0.25)]" : "scale-95 opacity-90"}`}
                   style={{ transform, willChange: isMobile ? "auto" : "transform, opacity",  pointerEvents: backface ? "none" : "auto",  zIndex: Math.round(1000 + depth * 1000), opacity: backface ? 0.5 : 1}}
                 >
                   <div className="p-5 w-52 md:w-64">
@@ -288,7 +288,7 @@ const ComponentsSection = () => {
                       height={64}
                       className="w-14 h-14 md:w-16 md:h-16 object-cover mx-auto mb-4 rounded-lg"
                     />
-                    <h3 className="font-medium text-[#ff7514]">{component.title}</h3>
+                    <h3 className="font-medium text-primary">{component.title}</h3>
                     <p className="text-xs text-neutral-400">{component.brands}</p>
                   </div>
                 </div>
@@ -302,3 +302,5 @@ const ComponentsSection = () => {
 };
 
 export default ComponentsSection;
+
+

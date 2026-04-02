@@ -20,8 +20,8 @@ const ServiceCard = ({
 }) => {
   return (
     <AnimatedElement delay={delay} className="service-card bg-black p-8 rounded-xl shadow-lg overflow-hidden relative h-full">
-      <div className="absolute top-0 right-0 w-20 h-20 bg-[#ff7514] opacity-5 rounded-bl-full"></div>
-      <div className="text-4xl text-[#ff7514] mb-6 transition-transform duration-300 group-hover:scale-110">
+      <div className="absolute top-0 right-0 w-20 h-20 bg-primary opacity-5 rounded-bl-full"></div>
+      <div className="text-4xl text-primary mb-6 transition-transform duration-300 group-hover:scale-110">
         {icon}
       </div>
       <h3 className="text-xl font-bold font-montserrat mb-4">{title}</h3>
@@ -29,7 +29,7 @@ const ServiceCard = ({
       <ul className="text-sm text-neutral-300 space-y-2 mb-6">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center">
-            <FaCheck className="text-[#ff7514] mr-2" />
+            <FaCheck className="text-primary mr-2" />
             {feature}
           </li>
         ))}
@@ -37,7 +37,7 @@ const ServiceCard = ({
       <a
         href="#contact"
         onClick={() => trackCTAClick(cta, 'services')}
-        className="inline-block text-[#ff7514] hover:underline font-medium group"
+        className="inline-block text-primary hover:underline font-medium group"
       >
         {cta} <FaArrowRight className="inline ml-1 transform group-hover:translate-x-1 transition-transform" />
       </a>
@@ -95,3 +95,5 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+
+

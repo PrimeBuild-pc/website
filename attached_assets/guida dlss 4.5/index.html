@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida NVIDIA DLSS 4.5 | Prime Build</title>
+    <style>
+        :root {
+            /* Palette colori stile Modern Dark / "PH" Style */
+            --bg-main: #000000;           /* Sfondo nero puro */
+            --bg-card: #1f1f1f;           /* Grigio scuro per i contenitori */
+            --bg-card-alt: #262626;       /* Grigio leggermente più chiaro per alternanza righe */
+            --text-primary: #ffffff;      /* Testo principale bianco */
+            --text-secondary: #b3b3b3;    /* Testo secondario grigio chiaro */
+            --accent-orange: #FF9900;     /* Arancione ricco, meno fluo */
+            --border-dark: #333333;       /* Bordi sottili */
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Contenitore principale */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Tipografia e sezioni */
+        h2, h3, h4 {
+            color: var(--text-primary);
+            margin-top: 40px;
+        }
+        
+        h2 {
+            border-left: 5px solid var(--accent-orange);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        /* Highlight testuali */
+        .accent-text { color: var(--accent-orange); font-weight: bold; }
+        strong { color: var(--text-primary); font-weight: 700; }
+
+        /* Card (Contenitori grigi) */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        
+        .card-note {
+            border-left: 3px solid var(--accent-orange);
+            background-color: #2a2a2a;
+        }
+
+        /* Liste */
+        ul { list-style: none; padding-left: 0; }
+        ul li { margin-bottom: 15px; position: relative; padding-left: 25px; color: var(--text-secondary); }
+        ul li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-size: 0.8rem;
+            top: 4px;
+        }
+
+        /* Tabelle moderne */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            background-color: var(--bg-card);
+            margin: 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            white-space: nowrap;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--bg-card);
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--accent-orange);
+        }
+        
+        td {
+            border-bottom: 1px solid var(--border-dark);
+            color: var(--text-secondary);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-card-alt);
+        }
+
+        /* Benchmark Box Style */
+        .benchmark-data {
+            font-family: 'Consolas', monospace;
+            background-color: #111;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-orange);
+            color: #ddd;
+        }
+
+        /* Footer e Firma */
+        .footer {
+            margin-top: 80px;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-dark);
+            color: var(--text-secondary);
+        }
+
+        .signature {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        /* Bottone Discord Stile "Moderno/Pieno" */
+        .discord-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent-orange);
+            color: #000000; /* Testo nero su sfondo arancione */
+            padding: 15px 40px;
+            border-radius: 50px; /* Bordi molto arrotondati */
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .discord-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 153, 0, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .discord-icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            fill: #000000;
+        }
+
+        /* Social Icons Minimali */
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .social-icon-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-dark);
+        }
+
+        .social-icon-link:hover {
+            background-color: var(--accent-orange);
+            border-color: var(--accent-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .social-icon-link svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-primary);
+            transition: fill 0.3s ease;
+        }
+
+        .social-icon-link:hover svg {
+            fill: #000000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Guida Completa a NVIDIA DLSS 4.5 e Preset</h1>
+        <div class="subtitle">Aggiornata a Gennaio 2026 | Driver 591.74</div>
+    </header>
+
+    <div class="card">
+        <p>Ciao a tutti! Ho messo insieme una panoramica dettagliata su <strong>DLSS 4.5</strong> con i nuovi driver 591.74, inclusi i preset gestibili via NVIDIA Inspector o App. Parto dalle basi che già conosco e aggiungo info extra da ricerche recenti. Non esiste un preset "migliore" assoluto: dipende da mode DLSS, risoluzione, GPU e gioco. Allineare tutto è chiave per qualità e FPS ottimali. Andiamo nei dettagli!</p>
+    </div>
+
+    <section>
+        <h2>Basi su DLSS 4.5 e Preset</h2>
+        <div class="card">
+        <ul>
+            <li><strong>Nuovi NVIDIA Driver 591.74 | DLSS 4.5</strong>: Con l’arrivo di DLSS 4.5, la gestione dei preset è diventata più chiara, ma anche più facile da sbagliare se non si sa cosa si sta facendo. Non esiste un preset migliore in assoluto, ogni preset ha un ruolo preciso e va usato nel contesto giusto. Sulle RTX 4000 e 5000, può offrire un salto reale in termini di qualità e prestazioni, ma solo se viene configurato con criterio. Forzare preset a caso o affidarsi a consigli generici spesso porta a risultati peggiori, non migliori.</li>
+            <li><span class="accent-text">Preset K [4.0]</span>: Si utilizza con <em>DLSS Quality, DLSS Balanced, DLAA</em>. Offre il miglior equilibrio tra qualità dell’immagine, stabilità temporale e carico sulla GPU. Gestisce correttamente l’esposizione ed è quello che, nella maggior parte dei casi, garantisce il risultato più pulito.</li>
+            <li><span class="accent-text">Preset M [4.5]</span>: Pensato per la modalità <em>Performance</em>, lavora partendo da una risoluzione interna più bassa e deve ricostruire più informazioni. Questo comporta un carico maggiore sulla GPU ed è una scelta sensata solo quando Quality o Balanced non sono sufficienti.</li>
+            <li><span class="accent-text">Preset L [4.5]</span>: Utilizzato con <em>Ultra Performance</em> in 4K. È pensato per scenari con risoluzioni molto elevate o carichi grafici particolarmente pesanti. La qualità viene sacrificata, ma consente di mantenere una buona stabilità quando le altre modalità non bastano.</li>
+        </ul>
+        </div>
+        <div class="card card-note">
+            <strong style="color: var(--accent-orange);">Nota Generale:</strong> DLSS funziona davvero bene solo quando preset, driver, risoluzione e obiettivo sono allineati tra loro. Un’impostazione corretta fa molta più differenza di qualunque tweak improvvisato.
+        </div>
+    </section>
+
+    <section>        <h2>Analisi Dettagliata DLSS 4.5</h2>
+        <div class="card">
+            <p>Basandoci sulla review approfondita del canale <strong>Prodig</strong>, ecco cosa bisogna sapere su DLSS 4.5:</p>
+        </div>
+
+        <h3>Cosa Viene Testato</h3>
+        <div class="card">
+            <p>In questa fase, DLSS 4.5 include <strong>solo Super Resolution (upscaling)</strong>. Non sono ancora disponibili:</p>
+            <ul>
+                <li>❌ <strong>Reconstruction</strong></li>
+                <li>❌ <strong>Multiframe Generator</strong></li>
+                <li>❌ <strong>Dynamic Multiframe Generator</strong></li>
+                <li>❌ <strong>Frame Generation 6X</strong></li>
+            </ul>
+            <p><em>Questi componenti arriveranno in <span class="accent-text">primavera 2026</span>.</em></p>
+        </div>
+
+        <h3>Obiettivo dell'Aggiornamento</h3>
+        <div class="card">
+            <p>DLSS 4.5 <strong>non è una rivoluzione</strong> come il passaggio al Transformer, ma un <span class="accent-text">affinamento del DLSS 4.0</span>:</p>
+            <ul>
+                <li>✅ Migliora la qualità della ricostruzione</li>
+                <li>✅ Riduce difetti residui</li>
+                <li>✅ Mantiene più dettagli</li>
+                <li>✅ Meno ghosting e micro-artefatti</li>
+                <li>✅ Maggiore stabilità dell'immagine</li>
+                <li>✅ Particellari migliori</li>
+                <li>✅ Illuminazione più coerente</li>
+            </ul>
+            <p>L'obiettivo principale: <strong>non ricostruire meglio, ma perdere meno dettagli</strong>.</p>
+        </div>
+
+        <h3>Transformer Aggiornato e Costi Computazionali</h3>
+        <div class="card">
+            <p>NVIDIA ha aggiornato il modello Transformer utilizzando:</p>
+            <ul>
+                <li>Dataset <strong>molto più grandi</strong></li>
+                <li>Richiede <span class="accent-text">5x la potenza computazionale</span> rispetto al primo Transformer</li>
+                <li>Primo DLSS con veri <strong>drawback tecnici</strong>:
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>RTX <strong>2000/3000</strong>: perdita prestazioni, più VRAM, no supporto FP8</li>
+                        <li>RTX <strong>4000/5000</strong>: accelerazione nativa del modello</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h3>Dati Ufficiali NVIDIA: Overhead Computazionale (ms)</h3>
+        <div class="card">
+            <p>📄 <strong>DLSS Programming Guide</strong> - Pagine 16-18 mostrano le <span class="accent-text">tabelle comparative ufficiali</span> dei tempi di calcolo (ms) aggiunti dal DLSS 4.5 in base a preset e GPU:</p>
+            <div style="background: #0a0a0a; border-radius: 8px; overflow: hidden; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.6);">
+                <iframe src="DLSS_Programming_Guide_Release.pdf#page=16" width="100%" height="800px" style="border: none; display: block;"></iframe>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.9rem;"><em>Scorri il PDF per vedere le tabelle complete su preset K/M/L e impact su diverse architetture RTX.</em></p>
+        </div>
+
+        <h3>Focus sui Preset Performance</h3>
+        <div class="card">
+            <p>Il miglioramento maggiore si vede nei preset <span class="accent-text">Performance</span> e <span class="accent-text">Ultra Performance</span>, soprattutto su <strong>QHD e risoluzioni più basse</strong>, dove l'upscaling è più aggressivo.</p>
+            <p><strong>NVIDIA conferma che il 4.5 non è pensato per Quality/Balanced</strong> - per queste modalità, il modello <strong>K (DLSS 4.0)</strong> rimane la scelta ottimale.</p>
+        </div>
+
+        <h3>Modelli Specifici DLSS 4.5</h3>
+        <div class="card">
+            <ul>
+                <li>🟩 <span class="accent-text">Modello L</span>: Ottimizzato per <strong>Ultra Performance</strong></li>
+                <li>🟨 <span class="accent-text">Modello M</span>: Ottimizzato per <strong>Performance</strong></li>
+                <li>🟦 <span class="accent-text">Modello K</span>: DLSS 4.0 - per tornare alla versione precedente o per <strong>Quality/Balanced</strong></li>
+            </ul>
+        </div>
+
+        <h3>Attivazione e Supporto</h3>
+        <div class="card card-note">
+            <p>⚠️ <strong>Importante:</strong> Al momento <span class="accent-text">non esistono giochi con supporto nativo</span> per DLSS 4.5.</p>
+            <p>Per usarlo oggi serve:</p>
+            <ul>
+                <li>✅ <strong>NVIDIA App</strong></li>
+                <li>✅ Attivare funzioni <strong>Beta</strong></li>
+                <li>✅ Fare <strong>override per gioco</strong></li>
+            </ul>
+        </div>
+
+        <h3>Conclusione della Review</h3>
+        <div class="card">
+            <p>DLSS 4.5 è essenzialmente un <strong>"DLSS 4.0 migliorato per casi difficili"</strong>:</p>
+            <ul>
+                <li>✅ Migliora dove serviva (preset aggressivi, risoluzioni basse)</li>
+                <li>❌ Non è rivoluzionario</li>
+                <li>❌ È più pesante computazionalmente</li>
+                <li>➡️ Le differenze migliori si vedono in side-by-side diretti su Quad HD / Performance</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>        <h2>Info Aggiuntive e Panoramica Completa</h2>
+        <p>DLSS 4.5 usa un <strong>Transformer model di 2a generazione</strong> (FP8 precision accelerata su RTX 40/50), che riduce ghosting, shimmering e aliasing del 20-50% rispetto a DLSS 4, ma <strong>aumenta il carico computazionale</strong> (fino a 2x VRAM su vecchie GPU). Preset pre-4.5 (A-I) sono obsoleti.</p>
+
+        <h3>Preset Disponibili e Evoluzione</h3>
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Preset</th>
+                    <th>Versione DLSS</th>
+                    <th>Caratteristiche Principali</th>
+                    <th>Raccomandato Per</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="accent-text">K</span> (0x0000000B hex)</td>
+                    <td>4.0 (Transformer Gen1)</td>
+                    <td>Equilibrio qualità/stabilità/FPS. Gestisce esposizione bene.</td>
+                    <td><strong>Quality/Balanced/DLAA</strong>. Tutte RTX 20+.</td>
+                </tr>
+                <tr>
+                    <td><span class="accent-text">M</span> ("Latest")</td>
+                    <td>4.5 (Transformer Gen2)</td>
+                    <td>Sharper details, -ghosting. Più pesante (15-30% hit su 20/30).</td>
+                    <td><strong>Performance</strong>. RTX 40/50 a 1440p/4K.</td>
+                </tr>
+                <tr>
+                    <td><span class="accent-text">L</span></td>
+                    <td>4.5 (Transformer Gen2)</td>
+                    <td>Massima upscaling, stabilità su low-res input. Oversharp possibile.</td>
+                    <td><strong>Ultra Performance</strong> 4K+. Solo RTX 40/50.</td>
+                </tr>
+                <tr>
+                    <td><span class="accent-text">J</span></td>
+                    <td>4.0</td>
+                    <td>Simile K, ma +flickering/-ghosting.</td>
+                    <td>Fallback per 20/30 se K artefatta.</td>
+                </tr>
+                <tr>
+                    <td><strong>Pre-J (A-I)</strong></td>
+                    <td>&lt;4.0</td>
+                    <td>Obsoleti: ghosting pesante.</td>
+                    <td>Mai, forza K+.</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p><em><strong>Nota:</strong> "Latest" = M su Super Resolution, ma <span class="accent-text">non forzarlo globalmente</span>: applica M ovunque, causando oversharp/FPS loss su Quality (es. -10FPS in BF6 su 4080).</em></p>
+    </section>
+
+    <section>
+        <h2>Come Gestire i Preset: NVIDIA App vs Profile Inspector</h2>
+        
+        <div class="card card-note">
+            <p>I preset DLSS possono essere configurati in <strong>due modi</strong>: tramite <span class="accent-text">NVIDIA App</span> (approccio semplificato e automatico) oppure tramite <span class="accent-text">NVIDIA Profile Inspector</span> (controllo avanzato per-gioco). Entrambi i metodi sono validi e possono essere usati insieme per scenari diversi.</p>
+        </div>
+        
+        <div class="card">
+            <h3>1. NVIDIA App (Consigliato - Facile/Automatico)</h3>
+            <p><strong>Ideale per:</strong> Utenti che vogliono configurazioni rapide e affidabili senza complessità.</p>
+            
+            <h4 style="color: var(--accent-orange); margin-top: 25px;">Procedura Completa:</h4>
+            <ol style="padding-left: 20px; color: var(--text-secondary);">
+                <li style="margin-bottom: 15px;">📥 <strong>Aggiorna i driver</strong> alla versione <strong>591.74 o successiva</strong></li>
+                <li style="margin-bottom: 15px;">🖥️ <strong>Apri NVIDIA App</strong> (non GeForce Experience) dal menu Start o dalla system tray</li>
+                <li style="margin-bottom: 15px;">⚙️ Vai su <strong>Graphics</strong> dalla barra laterale sinistra</li>
+                <li style="margin-bottom: 15px;">📊 Scorri fino alla sezione <strong>"DLSS Overrides"</strong></li>
+                <li style="margin-bottom: 15px;">🎮 Seleziona il <strong>gioco specifico</strong> dal menu dropdown in alto (o applica globalmente)</li>
+                <li style="margin-bottom: 15px;">🎯 Configura le opzioni:
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li><strong>Super Resolution Mode</strong>: Scegli tra Quality/Balanced/Performance/Ultra Performance/DLAA<br>
+                        <em style="font-size: 0.85rem;">→ L'App seleziona automaticamente il preset ottimale (K per Quality, M per Performance, L per Ultra)</em></li>
+                        <li><strong>Model Presets</strong>: 
+                            <ul style="margin-top: 5px;">
+                                <li><strong>Default</strong>: Lascia decidere all'App (consigliato)</li>
+                                <li><strong>Custom</strong>: Forza manualmente K/M/L</li>
+                                <li><strong>Latest</strong>: Forza preset M su tutto (⚠️ non sempre ideale)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li style="margin-bottom: 15px;">💾 Clicca <strong>"Apply"</strong> per salvare</li>
+                <li>🔄 <strong>Riavvia il gioco</strong> per applicare le modifiche</li>
+            </ol>
+
+            <div style="background: #0a0a0a; border-radius: 8px; overflow: hidden; margin-top: 25px; padding: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.6);">
+                <p style="margin: 0 0 10px 0; color: var(--accent-orange); font-weight: bold;">📸 Esempio Configurazione:</p>
+                <img src="https://i.postimg.cc/W3cBJB02/Screenshot-2026-01-09-010904.png" alt="NVIDIA App - DLSS Overrides" style="width: 100%; border-radius: 5px; border: 1px solid var(--border-dark);">
+                <p style="margin: 10px 0 0 0; font-size: 0.85rem; color: var(--text-secondary);"><em>Nell'immagine: menu DLSS Overrides con opzioni Super Resolution Mode e Model Presets. Nota i dropdown per selezionare gioco specifico e modalità DLSS.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>2. NVIDIA Profile Inspector (Avanzato - Controllo Totale)</h3>
+            <p><strong>Ideale per:</strong> Tweaking preciso, giochi senza supporto nativo, override di preset bloccati.</p>
+            
+            <div style="background: #1a1a1a; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                <p style="margin: 0 0 10px 0;"><strong>📥 Download:</strong> <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases" style="color: var(--accent-orange); text-decoration: none; font-weight: bold;">NVIDIA Profile Inspector v2.4.0.30</a> (Ultima Release - Gennaio 2026)</p>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);"><em>Include supporto completo per preset L/M DLSS 4.5 e visualizzazione versione DLL override</em></p>
+            </div>
+
+            <h4 style="color: var(--accent-orange); margin-top: 25px;">Configurazione Step-by-Step:</h4>
+            <ol style="padding-left: 20px; color: var(--text-secondary);">
+                <li style="margin-bottom: 15px;">📥 <strong>Scarica e apri</strong> NVIDIA Profile Inspector (nvidiaProfileInspector.exe)</li>
+                <li style="margin-bottom: 15px;">🔍 <strong>Cerca il tuo gioco</strong>:
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Usa il campo <strong>"Profiles"</strong> in alto per cercare (es. digita "Cyberpunk")</li>
+                        <li>Oppure scorri la lista dropdown per trovare il profilo del gioco</li>
+                        <li>Se il gioco non ha profilo, seleziona <strong>"Base Profile"</strong> per applicare globalmente</li>
+                    </ul>
+                </li>
+                <li style="margin-bottom: 15px;">📂 <strong>Naviga a Section 5 - Common</strong>:
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Guarda la lista delle sezioni sulla sinistra</li>
+                        <li>Clicca su <strong>"5 - Common"</strong> per espandere le impostazioni DLSS</li>
+                        <li>Se non vedi le opzioni DLSS, usa <kbd>Ctrl+F</kbd> per cercare "DLSS"</li>
+                    </ul>
+                </li>
+                <li style="margin-bottom: 20px;"><strong>⚙️ Configura le Impostazioni DLSS</strong> (vedi screenshot sotto):
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li><span class="accent-text">DLSS - Enable DLL Override</span>: Imposta su <strong>0x00000001</strong> per attivare<br>
+                        <em style="font-size: 0.85rem;">→ Mostra la versione DLL (es. "v310.5.0") se disponibile</em></li>
+                        <li><span class="accent-text">DLSS - Forced Preset Letter</span>: Inserisci la lettera del preset:<br>
+                        • <strong>K</strong> = Quality/Balanced/DLAA (RTX 20+)<br>
+                        • <strong>M</strong> = Performance (RTX 40/50)<br>
+                        • <strong>L</strong> = Ultra Performance 4K (RTX 40/50)</li>
+                        <li><span class="accent-text">DLSS - Model Preset</span>: Alternativa, usa valori <strong>hex</strong>:<br>
+                        • K = <strong>0x0000000B</strong><br>
+                        • J = <strong>0x0000000A</strong></li>
+                        <li><span class="accent-text">DLSS - Always Use Latest</span>: <strong>0x00000001</strong> per auto-selezione (come "Latest" in App)<br>
+                        <em style="font-size: 0.85rem;">⚠️ Attenzione: forza preset M su tutto, può penalizzare Quality mode</em></li>
+                    </ul>
+                </li>
+                <li style="margin-bottom: 15px;">💾 Clicca <strong>"Apply changes"</strong> (icona dischetto) in alto a destra</li>
+                <li style="margin-bottom: 15px;">🔄 <strong>Riavvia il driver grafico</strong> (opzionale ma consigliato): <kbd>Ctrl+Shift+Win+B</kbd><br>
+                <em style="font-size: 0.85rem;">→ Lo schermo lampeggia per 1-2 secondi, è normale</em></li>
+                <li>🎮 <strong>Lancia il gioco</strong> e verifica il preset attivo (vedi sezione "Verifica" sotto)</li>
+            </ol>
+
+            <div style="background: #0a0a0a; border-radius: 8px; overflow: hidden; margin-top: 25px; padding: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.6);">
+                <p style="margin: 0 0 10px 0; color: var(--accent-orange); font-weight: bold;">📸 Esempio Configurazione in Profile Inspector:</p>
+                <img src="https://i.postimg.cc/YSFc0rGG/Screenshot-2026-01-09-010816.png" alt="NVIDIA Profile Inspector - DLSS Settings" style="width: 100%; border-radius: 5px; border: 1px solid var(--border-dark);">
+                <p style="margin: 10px 0 0 0; font-size: 0.85rem; color: var(--text-secondary);"><em>Nell'immagine: Section 5 - Common con le impostazioni DLSS evidenziate. Nota i campi "DLSS - Enable DLL Override", "DLSS - Forced Preset Letter" e gli altri parametri configurabili.</em></p>
+            </div>
+
+            <div class="card card-note" style="margin-top: 20px;">
+                <strong style="color: var(--accent-orange);">💡 Novità v2.4.0.30:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>✅ Supporto nativo per <strong>Preset L e M</strong> di DLSS 4.5</li>
+                    <li>✅ Visualizzazione <strong>versione DLL override</strong> nel dropdown (es. "v310.5.0")</li>
+                    <li>✅ Supporto <strong>PhysX 32-bit GPU Acceleration</strong> per RTX 50-series</li>
+                    <li>✅ Compatibilità .NET 4.8 (incluso in Windows 10+)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Verifica del Preset Attivo</h3>
+        <div class="card">
+            <p>Per confermare quale preset sta usando il gioco:</p>
+            <ol style="padding-left: 20px; color: var(--text-secondary);">
+                <li>Premi <kbd>Alt+Z</kbd> per aprire GeForce Experience overlay</li>
+                <li>Vai su <strong>Statistics</strong> (o Performance > Statistics)</li>
+                <li>Abilita <strong>DLSS Overlay</strong></li>
+                <li>Verifica la riga <span class="accent-text">"Preset: M"</span> (o K/L)</li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h2>Coordinamento Preset/DLSS: Consigli Reali</h2>
+        <p>Allinea <strong>preset al mode + risoluzione + GPU</strong> per massimizzare IQ/FPS. Testa sempre (es. Cyberpunk PT, AC Shadows per ghosting).</p>
+        
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>DLSS Mode</th>
+                    <th>Risoluzione</th>
+                    <th>Preset Ideale</th>
+                    <th>RTX 20/30 (FPS Hit)</th>
+                    <th>RTX 40/50 (Guadagno IQ)</th>
+                    <th>Esempi Giochi/Consigli</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Quality/Balanced</strong></td>
+                    <td>1440p/4K</td>
+                    <td><span class="accent-text">K</span></td>
+                    <td>✅ +0-5% FPS</td>
+                    <td>✅ Stabile, no hit</td>
+                    <td>Cyberpunk, F1 25: K fix esposizione.</td>
+                </tr>
+                <tr>
+                    <td><strong>Performance</strong></td>
+                    <td>1440p</td>
+                    <td><span class="accent-text">M</span></td>
+                    <td>❌ -20-30%</td>
+                    <td>✅ +20% clarity</td>
+                    <td>BF6, GTA5: M riduce ghosting hair/fog.</td>
+                </tr>
+                <tr>
+                    <td><strong>Performance</strong></td>
+                    <td>4K</td>
+                    <td><span class="accent-text">M</span></td>
+                    <td>❌ Molto basso</td>
+                    <td>✅ Equilibrio</td>
+                    <td>Tekken8: M sharper hair.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ultra Perf</strong></td>
+                    <td>4K+</td>
+                    <td><span class="accent-text">L</span></td>
+                    <td>❌ Impossibile</td>
+                    <td>✅ +35FPS</td>
+                    <td>MSFS2024 VR, DOOM. Solo 40/50.</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>Benchmark Rapidi (Media CP77/BF6)</h3>
+        <div class="benchmark-data">
+            > RTX 3080: K=120FPS → M=90FPS (-25%).<br>
+            > RTX 4080: K=140FPS → M=130FPS (-7%), L=125FPS (-11%).<br>
+            > RTX 5070 Ti: Quasi pari a K, +IQ netto.
+        </div>
+    </section>
+
+    <section>
+        <h2>Consigli Reali e Best Practices</h2>
+        <div class="card">
+        <ol style="padding-left: 20px; color: var(--text-secondary);">
+            <li style="margin-bottom: 15px;"><strong>RTX 4000/5000</strong>: Usa <strong>auto (Super Resolution Mode in App)</strong> o Latest → Guadagni IQ enormi (meno ghosting in 80% giochi) con costi minimi. Forza M in Performance per +sharpeness.</li>
+            <li style="margin-bottom: 15px;"><strong>RTX 2000/3000</strong>: <strong>Solo K</strong>! M/L penalizzano (no FP8, +VRAM). Se ghosting, abbassa a Balanced + K.</li>
+            <li style="margin-bottom: 15px;"><strong>Applicazioni Specifiche</strong>:
+                <ul style="margin-top: 10px;">
+                    <li><strong>Ghosting/Shimmering</strong>: M/L (es. AC Shadows, Hunt Showdown).</li>
+                    <li><strong>4K 240FPS</strong>: L Ultra Perf + FG 6x (primavera 2026).</li>
+                    <li><strong>VR/Volumetrics</strong>: M riduce blockiness (MSFS2024 +30% clarity).</li>
+                    <li><strong>Oversharp?</strong> Custom scaling in App (es. 60% per Balanced-like).</li>
+                </ul>
+            </li>
+            <li style="margin-bottom: 15px;"><strong>Errori Comuni da Evitare</strong>: No "Latest" globale: Forza M su DLAA → Fuzziness (-10FPS). Disabilita Ray Reconstruction se conflicta con 4.5 (Cyberpunk). Testa per-gioco: Usa DLSS Swapper per DLL + Inspector per preset.</li>
+            <li><strong>Extra</strong>: Abilita ReBAR (+12% FPS su 20-series). Futuro: DLSS 4.5 in 400+ giochi, full release prossima settimana.</li>
+        </ol>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span class="signature">PRIME BUILD</span>
+        <p>Entra nel server per supporto tecnico, preset e benchmark.</p>
+        <a href="https://discord.gg/jBNk2vXKKd" class="discord-btn">
+            <svg class="discord-icon" viewBox="0 0 127.14 96.36">
+                <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.06,72.06,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.71,32.65-1.82,56.6.48,80.1a105.73,105.73,0,0,0,32.22,16.26,77.7,77.7,0,0,0,6.89-11.11,68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.29-16.27c2.73-27.11-4.76-50.86-19.54-72.03ZM42.45,65.69C36.18,65.69,31,60,31,53s5.07-12.73,11.41-12.73S54,46,53.86,53,48.74,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.07-12.73,11.44-12.73S96.23,46,96.11,53,91,65.69,84.69,65.69Z"/>
+            </svg>
+            JOIN DISCORD SERVER
+        </a>
+
+        <div class="social-icons">
+            <a href="https://www.instagram.com/prime_build_/" class="social-icon-link" target="_blank" rel="noopener noreferrer" title="Instagram">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/PrimeBuild-pc/guida-completa-nvidia-dlss-4.5" class="social-icon-link" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

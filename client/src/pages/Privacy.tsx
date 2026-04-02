@@ -11,13 +11,13 @@ const Privacy = () => {
     <div className="min-h-screen bg-black text-white pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-4xl">
         <Link href="/">
-          <a className="inline-flex items-center text-[#ff7514] hover:underline mb-8">
+          <a className="inline-flex items-center text-primary hover:underline mb-8">
             <FaArrowLeft className="mr-2" />
             Torna alla Home
           </a>
         </Link>
 
-        <h1 className="text-3xl md:text-4xl font-bold font-montserrat mb-8 text-[#ff7514]">
+        <h1 className="text-3xl md:text-4xl font-bold font-montserrat mb-8 text-primary">
           Privacy Policy e Cookie Policy
         </h1>
 
@@ -34,7 +34,7 @@ const Privacy = () => {
               Il titolare del trattamento dei dati personali e Prime Build, con sede a Padova, Italia.
             </p>
             <p className="text-neutral-300">
-              Email di contatto: <a href="mailto:primebuild.official@gmail.com" className="text-[#ff7514] hover:underline">primebuild.official@gmail.com</a>
+              Email di contatto: <a href="mailto:primebuild.official@gmail.com" className="text-primary hover:underline">primebuild.official@gmail.com</a>
             </p>
           </section>
 
@@ -133,7 +133,7 @@ const Privacy = () => {
             </ul>
             <p className="text-neutral-300 mt-4">
               Per esercitare questi diritti, contattaci a{" "}
-              <a href="mailto:primebuild.official@gmail.com" className="text-[#ff7514] hover:underline">
+              <a href="mailto:primebuild.official@gmail.com" className="text-primary hover:underline">
                 primebuild.official@gmail.com
               </a>
             </p>
@@ -164,9 +164,9 @@ const Privacy = () => {
               puoi contattarci a:
             </p>
             <ul className="list-none text-neutral-300 space-y-1 mt-4">
-              <li>Email: <a href="mailto:primebuild.official@gmail.com" className="text-[#ff7514] hover:underline">primebuild.official@gmail.com</a></li>
-              <li>Instagram: <a href="https://www.instagram.com/prime_build_/" target="_blank" rel="noopener noreferrer" className="text-[#ff7514] hover:underline">@prime_build_</a></li>
-              <li>Discord: <a href="https://discord.gg/jBNk2vXKKd" target="_blank" rel="noopener noreferrer" className="text-[#ff7514] hover:underline">Prime Build Community</a></li>
+              <li>Email: <a href="mailto:primebuild.official@gmail.com" className="text-primary hover:underline">primebuild.official@gmail.com</a></li>
+              <li>Instagram: <a href="https://www.instagram.com/prime_build_/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@prime_build_</a></li>
+              <li>Discord: <a href="https://discord.gg/jBNk2vXKKd" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Prime Build Community</a></li>
             </ul>
           </section>
         </div>
@@ -176,3 +176,5 @@ const Privacy = () => {
 };
 
 export default Privacy;
+
+

@@ -73,37 +73,6 @@ function sanitize(value, max) {
     .slice(0, max);
 }
 
-async function enforceRateLimit(request, env) {
-  if (!env.CONTACT_RATE_KV) {
-    return { allowed: false, status: 503, error: 'Rate limit unavailable' };
-  }
-
-  try {
-    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-    const now = Date.now();
-    const raw = await env.CONTACT_RATE_KV.get(ip);
-
-    const WINDOW_MS = 60 * 60 * 1000;
-    const MAX_REQUESTS = 10;
-
-    let rec = raw ? JSON.parse(raw) : { first: now, count: 0 };
-    if (now - rec.first > WINDOW_MS) {
-      rec = { first: now, count: 0 };
-    }
-
-    if (rec.count >= MAX_REQUESTS) {
-      return { allowed: false, status: 429, error: 'Rate limit' };
-    }
-
-    rec.count += 1;
-    await env.CONTACT_RATE_KV.put(ip, JSON.stringify(rec), { expirationTtl: 7200 });
-    return { allowed: true };
-  } catch (error) {
-    console.error('KV rate limit error', error);
-    return { allowed: false, status: 503, error: 'Rate limit unavailable' };
-  }
-}
-
 async function verifyTurnstileToken(request, env, token, debugEnabled) {
   const secret = env.TURNSTILE_SECRET_KEY;
   if (!secret) {
@@ -186,11 +155,6 @@ export const onRequestPost = async (context) => {
 
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       return jsonResponse({ success: false, error: 'Invalid email' }, 400, allowOrigin);
-    }
-
-    const rateLimit = await enforceRateLimit(request, env);
-    if (!rateLimit.allowed) {
-      return jsonResponse({ success: false, error: rateLimit.error }, rateLimit.status, allowOrigin);
     }
 
     const turnstileCheck = await verifyTurnstileToken(request, env, turnstileToken, debugEnabled);

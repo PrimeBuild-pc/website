@@ -76,7 +76,7 @@ const FAQSection = () => {
                   aria-controls={`faq-answer-${index}`}
                 >
                   <span className="font-semibold text-white">{faq.question}</span>
-                  <span className={`text-[#ff7514] text-2xl transition-transform duration-300 ${openIndex === index ? 'rotate-45' : ''}`}>
+                  <span className={`text-primary text-2xl transition-transform duration-300 ${openIndex === index ? 'rotate-45' : ''}`}>
                     +
                   </span>
                 </button>
@@ -124,3 +124,5 @@ const FAQSection = () => {
 };
 
 export default FAQSection;
+
+

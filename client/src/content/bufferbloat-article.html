@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bufferbloat Test: LibreQoS vs Waveform | Analisi tecnica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+            background-attachment: fixed;
+            padding: 0;
+        }
+
+        .hero-section {
+            background: #000000;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid #ff8c00;
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.2);
+        }
+
+        .main-title {
+            font-size: 3rem;
+            color: #ff8c00;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(255, 140, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #ffa500;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .meta-info {
+            font-size: 0.95rem;
+            color: #999;
+            margin-top: 1rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 15px rgba(255, 140, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: #ff8c00;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            color: #ffa500;
+            transform: translateY(-3px) scale(1.1);
+            filter: drop-shadow(0 4px 8px rgba(255, 140, 0, 0.6));
+        }
+
+        .social-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: rgba(13, 13, 13, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #ff8c00;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #ff8c00;
+            padding-bottom: 1rem;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(255, 140, 0, 0.3);
+        }
+
+        h2 {
+            color: #ff8c00;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            padding-left: 1.5rem;
+            border-left: 5px solid #ff8c00;
+            background: linear-gradient(90deg, rgba(255, 140, 0, 0.15) 0%, transparent 100%);
+            border-radius: 5px;
+            text-shadow: 0 2px 6px rgba(255, 140, 0, 0.3);
+        }
+
+        h3 {
+            color: #ffa500;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #ffa500;
+        }
+
+        h4 {
+            color: #ffb732;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            line-height: 1.9;
+        }
+
+        strong {
+            color: #ff8c00;
+            font-weight: 600;
+        }
+
+        em {
+            color: #ffa500;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.8) 100%);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: #ff8c00;
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #ff8c00;
+        }
+
+        td {
+            padding: 1rem;
+            border: 1px solid rgba(61, 61, 61, 0.5);
+            color: #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(13, 13, 13, 0.4);
+        }
+
+        tr:hover {
+            background: linear-gradient(90deg, rgba(255, 140, 0, 0.1) 0%, transparent 100%);
+            transition: background 0.3s ease;
+        }
+
+        sup {
+            color: #ff8c00;
+            font-weight: bold;
+        }
+
+        a {
+            color: #ff8c00;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            border-bottom-color: #ff8c00;
+            text-shadow: 0 0 8px rgba(255, 140, 0, 0.6);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 3px solid #ff8c00;
+            box-shadow: 0 -4px 20px rgba(255, 140, 0, 0.2);
+        }
+
+        .signature {
+            color: #ff8c00;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 2px 10px rgba(255, 140, 0, 0.5);
+        }
+
+        mark {
+            background-color: transparent;
+            color: inherit;
+        }
+
+        blockquote {
+            border-left: 4px solid #ff8c00;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #cccccc;
+            background: rgba(255, 140, 0, 0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+        }
+
+        code {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: #ff8c00;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+        }
+
+        .bibliography {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(13, 13, 13, 0.9) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            border: 2px solid rgba(255, 140, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .bibliography h4 {
+            color: #ff8c00;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #ff8c00;
+            text-shadow: 0 2px 8px rgba(255, 140, 0, 0.3);
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .bibliography h4:hover {
+            color: #ffa500;
+        }
+
+        .bibliography h4::after {
+            content: '▼';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .bibliography h4.collapsed::after {
+            transform: rotate(-90deg);
+        }
+
+        .bibliography-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .bibliography-content.expanded {
+            max-height: 10000px;
+        }
+
+        .bibliography ol {
+            list-style: none;
+            counter-reset: bib-counter;
+            margin-left: 0;
+        }
+
+        .bibliography li {
+            counter-increment: bib-counter;
+            margin-bottom: 1.8rem;
+            padding-left: 3.5rem;
+            position: relative;
+            line-height: 1.7;
+            background: rgba(255, 140, 0, 0.03);
+            padding: 1rem 1rem 1rem 3.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .bibliography li:hover {
+            background: rgba(255, 140, 0, 0.08);
+            transform: translateX(5px);
+        }
+
+        .bibliography li::before {
+            content: "[" counter(bib-counter) "]";
+            position: absolute;
+            left: 0.8rem;
+            color: #ff8c00;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bibliography a {
+            color: #ffa500;
+            word-break: break-all;
+        }
+
+        .bibliography a:hover {
+            color: #ff8c00;
+        }
+
+        .references {
+            background: linear-gradient(135deg, rgba(13, 13, 13, 0.9) 0%, rgba(10, 10, 10, 0.9) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border-left: 5px solid #ff8c00;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .references p {
+            margin-bottom: 1.2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.6) 0%, rgba(13, 13, 13, 0.6) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 140, 0, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .test-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 2px solid rgba(255, 140, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .test-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff8c00;
+            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4);
+        }
+
+        .test-card h3 {
+            color: #ff8c00;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border: none;
+            padding: 0;
+        }
+
+        .test-card p {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .test-card a {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff8c00 0%, #ffa500 100%);
+            color: #000;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .test-card a:hover {
+            background: linear-gradient(135deg, #ffa500 0%, #ffb732 100%);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.6rem;
+            }
+
+            .bibliography li {
+                padding-left: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="signature">Prime Build</div>
+            <div class="social-links">
+                <a href="https://discord.gg/jBNk2vXKKd" class="social-link" target="_blank" rel="noopener" title="Discord">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/PrimeBuild-pc/bufferbloat-analysis" class="social-link" target="_blank" rel="noopener" title="GitHub">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/prime_build_/" class="social-link" target="_blank" rel="noopener" title="Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <h1 class="main-title">Bufferbloat Test Comparison</h1>
+        <p class="subtitle">LibreQoS vs Waveform: Analisi tecnica approfondita</p>
+        <p class="meta-info">Studio sulla precisione diagnostica delle metodologie di misurazione nel contesto delle reti Next-Generation</p>
+        <p class="meta-info" style="margin-top: 1rem; font-size: 0.9rem; color: #666;">08 gennaio 2026</p>
+    </div>
+
+    <div class="container">
+        <div class="test-links">
+            <div class="test-card">
+                <h3>Waveform</h3>
+                <p>Test di bufferbloat consumer-friendly con interfaccia intuitiva e risultati immediati</p>
+                <a href="https://www.waveform.com/tools/bufferbloat" target="_blank" rel="noopener">Prova il Test</a>
+            </div>
+            <div class="test-card">
+                <h3>LibreQoS</h3>
+                <p>Test professionale con metriche avanzate, percentili e modalità Virtual Household</p>
+                <a href="https://bufferbloat.libreqos.com/" target="_blank" rel="noopener">Prova il Test</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+<h2
+id="capitolo-1-il-nuovo-paradigma-della-qualità-dellesperienza-qoe-nelle-telecomunicazioni-moderne">Capitolo
+1: Il nuovo paradigma della qualità dell'esperienza (QoE) nelle
+telecomunicazioni moderne</h2>
+<p>L'evoluzione delle infrastrutture di rete globali, caratterizzata
+dalla transizione massiva verso le architetture FTTH (Fiber-to-the-Home)
+e l'adozione diffusa di standard come il Wi-Fi 6E e il Wi-Fi 7, ha
+generato un paradosso fondamentale: mentre la larghezza di banda
+(throughput) disponibile per l'utente finale è cresciuta
+esponenzialmente, raggiungendo e superando la soglia del Gigabit, la
+percezione qualitativa della navigazione e dell'utilizzo delle
+applicazioni in tempo reale non ha seguito una curva di miglioramento
+identica. Questo disallineamento ha spostato l'attenzione
+dell'ingegneria delle telecomunicazioni dalla pura velocità di
+trasferimento alla latenza sotto carico, introducendo la necessità
+critica di misurare e mitigare il fenomeno noto come
+<strong>bufferbloat</strong>.</p>
+<p>Il presente rapporto di ricerca, esteso e dettagliato, si propone di
+rispondere in maniera esaustiva al quesito riguardante l'affidabilità
+comparata dei due principali strumenti di diagnostica oggi disponibili:
+<strong>LibreQoS Bufferbloat Test</strong> e <strong>Waveform
+Bufferbloat Test</strong>. Attraverso un'analisi tecnica rigorosa, che
+spazia dai protocolli di trasporto utilizzati alle metodologie
+statistiche di campionamento, determineremo quale dei due strumenti
+offra i risultati più attendibili, precisi e costanti nel panorama
+tecnologico del 2025/2026.</p>
+<h3 id="fenomenologia-del-bufferbloat-una-definizione-tecnica">1.1
+Fenomenologia del bufferbloat: una definizione tecnica</h3>
+<p>Il bufferbloat non è semplicemente un rallentamento della rete; è una
+condizione patologica specifica dei dispositivi di commutazione di
+pacchetto. Si verifica quando i buffer (memorie temporanee) all'interno
+di router, modem o switch vengono dimensionati in modo eccessivo e
+gestiti tramite algoritmi FIFO (First-In, First-Out) semplicistici. In
+presenza di un flusso di dati massiccio (come un download di grandi
+dimensioni o un backup su cloud), il protocollo TCP (Transmission
+Control Protocol), in particolare nelle sue varianti classiche come Reno
+o CUBIC, tende a saturare completamente questi buffer prima di ricevere
+un segnale di congestione (packet drop).</p>
+<p>La conseguenza diretta è che i pacchetti successivi, appartenenti
+magari a flussi sensibili alla latenza come una chiamata VoIP, una
+sessione di gaming online o una richiesta DNS, si trovano accodati
+dietro una lunga fila di pacchetti "bulk". Questo si traduce in un
+aumento drammatico della latenza (RTT - Round Trip Time) e del jitter
+(variazione della latenza), che può passare da pochi millisecondi a
+diversi secondi, rendendo la connessione inutilizzabile per
+l'interattività, nonostante la velocità nominale sia
+elevata.<sup>1</sup></p>
+<h3 id="la-necessità-di-strumenti-diagnostici-di-precisione">1.2 La
+necessità di strumenti diagnostici di precisione</h3>
+<p>In questo contesto, gli speed test tradizionali sono diventati
+obsoleti. Misurare solo la velocità massima in condizioni ideali
+nasconde la latenza indotta dal carico. Sono emersi quindi strumenti
+specifici progettati per saturare deliberatamente la connessione e
+misurare contemporaneamente la latenza. Tuttavia, la precisione di
+questi strumenti varia enormemente in base alla loro architettura
+software. La domanda posta richiede di discriminare tra l'approccio
+"consumer-friendly" di Waveform e l'approccio "engineering-grade" di
+LibreQoS. La risposta non risiede solo nell'interfaccia utente, ma nel
+motore sottostante: la differenza tra HTTP e WebSockets, tra medie
+statistiche e percentili, e tra infrastrutture CDN generaliste e nodi
+edge ottimizzati.<sup>1<mark></mark></sup></p>
+<p><mark></mark><strong>1.3 Scenari domestici e applicazioni sensibili
+alla latenza<mark></mark></strong></p>
+<p>Il bufferbloat si manifesta in modo particolarmente evidente negli
+scenari domestici caratterizzati da applicazioni real-time. Esempi
+tipici sono il gaming online competitivo, le videochiamate (ad es. Zoom,
+Teams, Meet), le chiamate VoIP e qualunque applicazione interattiva che
+richieda un flusso bidirezionale fluido di piccoli pacchetti.</p>
+<p>In questi contesti, la semplice disponibilità di una capacità
+nominale elevata (ad esempio connessioni FTTH da centinaia di megabit o
+gigabit) non è sufficiente a garantire una buona esperienza d’uso. Ciò
+che diventa critico è la capacità della rete di mantenere latenza e
+jitter bassi e stabili anche sotto carico, ad esempio durante grandi
+download, upload massivi verso il cloud o aggiornamenti software
+eseguiti in background.</p>
+<p>Per questo motivo, nella pratica, un utente può percepire la propria
+linea come “veloce” quando esegue uno speed test tradizionale, ma
+sperimentare allo stesso tempo ritardi marcati nei giochi online o
+audio/video che si bloccano durante una videochiamata. Il parametro
+discriminante non è più il throughput di picco, bensì l’aumento di
+latenza indotto dal carico, cioè il bufferbloat.</p>
+<p>La nascita di strumenti specifici per la misura del bufferbloat, come
+il Bufferbloat Test di LibreQoS e il Bufferbloat Test di Waveform,
+risponde proprio a questa esigenza: quantificare la responsività della
+connessione in condizioni realistiche di stress, offrendo un indicatore
+operativo della qualità dell’esperienza (QoE) percepita dall’utente
+finale nei casi d’uso più sensibili.</p>
+<p><mark></mark></p>
+<h2
+id="capitolo-2-analisi-architetturale-comparata-dei-protocolli-di-trasporto">Capitolo
+2: Analisi Architetturale Comparata dei Protocolli di Trasporto</h2>
+<p>Il fattore determinante per la precisione di uno strumento di test di
+rete ad alta velocità è il protocollo utilizzato per generare il
+traffico e misurare i tempi di risposta. L'analisi dei dati tecnici
+rivela una divergenza sostanziale tra i due contendenti.</p>
+<h3 id="waveform-e-leredità-dellhttp">2.1 Waveform e l'eredità
+dell'HTTP</h3>
+<p>Lo strumento offerto da Waveform (waveform.com) si basa su richieste
+<strong>HTTP (Hypertext Transfer Protocol)</strong>. Sebbene questo
+garantisca una compatibilità quasi universale con qualsiasi browser e
+configurazione di firewall, l'HTTP introduce un overhead significativo
+che compromette la precisione su linee ad alta velocità.<sup>1</sup></p>
+<h4 id="limitazioni-del-polling-e-delloverhead">2.1.1 Limitazioni del
+polling e dell'overhead</h4>
+<p>In un test basato su HTTP, il browser deve aprire molteplici
+connessioni TCP per simulare un carico pesante. Ogni richiesta comporta
+l'invio di header, la gestione di handshake (se le connessioni non sono
+persistenti o se il pool si esaurisce) e il parsing delle risposte. Su
+una connessione moderna da 1 Gbps o 2.5 Gbps, il numero di richieste
+necessarie per saturare la banda è elevatissimo.</p>
+<p>Le ricerche indicano che questo approccio soffre di due problemi
+critici:</p>
+<ol type="1">
+<li><p><strong>Collo di bottiglia della CPU (Client-Bound):</strong> Il
+processore del &gt; dispositivo utente deve dedicare cicli significativi
+alla gestione &gt; dello stack HTTP. Questo introduce latenza locale che
+lo strumento &gt; potrebbe erroneamente attribuire alla rete.</p></li>
+<li><p><strong>Granularità Temporale:</strong> L'HTTP non è un
+protocollo real-time. La &gt; misurazione della latenza avviene spesso
+tramite richieste XHR &gt; (XMLHttpRequest) o Fetch discrete, che non
+offrono la continuità &gt; di un flusso di dati ininterrotto.</p></li>
+</ol>
+<p>Come ammesso nella stessa documentazione tecnica di Waveform, l'uso
+di HTTP invece di WebSockets è una limitazione nota che l'azienda spera
+di superare in futuro, riconoscendo implicitamente che l'approccio
+attuale ha svantaggi in termini di misurazione pura del
+bufferbloat.<sup>1</sup></p>
+<h3 id="libreqos-e-la-rivoluzione-dei-websockets">2.2 LibreQoS e la
+rivoluzione dei WebSockets</h3>
+<p>LibreQoS (bufferbloat.libreqos.com) adotta un approccio radicalmente
+diverso, basato sul protocollo <strong>WebSockets</strong>. I WebSocket
+permettono di stabilire un tunnel full-duplex persistente su una singola
+connessione TCP. Dopo l'handshake iniziale, i dati fluiscono come frame
+binari con un overhead minimo (pochi byte per frame).<sup>5</sup></p>
+<h4 id="vantaggi-metrologici-dei-websockets">2.2.1 Vantaggi metrologici
+dei WebSockets</h4>
+<p>L'architettura WebSocket conferisce a LibreQoS vantaggi decisivi per
+la <strong>precisione</strong> e l'<strong>affidabilità</strong>:</p>
+<ol type="1">
+<li><p><strong>Bassa Latenza Intrinseca:</strong> Eliminando gli header
+HTTP ripetitivi, &gt; LibreQoS misura il tempo di transito dei pacchetti
+in modo molto &gt; più fedele al livello "wire" (cavo).</p></li>
+<li><p><strong>Alta Frequenza di Campionamento:</strong> Grazie al
+canale aperto &gt; bidirezionale, il server può inviare ping e ricevere
+pong ad &gt; altissima frequenza senza sovraccaricare il client. Questo
+&gt; permette di costruire un set di dati statistici molto più denso,
+&gt; capace di rilevare micro-variazioni (jitter) che sfuggirebbero a
+&gt; un test HTTP.<sup>7</sup></p></li>
+<li><p><strong>Simulazione Realistica del Traffico Interattivo:</strong>
+Le applicazioni &gt; che soffrono maggiormente il bufferbloat (giochi
+online, chiamate &gt; Zoom/VoIP) utilizzano flussi di dati continui
+(spesso UDP, ma &gt; comportamentalmente simili a WebSocket) piuttosto
+che richieste &gt; discrete. LibreQoS simula quindi il traffico reale
+meglio di &gt; quanto faccia un download di file via
+HTTP.<sup>4</sup></p></li>
+<li><p><strong>Efficienza su Linee Gigabit:</strong> La riduzione del
+carico sulla CPU &gt; del client significa che LibreQoS può saturare
+connessioni &gt; multi-gigabit (es. 2.5 Gbps o 10 Gbps) misurando
+effettivamente la &gt; rete e non i limiti del browser
+web.<sup>10</sup></p></li>
+</ol>
+<h3 id="sintesi-delle-differenze-di-protocollo">2.3 Sintesi delle
+differenze di protocollo</h3>
+<p>La seguente tabella riassume l'impatto dei protocolli sulla qualità
+della misurazione, basata sulle specifiche tecniche
+rilevate.<sup>1</sup></p>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 22%" />
+<col style="width: 23%" />
+<col style="width: 38%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Caratteristica</strong></td>
+<td><strong>Waveform (HTTP)</strong></td>
+<td><strong>LibreQoS (WebSockets)</strong></td>
+<td><strong>Implicazione per l'Utente</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Overhead per Messaggio</strong></td>
+<td>Alto (Header completi, Cookies, ecc.)</td>
+<td>Minimo (Frame header di pochi byte)</td>
+<td>LibreQoS è più preciso su hardware meno potente.</td>
+</tr>
+<tr class="odd">
+<td><strong>Modalità di Comunicazione</strong></td>
+<td>Richiesta-Risposta (Half-duplex logico)</td>
+<td>Full-Duplex (Bidirezionale simultaneo)</td>
+<td>LibreQoS misura meglio la latenza durante traffico bidirezionale
+intenso.</td>
+</tr>
+<tr class="even">
+<td><strong>Carico CPU Client</strong></td>
+<td>Elevato ad alte velocità di banda</td>
+<td>Basso ed efficiente</td>
+<td>LibreQoS evita falsi negativi su connessioni in fibra veloce.</td>
+</tr>
+<tr class="odd">
+<td><strong>Natura del Traffico</strong></td>
+<td>Simile alla navigazione Web / Download file</td>
+<td>Simile a Gaming / VoIP / Streaming Real-time</td>
+<td>LibreQoS simula meglio gli scenari critici per il bufferbloat.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section"></h2>
+<p><mark></mark><strong>2.4 Panoramica funzionale degli strumenti di
+test</strong></p>
+<p>Oltre alle differenze architetturali a livello di protocollo di
+trasporto, è utile descrivere sinteticamente il comportamento dei due
+strumenti dal punto di vista dell’utente finale.</p>
+<p>Il Bufferbloat Test di LibreQoS viene eseguito interamente nel
+browser, appoggiandosi all’infrastruttura edge di Cloudflare.
+L’interfaccia presenta una sequenza di fasi di carico (download, upload
+e, nelle modalità più avanzate, traffico bidirezionale e scenari
+multi-utente) durante le quali vengono misurati in parallelo latenza,
+jitter, perdita di pacchetti e throughput sostenuto. I risultati sono
+sintetizzati in un voto da A+ a F basato sull’aumento di latenza sotto
+carico, ma accompagnati da grafici dettagliati (ad esempio box plot
+temporali) che espongono in modo esplicito la distribuzione dei tempi di
+risposta e le eventuali code di ritardi.</p>
+<p>Il Bufferbloat Test di Waveform integra un classico speed test
+(misura della banda in download e upload) con la misura continua del
+ping nelle fasi di scaricamento e caricamento intenso. Anche in questo
+caso il risultato finale è espresso tramite un giudizio letterale sul
+bufferbloat (A+…F), reso comprensibile da descrizioni testuali che
+collegano l’aumento di latenza agli impatti attesi su attività come
+gaming, streaming e videochiamate. L’interfaccia è deliberatamente più
+compatta: al termine del test l’utente visualizza pochi numeri chiave
+(latenza di base, latenza con download attivo, latenza con upload
+attivo) e un verdetto sintetico.</p>
+<p>In sintesi, LibreQoS privilegia una rappresentazione ricca e
+granulare, pensata anche per utenti tecnici e ISP, mentre Waveform
+privilegia una presentazione snella e immediatamente leggibile,
+orientata al consumatore.</p>
+<h2 id="section-1"><mark></mark></h2>
+<h2 id="capitolo-3-metodologia-statistica-e-analisi-dei-dati">Capitolo
+3: Metodologia statistica e analisi dei dati</h2>
+<p>La "precisione" di uno strumento non dipende solo da come raccoglie i
+dati, ma da come li elabora. La differenza tra l'uso di medie
+statistiche e percentili ad alta granularità è fondamentale per
+diagnosticare problemi di rete intermittenti.</p>
+<h3 id="il-modello-statistico-di-waveform-lapproccio-mediano">3.1 Il
+Modello Statistico di Waveform: L'Approccio Mediano</h3>
+<p>Waveform calcola il grado di bufferbloat confrontando la latenza
+media (o mediana) sotto carico con la latenza a riposo. Sebbene efficace
+per identificare problemi macroscopici, questo approccio tende a
+"smussare" i dati. Un picco di latenza isolato (lag spike) potrebbe
+essere assorbito in una media temporale, portando lo strumento a
+classificare la connessione come "buona" (A o B) anche se l'esperienza
+di gioco è stata compromessa da scatti improvvisi.<sup>1</sup></p>
+<p>I criteri di valutazione di Waveform sono i seguenti:</p>
+<ul>
+<li><p><strong>A+:</strong> Aumento di latenza &lt; 5 ms</p></li>
+<li><p><strong>A:</strong> Aumento di latenza &lt; 30 ms</p></li>
+<li><p><strong>B:</strong> Aumento di latenza &lt; 60 ms</p></li>
+<li><p><strong>C:</strong> Aumento di latenza &lt; 200 ms
+<sup>1</sup></p></li>
+</ul>
+<h3 id="il-modello-statistico-di-libreqos-sensibilità-ai-picchi-p90">3.2
+Il modello statistico di LibreQoS: sensibilità ai picchi (P90)</h3>
+<p>LibreQoS utilizza un algoritmo più sofisticato e severo, progettato
+esplicitamente per rilevare l'instabilità. La metrica principale,
+definita "Increase", è calcolata come:</p>
+<p>$$ = P_{90}() - P_{05}()$$</p>
+<p>Dove $P_{90}$ è il 90° percentile e $P_{05}$ è il 5°
+percentile.<sup>9</sup></p>
+<h4 id="perché-il-90-percentile-è-superiore-alla-media">3.2.1 Perché il
+90° percentile è superiore alla media</h4>
+<ol type="1">
+<li><p><strong>Rilevazione dei "Micro-Burst":</strong> Nel gaming e nel
+VoIP, non è la &gt; latenza media che causa problemi, ma i pacchetti che
+arrivano in &gt; ritardo (la "coda" della distribuzione). Utilizzando il
+90° &gt; percentile, LibreQoS penalizza pesantemente le connessioni che
+&gt; sono stabili per il 90% del tempo ma hanno picchi nel restante &gt;
+10%. Questo riflette molto più accuratamente la percezione umana &gt; di
+"lag" o "scatto".<sup>8</sup></p></li>
+<li><p><strong>Baseline Pulita (P05):</strong> Utilizzando il 5°
+percentile per la &gt; baseline invece della media, LibreQoS stabilisce
+quale sia il &gt; potenziale fisico reale della connessione (il "floor"
+di &gt; latenza), escludendo rumore di fondo occasionale del sistema
+&gt; operativo in fase di riposo.</p></li>
+</ol>
+<p>Inoltre, LibreQoS fornisce metriche dettagliate per fase (Download,
+Upload, Bidirezionale) visualizzando non solo la latenza, ma anche il
+<strong>Jitter</strong> e il <strong>Packet Loss</strong> in tempo
+reale, dati che Waveform spesso aggrega o nasconde dietro un voto
+semplice.<sup>12</sup></p>
+<h3 id="confronto-dei-criteri-di-giudizio">3.3 Confronto dei criteri di
+giudizio</h3>
+<p>Sebbene entrambi usino una scala da A+ a F, il significato matematico
+dietro il voto è diverso. Un "A+" su LibreQoS è garanzia di una
+stabilità quasi perfetta anche nei casi peggiori (90° percentile),
+mentre un "A+" su Waveform potrebbe teoricamente nascondere brevi
+istanti di instabilità se la media rimane bassa.</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 25%" />
+<col style="width: 27%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Grado</strong></td>
+<td><strong>Criterio Waveform (Aumento Latenza)</strong></td>
+<td><strong>Criterio LibreQoS (Aumento Latenza P90)</strong></td>
+<td><strong>Interpretazione Comparata</strong></td>
+</tr>
+<tr class="even">
+<td><strong>A+</strong></td>
+<td>&lt; 5 ms</td>
+<td>&lt; 5 ms</td>
+<td>Identico nominalmente, ma LibreQoS è più difficile da ottenere.</td>
+</tr>
+<tr class="odd">
+<td><strong>A</strong></td>
+<td>&lt; 30 ms</td>
+<td>5 - 30 ms</td>
+<td>LibreQoS penalizza i picchi in questa fascia.</td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td>&lt; 60 ms</td>
+<td>30 - 60 ms</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td><strong>C</strong></td>
+<td>&lt; 200 ms</td>
+<td>60 - 200 ms</td>
+<td>Soglia di usabilità per VoIP.</td>
+</tr>
+<tr class="even">
+<td><strong>D</strong></td>
+<td>&lt; 400 ms</td>
+<td>200 - 400 ms</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td><strong>F</strong></td>
+<td>≥ 400 ms</td>
+<td>≥ 400 ms</td>
+<td>Gravemente inutilizzabile.</td>
+</tr>
+</tbody>
+</table>
+<p>**3.4 Presentazione dei risultati e leggibilità metrica^</p>
+<p>^**Le differenze metodologiche fra i due strumenti si riflettono
+anche nel modo in cui i risultati vengono presentati all’utente.</p>
+<p>LibreQoS espone in maniera esplicita i valori di:</p>
+<ul>
+<li><p>latenza a riposo,</p></li>
+<li><p>latenza sotto carico nelle diverse fasi (download, upload,
+eventualmente traffico bidirezionale),</p></li>
+<li><p>incremento di latenza calcolato su percentili (ad esempio 95°
+percentile in carico rispetto alla mediana a riposo),</p></li>
+<li><p>jitter e perdita di pacchetti.</p></li>
+</ul>
+<p>Questi indicatori sono affiancati da rappresentazioni grafiche (time
+series, box plot) che permettono di cogliere rapidamente la variabilità
+temporale della connessione e l’eventuale presenza di spike isolati.
+L’approccio è pensato per consentire sia una lettura di sintesi (voto
+A+…F e “Increase” in millisecondi), sia una diagnosi fine da parte di
+utenti avanzati e operatori.</p>
+<p>Waveform adotta una sintesi più aggressiva: i risultati sono
+concentrati in una tabella che riporta tipicamente latenza “unloaded”
+(idle) e latenza con download e upload attivi, con i relativi
+incrementi. Sopra la tabella è riportato il giudizio letterale sul
+bufferbloat, spesso accompagnato da una breve descrizione testuale
+(“latency increased moderately under load”, ecc.) che collega il dato
+numerico a un impatto d’uso pratico.</p>
+<p>Dal punto di vista della leggibilità:</p>
+<ul>
+<li><p>LibreQoS è più adatto a chi desidera analizzare il dettaglio
+metrologico e differenziare sfumature (ad esempio distinguere un aumento
+di 15 ms da uno di 40 ms),</p></li>
+<li><p>Waveform è più adatto per fornire una risposta rapida alla
+domanda “ho bufferbloat sì o no, e quanto è grave?”.</p></li>
+</ul>
+<h2 id="capitolo-4-infrastruttura-e-constanza-dei-risultati">Capitolo 4:
+Infrastruttura e costanza dei risultati</h2>
+<p>La "costanza" (o ripetibilità) di un test dipende dalla stabilità
+dell'infrastruttura server contro cui viene eseguito e dalla capacità
+del client di replicare le condizioni di test.</p>
+<h3 id="la-rete-edge-di-cloudflare">4.1 La rete edge di Cloudflare</h3>
+<p>Entrambi gli strumenti hanno convergenza infrastrutturale,
+utilizzando la rete edge di <strong>Cloudflare</strong> per minimizzare
+la latenza geografica e testare la connessione "ultimo miglio" piuttosto
+che il transito internet globale. Waveform utilizza la CDN di Cloudflare
+per i blob di file <sup>1</sup>, mentre LibreQoS esegue il test
+interamente nel browser sfruttando i Cloudflare Workers
+all'edge.<sup>8</sup></p>
+<p>Tuttavia, l'implementazione software lato server differisce.
+LibreQoS, essendo un progetto sviluppato da esperti di kernel networking
+e ISP (come Dave Täht, co-inventore dell'algoritmo fq_codel), ha
+ottimizzato il lato server per rispondere specificamente al protocollo
+WebSocket ad alta frequenza. Questo riduce la varianza lato server
+rispetto a una chiamata CDN generica HTTP, rendendo i risultati di
+LibreQoS intrinsecamente più <strong>costanti</strong> tra esecuzioni
+multiple.<sup>4</sup></p>
+<h3 id="l-observer-effect">4.2 L'"observer effect"</h3>
+<p>In fisica e metrologia, l'atto di osservare un fenomeno può
+alterarlo. Nelle reti, questo accade quando lo strumento di test consuma
+troppe risorse CPU.</p>
+<ul>
+<li><p><strong>Il Problema di Waveform:</strong> Utenti con connessioni
+in fibra a 2.5 &gt; Gbps o superiori hanno riportato su forum tecnici
+(come Reddit e &gt; Fibra.click) risultati incoerenti con Waveform. A
+volte il test &gt; mostra velocità inferiori alla realtà o latenze
+errate perché il &gt; browser non riesce a processare l'HTTP abbastanza
+velocemente. &gt; Questo introduce una variabilità che non dipende dalla
+rete, ma dal &gt; PC dell'utente.<sup>14</sup></p></li>
+<li><p><strong>La Soluzione LibreQoS:</strong> Grazie all'efficienza di
+Rust (linguaggio &gt; usato nel backend) e WebSockets, LibreQoS riduce
+drasticamente &gt; l'impatto sulla CPU. Ciò garantisce che la
+variabilità misurata sia &gt; effettivamente quella della rete, offrendo
+una costanza di risultati &gt; superiore, specialmente su hardware di
+fascia media connesso a reti &gt; di fascia alta.<sup>10</sup></p></li>
+</ul>
+<p><mark></mark><strong>4.3 Ripetibilità operativa del
+test</strong>[</p>
+<p>]{.mark}La ripetibilità dei risultati è un requisito fondamentale per
+poter utilizzare uno strumento di misura sia a fini diagnostici sia a
+fini comparativi (ad esempio prima e dopo una modifica di configurazione
+sul router).</p>
+<p>In condizioni controllate – rete cablata stabile, assenza di traffico
+concorrente rilevante, dispositivo di test con risorse CPU adeguate –
+sia LibreQoS sia Waveform mostrano un buon grado di coerenza tra
+esecuzioni successive. Le differenze riscontrate fra più misurazioni
+consecutive tendono a rimanere entro pochi millisecondi, compatibili con
+la fisiologica variabilità del percorso di rete.</p>
+<p>Nella pratica, tuttavia, alcuni fattori possono degradare la
+ripetibilità percepita:</p>
+<ul>
+<li><p>router o CPE con CPU al limite, specialmente in presenza di
+PPPoE, NAT complessi o algoritmi di QoS/scheduling avanzati,</p></li>
+<li><p>dispositivi client con processore poco potente o fortemente
+carichi,</p></li>
+<li><p>presenza di traffico in background (backup, aggiornamenti
+automatici, streaming),</p></li>
+<li><p>test eseguiti su Wi-Fi, dove la natura stessa del mezzo introduce
+variabilità addizionale.</p></li>
+</ul>
+<p>In queste situazioni, non è raro che, a parità apparente di
+condizioni, l’utente osservi voti diversi (ad esempio A in una prova, C
+nella successiva). Nella maggior parte dei casi questo non è imputabile
+al motore di test in sé, ma al fatto che l’ambiente di misura non è
+realmente stazionario.</p>
+<p>Le linee guida operative che emergono sono quindi:</p>
+<ul>
+<li><p>preferire sempre test su connessione Ethernet cablata,</p></li>
+<li><p>chiudere applicazioni che generano traffico significativo in
+background,</p></li>
+<li><p>su Waveform, in caso di dubbi, ripetere il test da un altro
+browser o dispositivo per escludere colli di bottiglia lato
+client,</p></li>
+<li><p>utilizzare LibreQoS per verificare, tramite le serie temporali,
+se le differenze fra una prova e l’altra siano dovute a reali variazioni
+di rete o a condizioni locali (CPU, Wi-Fi, ecc.).</p></li>
+</ul>
+<p><mark></mark><strong>4.4 Influenza del mezzo di accesso: Wi-Fi vs
+Ethernet<mark></mark></strong></p>
+<p>Sia LibreQoS che Waveform raccomandano esplicitamente (o
+implicitamente, tramite la documentazione e le esperienze della
+community) di eseguire i test su connessione cablata quando l’obiettivo
+è valutare il bufferbloat del collegamento di accesso e della rete
+dell’ISP.</p>
+<p>Il motivo è che il segmento Wi-Fi introduce meccanismi di buffering e
+variabilità propri, indipendenti dalla qualità della tratta WAN:</p>
+<ul>
+<li><p>il livello MAC wireless utilizza code e ritrasmissioni per
+compensare interferenze e perdita di frame,</p></li>
+<li><p>la modulazione adattativa fa sì che la capacità effettiva del
+collegamento vari nel tempo in funzione della distanza, degli ostacoli e
+del rumore radio,</p></li>
+<li><p>l’accesso condiviso al mezzo può causare congestione locale anche
+in assenza di saturazione del link verso Internet.</p></li>
+</ul>
+<p>Di conseguenza, è perfettamente normale osservare:</p>
+<ul>
+<li><p>voti molto elevati (A/A+) su Ethernet,</p></li>
+<li><p>voti peggiori (B, C o inferiori) sulla stessa linea testata in
+Wi-Fi.</p></li>
+</ul>
+<p>In questi casi, il test non sta necessariamente segnalando un
+problema di bufferbloat lato WAN, ma sta misurando la latency under load
+complessiva del percorso fino al client Wi-Fi, includendo quindi il
+contributo del segmento radio e di eventuali access point intermedi.</p>
+<p>Interpretare correttamente queste misure richiede di distinguere:</p>
+<ul>
+<li><p>test su cavo, utili a valutare la configurazione di QoS/SQM del
+router e il comportamento dell’ISP,</p></li>
+<li><p>test su Wi-Fi, utili a diagnosticare colli di bottiglia o
+problemi di copertura interna, ma non direttamente rappresentativi della
+qualità del backhaul in fibra o xDSL.</p></li>
+</ul>
+<p>Per l’ottimizzazione del gaming o di applicazioni sensibili alla
+latenza, le evidenze raccolte convergono su una raccomandazione chiara:
+privilegiare la connessione Ethernet per il dispositivo critico, usando
+il Wi-Fi solo per dispositivi e servizi meno sensibili.<mark></mark></p>
+<p><mark></mark></p>
+<h2
+id="capitolo-5-analisi-del-feedback-della-comunità-e-casi-duso-reali">Capitolo
+5: Analisi del feedback della comunità e casi d'uso reali</h2>
+<p>Per determinare l'affidabilità "sul campo", abbiamo analizzato report
+di utenti esperti e amministratori di rete su piattaforme come Reddit e
+forum specializzati.</p>
+<h3 id="il-falso-positivo-di-waveform">5.1 Il "falso positivo" di
+Waveform</h3>
+<p>Numerosi utenti, specialmente nel contesto del gaming competitivo
+(CS2, Valorant), riportano di ottenere un grado "A" o "A+" su Waveform,
+ma di continuare a sperimentare "lag" o scarsa "hit registration" in
+gioco. Questo fenomeno è spiegabile con la natura "media" del test
+Waveform, che non cattura i micro-burst UDP che rovinano l'esperienza di
+gioco.</p>
+<p>Al contrario, gli stessi utenti trovano spesso che LibreQoS fornisce
+una diagnosi più severa ma realistica, evidenziando jitter o picchi nel
+grafico temporale ("Time Series Box Plot") che Waveform aveva
+appiattito.16</p>
+<h3 id="testimonianze-su-connessioni-gigabit">5.2 Testimonianze su
+connessioni gigabit</h3>
+<p>Su connessioni FTTH Gigabit, utenti con router avanzati (come
+Ubiquiti UDM Pro o PC con OPNsense/OpenWrt) hanno osservato che LibreQoS
+riesce a saturare il link in modo più efficace e stabile. In un caso
+specifico, un utente ha notato discrepanze nei risultati di upload su
+Waveform (400ms di latenza su mobile vs 0ms su desktop), suggerendo
+un'instabilità del test HTTP su dispositivi con processori diversi.
+LibreQoS, essendo meno esoso, tende a fornire risultati coerenti tra
+desktop e mobile.<sup>14</sup></p>
+<h3 id="lecosistema-isp">5.3 L'ecosistema ISP</h3>
+<p>Un fattore critico di affidabilità è il target di utilizzo. Waveform
+è un sito consumer che genera revenue tramite referral Amazon per
+router.<sup>1</sup> LibreQoS è nato come strumento professionale per ISP
+(Wireless Internet Service Providers) per monitorare migliaia di
+clienti. Il fatto che lo stesso motore di test sia usato da operatori di
+rete per diagnosticare problemi infrastrutturali conferisce a LibreQoS
+un livello di validazione industriale che manca a
+Waveform.<sup>4<mark></mark></sup></p>
+<p><mark></mark>**5.4 Capacità di identificazione e quantificazione del
+bufferbloat[^</p>
+<p>^]{.mark}**Entrambi gli strumenti forniscono all’utente una risposta
+chiara sulla presenza o meno di bufferbloat, grazie alla combinazione di
+un giudizio letterale (A+…F) e di misure numeriche dell’aumento di
+latenza sotto carico.</p>
+<p>LibreQoS si distingue per la capacità di:</p>
+<ul>
+<li><p>evidenziare il bufferbloat anche quando si manifesta sotto forma
+di picchi sporadici (ad esempio tramite l’uso di percentili elevati e
+grafici temporali),</p></li>
+<li><p>quantificare separatamente l’impatto del carico in download, in
+upload e, nelle configurazioni avanzate, con traffico
+bidirezionale,</p></li>
+<li><p>mostrare jitter e packet loss, che completano il quadro
+qualitativo oltre il solo ping medio.</p></li>
+</ul>
+<p>In modalità “Virtual Household”, inoltre, LibreQoS associa in modo
+intuitivo l’effetto del bufferbloat a diversi ruoli (giocatore,
+partecipante a videochiamata, utente che guarda streaming, processo di
+download massivo), permettendo di capire chi “soffre” di più quando la
+rete è congestionata.</p>
+<p>Waveform, dal canto suo, è molto efficace nel rendere evidente la
+presenza di bufferbloat anche a utenti non tecnici: la tabella finale
+mette in relazione la latenza “unloaded” con quella in condizioni di
+scaricamento e caricamento intensivo, e il voto letterale è accompagnato
+da indicazioni discorsive sugli impatti pratici (ad esempio se il
+livello di bufferbloat è accettabile per il gaming o le videochiamate).
+In diversi casi reali riportati dalla community, Waveform è riuscito a
+far emergere situazioni di bufferbloat severo che altri test più brevi o
+meno aggressivi non evidenziavano con altrettanta chiarezza.</p>
+<p>Nel complesso, si può affermare che:</p>
+<ul>
+<li><p>LibreQoS eccelle nella quantificazione fine e nella diagnosi
+differenziale, grazie all’ampiezza delle metriche esposte,</p></li>
+<li><p>Waveform eccelle nella comunicazione immediata del problema,
+rendendo il concetto di bufferbloat accessibile anche a chi non ha
+familiarità con percentili e jitter.</p></li>
+</ul>
+<p><mark></mark></p>
+<h2
+id="capitolo-6-funzionalità-avanzate-e-integrazione-con-aqm-cakefq_codel">Capitolo
+6: Funzionalità avanzate e integrazione con AQM (CAKE/FQ_CoDel)</h2>
+<p>Il bufferbloat si risolve modernamente tramite algoritmi di AQM
+(Active Queue Management) come <strong>CAKE</strong> o
+<strong>FQ_CoDel</strong>. La capacità di un test di verificare il
+corretto funzionamento di questi algoritmi è il test definitivo della
+sua precisione.</p>
+<h3 id="visualizzazione-dellefficacia-di-cake">6.1 Visualizzazione
+dell'efficacia di CAKE</h3>
+<p>LibreQoS è sviluppato dalla stessa comunità che ha creato e mantiene
+CAKE. Di conseguenza, il test è calibrato per evidenziare i benefici di
+questo algoritmo.</p>
+<ul>
+<li><p><strong>Virtual Household (Casa Virtuale):</strong> LibreQoS
+offre una modalità &gt; unica chiamata "Virtual Household".<sup>12</sup>
+Questa simula &gt; simultaneamente un giocatore, una videochiamata, uno
+streaming 4K e &gt; un download di aggiornamenti. Mostra in tempo reale
+come il router &gt; gestisce la contesa tra questi flussi
+diversi.</p></li>
+<li><p><strong>Analisi dei Flussi:</strong> Mentre Waveform mostra solo
+un numero, &gt; LibreQoS visualizza come la latenza di un flusso "Gamer"
+simulato &gt; varia mentre un flusso "Bulk Download" è attivo. Se il
+router ha &gt; CAKE configurato correttamente, LibreQoS mostrerà una
+linea piatta &gt; per il gamer nonostante il download, validando
+visivamente la &gt; configurazione.<sup>9</sup></p></li>
+</ul>
+<p>Questo livello di dettaglio è assente in Waveform, che fornisce solo
+un voto globale aggregato.</p>
+<h2 id="capitolo-7-risposta-al-quesito-e-verdetto-finale">Capitolo 7:
+Risposta al quesito e verdetto finale</h2>
+<p>Sulla base delle evidenze raccolte, dei dati tecnici comparati e
+dell'analisi metodologica, formuliamo la risposta definitiva alla
+richiesta dell'utente.</p>
+<h3 id="valutazione-comparativa-sintetica">7.1 Valutazione comparativa
+sintetica</h3>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 42%" />
+<col style="width: 39%" />
+<col style="width: 8%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Criterio</strong></td>
+<td><strong>Waveform (waveform.com)</strong></td>
+<td><strong>LibreQoS (bufferbloat.libreqos.com)</strong></td>
+<td><strong>Vincitore</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Affidabilità</strong></td>
+<td>Buona per connessioni &lt;500Mbps, degrada su Gigabit a causa di
+limiti HTTP.</td>
+<td>Eccellente su tutte le velocità grazie a WebSockets e Rust.</td>
+<td><strong>LibreQoS</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Precisione</strong></td>
+<td>Media/Mediana (nasconde i picchi brevi). Rischio falsi
+positivi.</td>
+<td>90° Percentile (rileva i picchi). Molto sensibile alle
+micro-latenze.</td>
+<td><strong>LibreQoS</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Costanza</strong></td>
+<td>Variabile in base al browser e alla CPU del PC.</td>
+<td>Molto alta, isola la variabile "rete" dal dispositivo.</td>
+<td><strong>LibreQoS</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Metodologia</strong></td>
+<td>Black-box proprietaria, focus consumer.</td>
+<td>Open Source, validata da esperti kernel Linux/ISP.</td>
+<td><strong>LibreQoS</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Usabilità</strong></td>
+<td>Alta, interfaccia semplice, consigli acquisti integrati.</td>
+<td>Alta, grafici dettagliati per utenti tecnici e "Virtual
+Household".</td>
+<td><strong>Parità</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="il-verdetto-qual-è-il-più-affidabile-oggi">7.2 Il verdetto: qual
+è il più affidabile oggi?</h3>
+<p>Al giorno d'oggi (2025/2026), <strong>LibreQoS (<a
+href="https://bufferbloat.libreqos.com/"><u>https://bufferbloat.libreqos.com/</u></a>)</strong>
+è inequivocabilmente lo strumento <strong>più affidabile, preciso e
+costante</strong> per la valutazione della gestione del bufferbloat.</p>
+<p>La superiorità di LibreQoS deriva da:</p>
+<ol type="1">
+<li><p><strong>Tecnologia WebSocket:</strong> Elimina l'overhead del
+browser, &gt; garantendo che i risultati riflettano la rete e non il
+computer &gt; dell'utente.<sup>1</sup></p></li>
+<li><p><strong>Metrica "Increase" P90:</strong> Offre una valutazione
+onesta e severa &gt; della stabilità della connessione, cruciale per
+gaming e VoIP, &gt; laddove Waveform tende ad essere troppo
+permissivo.<sup>8</sup></p></li>
+<li><p><strong>Indipendenza Hardware:</strong> Fornisce risultati
+coerenti sia su &gt; smartphone che su workstation potenti, saturando
+efficacemente &gt; anche linee in fibra
+multigigabit.<sup>10</sup></p></li>
+</ol>
+<p>Waveform rimane uno strumento valido per un controllo rapido e
+superficiale, ma per una diagnosi tecnica accurata, o per verificare
+l'efficacia di configurazioni QoS (come l'abilitazione di SQM su OpenWrt
+o Ubiquiti), <strong>LibreQoS rappresenta il gold standard
+attuale</strong>.</p>
+<h3 id="sintesi-comparativa-operativa">7.3 Sintesi comparativa
+operativa</h3>
+<p>Dal punto di vista operativo, le caratteristiche principali dei due
+strumenti possono essere riassunte come segue:</p>
+<ul>
+<li><p>Accuratezza della misura di latenza sotto carico</p>
+<ul>
+<li><p>LibreQoS: utilizza percentili (ad esempio p95) e confronti
+rispetto alla mediana a riposo, con misure parallele di jitter e
+perdita. Ciò consente di rilevare sia l’aumento sistematico della
+latenza sia la presenza di spike isolati.</p></li>
+<li><p>Waveform: misura la latenza media durante le fasi di download e
+upload e la confronta con la latenza idle. Grazie a ottimizzazioni
+specifiche del flusso di traffico, riesce a saturare efficacemente molti
+collegamenti domestici, evidenziando bufferbloat quando
+presente.</p></li>
+</ul></li>
+<li><p>Coerenza tra test ripetuti</p>
+<ul>
+<li><p>LibreQoS: su connessione cablata e in assenza di traffico
+concorrente fornisce risultati molto stabili; l’uso di percentili riduce
+la sensibilità a outlier occasionali.</p></li>
+<li><p>Waveform: anch’esso stabile in condizioni controllate; può però
+risultare più sensibile a variazioni del carico CPU del router o del
+client, e all’utilizzo su Wi-Fi e browser mobili.</p></li>
+</ul></li>
+<li><p>Dettaglio informativo esposto all’utente</p>
+<ul>
+<li><p>LibreQoS: elevato livello di dettaglio (latenza, jitter, packet
+loss, grafici temporali, modalità multi-utente).</p></li>
+<li><p>Waveform: interfaccia più sintetica, con pochi numeri chiave e un
+verdetto testuale facilmente interpretabile.</p></li>
+</ul></li>
+<li><p>Scenari di test</p>
+<ul>
+<li><p>LibreQoS: include sia prove sequenziali down/up/bidirezionali sia
+una modalità “Virtual Household” che simula più ruoli
+concorrenti.</p></li>
+<li><p>Waveform: focalizzato sul classico scenario singolo utente
+(download e upload sequenziali).</p></li>
+</ul></li>
+</ul>
+<p>Questa sintesi conferma la complementarità dei due approcci: LibreQoS
+come strumento di riferimento per analisi approfondite e per la
+validazione di configurazioni QoS, Waveform come test rapido adatto a
+verifiche di primo livello e al supporto dell’utente consumer.</p>
+<p><strong>7.4 Segmentazione per profilo d’utente e raccomandazioni
+d’uso</strong></p>
+<p>**<br />
+**Alla luce dell’analisi comparativa, è possibile formulare
+raccomandazioni differenziate in funzione del profilo d’uso:</p>
+<ul>
+<li><p>Utente consumer non tecnico<br />
+L’obiettivo principale è capire se la connessione “va bene” per
+navigazione, streaming e videochiamate, senza entrare nei dettagli
+metrologici.</p>
+<ul>
+<li>Strumento consigliato: Waveform, per la sua interfaccia compatta e
+il verdetto immediato (A+…F) accompagnato da spiegazioni testuali.</li>
+</ul></li>
+<li><p>Giocatore online / utente sensibile alla latenza<br />
+In questo caso è cruciale valutare non solo la media, ma anche la
+stabilità nel tempo (jitter, spike) e l’impatto di altri flussi
+domestici durante la partita.</p>
+<ul>
+<li>Strumento consigliato: LibreQoS, in particolare grazie alle metriche
+percentile e alla modalità Virtual Household, che permette di capire
+come il gaming venga influenzato da streaming, download e altre attività
+in parallelo.</li>
+</ul></li>
+<li><p>Power user / amministratore di rete domestica<br />
+Chi configura SQM, CAKE o altri meccanismi di QoS sul router ha bisogno
+di strumenti in grado di evidenziare modifiche anche relativamente
+piccole nella distribuzione della latenza.</p>
+<ul>
+<li>Strumento consigliato: LibreQoS come strumento principale di
+validazione; Waveform può essere utilizzato come test di conferma rapido
+prima e dopo le modifiche.</li>
+</ul></li>
+<li><p>ISP e operatori di rete<br />
+Per gli operatori, l’interesse si concentra sulla capacità di monitorare
+la QoE di un parco utenti ampio e diversificato e di dimostrare
+l’efficacia delle politiche di gestione della coda.</p>
+<ul>
+<li>Strumento consigliato: LibreQoS, per la sua natura open-source,
+l’orientamento alla QoE e le capacità di simulazione multi-flusso, oltre
+che per l’allineamento con gli algoritmi AQM moderni (ad esempio
+CAKE).</li>
+</ul></li>
+</ul>
+<p>In termini generali, si può quindi suggerire un utilizzo
+complementare:</p>
+<ul>
+<li><p>Waveform come “termometro” veloce, di facile comprensione per
+chiunque,</p></li>
+<li><p>LibreQoS come “strumento di laboratorio” per analisi approfondite
+e per tutte le situazioni in cui la latenza sotto carico è un parametro
+critico di progetto o di esercizio.</p></li>
+</ul>
+
+<div class="bibliography">
+<h4 id="bibliografia">Bibliografia</h4>
+<ol type="1">
+<li><p>Bufferbloat and Internet Speed Test - Waveform, accesso eseguito
+il &gt; giorno 08 gennaio 2026, &gt; <a
+href="https://www.waveform.com/tools/bufferbloat"><u>https://www.waveform.com/tools/bufferbloat</u></a></p></li>
+<li><p>FAQ - LibreQoS, accesso eseguito il giorno 08 gennaio 2026, &gt;
+<a
+href="https://libreqos.io/faq/"><u>https://libreqos.io/faq/</u></a></p></li>
+<li><p>Bufferbloat, The Internet, And How To Fix It - Hackaday, accesso
+&gt; eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://hackaday.com/2022/08/18/bufferbloat-the-internet-and-how-to-fix-it/"><u>https://hackaday.com/2022/08/18/bufferbloat-the-internet-and-how-to-fix-it/</u></a></p></li>
+<li><p>LibreQoS – Network Quality of Experience, accesso eseguito il
+&gt; giorno 08 gennaio 2026, &gt; <a
+href="https://libreqos.io/"><u>https://libreqos.io/</u></a></p></li>
+<li><p>Comparison of HTTP and WebSocket Protocols - DEV Community,
+accesso &gt; eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://dev.to/_mohanmurali/comparison-of-http-and-websocket-protocols-55pd"><u>https://dev.to/_mohanmurali/comparison-of-http-and-websocket-protocols-55pd</u></a></p></li>
+<li><p>WebSockets vs HTTP: Which to choose for your project in 2025,
+&gt; accesso eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://metana.io/blog/websockets-vs-http-which-to-choose-for-your-project/"><u>https://metana.io/blog/websockets-vs-http-which-to-choose-for-your-project/</u></a></p></li>
+<li><p>LibreQoS v1.5 Demo - Quality of Experience (QoE) Software for ISP
+&gt; ..., accesso eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://www.youtube.com/watch?v=I2_3NE0ouJw"><u>https://www.youtube.com/watch?v=I2_3NE0ouJw</u></a></p></li>
+<li><p>LibreQoS Bufferbloat Test – LibreQoS, accesso eseguito il giorno
+&gt; 08 gennaio 2026, &gt; <a
+href="https://libreqos.io/2025/06/13/bloat-test/"><u>https://libreqos.io/2025/06/13/bloat-test/</u></a></p></li>
+<li><p>LibreQoS Bufferbloat Test, accesso eseguito il giorno gennaio 8,
+&gt; 2026, &gt; <a
+href="https://bufferbloat.libreqos.com/"><u>https://bufferbloat.libreqos.com/</u></a></p></li>
+<li><p>The Waveform (Bufferbloat and Internet) speed test, accesso
+eseguito &gt; il giorno 08 gennaio 2026, &gt; <a
+href="https://speedtesttest.zomdir.com/speedtests/waveform.html"><u>https://speedtesttest.zomdir.com/speedtests/waveform.html</u></a></p></li>
+<li><p>WebSockets protocol vs HTTP - Stack Overflow, accesso eseguito il
+&gt; giorno 08 gennaio 2026, &gt; <a
+href="https://stackoverflow.com/questions/14703627/websockets-protocol-vs-http"><u>https://stackoverflow.com/questions/14703627/websockets-protocol-vs-http</u></a></p></li>
+<li><p>Virtual Household Test - LibreQoS Bufferbloat Test, accesso
+eseguito &gt; il giorno 08 gennaio 2026, &gt; <a
+href="https://bufferbloat.libreqos.com/vh/"><u>https://bufferbloat.libreqos.com/vh/</u></a></p></li>
+<li><p>Open Source - LibreQoS, accesso eseguito il giorno gennaio 8,
+2026, &gt; <a
+href="https://libreqos.io/opensource/"><u>https://libreqos.io/opensource/</u></a></p></li>
+<li><p>Buffer bloat on new install? : r/ZiplyFiber - Reddit, accesso
+&gt; eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://www.reddit.com/r/ZiplyFiber/comments/1ocx3np/buffer_bloat_on_new_install/"><u>https://www.reddit.com/r/ZiplyFiber/comments/1ocx3np/buffer_bloat_on_new_install/</u></a></p></li>
+<li><p>What are your bufferbloat grades? : r/frontierfios - Reddit,
+accesso &gt; eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://www.reddit.com/r/frontierfios/comments/1oxv6y5/what_are_your_bufferbloat_grades/"><u>https://www.reddit.com/r/frontierfios/comments/1oxv6y5/what_are_your_bufferbloat_grades/</u></a></p></li>
+<li><p>[Flint 2 / OWRT24] A+ Bufferbloat (+0ms) but BAD Hitreg in CoD,
+&gt; accesso eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://forum.gl-inet.com/t/flint-2-owrt24-a-bufferbloat-0ms-but-bad-hitreg-in-cod-is-single-core-sqm-the-bottleneck/65965"><u>https://forum.gl-inet.com/t/flint-2-owrt24-a-bufferbloat-0ms-but-bad-hitreg-in-cod-is-single-core-sqm-the-bottleneck/65965</u></a></p></li>
+<li><p>Struggling with CS2 Packet Loss? Check Your Home Network with a
+&gt; ..., accesso eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://www.reddit.com/r/GlobalOffensive/comments/1fxaiyy/struggling_with_cs2_packet_loss_check_your_home/"><u>https://www.reddit.com/r/GlobalOffensive/comments/1fxaiyy/struggling_with_cs2_packet_loss_check_your_home/</u></a></p></li>
+<li><p>bufferbloat - great ethernet but average on wifi - normal? : &gt;
+r/Ubiquiti, accesso eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://www.reddit.com/r/Ubiquiti/comments/1pnl22u/bufferbloat_great_ethernet_but_average_on_wifi/"><u>https://www.reddit.com/r/Ubiquiti/comments/1pnl22u/bufferbloat_great_ethernet_but_average_on_wifi/</u></a></p></li>
+<li><p>LibreQoS: Analysing and defeating latency - APNIC Blog, accesso
+&gt; eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://blog.apnic.net/2024/08/07/libreqos-analysing-and-defeating-latency/"><u>https://blog.apnic.net/2024/08/07/libreqos-analysing-and-defeating-latency/</u></a></p></li>
+<li><p>“My Wi-Fi is trash” checklist that fixed 90% of my issues &gt;
+(bufferbloat ..., accesso eseguito il giorno 08 gennaio 2026, &gt; <a
+href="https://www.reddit.com/r/HomeNetworking/comments/1pp83k8/psa_my_wifi_is_trash_checklist_that_fixed_90_of/"><u>https://www.reddit.com/r/HomeNetworking/comments/1pp83k8/psa_my_wifi_is_trash_checklist_that_fixed_90_of/</u></a></p></li>
+</ol>
+
+<div class="references">
+<p>[1] [4] [5] [7] [8] [11] [35] [36] LibreQoS Bufferbloat Test –
+LibreQoS<br />
+<a
+href="https://libreqos.io/2025/06/13/bloat-test/"><u>https://libreqos.io/2025/06/13/bloat-test/</u></a></p>
+<p>[2] [3] [24] FAQ – LibreQoS<br />
+<a
+href="https://libreqos.io/faq/"><u>https://libreqos.io/faq/</u></a></p>
+<p>[6] [9] [10] [37] [41] [43] [44] [45] [Bloat-ietf] Announcing the
+LibreQoS Bufferbloat Test Platform<br />
+<a
+href="https://lists.bufferbloat.net/bloat-ietf/CAJUtOOjCYQDdULwY8g0qLgHmBq=0rVCZeYEiokd4kOiip0ED5w@mail.gmail.com/t/"><u>https://lists.bufferbloat.net/bloat-ietf/CAJUtOOjCYQDdULwY8g0qLgHmBq=0rVCZeYEiokd4kOiip0ED5w@mail.gmail.com/t/</u></a></p>
+<p>[12] [21] Waveform bufferbloat test showing insanely high ping but
+not DSLreports.com : r/HomeNetworking<br />
+<a
+href="https://www.reddit.com/r/HomeNetworking/comments/prtryf/waveform_bufferbloat_test_showing_insanely_high/"><u>https://www.reddit.com/r/HomeNetworking/comments/prtryf/waveform_bufferbloat_test_showing_insanely_high/</u></a></p>
+<p>[13] [14] [15] [16] [17] [18] [19] [20] [28] [39] [40] [42] Re:
+[Bloat] Updated Bufferbloat Test - Sebastian Moeller<br />
+<a
+href="https://lists.bufferbloat.net/bloat/C4675740-39D7-4AD5-BA20-F4F47A8965DF@gmx.de/"><u>https://lists.bufferbloat.net/bloat/C4675740-39D7-4AD5-BA20-F4F47A8965DF@gmx.de/</u></a></p>
+<p>[22] [23] [Flint 2 / OWRT24] A+ Bufferbloat (+0ms) but BAD Hitreg in
+CoD - Is Single Core SQM the bottleneck? - Routers - GL.iNet Official
+Forum<br />
+<a
+href="https://forum.gl-inet.com/t/flint-2-owrt24-a-bufferbloat-0ms-but-bad-hitreg-in-cod-is-single-core-sqm-the-bottleneck/65965"><u>https://forum.gl-inet.com/t/flint-2-owrt24-a-bufferbloat-0ms-but-bad-hitreg-in-cod-is-single-core-sqm-the-bottleneck/65965</u></a></p>
+<p>[25] [26] How I achieved an A+ bufferbloat score on Waveform :
+r/amazoneero<br />
+<a
+href="https://www.reddit.com/r/amazoneero/comments/178ccao/how_i_achieved_an_a_bufferbloat_score_on_waveform/"><u>https://www.reddit.com/r/amazoneero/comments/178ccao/how_i_achieved_an_a_bufferbloat_score_on_waveform/</u></a></p>
+<p>[27] Buffer bloat on new install? : r/ZiplyFiber - Reddit<br />
+<a
+href="https://www.reddit.com/r/ZiplyFiber/comments/1ocx3np/buffer_bloat_on_new_install/"><u>https://www.reddit.com/r/ZiplyFiber/comments/1ocx3np/buffer_bloat_on_new_install/</u></a></p>
+<p>[29] [30] Internet Connectivity | ATALM<br />
+<a
+href="https://www.atalm.org/internet-connectivity/"><u>https://www.atalm.org/internet-connectivity/</u></a></p>
+<p>[31] [32] [33] [34] bufferbloat - great ethernet but average on wifi
+- normal? : r/Ubiquiti<br />
+<a
+href="https://www.reddit.com/r/Ubiquiti/comments/1pnl22u/bufferbloat_great_ethernet_but_average_on_wifi/"><u>https://www.reddit.com/r/Ubiquiti/comments/1pnl22u/bufferbloat_great_ethernet_but_average_on_wifi/</u></a></p>
+<p>[38] LibreQoS Bufferbloat Test | Antonio Quartulli<br />
+<a
+href="https://www.linkedin.com/posts/aquartulli_libreqos-bufferbloat-test-activity-7340763948641673220-b67C"><u>https://www.linkedin.com/posts/aquartulli_libreqos-bufferbloat-test-activity-7340763948641673220-b67C</u></a></p>
+</div>
+
+</div>
+
+    <footer class="footer">
+        <div class="signature">Prime Build</div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bibliographyDiv = document.querySelector('.bibliography');
+            const bibliographyTitle = document.querySelector('.bibliography h4');
+            
+            if (bibliographyTitle && bibliographyDiv) {
+                // Crea wrapper per il contenuto
+                const wrapper = document.createElement('div');
+                wrapper.className = 'bibliography-content';
+                
+                // Inserisci il wrapper dopo il titolo
+                bibliographyTitle.parentNode.insertBefore(wrapper, bibliographyTitle.nextSibling);
+                
+                // Sposta tutti gli elementi dopo h4 nel wrapper (ol e references)
+                let nextElement = wrapper.nextSibling;
+                while (nextElement) {
+                    const currentElement = nextElement;
+                    nextElement = nextElement.nextSibling;
+                    wrapper.appendChild(currentElement);
+                }
+                
+                // Imposta lo stato iniziale come collassato
+                bibliographyTitle.classList.add('collapsed');
+                
+                // Aggiungi evento click per toggle
+                bibliographyTitle.addEventListener('click', function() {
+                    this.classList.toggle('collapsed');
+                    wrapper.classList.toggle('expanded');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

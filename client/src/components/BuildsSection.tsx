@@ -138,9 +138,9 @@ const BuildsSection = () => {
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="text-2xl font-bold font-montserrat">
                       PRIME{" "}
-                      <span className="text-[#ff7514]">{build.shortName}</span>
+                      <span className="text-primary">{build.shortName}</span>
                     </h3>
-                    <span className="text-[#ff7514] text-xl font-bold border border-[#ff7514] rounded-md px-3 py-1">
+                    <span className="text-primary text-xl font-bold border border-primary rounded-md px-3 py-1">
                       {build.price}
                     </span>
                   </div>
@@ -151,11 +151,11 @@ const BuildsSection = () => {
                       <div key={i}>
                         <div className="flex justify-between mb-1">
                           <span className="font-medium">{spec.name}</span>
-                          <span className="text-[#ff7514]">{spec.value}</span>
+                          <span className="text-primary">{spec.value}</span>
                         </div>
                         <div className="relative h-2 bg-white/10 rounded-full overflow-hidden">
                           <div
-                            className="spec-bar-fill absolute h-full bg-[#ff7514] rounded-full w-0 transition-all duration-1000 ease-out"
+                            className="spec-bar-fill absolute h-full bg-primary rounded-full w-0 transition-all duration-1000 ease-out"
                             data-width={spec.performance}
                           ></div>
                         </div>
@@ -168,7 +168,7 @@ const BuildsSection = () => {
                       href="https://docs.google.com/forms/d/e/1FAIpQLSfXO6-BVQ3x1WLDlxpp7B534U8xIxymD7QbP8MId0fcf_9Yqw/viewform?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105"
+                      className="inline-block bg-primary hover:bg-primary text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105"
                     >
                       Richiedi Preventivo
                     </a>
@@ -187,7 +187,7 @@ const BuildsSection = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div>
-                      <span className="inline-block bg-[#ff7514] text-black text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                      <span className="inline-block bg-primary text-black text-xs font-semibold px-3 py-1 rounded-full mb-3">
                         {build.level}
                       </span>
                       <h3 className="text-2xl font-bold font-montserrat">
@@ -207,3 +207,5 @@ const BuildsSection = () => {
 };
 
 export default BuildsSection;
+
+
