@@ -34,7 +34,7 @@ const HeroSection = () => {
             className="text-4xl md:text-6xl font-bold font-montserrat mb-4 flex flex-col items-center"
           >
             <span>PRIME</span>
-            <span className="text-[#ff7514]">BUILD</span>
+            <span className="text-primary">BUILD</span>
             <span className="sr-only"> - Assemblaggio PC Gaming su misura</span>
           </motion.h1>
           
@@ -56,14 +56,14 @@ const HeroSection = () => {
             <a
               href="#builds"
               onClick={() => trackCTAClick('Scopri le Build', 'hero')}
-              className="bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105"
+              className="bg-primary hover:bg-primary/90 text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105"
             >
               Scopri le Build
             </a>
             <a
               href="#contact"
               onClick={() => trackCTAClick('Contattaci', 'hero')}
-              className="bg-transparent border-2 border-white hover:border-[#ff7514] hover:text-[#ff7514] text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
+              className="bg-transparent border-2 border-white hover:border-primary hover:text-primary text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
             >
               Contattaci
             </a>
@@ -89,3 +89,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+

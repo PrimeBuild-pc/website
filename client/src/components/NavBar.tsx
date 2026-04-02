@@ -82,30 +82,31 @@ const NavBar = () => {
       aria-label="Menu principale"
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/">
-          <a className="flex items-center">
-            <div className="h-12 w-12 mr-2 relative">
-              <img
-                src="/logo.png"
-                alt="Prime Build Logo"
-                width={48}
-                height={48}
-                className="h-full w-full object-contain"
-              />
-            </div>
-            <span className="text-xl font-bold font-montserrat">
-              PRIME<span className="text-[#ff7514]">BUILD</span>
-            </span>
-          </a>
+        <Link href="/" className="flex items-center">
+          <div className="h-12 w-12 mr-2 relative">
+            <img
+              src="/logo.png"
+              alt="Prime Build Logo"
+              width={48}
+              height={48}
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <span className="text-xl font-bold font-montserrat">
+            PRIME<span className="text-primary">BUILD</span>
+          </span>
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#home" className="font-medium hover:text-[#ff7514] transition-colors">Home</a>
-          <a href="#services" className="font-medium hover:text-[#ff7514] transition-colors">Servizi</a>
-          <a href="#builds" className="font-medium hover:text-[#ff7514] transition-colors">Build</a>
-          <a href="#apps" className="font-medium hover:text-[#ff7514] transition-colors">App</a>
-          <a href="#contact" className="font-medium hover:text-[#ff7514] transition-colors">Contatti</a>
+          <a href="/#home" className="font-medium hover:text-primary transition-colors">Home</a>
+          <a href="/#services" className="font-medium hover:text-primary transition-colors">Servizi</a>
+          <a href="/#builds" className="font-medium hover:text-primary transition-colors">Build</a>
+          <a href="/#apps" className="font-medium hover:text-primary transition-colors">App</a>
+          <Link href="/guides" className="font-medium hover:text-primary transition-colors">
+            Guide
+          </Link>
+          <a href="/#contact" className="font-medium hover:text-primary transition-colors">Contatti</a>
           <div className="flex space-x-4 ml-4">
             <a
               href="https://www.instagram.com/prime_build_/"
@@ -113,7 +114,7 @@ const NavBar = () => {
               rel="noopener noreferrer"
               aria-label="Seguici su Instagram"
               onClick={() => handleSocialClick('Instagram', 'https://www.instagram.com/prime_build_/')}
-              className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
             >
               <FaInstagram aria-hidden="true" />
             </a>
@@ -123,7 +124,7 @@ const NavBar = () => {
               rel="noopener noreferrer"
               aria-label="Unisciti al nostro Discord"
               onClick={() => handleSocialClick('Discord', 'https://discord.gg/jBNk2vXKKd')}
-              className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
             >
               <FaDiscord aria-hidden="true" />
             </a>
@@ -137,7 +138,7 @@ const NavBar = () => {
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
-          className="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7514] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-md p-1 z-50"
+          className="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-md p-1 z-50"
         >
           {isOpen ? <FaTimes className="text-2xl" aria-hidden="true" /> : <FaBars className="text-2xl" aria-hidden="true" />}
         </button>
@@ -156,11 +157,14 @@ const NavBar = () => {
             className="md:hidden bg-black bg-opacity-95 pb-4 px-4 overflow-hidden"
             role="menu"
           >
-            <a href="#home" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-[#ff7514]">Home</a>
-            <a href="#services" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-[#ff7514]">Servizi</a>
-            <a href="#builds" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-[#ff7514]">Build</a>
-            <a href="#apps" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-[#ff7514]">App</a>
-            <a href="#contact" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-[#ff7514]">Contatti</a>
+            <a href="/#home" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Home</a>
+            <a href="/#services" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Servizi</a>
+            <a href="/#builds" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Build</a>
+            <a href="/#apps" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">App</a>
+            <Link href="/guides" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">
+              Guide
+            </Link>
+            <a href="/#contact" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Contatti</a>
             <div className="flex space-x-4 p-4">
               <a
                 href="https://www.instagram.com/prime_build_/"
@@ -168,7 +172,7 @@ const NavBar = () => {
                 rel="noopener noreferrer"
                 aria-label="Seguici su Instagram"
                 onClick={() => handleSocialClick('Instagram', 'https://www.instagram.com/prime_build_/')}
-                className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all focus-visible:ring-2 focus-visible:ring-[#ff7514]"
+                className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <FaInstagram aria-hidden="true" />
               </a>
@@ -178,7 +182,7 @@ const NavBar = () => {
                 rel="noopener noreferrer"
                 aria-label="Unisciti al nostro Discord"
                 onClick={() => handleSocialClick('Discord', 'https://discord.gg/jBNk2vXKKd')}
-                className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all focus-visible:ring-2 focus-visible:ring-[#ff7514]"
+                className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <FaDiscord aria-hidden="true" />
               </a>
@@ -191,3 +195,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+

@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*~
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Build files (if you add build process later)
+dist/
+build/
+*.map

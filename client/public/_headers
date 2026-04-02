@@ -11,3 +11,7 @@
 # Ensure ads.txt has correct content-type
 /ads.txt
   Content-Type: text/plain; charset=utf-8
+
+/images/guides/dlss_programming_guide_release.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline

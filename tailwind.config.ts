@@ -11,6 +11,13 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        orange: {
+          DEFAULT: "#FF6600",
+          300: "#FF6600",
+          400: "#FF6600",
+          500: "#FF6600",
+          600: "#FF6600",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -88,3 +95,5 @@ export default {
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
+
+

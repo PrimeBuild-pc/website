@@ -30,6 +30,10 @@ export default defineConfig({
     },
   },
   root: path.resolve(__dirname, "client"),
+  server: {
+    port: 5173,
+    strictPort: true,
+  },
   build: {
     outDir: path.resolve(__dirname, "client", "dist"), 
     emptyOutDir: true,

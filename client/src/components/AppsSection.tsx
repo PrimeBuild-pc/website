@@ -82,7 +82,7 @@ const AppsSection = () => {
               key={index}
               className="glow-card relative bg-neutral-900 rounded-xl overflow-hidden flex flex-col
                          flex-shrink-0 w-[280px] snap-center md:w-auto
-                         focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#ff7514]
+                         focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary
                          transition-transform hover:scale-105 focus-within:scale-105"
               delay={0.1 * index}
             >
@@ -94,7 +94,7 @@ const AppsSection = () => {
                 <ul className="space-y-2 mb-6">
                   {app.features.map((feature, i) => (
                     <li key={i} className="flex items-center text-sm text-neutral-300">
-                      <span className="text-[#ff7514] mr-2">•</span> {feature}
+                      <span className="text-primary mr-2">•</span> {feature}
                     </li>
                   ))}
                 </ul>
@@ -131,7 +131,7 @@ const AppsSection = () => {
                         rel="noopener noreferrer"
                         onClick={() => handleDownloadClick(app.name, app.url)}
                         aria-label={`Scarica ${app.name}`}
-                        className="inline-flex items-center gap-1.5 bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold px-3 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff7514] focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+                        className="inline-flex items-center gap-1.5 bg-primary hover:bg-primary text-black font-semibold px-3 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
                       >
                         <FaDownload aria-hidden="true" /> Download
                       </a>
@@ -168,3 +168,5 @@ const AppsSection = () => {
 };
 
 export default AppsSection;
+
+

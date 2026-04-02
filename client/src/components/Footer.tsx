@@ -28,7 +28,7 @@ const Footer = () => {
                   />
                 </div>
                 <span className="text-xl font-bold font-montserrat">
-                  PRIME<span className="text-[#ff7514]">BUILD</span>
+                  PRIME<span className="text-primary">BUILD</span>
                 </span>
               </div>
               <p className="text-neutral-400 text-sm mb-6">
@@ -41,7 +41,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label="Seguici su Instagram"
                   onClick={() => handleSocialClick('Instagram', 'https://www.instagram.com/prime_build_/')}
-                  className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+                  className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
                 >
                   <FaInstagram aria-hidden="true" />
                 </a>
@@ -51,7 +51,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label="Unisciti al nostro Discord"
                   onClick={() => handleSocialClick('Discord', 'https://discord.gg/jBNk2vXKKd')}
-                  className="bg-neutral-800 hover:bg-[#ff7514] p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+                  className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
                 >
                   <FaDiscord aria-hidden="true" />
                 </a>
@@ -59,32 +59,32 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-bold font-montserrat mb-4 text-[#ff7514]">
+              <h4 className="text-lg font-bold font-montserrat mb-4 text-primary">
                 Link Rapidi
               </h4>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="#home" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#home" className="hover:text-primary transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#services" className="hover:text-primary transition-colors">
                     Servizi
                   </a>
                 </li>
                 <li>
-                  <a href="#builds" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#builds" className="hover:text-primary transition-colors">
                     Le Nostre Build
                   </a>
                 </li>
                 <li>
-                  <a href="#apps" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#apps" className="hover:text-primary transition-colors">
                     App
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#contact" className="hover:text-primary transition-colors">
                     Contatti
                   </a>
                 </li>
@@ -104,27 +104,27 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="text-lg font-bold font-montserrat mb-4 text-[#ff7514]">
+              <h4 className="text-lg font-bold font-montserrat mb-4 text-primary">
                 Servizi
               </h4>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#services" className="hover:text-primary transition-colors">
                     PC Gaming Custom
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#services" className="hover:text-primary transition-colors">
                     Riparazioni e Assistenza
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#services" className="hover:text-primary transition-colors">
                     Ottimizzazione
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-[#ff7514] transition-colors">
+                  <a href="#services" className="hover:text-primary transition-colors">
                     Consulenza Hardware
                   </a>
                 </li>
@@ -139,12 +139,12 @@ const Footer = () => {
             </p>
             <nav className="flex space-x-6 text-neutral-500 text-sm order-1 md:order-2" aria-label="Link legali">
               <Link href="/privacy">
-                <a className="hover:text-[#ff7514] transition-colors">
+                <a className="hover:text-primary transition-colors">
                   Privacy Policy
                 </a>
               </Link>
               <Link href="/privacy">
-                <a className="hover:text-[#ff7514] transition-colors">
+                <a className="hover:text-primary transition-colors">
                   Cookie Policy
                 </a>
               </Link>
@@ -157,3 +157,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+

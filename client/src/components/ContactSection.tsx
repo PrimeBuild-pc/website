@@ -165,13 +165,13 @@ const ContactSection = () => {
 
   const contactInfo = [
     {
-      icon: <FaEnvelope className="text-[#ff7514]" />,
+      icon: <FaEnvelope className="text-primary" />,
       title: "Email",
       value: getEmail(),
       isEmail: true
     },
     {
-      icon: <FaMapMarkerAlt className="text-[#ff7514]" />,
+      icon: <FaMapMarkerAlt className="text-primary" />,
       title: "Sede",
       value: "Montegrotto Terme (PD), Italia"
     }
@@ -232,7 +232,7 @@ const ContactSection = () => {
                       onChange={handleChange}
                       placeholder="Il tuo nome"
                       aria-required="true"
-                      className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
+                      className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white"
                       required
                     />
                   </div>
@@ -247,7 +247,7 @@ const ContactSection = () => {
                       onChange={handleChange}
                       placeholder="La tua email"
                       aria-required="true"
-                      className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
+                      className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white"
                       required
                     />
                   </div>
@@ -264,7 +264,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     placeholder="Oggetto del messaggio"
                     aria-required="true"
-                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white"
                     required
                   />
                 </div>
@@ -280,7 +280,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     placeholder="Il tuo messaggio"
                     aria-required="true"
-                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff7514] text-white"
+                    className="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white"
                     required
                   ></textarea>
                 </div>
@@ -290,14 +290,14 @@ const ContactSection = () => {
                   disabled={isSubmitting}
                   whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                  className="bg-[#ff7514] hover:bg-[#e06500] text-black font-semibold py-3 px-8 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-primary hover:bg-primary text-black font-semibold py-3 px-8 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
                 </motion.button>
                 <p className="text-xs text-neutral-400">
                   Inviando questo modulo, dichiari di aver letto la nostra{" "}
                   <Link href="/privacy">
-                    <a className="text-[#ff7514] hover:underline">informativa privacy</a>
+                    <a className="text-primary hover:underline">informativa privacy</a>
                   </Link>{" "}
                   e acconsenti al trattamento dei dati forniti ai soli fini di ricontatto.
                 </p>
@@ -307,13 +307,13 @@ const ContactSection = () => {
             <AnimatedElement direction="right">
               <div className="bg-black p-8 rounded-xl h-full">
                 <h3 className="text-2xl font-bold font-montserrat mb-6">
-                  Informazioni di <span className="text-[#ff7514]">contatto</span>
+                  Informazioni di <span className="text-primary">contatto</span>
                 </h3>
                 
                 <div className="space-y-6">
                   {contactInfo.map((item, index) => (
                     <div key={index} className="flex items-start">
-                      <div className="bg-[#ff7514]/10 p-3 rounded-lg mr-4">
+                      <div className="bg-primary/10 p-3 rounded-lg mr-4">
                         {item.icon}
                       </div>
                       <div>
@@ -324,7 +324,7 @@ const ContactSection = () => {
                   ))}
                   
                   <div className="pt-2">
-                    <h4 className="font-medium mb-3 text-lg text-[#ff7514]">Contattaci preferibilmente su:</h4>
+                    <h4 className="font-medium mb-3 text-lg text-primary">Contattaci preferibilmente su:</h4>
                     <div className="flex flex-col space-y-3">
                       {socialLinks.map((link, index) => (
                         <motion.a
@@ -334,10 +334,10 @@ const ContactSection = () => {
                           rel="noopener noreferrer"
                           onClick={() => handleSocialClick(link.name, link.url)}
                           whileHover={{ scale: 1.05 }}
-                          className="bg-neutral-800 hover:bg-[#ff7514] p-3 rounded-lg flex items-center transition-colors"
+                          className="bg-neutral-800 hover:bg-primary p-3 rounded-lg flex items-center transition-colors"
                           aria-label={`Contattaci su ${link.name}`}
                         >
-                          <div className="bg-[#ff7514]/20 p-2 rounded-full mr-3" aria-hidden="true">
+                          <div className="bg-primary/20 p-2 rounded-full mr-3" aria-hidden="true">
                             {link.icon}
                           </div>
                           <span className="font-medium">{link.name}</span>
@@ -356,3 +356,5 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
+
+

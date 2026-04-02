@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://primebuild-pc.github.io/low-latency-gaming-guide/sitemap.xml
+
+# Block common crawlers that don't add value
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

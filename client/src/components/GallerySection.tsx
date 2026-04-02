@@ -28,6 +28,12 @@ export default function GallerySection() {
     { src: "/17.webp", alt: "Postazione gaming completa Prime Build con monitor curvo, tastiera meccanica e mouse" },
     { src: "/18.webp", alt: "PC gaming ad alte prestazioni con illuminazione LED arancione e scheda video Nvidia GeForce RTX" },
     { src: "/19.webp", alt: "PC gaming enthusiast con illuminazione LED rossa, scheda madre premium e GPU AMD Radeon" },
+    { src: "/20.webp", alt: "Nuova build PC gaming Prime Build con airflow ottimizzato e finitura premium" },
+    { src: "/21.webp", alt: "Dettaglio interno di configurazione gaming custom con cable management ordinato" },
+    { src: "/22.webp", alt: "PC gaming custom con illuminazione RGB e componenti ad alte prestazioni" },
+    { src: "/23.webp", alt: "Vista laterale di build Prime Build con case vetrato e hardware di fascia alta" },
+    { src: "/24.webp", alt: "Assemblaggio professionale di PC gaming con dissipazione avanzata e look pulito" },
+    { src: "/25.webp", alt: "Configurazione PC gaming completa ottimizzata per performance competitive" },
   ];
 
   // Duplicate once for seamless CSS marquee

@@ -31,12 +31,24 @@ const Home = () => {
       { threshold: 0.3 } // Trigger when 30% of section is visible
     );
 
-    // Observe all sections
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => observer.observe(section));
+    // Observe all sections. Using a MutationObserver to catch lazy-loaded sections
+    const observeSections = () => {
+      const sections = document.querySelectorAll('section[id]');
+      sections.forEach((section) => observer.observe(section));
+    };
+    
+    observeSections();
+    
+    // Retry finding sections after Suspense resolves by watching the dom body
+    const domObserver = new MutationObserver(() => {
+      observeSections();
+    });
+    
+    domObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section));
+      domObserver.disconnect();
+      observer.disconnect();
     };
   }, []);
 
@@ -44,7 +56,7 @@ const Home = () => {
     <div className="overflow-hidden">
       <HeroSection />
       
-      <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#ff7514]"></div></div>}>
+      <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div></div>}>
         <ServicesSection />
         <GallerySection />
         <BuildsSection />
@@ -58,3 +70,5 @@ const Home = () => {
 };
 
 export default Home;
+
+
