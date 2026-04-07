@@ -1188,21 +1188,39 @@
 
         // Track external links and social media clicks
         document.addEventListener('DOMContentLoaded', function() {
+            function hostMatches(hostname, expectedHost) {
+                return hostname === expectedHost || hostname.endsWith('.' + expectedHost);
+            }
+
+            function detectPlatformFromHref(href) {
+                try {
+                    var url = new URL(href, window.location.origin);
+                    var hostname = url.hostname.toLowerCase();
+
+                    if (hostMatches(hostname, 'github.com')) {
+                        return 'GitHub';
+                    }
+
+                    if (hostMatches(hostname, 'instagram.com')) {
+                        return 'Instagram';
+                    }
+
+                    if (hostMatches(hostname, 'discord.gg') || hostMatches(hostname, 'discord.com')) {
+                        return 'Discord';
+                    }
+                } catch (error) {
+                    return 'Unknown';
+                }
+
+                return 'Unknown';
+            }
+
             // Track social links (Instagram e Discord)
             document.querySelectorAll('.social-links a').forEach(function(link) {
                 link.addEventListener('click', function(e) {
-                    var platform = 'Unknown';
+                    var platform = detectPlatformFromHref(this.href);
                     var action = 'click';
-                    
-                    // Identifica la piattaforma dal link
-                    if (this.href.includes('github.com')) {
-                        platform = 'GitHub';
-                    } else if (this.href.includes('instagram.com')) {
-                        platform = 'Instagram';
-                    } else if (this.href.includes('discord.gg') || this.href.includes('discord.com')) {
-                        platform = 'Discord';
-                    }
-                                        
+                                         
                     // Invia evento a Google Analytics
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'social_click', {
