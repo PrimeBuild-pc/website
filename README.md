@@ -1,7 +1,7 @@
 # PrimeBuild PC - Website
 
 <div align="center">
-  <img src="public/logo.png" alt="PrimeBuild PC Logo" width="250">
+  <img src="client/public/logo.png" alt="PrimeBuild PC Logo" width="250">
   <h3>Gaming PC Builder & Service Provider</h3>
 </div>
 
