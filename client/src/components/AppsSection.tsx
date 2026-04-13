@@ -1,20 +1,24 @@
+import { useState } from "react";
 import { FaDownload, FaPaypal } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { trackDownload, trackExternalLink } from "@/lib/analytics";
+import { useToast } from "@/hooks/use-toast";
+import {
+  buildGitHubRepoUrl,
+  buildGitHubReleasesUrl,
+  getDownloadConfirmationMessage,
+  resolveLatestReleaseDownload,
+} from "@/lib/githubReleaseDownload";
 import { SectionHeader } from "./SectionHeader";
 
 interface App {
   name: string;
   description: string;
   features: string[];
-  url: string;
-  repoUrl?: string;
+  owner: string;
+  repo: string;
   comingSoon: boolean;
 }
-
-const handleDownloadClick = (appName: string, url: string) => {
-  trackDownload(appName, url);
-};
 
 const handleRepoClick = (appName: string, url: string) => {
   trackExternalLink(`${appName} Repository`, url);
@@ -25,14 +29,17 @@ const handlePayPalClick = () => {
 };
 
 const AppsSection = () => {
+  const { toast } = useToast();
+  const [downloadingApp, setDownloadingApp] = useState<string | null>(null);
+
   const apps: App[] = [
     {
       name: "ThreadPilot",
       description:
         "Alternativa open source a Process Lasso per Windows. Modifiche di sistema per utenti esperti.",
       features: ["Open-source", "Affinità processi su core", "Gestione powerplans"],
-      url: "https://github.com/PrimeBuild-pc/ThreadPilot/releases",
-      repoUrl: "https://github.com/PrimeBuild-pc/ThreadPilot",
+      owner: "PrimeBuild-pc",
+      repo: "ThreadPilot",
       comingSoon: false,
     },
     {
@@ -40,8 +47,8 @@ const AppsSection = () => {
       description:
         "Overlay di mirino leggero e personalizzabile per migliorare la precisione nei giochi FPS.",
       features: ["Overlay trasparente", "Mirino personalizzabile", "Profilo per gioco"],
-      url: "https://github.com/PrimeBuild-pc/LightCrosshair/releases",
-      repoUrl: "https://github.com/PrimeBuild-pc/LightCrosshair",
+      owner: "PrimeBuild-pc",
+      repo: "LightCrosshair",
       comingSoon: false,
     },
     {
@@ -49,8 +56,8 @@ const AppsSection = () => {
       description:
         "Centro di controllo all-in-one per modifiche e ottimizzazioni di Windows 11.",
       features: ["Affinità processi su core", "Gestione powerplans", "Controllo estremo"],
-      url: "https://github.com/PrimeBuild-pc/TweakHub/releases",
-      repoUrl: "https://github.com/PrimeBuild-pc/TweakHub",
+      owner: "PrimeBuild-pc",
+      repo: "TweakHub",
       comingSoon: false,
     },
     {
@@ -58,11 +65,57 @@ const AppsSection = () => {
       description:
         "App per veloci tweaks su Windows 11, ideale per ottimizzazioni base su una fresh install.",
       features: ["Tweaks rapidi", "Ottimizzazione Win11", "Fresh install"],
-      url: "https://github.com/PrimeBuild-pc/ZapTweaks/releases",
-      repoUrl: "https://github.com/PrimeBuild-pc/ZapTweaks",
+      owner: "PrimeBuild-pc",
+      repo: "ZapTweaks",
       comingSoon: false,
     },
   ];
+
+  const openResolvedUrl = (targetUrl: string, pendingWindow: Window | null) => {
+    if (pendingWindow) {
+      pendingWindow.location.replace(targetUrl);
+      return;
+    }
+
+    window.location.assign(targetUrl);
+  };
+
+  const handleDownloadClick = async (app: App) => {
+    if (downloadingApp) return;
+
+    const releasePageUrl = buildGitHubReleasesUrl(app.owner, app.repo);
+    const confirmationText = getDownloadConfirmationMessage(app.name);
+    if (!window.confirm(confirmationText)) return;
+
+    // Open now to avoid popup blockers after async network calls.
+    const pendingWindow = window.open('', '_blank', 'noopener,noreferrer');
+    setDownloadingApp(app.name);
+
+    try {
+      const resolved = await resolveLatestReleaseDownload({ owner: app.owner, repo: app.repo });
+
+      if (!resolved.success) {
+        toast({
+          title: 'Download non disponibile',
+          description: `${resolved.error || 'Errore inatteso.'} Ti apriamo la pagina release GitHub come fallback.`,
+        });
+      }
+
+      const targetUrl = resolved.success ? resolved.downloadUrl : resolved.releasePageUrl || releasePageUrl;
+      trackDownload(app.name, targetUrl);
+      openResolvedUrl(targetUrl, pendingWindow);
+    } catch {
+      const fallbackUrl = releasePageUrl;
+      toast({
+        title: 'Errore durante il download',
+        description: 'Apertura pagina release GitHub come fallback.',
+      });
+      trackDownload(app.name, fallbackUrl);
+      openResolvedUrl(fallbackUrl, pendingWindow);
+    } finally {
+      setDownloadingApp(null);
+    }
+  };
 
   return (
     <section id="apps" className="py-20 bg-black">
@@ -77,37 +130,39 @@ const AppsSection = () => {
         </AnimatedElement>
 
         <div className="flex gap-6 max-w-6xl mx-auto overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible">
-          {apps.map((app, index) => (
-            <AnimatedElement
-              key={index}
-              className="glow-card relative bg-neutral-900 rounded-xl overflow-hidden flex flex-col
+          {apps.map((app, index) => {
+            const repoUrl = buildGitHubRepoUrl(app.owner, app.repo);
+
+            return (
+              <AnimatedElement
+                key={index}
+                className="glow-card relative bg-neutral-900 rounded-xl overflow-hidden flex flex-col
                          flex-shrink-0 w-[280px] snap-center md:w-auto
                          focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary
                          transition-transform hover:scale-105 focus-within:scale-105"
-              delay={0.1 * index}
-            >
-              {/* wrapper interno a colonna per riempire l'altezza */}
-              <div className="p-6 flex flex-col h-full">
-                <h3 className="text-xl font-bold mb-2">{app.name}</h3>
-                <p className="text-neutral-400 mb-4">{app.description}</p>
+                delay={0.1 * index}
+              >
+                {/* wrapper interno a colonna per riempire l'altezza */}
+                <div className="p-6 flex flex-col h-full">
+                  <h3 className="text-xl font-bold mb-2">{app.name}</h3>
+                  <p className="text-neutral-400 mb-4">{app.description}</p>
 
-                <ul className="space-y-2 mb-6">
-                  {app.features.map((feature, i) => (
-                    <li key={i} className="flex items-center text-sm text-neutral-300">
-                      <span className="text-primary mr-2">•</span> {feature}
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="space-y-2 mb-6">
+                    {app.features.map((feature, i) => (
+                      <li key={i} className="flex items-center text-sm text-neutral-300">
+                        <span className="text-primary mr-2">•</span> {feature}
+                      </li>
+                    ))}
+                  </ul>
 
-                {/* Pulsanti in fondo alla card */}
-                <div className="mt-auto pt-4 flex items-center justify-between gap-2">
-                  {/* Repo button */}
-                  {app.repoUrl && (
+                  {/* Pulsanti in fondo alla card */}
+                  <div className="mt-auto pt-4 flex items-center justify-between gap-2">
+                    {/* Repo button */}
                     <a
-                      href={app.repoUrl}
+                      href={repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => handleRepoClick(app.name, app.repoUrl!)}
+                      onClick={() => handleRepoClick(app.name, repoUrl)}
                       aria-label={`Visualizza repository GitHub di ${app.name}`}
                       className="inline-flex items-center gap-1.5 bg-[#24292f] hover:bg-[#444d56] text-white px-3 py-1.5 rounded-md text-sm min-h-[32px]"
                     >
@@ -116,31 +171,28 @@ const AppsSection = () => {
                       </svg>
                       <span className="font-semibold">Repo</span>
                     </a>
-                  )}
 
-                  {/* Download button */}
-                  {app.comingSoon ? (
-                    <span className="inline-block bg-neutral-800 text-neutral-300 px-3 py-1.5 rounded-md text-sm min-h-[32px]">
-                      In arrivo
-                    </span>
-                  ) : (
-                    app.url && (
-                      <a
-                        href={app.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => handleDownloadClick(app.name, app.url)}
+                    {/* Download button */}
+                    {app.comingSoon ? (
+                      <span className="inline-block bg-neutral-800 text-neutral-300 px-3 py-1.5 rounded-md text-sm min-h-[32px]">
+                        In arrivo
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => handleDownloadClick(app)}
+                        disabled={downloadingApp === app.name}
                         aria-label={`Scarica ${app.name}`}
-                        className="inline-flex items-center gap-1.5 bg-primary hover:bg-primary text-black font-semibold px-3 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+                        className="inline-flex items-center gap-1.5 bg-primary hover:bg-primary text-black font-semibold px-3 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                       >
-                        <FaDownload aria-hidden="true" /> Download
-                      </a>
-                    )
-                  )}
+                        <FaDownload aria-hidden="true" /> {downloadingApp === app.name ? 'Verifica...' : 'Download'}
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </AnimatedElement>
-          ))}
+              </AnimatedElement>
+            );
+          })}
         </div>
 
         <AnimatedElement className="mt-16 text-center" delay={0.3}>
