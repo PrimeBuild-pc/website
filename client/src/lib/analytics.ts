@@ -16,7 +16,7 @@ const isAnalyticsReady = (): boolean => {
 };
 
 // Generic event tracking
-export const trackEvent = (
+const trackEvent = (
   eventName: string,
   parameters?: Record<string, string | number | boolean>
 ): void => {
