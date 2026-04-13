@@ -1,4 +1,4 @@
-export interface GitHubRepositoryConfig {
+interface GitHubRepositoryConfig {
   owner: string;
   repo: string;
 }
@@ -10,7 +10,7 @@ interface GitHubDownloadApiResponse {
   error?: string;
 }
 
-export interface ResolvedDownloadResult {
+interface ResolvedDownloadResult {
   success: boolean;
   downloadUrl: string;
   releasePageUrl: string;
