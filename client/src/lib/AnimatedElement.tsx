@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface AnimatedElementProps {
   children: ReactNode;
@@ -18,6 +18,8 @@ const AnimatedElement = ({
   direction = "up",
   once = true,
 }: AnimatedElementProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
   const getInitialPosition = () => {
     switch (direction) {
       case "up":
@@ -49,13 +51,13 @@ const AnimatedElement = ({
   return (
     <motion.div
       className={className}
-      initial={getInitialPosition()}
+      initial={shouldReduceMotion ? { opacity: 1 } : getInitialPosition()}
       whileInView={getFinalPosition()}
-      viewport={{ once }}
+      viewport={{ once, amount: 0.15 }}
       transition={{
-        duration,
-        delay,
-        ease: "easeOut",
+        duration: shouldReduceMotion ? 0 : duration,
+        delay: shouldReduceMotion ? 0 : delay,
+        ease: [0.22, 1, 0.36, 1],
       }}
     >
       {children}

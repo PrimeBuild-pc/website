@@ -19,28 +19,32 @@ const ServiceCard = ({
   delay: number; 
 }) => {
   return (
-    <AnimatedElement delay={delay} className="service-card bg-black p-8 rounded-xl shadow-lg overflow-hidden relative h-full">
-      <div className="absolute top-0 right-0 w-20 h-20 bg-primary opacity-5 rounded-bl-full"></div>
-      <div className="text-4xl text-primary mb-6 transition-transform duration-300 group-hover:scale-110">
-        {icon}
+    <AnimatedElement delay={delay} className="group surface-card interactive-card h-full p-7 md:p-8">
+      <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
+      <div className="relative z-10 flex h-full flex-col">
+        <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-xl text-primary transition-transform duration-300 group-hover:scale-105">
+          {icon}
+        </div>
+        <h3 className="text-xl font-bold font-montserrat mb-3">{title}</h3>
+        <p className="text-sm leading-6 text-neutral-400 mb-6">{description}</p>
+        <ul className="mb-7 space-y-3 text-sm text-neutral-300">
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-center gap-3">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                <FaCheck className="text-[10px] text-primary" />
+              </span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <a
+          href="#contact"
+          onClick={() => trackCTAClick(cta, 'services')}
+          className="mt-auto inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-orange-300"
+        >
+          {cta} <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
+        </a>
       </div>
-      <h3 className="text-xl font-bold font-montserrat mb-4">{title}</h3>
-      <p className="text-neutral-400 mb-4">{description}</p>
-      <ul className="text-sm text-neutral-300 space-y-2 mb-6">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-center">
-            <FaCheck className="text-primary mr-2" />
-            {feature}
-          </li>
-        ))}
-      </ul>
-      <a
-        href="#contact"
-        onClick={() => trackCTAClick(cta, 'services')}
-        className="inline-block text-primary hover:underline font-medium group"
-      >
-        {cta} <FaArrowRight className="inline ml-1 transform group-hover:translate-x-1 transition-transform" />
-      </a>
     </AnimatedElement>
   );
 };
@@ -74,17 +78,20 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-neutral-900">
-      <div className="container mx-auto px-4">
+    <section id="services" className="section-shell relative overflow-hidden border-y border-white/5 bg-[#08090b]">
+      <div className="section-grid opacity-50" aria-hidden="true" />
+      <div className="section-glow -right-64 top-0 opacity-60" aria-hidden="true" />
+      <div className="site-container">
         <AnimatedElement>
           <SectionHeader
-            title=""
-            highlight="Servizi"
+            eyebrow="Servizi"
+            title="Un unico partner per"
+            highlight="tutto il tuo setup"
             subtitle="Offriamo una gamma completa di servizi per soddisfare ogni tua esigenza nel mondo PC Gaming"
           />
         </AnimatedElement>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}

@@ -6,6 +6,14 @@
   --primary: 24 100% 50%;
   --ring: 24 100% 50%;
   --orange: 24 100% 50%;
+  --background: 220 24% 4%;
+  --foreground: 30 25% 96%;
+  --border: 220 14% 18%;
+  --muted: 220 14% 12%;
+  --muted-foreground: 220 8% 65%;
+  --card: 220 18% 7%;
+  --card-foreground: 30 25% 96%;
+  --radius: 1rem;
 }
 
 .dark {
@@ -21,11 +29,30 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    min-width: 320px;
+    background:
+      radial-gradient(circle at 50% -10%, hsl(var(--primary) / 0.1), transparent 28rem),
+      hsl(var(--background));
+    color-scheme: dark;
   }
 
-  /* Respect user's reduced motion preferences (except marquee gallery) */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  ::selection {
+    color: #070707;
+    background: hsl(var(--primary));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 4px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    *:not(.marquee-animate),
+    *,
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
@@ -52,10 +79,79 @@
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-shell {
+    @apply relative py-20 md:py-28;
+  }
+
+  .site-container {
+    @apply container relative z-10 mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
 
 
 @layer components {
+  .surface-card {
+    @apply relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.045] shadow-2xl shadow-black/30 backdrop-blur-xl;
+  }
+
+  .surface-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 35%);
+    opacity: 0.55;
+  }
+
+  .interactive-card {
+    @apply transition duration-300 ease-out;
+  }
+
+  .interactive-card:hover,
+  .interactive-card:focus-within {
+    transform: translateY(-4px);
+    border-color: hsl(var(--primary) / 0.35);
+    box-shadow: 0 24px 80px -36px hsl(var(--primary) / 0.5);
+  }
+
+  .button-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-black shadow-lg shadow-primary/20 transition duration-200 hover:-translate-y-0.5 hover:bg-orange-400 hover:shadow-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black active:translate-y-0;
+  }
+
+  .button-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-6 py-3 font-semibold text-white backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black active:translate-y-0;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-orange-300;
+  }
+
+  .section-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+  }
+
+  .section-glow {
+    position: absolute;
+    width: 32rem;
+    height: 32rem;
+    border-radius: 9999px;
+    pointer-events: none;
+    background: hsl(var(--primary) / 0.12);
+    filter: blur(110px);
+  }
+
   .glow-card {
     position: relative;
     --glow-color: hsl(var(--primary) / 0.5);
@@ -83,8 +179,9 @@
 
   /* Dark background gradient + optional subtle pattern */
   .bg-dark-gradient {
-    /* Slightly stronger center shade for visible depth */
-    background: radial-gradient(65% 55% at 50% 0%, #101010 0%, #000000 80%);
+    background:
+      radial-gradient(65% 55% at 50% 0%, hsl(var(--primary) / 0.09) 0%, transparent 70%),
+      linear-gradient(180deg, #090a0d 0%, #050506 100%);
   }
   .bg-diagonal-grid {
     position: relative;
@@ -96,9 +193,8 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    /* use normal blending with slightly higher alpha for visibility on black */
-    background-image: linear-gradient(transparent 0px, rgba(255,255,255,0.06) 1px), linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.06) 1px);
-    background-size: 24px 24px, 24px 24px;
+    background-image: linear-gradient(transparent 0px, rgba(255,255,255,0.035) 1px), linear-gradient(90deg, transparent 0px, rgba(255,255,255,0.035) 1px);
+    background-size: 48px 48px, 48px 48px;
     z-index: 0;
   }
 
@@ -115,8 +211,21 @@
       radial-gradient(rgba(0,0,0,0.03) 1px, rgba(0,0,0,0) 1px);
     background-size: 3px 3px, 5px 5px, 7px 7px;
     background-position: 0 0, 1px 2px, 2px 1px;
-    opacity: 0.12; /* still subtle but visible on black */
+    opacity: 0.08;
     z-index: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .interactive-card:hover,
+    .interactive-card:focus-within,
+    .button-primary:hover,
+    .button-secondary:hover {
+      transform: none;
+    }
+
+    .marquee-animate {
+      animation: none !important;
+    }
   }
 }
 

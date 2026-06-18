@@ -12,10 +12,11 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black py-12" role="contentinfo">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-black py-14" role="contentinfo">
+      <div className="section-glow -bottom-80 left-1/2 -translate-x-1/2 opacity-30" aria-hidden="true" />
+      <div className="site-container">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 md:grid-cols-[1.35fr_0.8fr_0.8fr]">
             <div>
               <div className="flex items-center mb-4">
                 <div className="h-10 w-10 mr-2 relative">
@@ -31,17 +32,17 @@ const Footer = () => {
                   PRIME<span className="text-primary">BUILD</span>
                 </span>
               </div>
-              <p className="text-neutral-400 text-sm mb-6">
+              <p className="mb-6 max-w-sm text-sm leading-6 text-neutral-400">
                 Realizziamo PC Gaming su misura per un'esperienza di gioco senza compromessi
               </p>
-              <div className="flex space-x-4">
+              <div className="flex space-x-3">
                 <a
                   href="https://www.instagram.com/prime_build_/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Seguici su Instagram"
                   onClick={() => handleSocialClick('Instagram', 'https://www.instagram.com/prime_build_/')}
-                  className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-300 transition hover:border-primary/30 hover:text-primary"
                 >
                   <FaInstagram aria-hidden="true" />
                 </a>
@@ -51,7 +52,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label="Unisciti al nostro Discord"
                   onClick={() => handleSocialClick('Discord', 'https://discord.gg/jBNk2vXKKd')}
-                  className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-300 transition hover:border-primary/30 hover:text-primary"
                 >
                   <FaDiscord aria-hidden="true" />
                 </a>
@@ -59,10 +60,10 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-bold font-montserrat mb-4 text-primary">
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-neutral-200 font-montserrat">
                 Link Rapidi
               </h4>
-              <ul className="space-y-2 text-neutral-400">
+              <ul className="space-y-3 text-sm text-neutral-400">
                 <li>
                   <a href="#home" className="hover:text-primary transition-colors">
                     Home
@@ -104,10 +105,10 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="text-lg font-bold font-montserrat mb-4 text-primary">
+              <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-neutral-200 font-montserrat">
                 Servizi
               </h4>
-              <ul className="space-y-2 text-neutral-400">
+              <ul className="space-y-3 text-sm text-neutral-400">
                 <li>
                   <a href="#services" className="hover:text-primary transition-colors">
                     PC Gaming Custom
@@ -133,7 +134,7 @@ const Footer = () => {
 
           </div>
 
-          <div className="border-t border-neutral-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-6 md:flex-row">
             <p className="text-neutral-500 text-sm order-2 md:order-1 mt-4 md:mt-0">
               © {new Date().getFullYear()} Prime Build. Tutti i diritti riservati.
             </p>

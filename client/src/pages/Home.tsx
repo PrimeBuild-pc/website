@@ -53,10 +53,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-black">
       <HeroSection />
       
-      <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div></div>}>
+      <Suspense fallback={<div className="flex h-64 items-center justify-center bg-black"><div className="h-8 w-8 animate-spin rounded-full border-2 border-white/10 border-t-primary"></div></div>}>
         <ServicesSection />
         <GallerySection />
         <BuildsSection />
@@ -70,5 +70,4 @@ const Home = () => {
 };
 
 export default Home;
-
 
