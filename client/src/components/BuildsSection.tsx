@@ -113,49 +113,65 @@ const BuildsSection = () => {
   ], []);
 
   return (
-    <section id="builds" className="py-20 bg-neutral-900" ref={specBarsRef}>
-      <div className="container mx-auto px-4">
+    <section id="builds" className="section-shell relative overflow-hidden bg-[#08090b]" ref={specBarsRef}>
+      <div className="section-glow -left-72 top-1/3 opacity-50" aria-hidden="true" />
+      <div className="site-container">
         <AnimatedElement>
           <SectionHeader
-            title="Le"
-            highlight="nostre build"
+            eyebrow="Configurazioni"
+            title="Una base solida,"
+            highlight="costruita intorno a te"
             subtitle="Configurazioni di PC Gaming su misura per ogni esigenza e budget"
             italicText="Esempi di build che puoi trovare da noi"
           />
         </AnimatedElement>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="mx-auto max-w-6xl space-y-8">
           {builds.map((build, index) => (
             <AnimatedElement
               key={index}
-              className={`mb-24 ${index === builds.length - 1 ? "mb-0" : ""}`}
-              delay={0.2}
+              delay={0.08 * index}
             >
               <div
-                className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? "md:order-first" : ""}`}
+                className="surface-card interactive-card grid overflow-hidden lg:grid-cols-[0.92fr_1.08fr]"
               >
-                <div className="order-1">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-2xl font-bold font-montserrat">
+                <div className={`relative min-h-[280px] overflow-hidden sm:min-h-[360px] ${index % 2 !== 0 ? "lg:order-2" : ""}`}>
+                  <ImageWithFallback
+                    src={build.image}
+                    alt={`PC Gaming ${build.name} - ${build.tagline} - Build gaming custom Prime Build`}
+                    width={720}
+                    height={520}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent lg:bg-gradient-to-r" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 lg:p-8">
+                    <span className="eyebrow border-white/10 bg-black/50 text-neutral-200">{build.level}</span>
+                    <p className="mt-3 text-lg font-semibold text-white">{build.tagline}</p>
+                  </div>
+                </div>
+
+                <div className={`relative z-10 p-6 sm:p-8 lg:p-10 ${index % 2 !== 0 ? "lg:order-1" : ""}`}>
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                    <h3 className="text-2xl font-bold tracking-tight font-montserrat">
                       PRIME{" "}
                       <span className="text-primary">{build.shortName}</span>
                     </h3>
-                    <span className="text-primary text-xl font-bold border border-primary rounded-md px-3 py-1">
-                      {build.price}
+                    <span className="rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-sm font-bold text-orange-300">
+                      Da {build.price}
                     </span>
                   </div>
-                  <p className="text-neutral-300 mb-6">{build.description}</p>
+                  <p className="mb-7 leading-7 text-neutral-400">{build.description}</p>
 
-                  <div className="space-y-4">
+                  <div className="space-y-5">
                     {build.specs.map((spec, i) => (
                       <div key={i}>
-                        <div className="flex justify-between mb-1">
-                          <span className="font-medium">{spec.name}</span>
-                          <span className="text-primary">{spec.value}</span>
+                        <div className="mb-2 flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:justify-between">
+                          <span className="font-medium text-neutral-300">{spec.name}</span>
+                          <span className="text-neutral-500 sm:text-right">{spec.value}</span>
                         </div>
-                        <div className="relative h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div className="relative h-1 overflow-hidden rounded-full bg-white/10">
                           <div
-                            className="spec-bar-fill absolute h-full bg-primary rounded-full w-0 transition-all duration-1000 ease-out"
+                            className="spec-bar-fill absolute h-full w-0 rounded-full bg-gradient-to-r from-primary to-amber-400 transition-all duration-1000 ease-out"
                             data-width={spec.performance}
                           ></div>
                         </div>
@@ -163,38 +179,15 @@ const BuildsSection = () => {
                     ))}
                   </div>
 
-                  <div className="mt-8">
+                  <div className="mt-9">
                     <a
                       href="https://docs.google.com/forms/d/e/1FAIpQLSfXO6-BVQ3x1WLDlxpp7B534U8xIxymD7QbP8MId0fcf_9Yqw/viewform?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block bg-primary hover:bg-primary text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105"
+                      className="button-primary"
                     >
                       Richiedi Preventivo
                     </a>
-                  </div>
-                </div>
-
-                <div
-                  className={`relative rounded-xl overflow-hidden group order-2 ${index % 2 !== 0 ? "md:order-1" : "md:order-2"}`}
-                >
-                  <ImageWithFallback
-                    src={build.image}
-                    alt={`PC Gaming ${build.name} - ${build.tagline} - Build gaming custom Prime Build`}
-                    width={600}
-                    height={384}
-                    className="w-full h-96 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div>
-                      <span className="inline-block bg-primary text-black text-xs font-semibold px-3 py-1 rounded-full mb-3">
-                        {build.level}
-                      </span>
-                      <h3 className="text-2xl font-bold font-montserrat">
-                        {build.name}
-                      </h3>
-                      <p className="text-neutral-300">{build.tagline}</p>
-                    </div>
                   </div>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaInstagram, FaDiscord } from "react-icons/fa";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackSocialClick } from "@/lib/analytics";
 
@@ -75,15 +76,22 @@ const NavBar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-50 transition-all duration-300",
-        scrolled ? "bg-black/95 shadow-lg" : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-all duration-300 sm:px-5",
+        scrolled ? "translate-y-0" : "md:pt-5"
       )}
       role="navigation"
       aria-label="Menu principale"
     >
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <div className="h-12 w-12 mr-2 relative">
+      <div
+        className={cn(
+          "mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-3 py-2.5 transition duration-300 sm:px-4",
+          scrolled
+            ? "border-white/10 bg-black/80 shadow-2xl shadow-black/40 backdrop-blur-xl"
+            : "border-white/10 bg-black/35 backdrop-blur-md"
+        )}
+      >
+        <Link href="/" className="flex items-center rounded-xl pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+          <div className="relative mr-2 h-10 w-10">
             <img
               src="/logo.png"
               alt="Prime Build Logo"
@@ -92,29 +100,28 @@ const NavBar = () => {
               className="h-full w-full object-contain"
             />
           </div>
-          <span className="text-xl font-bold font-montserrat">
+          <span className="text-base font-bold tracking-tight font-montserrat sm:text-lg">
             PRIME<span className="text-primary">BUILD</span>
           </span>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          <a href="/#home" className="font-medium hover:text-primary transition-colors">Home</a>
-          <a href="/#services" className="font-medium hover:text-primary transition-colors">Servizi</a>
-          <a href="/#builds" className="font-medium hover:text-primary transition-colors">Build</a>
-          <a href="/#apps" className="font-medium hover:text-primary transition-colors">App</a>
-          <Link href="/guides" className="font-medium hover:text-primary transition-colors">
+        <div className="hidden items-center gap-1 md:flex">
+          <a href="/#home" className="rounded-lg px-3 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-white/5 hover:text-white">Home</a>
+          <a href="/#services" className="rounded-lg px-3 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-white/5 hover:text-white">Servizi</a>
+          <a href="/#builds" className="rounded-lg px-3 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-white/5 hover:text-white">Build</a>
+          <a href="/#apps" className="rounded-lg px-3 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-white/5 hover:text-white">App</a>
+          <Link href="/guides" className="rounded-lg px-3 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-white/5 hover:text-white">
             Guide
           </Link>
-          <a href="/#contact" className="font-medium hover:text-primary transition-colors">Contatti</a>
-          <div className="flex space-x-4 ml-4">
+          <div className="ml-2 flex items-center gap-2 border-l border-white/10 pl-3">
             <a
               href="https://www.instagram.com/prime_build_/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Seguici su Instagram"
               onClick={() => handleSocialClick('Instagram', 'https://www.instagram.com/prime_build_/')}
-              className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-300 transition hover:border-primary/40 hover:text-primary"
             >
               <FaInstagram aria-hidden="true" />
             </a>
@@ -124,9 +131,13 @@ const NavBar = () => {
               rel="noopener noreferrer"
               aria-label="Unisciti al nostro Discord"
               onClick={() => handleSocialClick('Discord', 'https://discord.gg/jBNk2vXKKd')}
-              className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-300 transition hover:border-primary/40 hover:text-primary"
             >
               <FaDiscord aria-hidden="true" />
+            </a>
+            <a href="/#contact" className="button-primary ml-1 min-h-9 px-4 py-2 text-sm">
+              Preventivo
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -138,7 +149,7 @@ const NavBar = () => {
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
           aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
-          className="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-md p-1 z-50"
+          className="z-50 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white md:hidden"
         >
           {isOpen ? <FaTimes className="text-2xl" aria-hidden="true" /> : <FaBars className="text-2xl" aria-hidden="true" />}
         </button>
@@ -150,29 +161,29 @@ const NavBar = () => {
           <motion.div
             ref={menuRef}
             id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-black bg-opacity-95 pb-4 px-4 overflow-hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-3 shadow-2xl backdrop-blur-xl md:hidden"
             role="menu"
           >
-            <a href="/#home" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Home</a>
-            <a href="/#services" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Servizi</a>
-            <a href="/#builds" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Build</a>
-            <a href="/#apps" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">App</a>
-            <Link href="/guides" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">
+            <a href="/#home" onClick={closeMenu} role="menuitem" className="block rounded-xl px-4 py-3 font-medium text-neutral-200 hover:bg-white/5">Home</a>
+            <a href="/#services" onClick={closeMenu} role="menuitem" className="block rounded-xl px-4 py-3 font-medium text-neutral-200 hover:bg-white/5">Servizi</a>
+            <a href="/#builds" onClick={closeMenu} role="menuitem" className="block rounded-xl px-4 py-3 font-medium text-neutral-200 hover:bg-white/5">Build</a>
+            <a href="/#apps" onClick={closeMenu} role="menuitem" className="block rounded-xl px-4 py-3 font-medium text-neutral-200 hover:bg-white/5">App</a>
+            <Link href="/guides" onClick={closeMenu} role="menuitem" className="block rounded-xl px-4 py-3 font-medium text-neutral-200 hover:bg-white/5">
               Guide
             </Link>
-            <a href="/#contact" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Contatti</a>
-            <div className="flex space-x-4 p-4">
+            <a href="/#contact" onClick={closeMenu} role="menuitem" className="button-primary mt-2 w-full">Richiedi preventivo</a>
+            <div className="mt-3 flex gap-3 border-t border-white/10 p-3 pt-4">
               <a
                 href="https://www.instagram.com/prime_build_/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Seguici su Instagram"
                 onClick={() => handleSocialClick('Instagram', 'https://www.instagram.com/prime_build_/')}
-                className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all focus-visible:ring-2 focus-visible:ring-primary"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-300 hover:text-primary"
               >
                 <FaInstagram aria-hidden="true" />
               </a>
@@ -182,7 +193,7 @@ const NavBar = () => {
                 rel="noopener noreferrer"
                 aria-label="Unisciti al nostro Discord"
                 onClick={() => handleSocialClick('Discord', 'https://discord.gg/jBNk2vXKKd')}
-                className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all focus-visible:ring-2 focus-visible:ring-primary"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-300 hover:text-primary"
               >
                 <FaDiscord aria-hidden="true" />
               </a>

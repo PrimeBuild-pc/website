@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
 import ImageWithFallback from "@/lib/ImageWithFallback";
 import { trackGalleryView } from "@/lib/analytics";
+import { SectionHeader } from "./SectionHeader";
 
 interface GalleryImage { src: string; alt: string }
 
@@ -86,41 +87,45 @@ export default function GallerySection() {
   }, [loopImages.length]);
 
   return (
-    <section id="galleria" className="py-20 md:py-24 bg-gradient-to-b from-black via-neutral-950 to-black">
-  <div className="w-full px-0">
+    <section id="galleria" className="section-shell overflow-hidden bg-black">
+      <div className="site-container">
         <AnimatedElement>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Galleria</h2>
+          <SectionHeader
+            eyebrow="Realizzazioni"
+            title="Dettagli che fanno"
+            highlight="la differenza"
+            subtitle="Una selezione di build, workstation e setup assemblati da Prime Build."
+          />
         </AnimatedElement>
-        <div className="mt-10 relative overflow-hidden" aria-label="Galleria a scorrimento continuo" role="list">
+      </div>
+      <div className="relative overflow-hidden" aria-label="Galleria a scorrimento continuo" role="list">
           <style>{`
             @keyframes marqueeX { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--marquee-distance))); } }
           `}</style>
-          <div ref={trackRef} className="marquee-animate flex gap-4 flex-nowrap will-change-transform" style={{ ...styleVars, animation: `marqueeX var(--marquee-duration) linear infinite` }}>
+          <div ref={trackRef} className="marquee-animate flex flex-nowrap gap-4 will-change-transform motion-reduce:overflow-x-auto motion-reduce:px-4" style={{ ...styleVars, animation: `marqueeX var(--marquee-duration) linear infinite` }}>
             {loopImages.map((img, i) => (
               <div
                 key={i}
                 role="listitem"
-                className="flex-shrink-0 w-[140px] h-[248px] sm:w-[160px] sm:h-[285px] md:w-[200px] md:h-[356px] lg:w-[225px] lg:h-[400px] rounded-xl"
+                className="surface-card h-[264px] w-[150px] flex-shrink-0 rounded-2xl p-1.5 sm:h-[320px] sm:w-[180px] md:h-[390px] md:w-[220px]"
               >
-                <div className="w-full h-full rounded-xl overflow-hidden flex items-center justify-center bg-black">
+                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-[0.8rem] bg-black">
                   <ImageWithFallback
                     src={img.src}
                     alt={img.alt}
                     width={225}
                     height={400}
-                    className="max-h-full max-w-full object-contain rounded-xl"
+                    className="h-full w-full rounded-[0.8rem] object-cover"
                   />
                 </div>
               </div>
             ))}
           </div>
           {/* Gradient edges, reduced width to minimize side gaps */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-black via-black/10 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-black via-black/10 to-transparent" />
-        </div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent sm:w-28" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent sm:w-28" />
       </div>
     </section>
   );
 }
-
 

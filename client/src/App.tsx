@@ -12,6 +12,7 @@ import NotFound from "@/pages/not-found";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import CookieBanner from "@/components/CookieBanner";
 import SkipLink from "@/components/SkipLink";
+import { MotionConfig } from "framer-motion";
 
 function Router() {
   return (
@@ -28,17 +29,19 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <SchemaMarkup />
-      <SkipLink />
-      <div className="flex flex-col min-h-screen bg-black text-white font-inter">
-        <NavBar />
-        <main id="main-content" className="flex-grow">
-          <Router />
-        </main>
-        <Footer />
-      </div>
-      <Toaster />
-      <CookieBanner />
+      <MotionConfig reducedMotion="user">
+        <SchemaMarkup />
+        <SkipLink />
+        <div className="flex min-h-screen flex-col bg-black text-white font-inter">
+          <NavBar />
+          <main id="main-content" className="flex-grow">
+            <Router />
+          </main>
+          <Footer />
+        </div>
+        <Toaster />
+        <CookieBanner />
+      </MotionConfig>
     </QueryClientProvider>
   );
 }

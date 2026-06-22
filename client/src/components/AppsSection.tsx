@@ -118,36 +118,39 @@ const AppsSection = () => {
   };
 
   return (
-    <section id="apps" className="py-20 bg-black">
-      <div className="container mx-auto px-4">
+    <section id="apps" className="section-shell relative overflow-hidden bg-[#08090b]">
+      <div className="section-glow -right-64 top-24 opacity-50" aria-hidden="true" />
+      <div className="site-container">
         <AnimatedElement>
           <SectionHeader
-            title="Le nostre"
-            highlight="app"
+            eyebrow="Software"
+            title="Strumenti open source per"
+            highlight="controllo e performance"
             subtitle="Strumenti esclusivi per ottimizzare la tua esperienza di gioco"
             underline={false}
           />
         </AnimatedElement>
 
-        <div className="flex gap-6 max-w-6xl mx-auto overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible">
+        <div className="mx-auto flex max-w-6xl snap-x snap-mandatory gap-5 overflow-x-auto pb-5 no-scrollbar md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-4">
           {apps.map((app, index) => {
             const repoUrl = buildGitHubRepoUrl(app.owner, app.repo);
 
             return (
               <AnimatedElement
                 key={index}
-                className="glow-card relative bg-neutral-900 rounded-xl overflow-hidden flex flex-col
-                         flex-shrink-0 w-[280px] snap-center md:w-auto
-                         focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary
-                         transition-transform hover:scale-105 focus-within:scale-105"
+                className="surface-card interactive-card relative flex w-[82vw] max-w-[310px] flex-shrink-0 snap-center flex-col md:w-auto md:max-w-none"
                 delay={0.1 * index}
               >
                 {/* wrapper interno a colonna per riempire l'altezza */}
-                <div className="p-6 flex flex-col h-full">
-                  <h3 className="text-xl font-bold mb-2">{app.name}</h3>
-                  <p className="text-neutral-400 mb-4">{app.description}</p>
+                <div className="relative z-10 flex h-full flex-col p-6">
+                  <div className="mb-5 flex items-center justify-between">
+                    <span className="eyebrow py-1">Windows</span>
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgb(52_211_153/0.8)]" aria-label="Disponibile" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-bold">{app.name}</h3>
+                  <p className="mb-5 text-sm leading-6 text-neutral-400">{app.description}</p>
 
-                  <ul className="space-y-2 mb-6">
+                  <ul className="mb-6 space-y-2">
                     {app.features.map((feature, i) => (
                       <li key={i} className="flex items-center text-sm text-neutral-300">
                         <span className="text-primary mr-2">•</span> {feature}
@@ -164,7 +167,7 @@ const AppsSection = () => {
                       rel="noopener noreferrer"
                       onClick={() => handleRepoClick(app.name, repoUrl)}
                       aria-label={`Visualizza repository GitHub di ${app.name}`}
-                      className="inline-flex items-center gap-1.5 bg-[#24292f] hover:bg-[#444d56] text-white px-3 py-1.5 rounded-md text-sm min-h-[32px]"
+                        className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-white transition hover:bg-white/10"
                     >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
@@ -183,7 +186,7 @@ const AppsSection = () => {
                         onClick={() => handleDownloadClick(app)}
                         disabled={downloadingApp === app.name}
                         aria-label={`Scarica ${app.name}`}
-                        className="inline-flex items-center gap-1.5 bg-primary hover:bg-primary text-black font-semibold px-3 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                        className="inline-flex min-h-10 items-center gap-1.5 rounded-full bg-primary px-3 py-2 text-sm font-semibold text-black transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         <FaDownload aria-hidden="true" /> {downloadingApp === app.name ? 'Verifica...' : 'Download'}
                       </button>
@@ -195,12 +198,12 @@ const AppsSection = () => {
           })}
         </div>
 
-        <AnimatedElement className="mt-16 text-center" delay={0.3}>
-          <div className="max-w-2xl mx-auto bg-neutral-900 p-8 rounded-xl">
-            <h3 className="text-2xl font-bold mb-4">Supporta il nostro lavoro</h3>
-            <p className="text-neutral-400 mb-6">
-              Le nostre app sono in fase di sviluppo e saranno presto disponibili. Supporta il nostro lavoro con una
-              donazione per accelerare lo sviluppo e ottenere accesso anticipato.
+        <AnimatedElement className="mt-10 text-center" delay={0.3}>
+          <div className="surface-card mx-auto max-w-3xl p-7 sm:p-9">
+            <span className="eyebrow mb-4">Community driven</span>
+            <h3 className="text-2xl font-bold mb-3">Supporta lo sviluppo</h3>
+            <p className="mx-auto mb-6 max-w-xl leading-7 text-neutral-400">
+              Le nostre app sono open source e vengono migliorate continuamente. Una donazione ci aiuta a dedicare più tempo a sviluppo, test e documentazione.
             </p>
             <a
               href="https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT"
@@ -208,7 +211,7 @@ const AppsSection = () => {
               rel="noopener noreferrer"
               onClick={handlePayPalClick}
               aria-label="Supportaci con una donazione su PayPal"
-              className="inline-flex items-center bg-[#0070BA] hover:bg-[#003087] text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
+              className="button-secondary"
             >
               <FaPaypal className="mr-2 text-xl" aria-hidden="true" /> Supportaci su PayPal
             </a>
