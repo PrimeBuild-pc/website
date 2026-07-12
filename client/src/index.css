@@ -52,6 +52,19 @@
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, black 35%, transparent 90%);
+  }
+
+  .hero-orbit { animation: orbit 24s linear infinite; }
+  .hero-orbit-reverse { animation: orbit 34s linear infinite reverse; }
+
+  @keyframes orbit { to { transform: rotate(360deg); } }
 }
 
 
