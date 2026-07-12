@@ -48,7 +48,7 @@ Questo progetto è rilasciato con licenza **MIT** - sentiti libero di usarlo, mo
 
 ## 📧 Contatti
 
-- **Discord**: [Prime Build Community](https://discord.gg/ze4g9EGr9D)
+- **Discord**: [Prime Build Community](https://discord.gg/ERUwSxE79q)
 - **Instagram**: [@prime_build_](https://instagram.com/prime_build_)
 
 ## ⭐ Supporto

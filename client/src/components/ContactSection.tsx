@@ -185,7 +185,7 @@ const ContactSection = () => {
     },
     {
       icon: <FaDiscord />,
-      url: "https://discord.gg/jBNk2vXKKd",
+      url: "https://discord.gg/ERUwSxE79q",
       name: "Discord"
     }
   ];

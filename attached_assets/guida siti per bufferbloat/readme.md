@@ -52,8 +52,8 @@ Ultimo aggiornamento: **08 gennaio 2026**
 
 <div align="center">
 
-**Firmato:** [Prime Build](https://discord.gg/jBNk2vXKKd)
+**Firmato:** [Prime Build](https://discord.gg/ERUwSxE79q)
 
-[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/jBNk2vXKKd)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/ERUwSxE79q)
 
 </div>

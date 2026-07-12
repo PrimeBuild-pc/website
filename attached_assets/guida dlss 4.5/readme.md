@@ -8,7 +8,7 @@
 
 **Guida tecnica completa ai preset DLSS 4.5, configurazione avanzata e ottimizzazione per RTX 20/30/40/50 series**
 
-[📖 Visualizza Guida](https://primebuild-pc.github.io/guida-completa-nvidia-dlss-4.5/) • [💬 Discord](https://discord.gg/jBNk2vXKKd) • [📸 Instagram](https://www.instagram.com/prime_build_/)
+[📖 Visualizza Guida](https://primebuild-pc.github.io/guida-completa-nvidia-dlss-4.5/) • [💬 Discord](https://discord.gg/ERUwSxE79q) • [📸 Instagram](https://www.instagram.com/prime_build_/)
 
 ---
 
@@ -54,7 +54,7 @@ MIT License - vedi [LICENSE](LICENSE) per dettagli.
 
 **Made with 🧡 by [PRIME BUILD](https://www.instagram.com/prime_build_/)**
 
-[![Discord](https://img.shields.io/discord/YOUR_SERVER_ID?color=7289DA&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/jBNk2vXKKd)
+[![Discord](https://img.shields.io/discord/YOUR_SERVER_ID?color=7289DA&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/ERUwSxE79q)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/prime_build_/)
 
 </div>

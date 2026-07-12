@@ -166,7 +166,7 @@ const Privacy = () => {
             <ul className="list-none text-neutral-300 space-y-1 mt-4">
               <li>Email: <a href="mailto:primebuild.official@gmail.com" className="text-primary hover:underline">primebuild.official@gmail.com</a></li>
               <li>Instagram: <a href="https://www.instagram.com/prime_build_/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@prime_build_</a></li>
-              <li>Discord: <a href="https://discord.gg/jBNk2vXKKd" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Prime Build Community</a></li>
+              <li>Discord: <a href="https://discord.gg/ERUwSxE79q" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Prime Build Community</a></li>
             </ul>
           </section>
         </div>

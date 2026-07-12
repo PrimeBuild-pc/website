@@ -46,11 +46,11 @@ const Footer = () => {
                   <FaInstagram aria-hidden="true" />
                 </a>
                 <a
-                  href="https://discord.gg/jBNk2vXKKd"
+                  href="https://discord.gg/ERUwSxE79q"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Unisciti al nostro Discord"
-                  onClick={() => handleSocialClick('Discord', 'https://discord.gg/jBNk2vXKKd')}
+                  onClick={() => handleSocialClick('Discord', 'https://discord.gg/ERUwSxE79q')}
                   className="bg-neutral-800 hover:bg-primary p-2 rounded-full flex items-center justify-center transition-all transform hover:-translate-y-1"
                 >
                   <FaDiscord aria-hidden="true" />

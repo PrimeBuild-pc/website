@@ -106,7 +106,7 @@ const FAQSection = () => {
               Scrivici su Instagram
             </a>
             <a
-              href="https://discord.gg/BcPsRQqJ4s"
+              href="https://discord.gg/ERUwSxE79q"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"

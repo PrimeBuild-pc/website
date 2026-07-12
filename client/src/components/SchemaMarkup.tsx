@@ -21,7 +21,7 @@ const SchemaMarkup = () => {
       "knowsAbout": ["PC Gaming Custom", "Assemblaggio PC", "Assistenza Tecnica PC", "Ottimizzazione PC", "Build Gaming", "Workstation"],
       "sameAs": [
         "https://www.instagram.com/prime_build_/",
-        "https://discord.gg/BcPsRQqJ4s"
+        "https://discord.gg/ERUwSxE79q"
       ]
     };
 
