@@ -69,19 +69,43 @@
   .hero-geometry {
     overflow: hidden;
     background:
-      linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px),
-      radial-gradient(circle at 50% 42%, #17100b 0, #080706 34%, #050505 67%);
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+      radial-gradient(circle at 50% 42%, #1d1109 0, #090706 36%, #050505 68%);
     background-size: 72px 72px, 72px 72px, auto;
-    mask-image: linear-gradient(to bottom, #000 82%, transparent);
+    mask-image: linear-gradient(to bottom, #000 84%, transparent);
+  }
+  .hero-geometry::before,
+  .hero-geometry::after {
+    content: "";
+    position: absolute;
+    width: min(42vw, 34rem);
+    aspect-ratio: 1;
+    opacity: .2;
+    filter: blur(34px);
+    will-change: transform;
+  }
+  .hero-geometry::before {
+    left: 4%;
+    top: 12%;
+    clip-path: polygon(50% 0, 100% 38%, 78% 100%, 12% 82%, 0 24%);
+    background: linear-gradient(135deg, hsl(var(--primary) / .75), transparent 68%);
+    animation: geometry-float 9s ease-in-out infinite alternate;
+  }
+  .hero-geometry::after {
+    bottom: 7%;
+    right: 2%;
+    clip-path: polygon(18% 0, 100% 20%, 76% 100%, 0 70%);
+    background: linear-gradient(315deg, hsl(var(--primary) / .55), rgba(255,255,255,.16));
+    animation: geometry-float-reverse 11s ease-in-out infinite alternate;
   }
   .hero-glow {
     position: absolute;
-    inset: 20% 25%;
+    inset: 18% 22%;
     border-radius: 50%;
-    background: hsl(var(--primary) / .16);
-    filter: blur(110px);
-    animation: glow-drift 10s ease-in-out infinite alternate;
+    background: hsl(var(--primary) / .24);
+    filter: blur(105px);
+    animation: glow-drift 7s ease-in-out infinite alternate;
   }
   .hero-ring {
     position: absolute;
@@ -89,33 +113,46 @@
     top: 50%;
     width: min(72vw, 62rem);
     aspect-ratio: 1;
-    border: 1px solid hsl(var(--primary) / .16);
+    border: 1px solid hsl(var(--primary) / .32);
     border-radius: 46% 54% 63% 37% / 41% 45% 55% 59%;
+    box-shadow: inset 0 0 50px hsl(var(--primary) / .035), 0 0 40px hsl(var(--primary) / .04);
     will-change: transform;
   }
-  .hero-ring-one { animation: hero-orbit 28s linear infinite; }
+  .hero-ring::before {
+    content: "";
+    position: absolute;
+    left: 16%;
+    top: 8%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    box-shadow: 0 0 18px 5px hsl(var(--primary) / .65);
+  }
+  .hero-ring-one { animation: hero-orbit 15s linear infinite; }
   .hero-ring-two {
     width: min(52vw, 43rem);
-    border-color: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.16);
     border-radius: 63% 37% 42% 58% / 35% 61% 39% 65%;
-    animation: hero-orbit-reverse 22s linear infinite;
+    animation: hero-orbit-reverse 11s linear infinite;
   }
+  .hero-ring-two::before { background: #fff; box-shadow: 0 0 15px 4px rgba(255,255,255,.4); }
   .hero-prism {
     position: absolute;
     left: 50%;
     top: 50%;
     width: min(32vw, 25rem);
     aspect-ratio: 1;
-    border: 1px solid rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.14);
     transform: translate(-50%, -50%) rotate(45deg);
-    animation: prism-breathe 8s ease-in-out infinite;
+    animation: prism-breathe 6s ease-in-out infinite;
   }
   .hero-scan {
     position: absolute;
     inset: 0;
-    background: linear-gradient(110deg, transparent 35%, hsl(var(--primary) / .045) 50%, transparent 65%);
+    background: linear-gradient(110deg, transparent 35%, hsl(var(--primary) / .095) 50%, transparent 65%);
     transform: translateX(-100%);
-    animation: scan 9s ease-in-out infinite;
+    animation: scan 6s ease-in-out infinite;
   }
   .hero-enter { animation: enter-up .6s both; }
   .hero-enter-delay { animation-delay: .38s; }
@@ -180,8 +217,16 @@
   50% { transform: translate(-50%, -50%) rotate(58deg) scale(1.08); opacity: .8; }
 }
 @keyframes glow-drift {
-  from { transform: translate3d(-8%, -4%, 0) scale(.9); }
-  to { transform: translate3d(8%, 5%, 0) scale(1.1); }
+  from { transform: translate3d(-10%, -6%, 0) scale(.86); }
+  to { transform: translate3d(10%, 7%, 0) scale(1.14); }
+}
+@keyframes geometry-float {
+  from { transform: translate3d(-8%, -5%, 0) rotate(-8deg) scale(.9); }
+  to { transform: translate3d(22%, 18%, 0) rotate(18deg) scale(1.15); }
+}
+@keyframes geometry-float-reverse {
+  from { transform: translate3d(8%, 8%, 0) rotate(12deg) scale(1.08); }
+  to { transform: translate3d(-24%, -15%, 0) rotate(-20deg) scale(.9); }
 }
 @keyframes scan {
   0%, 20% { transform: translateX(-100%); }
