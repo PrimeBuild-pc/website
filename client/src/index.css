@@ -115,9 +115,18 @@
       radial-gradient(rgba(0,0,0,0.03) 1px, rgba(0,0,0,0) 1px);
     background-size: 3px 3px, 5px 5px, 7px 7px;
     background-position: 0 0, 1px 2px, 2px 1px;
-    opacity: 0.12; /* still subtle but visible on black */
+    opacity: 0.12;
     z-index: 0;
   }
+
+  .button-primary,
+  .button-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 font-semibold transition;
+  }
+  .button-primary { @apply bg-primary text-black hover:bg-primary/90; }
+  .button-secondary { @apply border border-white/15 bg-white/5 text-white hover:bg-white/10; }
+  .surface-card { @apply rounded-3xl border border-white/10 bg-white/5; }
+  .section-kicker { @apply mb-4 block text-xs font-semibold uppercase tracking-[0.22em] text-primary; }
 }
 
 

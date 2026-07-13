@@ -1,221 +1,199 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { useLocation } from "wouter";
+import { faqs } from "@/data/faqs";
+import { guides } from "@/data/guides";
+import { getService, services } from "@/data/services";
+
+const SITE = "https://primebuild.website";
+const absolute = (path: string) => new URL(path, SITE).toString();
 
 const SchemaMarkup = () => {
-  useEffect(() => {
-    // Main Organization schema
-    const organizationSchema = {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Prime Build",
-      "url": "https://primebuild.website/",
-      "logo": "https://primebuild.website/logo.png",
-      "description": "Prime Build realizza PC Gaming su misura per un'esperienza di gioco senza compromessi. Assemblaggio, assistenza tecnica e ottimizzazione PC a Montegrotto Terme (PD) e Padova.",
-      "address": {
+  const [location] = useLocation();
+
+  const schema = useMemo(() => {
+    const business = {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": `${SITE}/#business`,
+      name: "Prime Build",
+      alternateName: "PrimeBuild",
+      url: `${SITE}/`,
+      logo: { "@type": "ImageObject", url: absolute("/logo.png"), width: 302, height: 302 },
+      image: absolute("/og-image.png"),
+      email: "primebuild.official@gmail.com",
+      description: "Assemblaggio PC gaming su misura, assistenza tecnica e ottimizzazione a Montegrotto Terme, Padova e in tutta Italia.",
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": "Montegrotto Terme",
-        "postalCode": "35036",
-        "addressRegion": "PD",
-        "addressCountry": "IT"
+        addressLocality: "Montegrotto Terme",
+        postalCode: "35036",
+        addressRegion: "PD",
+        addressCountry: "IT",
       },
-      "email": "primebuild.official@gmail.com",
-      "knowsAbout": ["PC Gaming Custom", "Assemblaggio PC", "Assistenza Tecnica PC", "Ottimizzazione PC", "Build Gaming", "Workstation"],
-      "sameAs": [
-        "https://www.instagram.com/prime_build_/",
-        "https://discord.gg/ERUwSxE79q"
-      ]
+      geo: { "@type": "GeoCoordinates", latitude: 45.3166667, longitude: 11.7666667 },
+      areaServed: [
+        { "@type": "City", name: "Montegrotto Terme" },
+        { "@type": "City", name: "Padova" },
+        { "@type": "Country", name: "Italia" },
+      ],
+      priceRange: "€€",
+      sameAs: ["https://www.instagram.com/prime_build_/", "https://discord.gg/ERUwSxE79q"],
+      knowsAbout: ["PC gaming custom", "Assemblaggio PC", "Assistenza tecnica PC", "Ottimizzazione PC", "Latenza gaming"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Servizi Prime Build",
+        itemListElement: services.map((service) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: service.name, url: absolute(`/servizi/${service.slug}`) },
+        })),
+      },
     };
 
-    // LocalBusiness schema for better local SEO
-    const localBusinessSchema = {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Prime Build",
-      "image": "https://primebuild.website/logo.png",
-      "url": "https://primebuild.website/",
-      "email": "primebuild.official@gmail.com",
-      "description": "Servizio di assemblaggio PC Gaming su misura. Dall'idea alla consegna plug and play con supporto post-vendita e community Discord dedicata.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Montegrotto Terme",
-        "postalCode": "35036",
-        "addressRegion": "PD",
-        "addressCountry": "IT"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 45.3166667,
-        "longitude": 11.7666667
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "08:00",
-        "closes": "20:00"
-      },
-      "priceRange": "€€",
-      "areaServed": [
+    const website = {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: `${SITE}/`,
+      name: "Prime Build",
+      alternateName: "PrimeBuild",
+      inLanguage: "it-IT",
+      publisher: { "@id": `${SITE}/#business` },
+    };
+
+    const graph: Record<string, unknown>[] = [business, website];
+
+    if (location === "/") {
+      graph.push(
         {
-          "@type": "City",
-          "name": "Montegrotto Terme"
+          "@type": "WebPage",
+          "@id": `${SITE}/#webpage`,
+          url: `${SITE}/`,
+          name: "PC Gaming su Misura a Padova | Prime Build",
+          description: "Assemblaggio PC gaming su misura, assistenza e ottimizzazione a Padova e in tutta Italia.",
+          isPartOf: { "@id": `${SITE}/#website` },
+          about: { "@id": `${SITE}/#business` },
+          inLanguage: "it-IT",
         },
         {
-          "@type": "City",
-          "name": "Padova"
-        }
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Servizi PC Gaming Build",
-        "itemListElement": [
+          "@type": "ItemList",
+          name: "Servizi Prime Build",
+          itemListElement: services.map((service, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: service.name,
+            url: absolute(`/servizi/${service.slug}`),
+          })),
+        },
+        {
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
+        },
+      );
+    } else if (location.startsWith("/servizi/")) {
+      const service = getService(location.split("/").filter(Boolean).pop() ?? "");
+      if (service) {
+        const url = absolute(`/servizi/${service.slug}`);
+        graph.push(
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "PRIME STARTER - Build Gaming Entry Level",
-              "description": "Servizio completo di assemblaggio PC Gaming entry level per gaming 1080p. Include consulenza, assemblaggio, configurazione e ottimizzazione."
-            },
-            "price": "750",
-            "priceCurrency": "EUR",
-            "priceSpecification": {
-              "@type": "PriceSpecification",
-              "price": "750",
-              "priceCurrency": "EUR",
-              "valueAddedTaxIncluded": true
-            }
+            "@type": "Service",
+            "@id": `${url}#service`,
+            name: service.name,
+            serviceType: service.name,
+            description: service.metaDescription,
+            url,
+            provider: { "@id": `${SITE}/#business` },
+            areaServed: [{ "@type": "City", name: "Padova" }, { "@type": "Country", name: "Italia" }],
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "PRIME PERFORMER - Build Gaming Mid Range",
-              "description": "Servizio completo di assemblaggio PC Gaming mid range per gaming 1440p. Include consulenza, assemblaggio, configurazione e ottimizzazione."
-            },
-            "price": "1500",
-            "priceCurrency": "EUR",
-            "priceSpecification": {
-              "@type": "PriceSpecification",
-              "price": "1500",
-              "priceCurrency": "EUR",
-              "valueAddedTaxIncluded": true
-            }
+            "@type": "WebPage",
+            "@id": `${url}#webpage`,
+            url,
+            name: service.title,
+            description: service.metaDescription,
+            isPartOf: { "@id": `${SITE}/#website` },
+            mainEntity: { "@id": `${url}#service` },
+            inLanguage: "it-IT",
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "PRIME ELITE - Build Gaming High End",
-              "description": "Servizio completo di assemblaggio PC Gaming high end per gaming 4K, streaming e workstation. Include consulenza, assemblaggio, configurazione e ottimizzazione."
-            },
-            "price": "2900",
-            "priceCurrency": "EUR",
-            "priceSpecification": {
-              "@type": "PriceSpecification",
-              "price": "2900",
-              "priceCurrency": "EUR",
-              "valueAddedTaxIncluded": true
-            }
-          }
-        ]
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+              { "@type": "ListItem", position: 2, name: "Servizi", item: `${SITE}/#services` },
+              { "@type": "ListItem", position: 3, name: service.name, item: url },
+            ],
+          },
+          {
+            "@type": "FAQPage",
+            mainEntity: service.questions.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          },
+        );
       }
-    };
-
-    // Service Schema for detailed service descriptions
-    const serviceSchema = {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Assemblaggio PC Gaming Custom",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Prime Build"
-      },
-      "areaServed": [
-        {"@type": "City", "name": "Montegrotto Terme"},
-        {"@type": "City", "name": "Abano Terme"},
-        {"@type": "City", "name": "Padova"},
-        {"@type": "AdministrativeArea", "name": "Veneto"}
-      ],
-      "description": "Servizio completo di assemblaggio PC Gaming su misura: dalla consulenza iniziale alla consegna plug and play. Include supporto post-vendita e accesso alla community Discord.",
-      "offers": {
-        "@type": "AggregateOffer",
-        "lowPrice": "750",
-        "highPrice": "2900",
-        "priceCurrency": "EUR",
-        "offerCount": "3"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Servizi Prime Build",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Assemblaggio PC Gaming",
-              "description": "Servizio completo dall'idea alla consegna plug and play"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Assistenza Tecnica PC",
-              "description": "Riparazione, manutenzione e pulizia PC"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Ottimizzazione PC",
-              "description": "Ottimizzazione software e hardware per massime prestazioni"
-            }
-          }
-        ]
-      }
-    };
-
-    // BreadcrumbList Schema
-    const breadcrumbSchema = {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://primebuild.website/"},
-        {"@type": "ListItem", "position": 2, "name": "Servizi", "item": "https://primebuild.website/#services"},
-        {"@type": "ListItem", "position": 3, "name": "Build PC Gaming", "item": "https://primebuild.website/#builds"},
-        {"@type": "ListItem", "position": 4, "name": "Contatti", "item": "https://primebuild.website/#contact"}
-      ]
-    };
-
-    // WebSite schema for sitelinks search box
-    const websiteSchema = {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Prime Build",
-      "url": "https://primebuild.website/",
-      "description": "Servizio di assemblaggio PC Gaming su misura a Montegrotto Terme"
-    };
-
-    const schemas = [organizationSchema, localBusinessSchema, serviceSchema, breadcrumbSchema, websiteSchema];
-
-    const scripts: HTMLScriptElement[] = [];
-
-    schemas.forEach((schema, index) => {
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.id = `schema-markup-${index}`;
-      script.text = JSON.stringify(schema);
-      document.head.appendChild(script);
-      scripts.push(script);
-    });
-
-    return () => {
-      scripts.forEach(script => {
-        if (script.parentNode) {
-          script.parentNode.removeChild(script);
-        }
+    } else if (location === "/guides") {
+      graph.push({
+        "@type": "CollectionPage",
+        "@id": `${SITE}/guides#webpage`,
+        url: `${SITE}/guides`,
+        name: "Guide tecniche Prime Build",
+        description: "Guide su PC gaming, latenza, rete, audio e ottimizzazione.",
+        isPartOf: { "@id": `${SITE}/#website` },
+        inLanguage: "it-IT",
       });
-    };
-  }, []);
+    } else if (location.startsWith("/guides/")) {
+      const guide = guides.find((item) => `/guides/${item.slug}` === location);
+      if (guide) {
+        const url = absolute(location);
+        graph.push(
+          {
+            "@type": "Article",
+            "@id": `${url}#article`,
+            headline: guide.title,
+            description: guide.description,
+            image: absolute(guide.image),
+            datePublished: guide.datePublished,
+            dateModified: guide.dateModified,
+            author: { "@id": `${SITE}/#business` },
+            publisher: { "@id": `${SITE}/#business` },
+            mainEntityOfPage: { "@id": `${url}#webpage` },
+            inLanguage: "it-IT",
+          },
+          {
+            "@type": "WebPage",
+            "@id": `${url}#webpage`,
+            url,
+            name: guide.title,
+            isPartOf: { "@id": `${SITE}/#website` },
+            breadcrumb: { "@id": `${url}#breadcrumb` },
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": `${url}#breadcrumb`,
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+              { "@type": "ListItem", position: 2, name: "Guide", item: `${SITE}/guides` },
+              { "@type": "ListItem", position: 3, name: guide.title, item: url },
+            ],
+          },
+        );
+      }
+    }
+
+    return { "@context": "https://schema.org", "@graph": graph };
+  }, [location]);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "primebuild-schema";
+    script.text = JSON.stringify(schema);
+    document.head.querySelector("#primebuild-schema")?.remove();
+    document.head.appendChild(script);
+    return () => script.remove();
+  }, [schema]);
 
   return null;
 };

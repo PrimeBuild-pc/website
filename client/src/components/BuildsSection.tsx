@@ -61,7 +61,7 @@ const BuildsSection = () => {
         "La configurazione ideale per chi vuole entrare nel mondo del gaming ad alte prestazioni senza spendere una fortuna.",
   image: "/low.jpg",
       specs: [
-        { name: "Processore", value: "AMD Ryzen 5 5700x", performance: 60 },
+        { name: "Processore", value: "AMD Ryzen 5 5500X3D", performance: 60 },
         { name: "Scheda Video", value: "NVIDIA RTX 5060 8GB", performance: 62 },
         { name: "RAM", value: "32GB DDR4 3600MHz", performance: 70 },
         { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },

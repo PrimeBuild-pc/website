@@ -64,27 +64,27 @@ const Footer = () => {
               </h4>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="#home" className="hover:text-primary transition-colors">
+                  <a href="/#home" className="hover:text-primary transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/#services" className="hover:text-primary transition-colors">
                     Servizi
                   </a>
                 </li>
                 <li>
-                  <a href="#builds" className="hover:text-primary transition-colors">
+                  <a href="/#builds" className="hover:text-primary transition-colors">
                     Le Nostre Build
                   </a>
                 </li>
                 <li>
-                  <a href="#apps" className="hover:text-primary transition-colors">
+                  <a href="/#apps" className="hover:text-primary transition-colors">
                     App
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-primary transition-colors">
+                  <a href="/#contact" className="hover:text-primary transition-colors">
                     Contatti
                   </a>
                 </li>
@@ -109,22 +109,22 @@ const Footer = () => {
               </h4>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/servizi/pc-gaming-su-misura" className="hover:text-primary transition-colors">
                     PC Gaming Custom
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/servizi/assistenza-riparazione-pc" className="hover:text-primary transition-colors">
                     Riparazioni e Assistenza
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/servizi/ottimizzazione-pc-gaming" className="hover:text-primary transition-colors">
                     Ottimizzazione
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/servizi/pc-gaming-su-misura" className="hover:text-primary transition-colors">
                     Consulenza Hardware
                   </a>
                 </li>

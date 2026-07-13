@@ -8,14 +8,16 @@ const ServiceCard = ({
   title, 
   description, 
   features, 
-  cta, 
+  cta,
+  slug,
   delay 
 }: { 
   icon: React.ReactNode; 
   title: string; 
   description: string; 
   features: string[]; 
-  cta: string; 
+  cta: string;
+  slug: string;
   delay: number; 
 }) => {
   return (
@@ -35,7 +37,7 @@ const ServiceCard = ({
         ))}
       </ul>
       <a
-        href="#contact"
+        href={`/servizi/${slug}`}
         onClick={() => trackCTAClick(cta, 'services')}
         className="inline-block text-primary hover:underline font-medium group"
       >
@@ -52,7 +54,8 @@ const ServicesSection = () => {
       title: "PC Gaming Custom",
       description: "Assembliamo il PC Gaming dei tuoi sogni con componenti di alta qualità, selezionati in base alle tue esigenze e al tuo budget.",
       features: ["Componenti premium", "Assemblaggio professionale", "Cable management impeccabile"],
-      cta: "Richiedi preventivo",
+      cta: "Scopri il servizio",
+      slug: "pc-gaming-su-misura",
       delay: 0.2
     },
     {
@@ -60,7 +63,8 @@ const ServicesSection = () => {
       title: "Riparazioni e Assistenza",
       description: "Servizio di riparazione e assistenza tecnica professionale per risolvere qualsiasi problema hardware o software del tuo PC.",
       features: ["Diagnosi professionale", "Riparazione rapida", "Supporto post-intervento"],
-      cta: "Prenota assistenza",
+      cta: "Scopri il servizio",
+      slug: "assistenza-riparazione-pc",
       delay: 0.4
     },
     {
@@ -68,7 +72,8 @@ const ServicesSection = () => {
       title: "Ottimizzazione",
       description: "Massimizza le prestazioni del tuo PC con i nostri servizi di ottimizzazione, tweaking e boost per gaming e produttività.",
       features: ["Overclock sicuro", "Ottimizzazione sistema", "Performance boost"],
-      cta: "Scopri di più",
+      cta: "Scopri il servizio",
+      slug: "ottimizzazione-pc-gaming",
       delay: 0.6
     }
   ];
