@@ -52,6 +52,9 @@
     html.motion-preview .hero-ring-two { animation-duration: 17s !important; animation-iteration-count: infinite !important; }
     html.motion-preview .hero-prism { animation-duration: 10s !important; animation-iteration-count: infinite !important; }
     html.motion-preview .hero-scan { animation-duration: 2.4s !important; animation-iteration-count: 1 !important; }
+    html.motion-preview .matrix-column { animation-duration: 12s !important; animation-iteration-count: infinite !important; }
+    html.motion-preview .gear-clockwise { animation-duration: 28s !important; animation-iteration-count: infinite !important; }
+    html.motion-preview .gear-counter { animation-duration: 34s !important; animation-iteration-count: infinite !important; }
     html.motion-preview .hero-enter { animation-duration: .6s !important; }
     html.motion-preview .brand-enter-left,
     html.motion-preview .brand-enter-right { animation-duration: .85s !important; }
@@ -120,6 +123,49 @@
     background: linear-gradient(315deg, hsl(var(--primary) / .55), rgba(255,255,255,.16));
     transform: rotate(-12deg);
   }
+  .matrix-field {
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(255,102,0,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,102,0,.035) 1px, transparent 1px),
+      radial-gradient(circle at 50% 48%, #120b07, #050505 68%);
+    background-size: 64px 64px, 64px 64px, auto;
+    mask-image: linear-gradient(to bottom, #000 84%, transparent);
+  }
+  .matrix-column {
+    position: absolute;
+    top: -75%;
+    color: hsl(var(--primary) / .48);
+    font: 600 12px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: .12em;
+    text-orientation: upright;
+    text-shadow: 0 0 10px hsl(var(--primary) / .55);
+    writing-mode: vertical-rl;
+    animation-name: matrix-rain;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+  .matrix-column:nth-child(3n) { color: rgba(255,255,255,.36); }
+  .matrix-column:nth-child(even) { opacity: .56; }
+
+  .gear-field {
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+      radial-gradient(circle at 50% 45%, #17100b, #050505 70%);
+    background-size: 72px 72px, 72px 72px, auto;
+    mask-image: linear-gradient(to bottom, #000 84%, transparent);
+  }
+  .hero-gear {
+    position: absolute;
+    color: hsl(var(--primary) / .22);
+    will-change: transform;
+  }
+  .gear-clockwise { animation: gear-clockwise 28s linear infinite; }
+  .gear-counter { animation: gear-counter 34s linear infinite; }
+
   .hero-glow {
     position: absolute;
     inset: 18% 22%;
@@ -229,6 +275,12 @@ html.motion-paused *::after,
   animation-play-state: paused !important;
 }
 
+@keyframes matrix-rain {
+  from { transform: translate3d(0, -10%, 0); }
+  to { transform: translate3d(0, 190vh, 0); }
+}
+@keyframes gear-clockwise { to { transform: rotate(360deg); } }
+@keyframes gear-counter { to { transform: rotate(-360deg); } }
 @keyframes enter-up { from { opacity: 0; transform: translateY(12px); } }
 @keyframes brand-left { from { transform: translateX(-18vw) scale(.88); letter-spacing: .02em; } }
 @keyframes brand-right { from { transform: translateX(18vw) scale(.88); letter-spacing: .02em; } }
