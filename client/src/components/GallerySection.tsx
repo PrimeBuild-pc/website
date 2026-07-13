@@ -42,18 +42,20 @@ export default function GallerySection() {
   // Measure the exact pixel distance for half track and compute duration = distance / speed
   const trackRef = useRef<HTMLDivElement>(null);
   const [styleVars, setStyleVars] = useState<React.CSSProperties>({});
+  const [isVisible, setIsVisible] = useState(false);
   const hasTrackedView = useRef(false);
 
   useEffect(() => {
     // Analytics tracking when gallery comes into view
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasTrackedView.current) {
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting && !hasTrackedView.current) {
           trackGalleryView();
           hasTrackedView.current = true;
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.05 }
     );
 
     if (trackRef.current) {
@@ -95,7 +97,7 @@ export default function GallerySection() {
           <style>{`
             @keyframes marqueeX { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--marquee-distance))); } }
           `}</style>
-          <div ref={trackRef} className="marquee-animate flex gap-4 flex-nowrap will-change-transform" style={{ ...styleVars, animation: `marqueeX var(--marquee-duration) linear infinite` }}>
+          <div ref={trackRef} className="marquee-animate flex gap-4 flex-nowrap will-change-transform" style={{ ...styleVars, animation: `marqueeX var(--marquee-duration) linear infinite`, animationPlayState: isVisible ? "running" : "paused" }}>
             {loopImages.map((img, i) => (
               <div
                 key={i}

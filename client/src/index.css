@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html.motion-paused *,
+html.motion-paused *::before,
+html.motion-paused *::after {
+  animation-play-state: paused !important;
+}
+
 :root {
   --primary: 24 100% 50%;
   --ring: 24 100% 50%;

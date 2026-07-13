@@ -31,7 +31,7 @@ const ParticleCanvas = () => {
 
     const isMobile = window.innerWidth < 768;
     const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const particleCount = isMobile ? 30 : (isReducedMotion ? 20 : 80);
+    const particleCount = isMobile ? 20 : (isReducedMotion ? 15 : 50);
 
     const initParticles = () => {
       particlesRef.current = [];
@@ -47,8 +47,11 @@ const ParticleCanvas = () => {
       }
     };
 
+    let paused = document.hidden || !document.hasFocus();
+
     const drawParticles = () => {
-      if (!ctx || !canvas) return;
+      animationFrameRef.current = 0;
+      if (!ctx || !canvas || paused) return;
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -101,12 +104,23 @@ const ParticleCanvas = () => {
       animationFrameRef.current = requestAnimationFrame(drawParticles);
     };
 
+    const updateMotionState = () => {
+      paused = document.hidden || !document.hasFocus();
+      if (!paused && !animationFrameRef.current) animationFrameRef.current = requestAnimationFrame(drawParticles);
+    };
+
     window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("focus", updateMotionState);
+    window.addEventListener("blur", updateMotionState);
+    document.addEventListener("visibilitychange", updateMotionState);
     resizeCanvas();
     drawParticles();
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("focus", updateMotionState);
+      window.removeEventListener("blur", updateMotionState);
+      document.removeEventListener("visibilitychange", updateMotionState);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
