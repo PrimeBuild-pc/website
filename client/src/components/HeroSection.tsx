@@ -14,7 +14,7 @@ const HeroSection = () => (
     <div className="relative z-10 mx-auto w-full max-w-7xl px-5 py-20 text-center sm:px-8">
       <p className="hero-enter mx-auto mb-7 flex max-w-full w-fit items-center justify-center gap-3 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-center text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-neutral-300 backdrop-blur-xl sm:text-[0.68rem] sm:tracking-[0.22em]">
         <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary))]" />
-        PC custom · Padova · Italia
+        Montegrotto Terme · 35036 (PD)
       </p>
 
       <h1 className="mx-auto font-montserrat font-semibold uppercase leading-[0.77] tracking-[-0.075em]" aria-label="Prime Build — PC gaming su misura">

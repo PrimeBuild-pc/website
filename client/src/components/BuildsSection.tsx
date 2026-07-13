@@ -4,11 +4,8 @@ import ImageWithFallback from "@/lib/ImageWithFallback";
 import { SectionHeader } from "./SectionHeader";
 
 interface Build {
-  name: string;
-  shortName: string;
   tagline: string;
   description: string;
-  level: string;
   price: string;
   image: string;
   specs: {
@@ -52,16 +49,13 @@ const BuildsSection = () => {
 
   const builds: Build[] = useMemo(() => [
     {
-      name: "PRIME STARTER",
-      shortName: "STARTER",
       tagline: "Gaming 1080p fluido",
-      level: "Entry Level",
       price: "750€",
       description:
         "La configurazione ideale per chi vuole entrare nel mondo del gaming ad alte prestazioni senza spendere una fortuna.",
       image: "/low.webp",
       specs: [
-        { name: "Processore", value: "AMD Ryzen 5 5700x", performance: 60 },
+        { name: "Processore", value: "AMD Ryzen 5 5500X3D", performance: 60 },
         { name: "Scheda Video", value: "NVIDIA RTX 5060 8GB", performance: 62 },
         { name: "RAM", value: "32GB DDR4 3600MHz", performance: 70 },
         { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },
@@ -69,10 +63,7 @@ const BuildsSection = () => {
       ],
     },
     {
-      name: "PRIME PERFORMER",
-      shortName: "PERFORMER",
       tagline: "Gaming 1440p premium",
-      level: "Mid Range",
       price: "1500€",
       description:
         "Potenza e prestazioni bilanciate per gaming in 1440p e multitasking intenso.",
@@ -90,10 +81,7 @@ const BuildsSection = () => {
       ],
     },
     {
-      name: "PRIME ELITE",
-      shortName: "ELITE",
       tagline: "Gaming 4K | Streaming | Workstation",
-      level: "High End",
       price: "2900€",
       description:
         "La soluzione definitiva per gaming 4K, streaming professionale e carichi di lavoro intensi.",
@@ -127,7 +115,7 @@ const BuildsSection = () => {
         <div className="mx-auto max-w-6xl">
           {builds.map((build, index) => (
             <AnimatedElement
-              key={build.name}
+              key={build.price}
               className={`mb-20 ${index === builds.length - 1 ? "mb-0" : ""}`}
               delay={0.12}
             >
@@ -135,13 +123,9 @@ const BuildsSection = () => {
                 className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14"
               >
                 <div className={index % 2 ? "lg:order-2" : ""}>
-                  <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                    <h3 className="font-montserrat text-2xl font-semibold tracking-tight md:text-3xl">
-                      PRIME{" "}
-                      <span className="text-primary">{build.shortName}</span>
-                    </h3>
-                    <span className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
-                      {build.price}
+                  <div className="mb-4">
+                    <span className="font-montserrat text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+                      da {build.price}
                     </span>
                   </div>
                   <p className="mb-7 max-w-xl leading-relaxed text-neutral-400">{build.description}</p>
@@ -178,13 +162,13 @@ const BuildsSection = () => {
                 <div className={`group relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-black ${index % 2 ? "lg:order-1" : ""}`}>
                   <ImageWithFallback
                     src={build.image}
-                    alt={`PC Gaming ${build.name} - ${build.tagline} - Build gaming custom Prime Build`}
+                    alt={`PC Gaming da ${build.price} - ${build.tagline} - Build custom Prime Build`}
                     width={600}
                     height={384}
                     className="h-[22rem] w-full object-cover transition duration-700 group-hover:scale-[1.025] sm:h-[30rem]"
                   />
                   <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-black/65 p-4 backdrop-blur-xl">
-                    <div><span className="text-xs uppercase tracking-wider text-primary">{build.level}</span><p className="mt-1 font-semibold text-white">{build.tagline}</p></div>
+                    <p className="font-semibold text-white">{build.tagline}</p>
                     <span className="text-sm text-neutral-400">da {build.price}</span>
                   </div>
                 </div>
