@@ -5,7 +5,7 @@ import { trackGalleryView } from "@/lib/analytics";
 
 interface GalleryImage { src: string; alt: string }
 
-const SCROLL_SPEED_PX_PER_SEC = 58;
+const SCROLL_SPEED_PX_PER_SEC = 85;
 
 export default function GallerySection() {
   const images: GalleryImage[] = [
