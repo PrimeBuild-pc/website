@@ -24,12 +24,17 @@ const HeroBackground = ({ variant }: { variant: Background }) => {
   if (variant === "matrix") {
     return (
       <div className="matrix-field absolute inset-0" aria-hidden="true">
-        {Array.from({ length: 16 }, (_, index) => (
+        <div className="matrix-reticle"><span /><span /><span /></div>
+        <div className="matrix-panel matrix-panel-a"><b>PRIME // CORE</b><span>BUILD STATUS: READY</span><span>THERMAL LINK: STABLE</span></div>
+        <div className="matrix-panel matrix-panel-b"><b>SYS.01</b><span>LATENCY 01.6MS</span><span>FRAME SYNC ACTIVE</span></div>
+        <div className="matrix-bracket matrix-bracket-left" />
+        <div className="matrix-bracket matrix-bracket-right" />
+        {Array.from({ length: 18 }, (_, index) => (
           <span
             key={index}
             className="matrix-column"
             style={{
-              left: `${2 + index * 6.4}%`,
+              left: `${1 + index * 5.7}%`,
               animationDuration: `${8 + (index % 5) * 1.3}s`,
               animationDelay: `${-index * 0.73}s`,
             }}
@@ -43,22 +48,30 @@ const HeroBackground = ({ variant }: { variant: Background }) => {
 
   if (variant === "gears") {
     const gears = [
-      ["8%", "12%", "16rem", "gear-clockwise"],
-      ["25%", "54%", "10rem", "gear-counter"],
-      ["58%", "8%", "22rem", "gear-counter"],
-      ["70%", "58%", "14rem", "gear-clockwise"],
-      ["86%", "28%", "8rem", "gear-counter"],
+      ["5%", "10%", "17rem", "gear-clockwise"],
+      ["23%", "56%", "11rem", "gear-counter"],
+      ["56%", "5%", "23rem", "gear-counter"],
+      ["71%", "59%", "15rem", "gear-clockwise"],
+      ["87%", "27%", "9rem", "gear-counter"],
+      ["45%", "73%", "7rem", "gear-clockwise"],
     ];
     return (
       <div className="gear-field absolute inset-0" aria-hidden="true">
         <div className="hero-glow" />
+        <div className="gear-belt gear-belt-a" />
+        <div className="gear-belt gear-belt-b" />
+        <div className="gear-blueprint gear-blueprint-a">DRIVE TRAIN / 01</div>
+        <div className="gear-blueprint gear-blueprint-b">TORQUE SYNC / ACTIVE</div>
         {gears.map(([left, top, size, animation], index) => (
-          <Cog
+          <div
             key={`${left}-${top}`}
             className={`hero-gear ${animation}`}
-            strokeWidth={0.65}
             style={{ left, top, width: size, height: size, animationDelay: `${-index * 1.7}s` } as CSSProperties}
-          />
+          >
+            <Cog className="gear-icon" strokeWidth={0.8} />
+            <span className="gear-inner" />
+            <span className="gear-hub" />
+          </div>
         ))}
       </div>
     );
