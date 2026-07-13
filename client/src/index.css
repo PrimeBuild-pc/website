@@ -45,6 +45,13 @@
       transition-duration: 0.01ms !important;
     }
     .reveal { opacity: 1 !important; transform: none !important; }
+    html.motion-preview .hero-geometry::before { animation-duration: 9s !important; animation-iteration-count: infinite !important; }
+    html.motion-preview .hero-geometry::after { animation-duration: 11s !important; animation-iteration-count: infinite !important; }
+    html.motion-preview .hero-glow { animation-duration: 7s !important; animation-iteration-count: infinite !important; }
+    html.motion-preview .hero-ring-one { animation-duration: 15s !important; animation-iteration-count: infinite !important; }
+    html.motion-preview .hero-ring-two { animation-duration: 11s !important; animation-iteration-count: infinite !important; }
+    html.motion-preview .hero-prism,
+    html.motion-preview .hero-scan { animation-duration: 6s !important; animation-iteration-count: infinite !important; }
   }
 }
 
