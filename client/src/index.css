@@ -45,6 +45,7 @@
       transition-duration: 0.01ms !important;
     }
     .reveal { opacity: 1 !important; transform: none !important; }
+    html.motion-preview { scroll-behavior: smooth !important; }
     html.motion-preview .hero-geometry::before { animation-duration: 9s !important; animation-iteration-count: infinite !important; }
     html.motion-preview .hero-geometry::after { animation-duration: 11s !important; animation-iteration-count: infinite !important; }
     html.motion-preview .hero-glow { animation-duration: 7s !important; animation-iteration-count: infinite !important; }
@@ -52,6 +53,21 @@
     html.motion-preview .hero-ring-two { animation-duration: 11s !important; animation-iteration-count: infinite !important; }
     html.motion-preview .hero-prism,
     html.motion-preview .hero-scan { animation-duration: 6s !important; animation-iteration-count: infinite !important; }
+    html.motion-preview .hero-enter { animation-duration: .6s !important; }
+    html.motion-preview .brand-enter-left,
+    html.motion-preview .brand-enter-right { animation-duration: .85s !important; }
+    html.motion-preview .mobile-menu-enter { animation-duration: .22s !important; }
+    html.motion-preview .reveal {
+      opacity: 0 !important;
+      transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 28px), 0) !important;
+      transition-duration: .6s !important;
+    }
+    html.motion-preview .reveal.is-visible { opacity: 1 !important; transform: translate3d(0, 0, 0) !important; }
+    html.motion-preview .marquee-animate {
+      animation-duration: var(--marquee-duration) !important;
+      animation-iteration-count: infinite !important;
+    }
+    html.motion-preview .spec-bar-fill { transition-duration: 1s !important; }
   }
 }
 
@@ -208,8 +224,8 @@
 }
 
 @keyframes enter-up { from { opacity: 0; transform: translateY(12px); } }
-@keyframes brand-left { from { transform: translateX(-42px); } }
-@keyframes brand-right { from { transform: translateX(42px); } }
+@keyframes brand-left { from { transform: translateX(-18vw) scale(.88); letter-spacing: .02em; } }
+@keyframes brand-right { from { transform: translateX(18vw) scale(.88); letter-spacing: .02em; } }
 @keyframes menu-enter { from { opacity: 0; transform: translateY(-6px) scale(.98); } }
 @keyframes hero-orbit {
   from { transform: translate(-50%, -50%) rotate(0deg); }
