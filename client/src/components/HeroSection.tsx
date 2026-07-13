@@ -1,8 +1,21 @@
+import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import { trackCTAClick } from "@/lib/analytics";
 
-const HeroSection = () => (
-  <section id="home" className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-[#050505] pt-24">
+const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0.01 });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+  <section ref={sectionRef} id="home" className={`relative isolate flex min-h-[100svh] items-center overflow-hidden bg-[#050505] pt-24 ${isVisible ? "" : "motion-idle"}`}>
     <div className="hero-geometry absolute inset-0" aria-hidden="true">
       <div className="hero-glow" />
       <div className="hero-ring hero-ring-one" />
@@ -56,6 +69,7 @@ const HeroSection = () => (
       Esplora <ArrowDown className="h-4 w-4 animate-bounce" aria-hidden="true" />
     </a>
   </section>
-);
+  );
+};
 
 export default HeroSection;
