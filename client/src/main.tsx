@@ -2,8 +2,10 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
+const hasCoarsePointer = matchMedia("(hover: none) and (pointer: coarse)").matches;
 const updateMotionState = () => {
-  document.documentElement.classList.toggle("motion-paused", document.hidden || !document.hasFocus());
+  const inactive = document.hidden || (!hasCoarsePointer && !document.hasFocus());
+  document.documentElement.classList.toggle("motion-paused", inactive);
 };
 document.addEventListener("visibilitychange", updateMotionState);
 window.addEventListener("focus", updateMotionState);
