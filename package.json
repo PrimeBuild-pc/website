@@ -5,15 +5,13 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && tsx scripts/prerender-meta.ts",
     "preview": "vite preview",
     "check": "tsc",
     "knip": "knip"
   },
   "dependencies": {
     "@radix-ui/react-toast": "^1.2.2",
-    "@replit/vite-plugin-shadcn-theme-json": "^0.0.4",
-    "@tanstack/react-query": "^5.90.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dompurify": "^3.4.11",
@@ -28,8 +26,6 @@
     "wouter": "^3.3.5"
   },
   "devDependencies": {
-    "@replit/vite-plugin-cartographer": "^0.0.11",
-    "@replit/vite-plugin-runtime-error-modal": "^0.0.3",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "20.19.0",
     "@types/react": "^18.3.11",

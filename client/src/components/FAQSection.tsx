@@ -2,49 +2,7 @@ import { useState } from "react";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { SectionHeader } from "./SectionHeader";
 
-interface FAQ {
-  question: string;
-  answer: string;
-}
-
-const faqs: FAQ[] = [
-  {
-    question: "Perché nasce PrimeBuild?",
-    answer: "PrimeBuild nasce con l'obiettivo di rendere il PC Gaming accessibile a tutti, superando l'idea che sia un settore di nicchia riservato solo a configurazioni costose o sovradimensionate. In un mercato spesso orientato a vendere build inutilmente care, PrimeBuild mette al centro le reali esigenze del cliente, offrendo consulenza, assemblaggio e ottimizzazione su misura in base al budget e all'utilizzo reale. Non vendiamo semplicemente hardware, ma un servizio completo: aiutiamo il cliente a scegliere i componenti migliori al giusto prezzo, seguiamo l'andamento del mercato e realizziamo PC equilibrati, performanti ed esteticamente curati. L'obiettivo è semplificare tutto il processo, far risparmiare tempo e denaro e dimostrare che un buon PC Gaming è possibile con qualsiasi budget realistico."
-  },
-  {
-    question: "Dove si trova Prime Build?",
-    answer: "Prime Build ha sede a Montegrotto Terme (PD), ma opera in tutta Italia grazie a spedizioni e servizi da remoto."
-  },
-  {
-    question: "Come posso contattare Prime Build?",
-    answer: "Puoi contattarci tramite Instagram (@prime_build_) o unirti al nostro server Discord per assistenza diretta e preventivi personalizzati."
-  },
-  {
-    question: "Quanto costa un PC Gaming assemblato da Prime Build?",
-    answer: "I nostri PC Gaming partono indicativamente da 750€ per configurazioni entry-level. Il prezzo può variare in base al mercato, alla disponibilità dei componenti e alle esigenze specifiche. Non esiste una soglia minima fissa: valutiamo ogni caso, anche utilizzando componenti già in possesso del cliente, parti usate o ricondizionate, per realizzare la miglior configurazione possibile in base al budget. Preventivi gratuiti e personalizzati."
-  },
-  {
-    question: "Offrite assistenza tecnica per PC già assemblati?",
-    answer: "Sì, offriamo assistenza tecnica completa: diagnostica, riparazioni, upgrade hardware, overclock, ottimizzazione software e pulizia. Serviamo sia PC assemblati da noi che da altri."
-  },
-  {
-    question: "Quanto tempo ci vuole per assemblare un PC?",
-    answer: "Generalmente consegniamo/spediamo il PC assemblato, testato e ottimizzato entro 3-5 giorni lavorativi dalla ricezione dei componenti."
-  },
-  {
-    question: "Fornite garanzia sui PC assemblati?",
-    answer: "Sì, tutti i componenti hanno la garanzia del produttore (generalmente dai 2 anni e oltre per alcuni componenti). Inoltre offriamo supporto post-vendita gratuito per configurazione e ottimizzazione."
-  },
-  {
-    question: "Posso scegliere i componenti del mio PC?",
-    answer: "Assolutamente sì! Lavoriamo insieme a te per selezionare i componenti migliori in base al tuo budget e alle tue esigenze, che sia gaming, streaming, editing video o lavoro."
-  },
-  {
-    question: "Offrite servizi a domicilio o da remoto?",
-    answer: "Sì, offriamo assistenza a domicilio nella zona di Padova, Montegrotto Terme e comuni limitrofi, sia per assemblaggio PC che per assistenza e servizi legati al PC Gaming. Forniamo anche servizi da remoto, che ci permettono di operare in tutta Italia. Per quanto riguarda i computer assemblati o riparati, il ritiro può avvenire in sede, con consegna a domicilio su richiesta, oppure tramite spedizione assicurata."
-  }
-];
+import { faqs } from "@/data/faqs";
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -54,24 +12,24 @@ const FAQSection = () => {
   };
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-b from-black via-neutral-950 to-black">
-      <div className="container mx-auto px-4">
+    <section id="faq" className="bg-[#090909] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <AnimatedElement>
           <SectionHeader
-            title="Domande"
-            highlight="frequenti"
+            title="Risposte"
+            highlight="senza giri di parole"
             subtitle="Tutto quello che devi sapere su Prime Build e i nostri servizi"
             underline={false}
           />
         </AnimatedElement>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="mx-auto max-w-4xl space-y-3">
           {faqs.map((faq, index) => (
             <AnimatedElement key={index} delay={0.05 * index}>
-              <div className="bg-neutral-900 rounded-xl overflow-hidden">
+              <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025]">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-neutral-800 transition-colors"
+                  className="flex min-h-16 w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-white/[0.04] sm:px-6"
                   aria-expanded={openIndex === index}
                   aria-controls={`faq-answer-${index}`}
                 >
@@ -82,9 +40,9 @@ const FAQSection = () => {
                 </button>
                 <div
                   id={`faq-answer-${index}`}
-                  className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96 pb-4' : 'max-h-0'}`}
+                  className={`overflow-hidden transition-all duration-500 ${openIndex === index ? 'max-h-[80rem] pb-5' : 'max-h-0'}`}
                 >
-                  <p className="px-6 text-neutral-300">{faq.answer}</p>
+                  <p className="px-5 leading-relaxed text-neutral-400 sm:px-6">{faq.answer}</p>
                 </div>
               </div>
             </AnimatedElement>

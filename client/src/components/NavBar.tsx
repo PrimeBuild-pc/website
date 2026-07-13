@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaInstagram, FaDiscord } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { trackSocialClick } from "@/lib/analytics";
@@ -134,16 +133,11 @@ const NavBar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
+      {isOpen && (
+          <div
             ref={menuRef}
             id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-3xl border border-white/10 bg-black/95 px-4 pb-4 pt-2 shadow-2xl backdrop-blur-2xl md:hidden"
+            className="mobile-menu-enter mx-auto mt-2 max-w-7xl overflow-hidden rounded-3xl border border-white/10 bg-black/95 px-4 pb-4 pt-2 shadow-2xl backdrop-blur-2xl md:hidden"
             role="menu"
           >
             <a href="/#home" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Home</a>
@@ -176,9 +170,8 @@ const NavBar = () => {
                 <FaDiscord aria-hidden="true" />
               </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+      )}
     </nav>
   );
 };

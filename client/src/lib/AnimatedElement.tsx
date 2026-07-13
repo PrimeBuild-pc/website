@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
 
 interface AnimatedElementProps {
   children: ReactNode;
@@ -10,56 +9,44 @@ interface AnimatedElementProps {
   once?: boolean;
 }
 
+const offsets = {
+  up: ["0px", "28px"],
+  down: ["0px", "-28px"],
+  left: ["28px", "0px"],
+  right: ["-28px", "0px"],
+} as const;
+
 const AnimatedElement = ({
   children,
-  className,
+  className = "",
   delay = 0,
   duration = 0.6,
   direction = "up",
   once = true,
 }: AnimatedElementProps) => {
-  const getInitialPosition = () => {
-    switch (direction) {
-      case "up":
-        return { y: 50, opacity: 0 };
-      case "down":
-        return { y: -50, opacity: 0 };
-      case "left":
-        return { x: 50, opacity: 0 };
-      case "right":
-        return { x: -50, opacity: 0 };
-      default:
-        return { y: 50, opacity: 0 };
-    }
-  };
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
-  const getFinalPosition = () => {
-    switch (direction) {
-      case "up":
-      case "down":
-        return { y: 0, opacity: 1 };
-      case "left":
-      case "right":
-        return { x: 0, opacity: 1 };
-      default:
-        return { y: 0, opacity: 1 };
-    }
-  };
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting);
+      if (entry.isIntersecting && once) observer.disconnect();
+    }, { rootMargin: "0px 0px -8%", threshold: 0.05 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [once]);
 
+  const [x, y] = offsets[direction];
   return (
-    <motion.div
-      className={className}
-      initial={getInitialPosition()}
-      whileInView={getFinalPosition()}
-      viewport={{ once }}
-      transition={{
-        duration,
-        delay,
-        ease: "easeOut",
-      }}
+    <div
+      ref={ref}
+      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      style={{ "--reveal-x": x, "--reveal-y": y, transitionDelay: `${delay}s`, transitionDuration: `${duration}s` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 

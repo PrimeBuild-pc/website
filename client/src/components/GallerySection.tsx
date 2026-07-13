@@ -5,7 +5,7 @@ import { trackGalleryView } from "@/lib/analytics";
 
 interface GalleryImage { src: string; alt: string }
 
-const SCROLL_SPEED_PX_PER_SEC = 300; // configurabile (px/s)
+const SCROLL_SPEED_PX_PER_SEC = 58;
 
 export default function GallerySection() {
   const images: GalleryImage[] = [
@@ -86,29 +86,31 @@ export default function GallerySection() {
   }, [loopImages.length]);
 
   return (
-    <section id="galleria" className="py-20 md:py-24 bg-gradient-to-b from-black via-neutral-950 to-black">
-  <div className="w-full px-0">
-        <AnimatedElement>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Galleria</h2>
+    <section id="galleria" className="overflow-hidden bg-[#050505] py-24 md:py-32">
+      <div className="w-full">
+        <AnimatedElement className="mx-auto max-w-7xl px-5 sm:px-8">
+          <span className="section-kicker">Build reali</span>
+          <h2 className="font-montserrat text-3xl font-semibold tracking-[-0.04em] md:text-5xl">Il nostro lavoro, <span className="text-primary">senza render.</span></h2>
+          <p className="mt-4 max-w-2xl text-neutral-400">Una selezione di PC realmente assemblati, curati e testati da Prime Build.</p>
         </AnimatedElement>
-        <div className="mt-10 relative overflow-hidden" aria-label="Galleria a scorrimento continuo" role="list">
+        <div className="relative mt-12 overflow-hidden" aria-label="Galleria a scorrimento continuo" role="list">
           <style>{`
             @keyframes marqueeX { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--marquee-distance))); } }
           `}</style>
-          <div ref={trackRef} className="marquee-animate flex gap-4 flex-nowrap will-change-transform" style={{ ...styleVars, animation: `marqueeX var(--marquee-duration) linear infinite` }}>
+          <div ref={trackRef} className="marquee-animate flex flex-nowrap gap-3 will-change-transform md:gap-5" style={{ ...styleVars, animation: `marqueeX var(--marquee-duration) linear infinite` }}>
             {loopImages.map((img, i) => (
               <div
                 key={i}
                 role="listitem"
-                className="flex-shrink-0 w-[140px] h-[248px] sm:w-[160px] sm:h-[285px] md:w-[200px] md:h-[356px] lg:w-[225px] lg:h-[400px] rounded-xl"
+                className="h-[284px] w-[160px] flex-shrink-0 rounded-3xl sm:h-[356px] sm:w-[200px] lg:h-[426px] lg:w-[240px]"
               >
-                <div className="w-full h-full rounded-xl overflow-hidden flex items-center justify-center bg-black">
+                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-3xl border border-white/[0.08] bg-black">
                   <ImageWithFallback
                     src={img.src}
                     alt={img.alt}
                     width={225}
                     height={400}
-                    className="max-h-full max-w-full object-contain rounded-xl"
+                    className="h-full w-full rounded-3xl object-cover transition duration-500 hover:scale-[1.03]"
                   />
                 </div>
               </div>

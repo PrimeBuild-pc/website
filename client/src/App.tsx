@@ -1,46 +1,44 @@
-import { Switch, Route } from "wouter";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./lib/queryClient";
-import { Toaster } from "@/components/ui/toaster";
+import { lazy, Suspense } from "react";
+import { Route, Switch } from "wouter";
 import Home from "@/pages/Home";
-import Privacy from "@/pages/Privacy";
-import Guides from "@/pages/Guides";
-import GuideDetail from "@/pages/GuideDetail";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import NotFound from "@/pages/not-found";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import CookieBanner from "@/components/CookieBanner";
 import SkipLink from "@/components/SkipLink";
+import { Toaster } from "@/components/ui/toaster";
 
-function Router() {
-  return (
+const Privacy = lazy(() => import("@/pages/Privacy"));
+const Guides = lazy(() => import("@/pages/Guides"));
+const GuideDetail = lazy(() => import("@/pages/GuideDetail"));
+const ServiceDetail = lazy(() => import("@/pages/ServiceDetail"));
+const NotFound = lazy(() => import("@/pages/not-found"));
+
+const Router = () => (
+  <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/guides" component={Guides} />
       <Route path="/guides/:slug" component={GuideDetail} />
+      <Route path="/servizi/:slug" component={ServiceDetail} />
       <Route component={NotFound} />
     </Switch>
-  );
-}
+  </Suspense>
+);
 
-function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <SchemaMarkup />
-      <SkipLink />
-      <div className="flex flex-col min-h-screen bg-black text-white font-inter">
-        <NavBar />
-        <main id="main-content" className="flex-grow">
-          <Router />
-        </main>
-        <Footer />
-      </div>
-      <Toaster />
-      <CookieBanner />
-    </QueryClientProvider>
-  );
-}
+const App = () => (
+  <>
+    <SchemaMarkup />
+    <SkipLink />
+    <div className="flex min-h-screen flex-col bg-[#050505] text-white">
+      <NavBar />
+      <main id="main-content" className="flex-grow"><Router /></main>
+      <Footer />
+    </div>
+    <Toaster />
+    <CookieBanner />
+  </>
+);
 
 export default App;

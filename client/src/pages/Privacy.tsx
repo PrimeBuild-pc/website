@@ -1,8 +1,15 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { FaArrowLeft } from "react-icons/fa";
+import useSEO from "@/hooks/useSEO";
 
 const Privacy = () => {
+  useSEO({
+    title: "Privacy e Cookie Policy | Prime Build",
+    description: "Informativa sul trattamento dei dati personali e sull'uso dei cookie del sito Prime Build.",
+    path: "/privacy",
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -10,11 +17,9 @@ const Privacy = () => {
   return (
     <div className="min-h-screen bg-black text-white pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-4xl">
-        <Link href="/">
-          <a className="inline-flex items-center text-primary hover:underline mb-8">
-            <FaArrowLeft className="mr-2" />
-            Torna alla Home
-          </a>
+        <Link href="/" className="mb-8 inline-flex items-center text-primary hover:underline">
+          <FaArrowLeft className="mr-2" />
+          Torna alla Home
         </Link>
 
         <h1 className="text-3xl md:text-4xl font-bold font-montserrat mb-8 text-primary">
