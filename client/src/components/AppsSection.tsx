@@ -118,34 +118,32 @@ const AppsSection = () => {
   };
 
   return (
-    <section id="apps" className="py-20 bg-black">
-      <div className="container mx-auto px-4">
+    <section id="apps" className="bg-[#050505] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <AnimatedElement>
           <SectionHeader
-            title="Le nostre"
-            highlight="app"
-            subtitle="Strumenti esclusivi per ottimizzare la tua esperienza di gioco"
+            title="Software aperto,"
+            highlight="controllo reale"
+            subtitle="Utility gratuite sviluppate da Prime Build per capire e ottimizzare Windows senza formule magiche."
             underline={false}
           />
         </AnimatedElement>
 
-        <div className="flex gap-6 max-w-6xl mx-auto overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible">
+        <div className="no-scrollbar mx-auto flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-4">
           {apps.map((app, index) => {
             const repoUrl = buildGitHubRepoUrl(app.owner, app.repo);
 
             return (
               <AnimatedElement
                 key={index}
-                className="glow-card relative bg-neutral-900 rounded-xl overflow-hidden flex flex-col
-                         flex-shrink-0 w-[280px] snap-center md:w-auto
-                         focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary
-                         transition-transform hover:scale-105 focus-within:scale-105"
+                className="surface-card glow-card relative flex w-[82vw] max-w-[300px] flex-shrink-0 snap-center flex-col overflow-hidden md:w-auto md:max-w-none"
                 delay={0.1 * index}
               >
                 {/* wrapper interno a colonna per riempire l'altezza */}
-                <div className="p-6 flex flex-col h-full">
-                  <h3 className="text-xl font-bold mb-2">{app.name}</h3>
-                  <p className="text-neutral-400 mb-4">{app.description}</p>
+                <div className="flex h-full flex-col p-6">
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Prime Build Labs</p>
+                  <h3 className="mb-3 font-montserrat text-xl font-semibold">{app.name}</h3>
+                  <p className="mb-5 text-sm leading-relaxed text-neutral-400">{app.description}</p>
 
                   <ul className="space-y-2 mb-6">
                     {app.features.map((feature, i) => (
@@ -182,7 +180,7 @@ const AppsSection = () => {
                         type="button"
                         onClick={() => handleDownloadClick(app)}
                         disabled={downloadingApp === app.name}
-                        aria-label={`Scarica ${app.name}`}
+                        aria-label={`Download ${app.name}`}
                         className="inline-flex items-center gap-1.5 bg-primary hover:bg-primary text-black font-semibold px-3 py-1.5 rounded-md min-h-[32px] text-sm transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                       >
                         <FaDownload aria-hidden="true" /> {downloadingApp === app.name ? 'Verifica...' : 'Download'}
@@ -195,20 +193,19 @@ const AppsSection = () => {
           })}
         </div>
 
-        <AnimatedElement className="mt-16 text-center" delay={0.3}>
-          <div className="max-w-2xl mx-auto bg-neutral-900 p-8 rounded-xl">
+        <AnimatedElement className="mt-14 text-center" delay={0.2}>
+          <div className="surface-card mx-auto max-w-2xl p-7 md:p-9">
             <h3 className="text-2xl font-bold mb-4">Supporta il nostro lavoro</h3>
             <p className="text-neutral-400 mb-6">
-              Le nostre app sono in fase di sviluppo e saranno presto disponibili. Supporta il nostro lavoro con una
-              donazione per accelerare lo sviluppo e ottenere accesso anticipato.
+              Le app restano gratuite e open source. Se ti sono utili, una donazione ci aiuta a mantenerle e migliorarle.
             </p>
             <a
               href="https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handlePayPalClick}
-              aria-label="Supportaci con una donazione su PayPal"
-              className="inline-flex items-center bg-[#0070BA] hover:bg-[#003087] text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105"
+              aria-label="Supportaci su PayPal con una donazione"
+              className="inline-flex min-h-12 items-center rounded-full bg-[#0070BA] px-7 font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#168bd2]"
             >
               <FaPaypal className="mr-2 text-xl" aria-hidden="true" /> Supportaci su PayPal
             </a>

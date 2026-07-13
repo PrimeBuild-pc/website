@@ -1,0 +1,28 @@
+# Prime Build
+
+> Prime Build progetta e assembla PC gaming su misura, offre assistenza tecnica e ottimizzazione con sede a Montegrotto Terme (Padova) e servizi disponibili in tutta Italia.
+
+## Servizi
+
+- [PC gaming su misura](https://primebuild.website/servizi/pc-gaming-su-misura): consulenza, selezione componenti, assemblaggio, test e supporto post-vendita.
+- [Assistenza e riparazione PC](https://primebuild.website/servizi/assistenza-riparazione-pc): diagnosi hardware e software, riparazioni, upgrade e supporto da remoto.
+- [Ottimizzazione PC gaming](https://primebuild.website/servizi/ottimizzazione-pc-gaming): analisi di prestazioni, frametime, temperature, driver, rete e configurazione Windows.
+
+## Guide tecniche
+
+- [Tutte le guide](https://primebuild.website/guides)
+- [Setup audio competitivo](https://primebuild.website/guides/setup-audio)
+- [Guida DLSS e Frame Generation](https://primebuild.website/guides/guida-dlss-frame-generation)
+- [Setup rete anti-bufferbloat](https://primebuild.website/guides/setup-rete-anti-bufferbloat)
+- [Ottimizzazione build per 240Hz](https://primebuild.website/guides/ottimizzazione-build-240hz)
+- [Low Latency Gaming Guide](https://primebuild.website/guides/low-latency-gaming-guide)
+
+## Identità e contatti
+
+- Sito ufficiale: https://primebuild.website/
+- Sede: Montegrotto Terme, 35036 (PD), Italia
+- Email: primebuild.official@gmail.com
+- Instagram: https://www.instagram.com/prime_build_/
+- Discord: https://discord.gg/ERUwSxE79q
+
+Le configurazioni e i prezzi pubblicati sono indicativi. Ogni preventivo viene verificato e personalizzato al momento della richiesta.

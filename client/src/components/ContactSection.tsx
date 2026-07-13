@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkerAlt, FaInstagram, FaDiscord } from "react-icons/fa";
 import { Link } from "wouter";
 import AnimatedElement from "@/lib/AnimatedElement";
@@ -191,15 +190,15 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-neutral-900">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
+    <section id="contact" className="bg-[#050505] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <AnimatedElement>
               <SectionHeader
-                title=""
-                highlight="Contattaci"
-                subtitle="Sei interessato ai nostri servizi o hai domande? Contattaci per ricevere un preventivo personalizzato o per maggiori informazioni."
+                title="Parliamo del"
+                highlight="tuo prossimo PC"
+                subtitle="Raccontaci budget, giochi, software e obiettivi. Ti rispondiamo con una proposta chiara e personalizzata."
                 alignment="left"
               />
               
@@ -285,27 +284,23 @@ const ContactSection = () => {
                   ></textarea>
                 </div>
                 
-                <motion.button
+                <button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                  className="bg-primary hover:bg-primary text-black font-semibold py-3 px-8 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="button-primary disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
-                </motion.button>
+                </button>
                 <p className="text-xs text-neutral-400">
                   Inviando questo modulo, dichiari di aver letto la nostra{" "}
-                  <Link href="/privacy">
-                    <a className="text-primary hover:underline">informativa privacy</a>
-                  </Link>{" "}
+                  <Link href="/privacy" className="text-primary underline underline-offset-2">informativa privacy</Link>{" "}
                   e acconsenti al trattamento dei dati forniti ai soli fini di ricontatto.
                 </p>
               </form>
             </AnimatedElement>
             
             <AnimatedElement direction="right">
-              <div className="bg-black p-8 rounded-xl h-full">
+              <div className="surface-card h-full p-7 md:p-9">
                 <h3 className="text-2xl font-bold font-montserrat mb-6">
                   Informazioni di <span className="text-primary">contatto</span>
                 </h3>
@@ -327,21 +322,20 @@ const ContactSection = () => {
                     <h4 className="font-medium mb-3 text-lg text-primary">Contattaci preferibilmente su:</h4>
                     <div className="flex flex-col space-y-3">
                       {socialLinks.map((link, index) => (
-                        <motion.a
+                        <a
                           key={index}
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => handleSocialClick(link.name, link.url)}
-                          whileHover={{ scale: 1.05 }}
-                          className="bg-neutral-800 hover:bg-primary p-3 rounded-lg flex items-center transition-colors"
+                          className="flex items-center rounded-xl border border-white/[0.08] bg-white/[0.035] p-3 transition-colors hover:border-primary/30 hover:bg-primary/10"
                           aria-label={`Contattaci su ${link.name}`}
                         >
                           <div className="bg-primary/20 p-2 rounded-full mr-3" aria-hidden="true">
                             {link.icon}
                           </div>
                           <span className="font-medium">{link.name}</span>
-                        </motion.a>
+                        </a>
                       ))}
                     </div>
                   </div>

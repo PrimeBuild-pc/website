@@ -1,6 +1,7 @@
 import { useEffect, useRef, lazy, Suspense } from "react";
 import HeroSection from "@/components/HeroSection";
 import { trackSectionView } from "@/lib/analytics";
+import useSEO from "@/hooks/useSEO";
 
 // Lazy load section components per migliorare le performance nel First Load
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
@@ -12,6 +13,12 @@ const FAQSection = lazy(() => import("@/components/FAQSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 
 const Home = () => {
+  useSEO({
+    title: "PC Gaming su Misura a Padova | Prime Build",
+    description: "Assemblaggio PC gaming su misura, assistenza e ottimizzazione a Padova e in tutta Italia. Preventivi gratuiti e supporto diretto Prime Build.",
+    path: "/",
+  });
+
   const sectionsRef = useRef<Map<string, boolean>>(new Map());
 
   useEffect(() => {

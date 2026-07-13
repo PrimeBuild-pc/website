@@ -1,7 +1,14 @@
 import { Link } from "wouter";
 import { FaHome, FaExclamationTriangle, FaDesktop, FaEnvelope, FaTools } from "react-icons/fa";
+import useSEO from "@/hooks/useSEO";
 
 export default function NotFound() {
+  useSEO({
+    title: "Pagina non trovata | Prime Build",
+    description: "La pagina richiesta non è disponibile.",
+    noindex: true,
+  });
+
   const quickLinks = [
     { href: "/#services", icon: <FaDesktop />, label: "I nostri servizi" },
     { href: "/#builds", icon: <FaTools />, label: "Le nostre build" },
@@ -24,11 +31,9 @@ export default function NotFound() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <Link href="/">
-            <a className="inline-flex items-center justify-center bg-primary hover:bg-primary text-black font-semibold py-3 px-8 rounded-md transition-all transform hover:scale-105">
-              <FaHome className="mr-2" aria-hidden="true" />
-              Torna alla Home
-            </a>
+          <Link href="/" className="button-primary">
+            <FaHome className="mr-2" aria-hidden="true" />
+            Torna alla Home
           </Link>
         </div>
 

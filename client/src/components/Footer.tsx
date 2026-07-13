@@ -12,9 +12,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black py-12" role="contentinfo">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+    <footer className="border-t border-white/[0.08] bg-[#050505] py-14" role="contentinfo">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center mb-4">
@@ -64,27 +64,27 @@ const Footer = () => {
               </h4>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="#home" className="hover:text-primary transition-colors">
+                  <a href="/#home" className="hover:text-primary transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/#services" className="hover:text-primary transition-colors">
                     Servizi
                   </a>
                 </li>
                 <li>
-                  <a href="#builds" className="hover:text-primary transition-colors">
+                  <a href="/#builds" className="hover:text-primary transition-colors">
                     Le Nostre Build
                   </a>
                 </li>
                 <li>
-                  <a href="#apps" className="hover:text-primary transition-colors">
+                  <a href="/#apps" className="hover:text-primary transition-colors">
                     App
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-primary transition-colors">
+                  <a href="/#contact" className="hover:text-primary transition-colors">
                     Contatti
                   </a>
                 </li>
@@ -95,7 +95,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     onClick={handlePayPalClick}
                     aria-label="Supportaci con una donazione su PayPal"
-                    className="text-[#0070BA] hover:text-[#003087] transition-colors flex items-center"
+                    className="flex items-center text-[#168bd2] transition-colors hover:text-[#4eb2ec]"
                   >
                     <FaPaypal className="mr-2" aria-hidden="true" /> Supportaci
                   </a>
@@ -109,22 +109,22 @@ const Footer = () => {
               </h4>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/servizi/pc-gaming-su-misura" className="hover:text-primary transition-colors">
                     PC Gaming Custom
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/servizi/assistenza-riparazione-pc" className="hover:text-primary transition-colors">
                     Riparazioni e Assistenza
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/servizi/ottimizzazione-pc-gaming" className="hover:text-primary transition-colors">
                     Ottimizzazione
                   </a>
                 </li>
                 <li>
-                  <a href="#services" className="hover:text-primary transition-colors">
+                  <a href="/servizi/pc-gaming-su-misura" className="hover:text-primary transition-colors">
                     Consulenza Hardware
                   </a>
                 </li>
@@ -134,20 +134,12 @@ const Footer = () => {
           </div>
 
           <div className="border-t border-neutral-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-neutral-500 text-sm order-2 md:order-1 mt-4 md:mt-0">
+            <p className="order-2 mt-4 text-sm text-neutral-400 md:order-1 md:mt-0">
               © {new Date().getFullYear()} Prime Build. Tutti i diritti riservati.
             </p>
-            <nav className="flex space-x-6 text-neutral-500 text-sm order-1 md:order-2" aria-label="Link legali">
-              <Link href="/privacy">
-                <a className="hover:text-primary transition-colors">
-                  Privacy Policy
-                </a>
-              </Link>
-              <Link href="/privacy">
-                <a className="hover:text-primary transition-colors">
-                  Cookie Policy
-                </a>
-              </Link>
+            <nav className="order-1 flex space-x-6 text-sm text-neutral-400 md:order-2" aria-label="Link legali">
+              <Link href="/privacy" className="transition-colors hover:text-primary">Privacy Policy</Link>
+              <Link href="/privacy" className="transition-colors hover:text-primary">Cookie Policy</Link>
             </nav>
           </div>
         </div>

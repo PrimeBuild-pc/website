@@ -13,28 +13,22 @@ export function SectionHeader({
   subtitle,
   italicText,
   alignment = "center",
-  underline = true,
 }: SectionHeaderProps) {
+  const centered = alignment === "center";
+
   return (
-    <div className={`mb-16 ${alignment === "center" ? "text-center" : ""}`}>
-      <h2
-        className={`text-3xl md:text-4xl font-bold font-montserrat mb-4 inline-block ${
-          underline ? "border-b-2 border-primary pb-2" : ""
-        }`}
-      >
-        <span className="text-white">{title}</span>{" "}
+    <header className={`mb-12 md:mb-16 ${centered ? "text-center" : "text-left"}`}>
+      <span className="section-kicker">Prime Build</span>
+      <h2 className="font-montserrat text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
+        {title}{title && highlight ? " " : ""}
         {highlight && <span className="text-primary">{highlight}</span>}
       </h2>
       {subtitle && (
-        <p className="text-lg max-w-2xl mx-auto text-neutral-300">{subtitle}</p>
-      )}
-      {italicText && (
-        <p className="text-base max-w-2xl mx-auto text-neutral-400 mt-4 italic">
-          {italicText}
+        <p className={`mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg ${centered ? "mx-auto" : ""}`}>
+          {subtitle}
         </p>
       )}
-    </div>
+      {italicText && <p className={`mt-3 max-w-2xl text-sm text-neutral-400 ${centered ? "mx-auto" : ""}`}>{italicText}</p>}
+    </header>
   );
 }
-
-

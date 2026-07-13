@@ -28,7 +28,8 @@ const Guides = () => {
   useSEO({
     title: "Guide Tecniche | Prime Build",
     description:
-      "Analisi tecniche, configurazioni avanzate e report per ottimizzare le tue performance competitive.",
+      "Guide tecniche Prime Build su PC gaming, latenza, DLSS, audio competitivo, rete e ottimizzazione Windows.",
+    path: "/guides",
   });
 
   return (
@@ -84,9 +85,7 @@ const Guides = () => {
                   <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
                     {guide.description}
                   </p>
-                  <p className="mt-4 text-[11px] text-zinc-500 uppercase tracking-wider">
-                    slug: {guide.slug}
-                  </p>
+                  <span className="mt-5 inline-flex text-sm font-semibold text-primary">Leggi la guida →</span>
                 </div>
               </Link>
             </motion.div>

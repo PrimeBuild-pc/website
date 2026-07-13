@@ -8,38 +8,40 @@ const ServiceCard = ({
   title, 
   description, 
   features, 
-  cta, 
+  cta,
+  slug,
   delay 
 }: { 
   icon: React.ReactNode; 
   title: string; 
   description: string; 
   features: string[]; 
-  cta: string; 
+  cta: string;
+  slug: string;
   delay: number; 
 }) => {
   return (
-    <AnimatedElement delay={delay} className="service-card bg-black p-8 rounded-xl shadow-lg overflow-hidden relative h-full">
-      <div className="absolute top-0 right-0 w-20 h-20 bg-primary opacity-5 rounded-bl-full"></div>
-      <div className="text-4xl text-primary mb-6 transition-transform duration-300 group-hover:scale-110">
+    <AnimatedElement delay={delay} className="surface-card group relative h-full overflow-hidden p-7 md:p-8">
+      <div className="absolute right-0 top-0 h-24 w-24 rounded-bl-full bg-primary/[0.06]" />
+      <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-xl text-primary transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
         {icon}
       </div>
-      <h3 className="text-xl font-bold font-montserrat mb-4">{title}</h3>
-      <p className="text-neutral-400 mb-4">{description}</p>
-      <ul className="text-sm text-neutral-300 space-y-2 mb-6">
+      <h3 className="mb-3 font-montserrat text-xl font-semibold">{title}</h3>
+      <p className="mb-6 leading-relaxed text-neutral-400">{description}</p>
+      <ul className="mb-7 space-y-3 text-sm text-neutral-300">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center">
-            <FaCheck className="text-primary mr-2" />
+            <FaCheck className="mr-2.5 text-xs text-primary" aria-hidden="true" />
             {feature}
           </li>
         ))}
       </ul>
       <a
-        href="#contact"
+        href={`/servizi/${slug}`}
         onClick={() => trackCTAClick(cta, 'services')}
-        className="inline-block text-primary hover:underline font-medium group"
+        className="inline-flex items-center gap-2 font-semibold text-primary"
       >
-        {cta} <FaArrowRight className="inline ml-1 transform group-hover:translate-x-1 transition-transform" />
+        {cta} <FaArrowRight className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
       </a>
     </AnimatedElement>
   );
@@ -52,39 +54,42 @@ const ServicesSection = () => {
       title: "PC Gaming Custom",
       description: "Assembliamo il PC Gaming dei tuoi sogni con componenti di alta qualità, selezionati in base alle tue esigenze e al tuo budget.",
       features: ["Componenti premium", "Assemblaggio professionale", "Cable management impeccabile"],
-      cta: "Richiedi preventivo",
-      delay: 0.2
+      cta: "Scopri il servizio",
+      slug: "pc-gaming-su-misura",
+      delay: 0.1
     },
     {
       icon: <FaTools />,
       title: "Riparazioni e Assistenza",
       description: "Servizio di riparazione e assistenza tecnica professionale per risolvere qualsiasi problema hardware o software del tuo PC.",
       features: ["Diagnosi professionale", "Riparazione rapida", "Supporto post-intervento"],
-      cta: "Prenota assistenza",
-      delay: 0.4
+      cta: "Scopri il servizio",
+      slug: "assistenza-riparazione-pc",
+      delay: 0.2
     },
     {
       icon: <FaTachometerAlt />,
       title: "Ottimizzazione",
       description: "Massimizza le prestazioni del tuo PC con i nostri servizi di ottimizzazione, tweaking e boost per gaming e produttività.",
       features: ["Overclock sicuro", "Ottimizzazione sistema", "Performance boost"],
-      cta: "Scopri di più",
-      delay: 0.6
+      cta: "Scopri il servizio",
+      slug: "ottimizzazione-pc-gaming",
+      delay: 0.3
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-neutral-900">
-      <div className="container mx-auto px-4">
+    <section id="services" className="bg-[#090909] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <AnimatedElement>
           <SectionHeader
-            title=""
-            highlight="Servizi"
+            title="Servizi PC"
+            highlight="su misura"
             subtitle="Offriamo una gamma completa di servizi per soddisfare ogni tua esigenza nel mondo PC Gaming"
           />
         </AnimatedElement>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}

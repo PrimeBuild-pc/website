@@ -36,6 +36,8 @@ const GuideDetail = () => {
     description:
       guide?.description ??
       `Guida tecnica Prime Build: ${fallbackTitle}. Analisi pratiche per prestazioni competitive e latenza ottimizzata.`,
+    path: `/guides/${slug}`,
+    image: guide?.image,
   });
 
   return (
@@ -89,7 +91,7 @@ const GuideDetail = () => {
             className="mt-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-wider"
           >
             <span className="px-2.5 py-1 rounded border border-white/10 bg-zinc-900/70 text-zinc-300">
-              slug: {slug || "non disponibile"}
+              Guida tecnica Prime Build
             </span>
             {guide?.date ? (
               <span className="px-2.5 py-1 rounded border border-primary/30 bg-primary/10 text-primary">
