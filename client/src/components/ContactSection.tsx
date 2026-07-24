@@ -293,7 +293,7 @@ const ContactSection = () => {
                 </button>
                 <p className="text-xs text-neutral-400">
                   Inviando questo modulo, dichiari di aver letto la nostra{" "}
-                  <Link href="/privacy" className="text-primary underline underline-offset-2">informativa privacy</Link>{" "}
+                  <Link href="/privacy/" className="text-primary underline underline-offset-2">informativa privacy</Link>{" "}
                   e acconsenti al trattamento dei dati forniti ai soli fini di ricontatto.
                 </p>
               </form>
