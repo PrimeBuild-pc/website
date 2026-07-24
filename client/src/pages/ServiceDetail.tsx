@@ -105,7 +105,7 @@ const ServiceDetail = () => {
           <p className="mb-5 text-sm text-neutral-500">Scopri anche</p>
           <div className="flex flex-wrap gap-3">
             {services.filter((item) => item.slug !== service.slug).map((item) => (
-              <Link key={item.slug} href={`/servizi/${item.slug}`} className="button-secondary">{item.name}</Link>
+              <Link key={item.slug} href={`/servizi/${item.slug}/`} className="button-secondary">{item.name}</Link>
             ))}
           </div>
         </nav>

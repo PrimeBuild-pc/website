@@ -32,7 +32,7 @@ const CookieBanner = () => {
                 </h3>
                 <p className="text-sm text-neutral-300">
                   Usiamo cookie tecnici e, solo con il tuo consenso, Google Analytics.{" "}
-                  <Link href="/privacy" className="text-primary hover:underline">Leggi la Privacy Policy</Link>
+                  <Link href="/privacy/" className="text-primary underline underline-offset-2">Leggi la Privacy Policy</Link>
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">

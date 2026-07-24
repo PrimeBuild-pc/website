@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsx scripts/prerender-meta.ts",
+    "build": "vite build && tsx scripts/prerender-meta.ts && tsx scripts/check-seo.ts",
     "preview": "vite preview",
     "check": "tsc",
     "knip": "knip"
