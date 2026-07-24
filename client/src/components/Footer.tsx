@@ -59,9 +59,9 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-bold font-montserrat mb-4 text-primary">
+              <p className="text-lg font-bold font-montserrat mb-4 text-primary">
                 Link Rapidi
-              </h4>
+              </p>
               <ul className="space-y-2 text-neutral-400">
                 <li>
                   <a href="/#home" className="hover:text-primary transition-colors">
@@ -84,6 +84,16 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
+                  <Link href="/chi-siamo/" className="hover:text-primary transition-colors">
+                    Chi siamo
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/guides/" className="hover:text-primary transition-colors">
+                    Guide tecniche
+                  </Link>
+                </li>
+                <li>
                   <a href="/#contact" className="hover:text-primary transition-colors">
                     Contatti
                   </a>
@@ -104,27 +114,27 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="text-lg font-bold font-montserrat mb-4 text-primary">
+              <p className="text-lg font-bold font-montserrat mb-4 text-primary">
                 Servizi
-              </h4>
+              </p>
               <ul className="space-y-2 text-neutral-400">
                 <li>
-                  <a href="/servizi/pc-gaming-su-misura" className="hover:text-primary transition-colors">
+                  <a href="/servizi/pc-gaming-su-misura/" className="hover:text-primary transition-colors">
                     PC Gaming Custom
                   </a>
                 </li>
                 <li>
-                  <a href="/servizi/assistenza-riparazione-pc" className="hover:text-primary transition-colors">
+                  <a href="/servizi/assistenza-riparazione-pc/" className="hover:text-primary transition-colors">
                     Riparazioni e Assistenza
                   </a>
                 </li>
                 <li>
-                  <a href="/servizi/ottimizzazione-pc-gaming" className="hover:text-primary transition-colors">
+                  <a href="/servizi/ottimizzazione-pc-gaming/" className="hover:text-primary transition-colors">
                     Ottimizzazione
                   </a>
                 </li>
                 <li>
-                  <a href="/servizi/pc-gaming-su-misura" className="hover:text-primary transition-colors">
+                  <a href="/servizi/pc-gaming-su-misura/" className="hover:text-primary transition-colors">
                     Consulenza Hardware
                   </a>
                 </li>
@@ -138,8 +148,8 @@ const Footer = () => {
               © {new Date().getFullYear()} Prime Build. Tutti i diritti riservati.
             </p>
             <nav className="order-1 flex space-x-6 text-sm text-neutral-400 md:order-2" aria-label="Link legali">
-              <Link href="/privacy" className="transition-colors hover:text-primary">Privacy Policy</Link>
-              <Link href="/privacy" className="transition-colors hover:text-primary">Cookie Policy</Link>
+              <Link href="/privacy/" className="transition-colors hover:text-primary">Privacy Policy</Link>
+              <Link href="/privacy/" className="transition-colors hover:text-primary">Cookie Policy</Link>
             </nav>
           </div>
         </div>
