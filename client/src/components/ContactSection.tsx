@@ -144,7 +144,12 @@ const ContactSection = () => {
       trackFormSubmit('contact', true);
       setFormData(initialState);
       resetTurnstile();
-      toast({ title: "Messaggio inviato", description: "Ti contatteremo al piu presto." });
+      toast({
+        title: "Richiesta ricevuta",
+        description: json.confirmationSent === false
+          ? "La conferma automatica non è partita: non inviare di nuovo, abbiamo comunque ricevuto il messaggio."
+          : "Controlla la tua email per il prossimo passo e il questionario preventivo.",
+      });
     } catch (err) {
       console.error('Network/contact error', err);
       trackFormSubmit('contact', false);
@@ -157,8 +162,8 @@ const ContactSection = () => {
 
   // Obfuscate email to prevent spam harvesters
   const getEmail = () => {
-    const user = "primebuild.official";
-    const domain = "gmail.com";
+    const user = "preventivi";
+    const domain = "primebuild.website";
     return `${user}@${domain}`;
   };
 
@@ -198,7 +203,7 @@ const ContactSection = () => {
               <SectionHeader
                 title="Parliamo del"
                 highlight="tuo prossimo PC"
-                subtitle="Raccontaci budget, giochi, software e obiettivi. Ti rispondiamo con una proposta chiara e personalizzata."
+                subtitle="Inviaci un primo contatto. Riceverai via email il questionario per qualificare la richiesta e scegliere il livello di preventivo."
                 alignment="left"
               />
               
@@ -289,7 +294,7 @@ const ContactSection = () => {
                   disabled={isSubmitting}
                   className="button-primary disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
+                  {isSubmitting ? "Invio in corso..." : "Invia richiesta"}
                 </button>
                 <p className="text-xs text-neutral-400">
                   Inviando questo modulo, dichiari di aver letto la nostra{" "}
