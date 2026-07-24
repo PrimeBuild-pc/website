@@ -54,6 +54,9 @@ assert.equal(resendPayloads[1].reply_to, 'preventivi@primebuild.website');
 assert.match(resendPayloads[1].html, /Ciao Lorenzo &amp; Co/);
 assert.match(resendPayloads[1].html, /Completa il questionario/);
 assert.match(resendPayloads[1].text, /PREVENTIVO COMPLETO — €25/);
+assert.match(resendPayloads[1].text, /Include la stessa analisi/);
+assert.match(resendPayloads[1].text, /sottratti dal costo della manodopera/);
+assert.match(resendPayloads[1].text, /Il mercato dei componenti può cambiare rapidamente/);
 assert.match(resendPayloads[1].text, /https:\/\/docs\.google\.com\/forms/);
 
 console.log('Contact email flow check passed.');

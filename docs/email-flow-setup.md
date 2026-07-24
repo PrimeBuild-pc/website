@@ -56,13 +56,19 @@ Email Routing risulta già attivo sul dominio: sono presenti gli MX Cloudflare e
 4. Invia un messaggio esterno a `preventivi@primebuild.website` e verifica ricezione e risposta.
 5. Non attivare un catch-all: aumenta lo spam senza migliorare il servizio.
 
+### Regola legacy `no-reply@`
+
+`no-reply@primebuild.website` (con trattino) non compare nel codice né negli altri repository Prime Build. La versione precedente del sito usava soltanto `noreply@primebuild.website` (senza trattino) come mittente in uscita, e questa PR la sostituisce con `preventivi@primebuild.website`. Una regola Email Routing non è necessaria per spedire: serve solo a ricevere risposte. Si può quindi disattivare la regola `no-reply@`, attendere 7–14 giorni e poi eliminarla se non emergono messaggi inattesi.
+
+Non eliminare invece i record DNS MX/TXT di `noreply.primebuild.website`: sono il Return-Path tecnico verificato di Resend e non rappresentano una casella o una regola di inoltro.
+
 ## Setup manuale Resend e DNS
 
-È già presente un record `resend._domainkey.primebuild.website`, ma il dominio deve risultare **Verified** nella dashboard Resend. Al momento non risultano il Return-Path `send` né un record DMARC pubblico.
+Sono già presenti il DKIM `resend._domainkey.primebuild.website` e il Return-Path tecnico `noreply.primebuild.website` con SPF/MX Amazon SES. Devono restare invariati e il dominio deve risultare **Verified** nella dashboard Resend. La creazione dell'indirizzo inoltrato `dmarc@primebuild.website` non crea il record DNS DMARC: sono due configurazioni distinte.
 
 1. Apri **Resend → Domains** e aggiungi o seleziona `primebuild.website`.
 2. Copia in **Cloudflare → DNS** esattamente i record DKIM, SPF e MX mostrati da Resend.
-3. Non sostituire gli MX Cloudflare all'apice e non creare un secondo SPF all'apice. Resend usa normalmente `send.primebuild.website` come Return-Path, separato dall'SPF di Email Routing.
+3. Non sostituire gli MX Cloudflare all'apice e non creare un secondo SPF all'apice. In questa configurazione Resend usa `noreply.primebuild.website` come Return-Path, separato dall'indirizzo `no-reply@primebuild.website` e dall'SPF di Email Routing.
 4. Lascia i record email in modalità **DNS only** quando applicabile.
 5. Premi **Verify DNS Records** in Resend e attendi lo stato `Verified`.
 6. Aggiungi il record iniziale:
@@ -133,15 +139,19 @@ Dopo ogni variazione alle impostazioni, avvia un nuovo deploy Cloudflare.
 >
 > abbiamo ricevuto il tuo primo contatto.
 >
-> Per richiedere un preventivo, completa il questionario: ci permette di valutare budget, utilizzo, giochi o software, risoluzione, componenti già disponibili e tempistiche. Le richieste di preventivo vengono esaminate dopo la compilazione.
+> Per preparare una proposta adatta alle tue esigenze, completa il questionario: ci aiuterà a valutare budget, utilizzo, giochi o software, risoluzione, componenti già disponibili, preferenze e tempistiche.
 >
 > **Preventivo Base — gratuito**  
-> Stima generale dei costi e indicazione della fascia di configurazione più adatta. Non include una distinta completa con modelli e link di acquisto.
+> Include l'analisi delle tue esigenze, una stima del costo complessivo e l'indicazione della fascia di configurazione più adatta. È sufficiente per capire che tipo di PC e quale livello di prestazioni potresti ricevere affidando a Prime Build la realizzazione e l'assemblaggio.
 >
 > **Preventivo Completo — €25**  
-> Selezione precisa dei componenti con modello esatto, link diretti di acquisto al miglior prezzo trovato al momento della ricerca e checklist completa di compatibilità. È pensato anche per chi vuole acquistare i componenti e assemblare il PC in autonomia.
+> Include la stessa analisi, con in più il modello esatto di ogni componente, i link di acquisto, i prezzi consigliati rilevati al momento della ricerca e una checklist completa di compatibilità. È pensato per chi vuole poter acquistare e assemblare la build in autonomia.
 >
-> Se ci hai contattato per assistenza su un servizio già in corso, puoi rispondere direttamente a questa email senza compilare il questionario.
+> Se dopo aver acquistato il Preventivo Completo decidi di affidare comunque a Prime Build l'assemblaggio, i €25 già pagati verranno sottratti dal costo della manodopera.
+>
+> I preventivi riflettono prezzi e disponibilità presenti nel momento in cui vengono preparati. Il mercato dei componenti può cambiare rapidamente e Prime Build non vende direttamente i singoli componenti. Se rileviamo un prezzo particolarmente alto, te lo comunichiamo con trasparenza e, quando ci sono indicazioni concrete di un possibile calo a breve, possiamo consigliarti di attendere.
+>
+> Se ci hai contattato per assistenza relativa a un servizio già in corso, puoi rispondere direttamente a questa email senza compilare il questionario.
 >
 > Team Prime Build
 

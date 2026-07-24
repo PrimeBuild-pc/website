@@ -102,28 +102,34 @@ function buildConfirmation(name, qualificationFormUrl) {
 
 abbiamo ricevuto il tuo primo contatto.
 
-Per richiedere un preventivo, completa il questionario: ${qualificationFormUrl}
+Per preparare una proposta adatta alle tue esigenze, completa il questionario: ${qualificationFormUrl}
 
-Ci permette di valutare budget, utilizzo, giochi o software, risoluzione, componenti già disponibili e tempistiche. Le richieste di preventivo vengono esaminate dopo la compilazione.
+Ci aiuterà a valutare budget, utilizzo, giochi o software, risoluzione, componenti già disponibili, preferenze e tempistiche.
 
 PREVENTIVO BASE — GRATUITO
-Stima generale dei costi e indicazione della fascia di configurazione più adatta. Non include una distinta completa con modelli e link di acquisto.
+Include l'analisi delle tue esigenze, una stima del costo complessivo e l'indicazione della fascia di configurazione più adatta. È sufficiente per capire che tipo di PC e quale livello di prestazioni potresti ricevere affidando a Prime Build la realizzazione e l'assemblaggio.
 
 PREVENTIVO COMPLETO — €25
-Selezione precisa dei componenti con modello esatto, link diretti di acquisto al miglior prezzo trovato al momento della ricerca e checklist completa di compatibilità. È pensato anche per chi vuole acquistare i componenti e assemblare il PC in autonomia.
+Include la stessa analisi, con in più il modello esatto di ogni componente, i link di acquisto, i prezzi consigliati rilevati al momento della ricerca e una checklist completa di compatibilità. È pensato per chi vuole poter acquistare e assemblare la build in autonomia.
 
-Se ci hai contattato per assistenza su un servizio già in corso, puoi rispondere direttamente a questa email senza compilare il questionario.
+Se dopo aver acquistato il Preventivo Completo decidi di affidare comunque a Prime Build l'assemblaggio, i €25 già pagati verranno sottratti dal costo della manodopera.
+
+I preventivi riflettono prezzi e disponibilità presenti nel momento in cui vengono preparati. Il mercato dei componenti può cambiare rapidamente e Prime Build non vende direttamente i singoli componenti. Se rileviamo un prezzo particolarmente alto, te lo comunichiamo con trasparenza e, quando ci sono indicazioni concrete di un possibile calo a breve, possiamo consigliarti di attendere.
+
+Se ci hai contattato per assistenza relativa a un servizio già in corso, puoi rispondere direttamente a questa email senza compilare il questionario.
 
 Team Prime Build`;
   const html = `<p>Ciao ${safeName},</p>
 <p>abbiamo ricevuto il tuo primo contatto.</p>
-<p>Per richiedere un preventivo, completa il questionario: ci permette di valutare budget, utilizzo, giochi o software, risoluzione, componenti già disponibili e tempistiche. Le richieste di preventivo vengono esaminate dopo la compilazione.</p>
+<p>Per preparare una proposta adatta alle tue esigenze, completa il questionario: ci aiuterà a valutare budget, utilizzo, giochi o software, risoluzione, componenti già disponibili, preferenze e tempistiche.</p>
 <p><a href="${safeUrl}" style="display:inline-block;padding:12px 20px;border-radius:6px;background:#ff6600;color:#000;text-decoration:none;font-weight:700">Completa il questionario</a></p>
 <h2 style="font-size:18px">Preventivo Base — gratuito</h2>
-<p>Stima generale dei costi e indicazione della fascia di configurazione più adatta. Non include una distinta completa con modelli e link di acquisto.</p>
+<p>Include l'analisi delle tue esigenze, una stima del costo complessivo e l'indicazione della fascia di configurazione più adatta. È sufficiente per capire che tipo di PC e quale livello di prestazioni potresti ricevere affidando a Prime Build la realizzazione e l'assemblaggio.</p>
 <h2 style="font-size:18px">Preventivo Completo — €25</h2>
-<p>Selezione precisa dei componenti con modello esatto, link diretti di acquisto al miglior prezzo trovato al momento della ricerca e checklist completa di compatibilità. È pensato anche per chi vuole acquistare i componenti e assemblare il PC in autonomia.</p>
-<p>Se ci hai contattato per assistenza su un servizio già in corso, puoi rispondere direttamente a questa email senza compilare il questionario.</p>
+<p>Include la stessa analisi, con in più il modello esatto di ogni componente, i link di acquisto, i prezzi consigliati rilevati al momento della ricerca e una checklist completa di compatibilità. È pensato per chi vuole poter acquistare e assemblare la build in autonomia.</p>
+<p>Se dopo aver acquistato il Preventivo Completo decidi di affidare comunque a Prime Build l'assemblaggio, i €25 già pagati verranno sottratti dal costo della manodopera.</p>
+<p>I preventivi riflettono prezzi e disponibilità presenti nel momento in cui vengono preparati. Il mercato dei componenti può cambiare rapidamente e Prime Build non vende direttamente i singoli componenti. Se rileviamo un prezzo particolarmente alto, te lo comunichiamo con trasparenza e, quando ci sono indicazioni concrete di un possibile calo a breve, possiamo consigliarti di attendere.</p>
+<p>Se ci hai contattato per assistenza relativa a un servizio già in corso, puoi rispondere direttamente a questa email senza compilare il questionario.</p>
 <p>Team Prime Build</p>`;
 
   return { subject, text, html };
