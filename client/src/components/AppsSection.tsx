@@ -54,8 +54,8 @@ const AppsSection = () => {
     {
       name: "TweakHub",
       description:
-        "Centro di controllo all-in-one per modifiche e ottimizzazioni di Windows 11.",
-      features: ["Affinità processi su core", "Gestione powerplans", "Controllo estremo"],
+        "Toolkit portatile per tecnici e power user: riunisce tweak, script, strumenti e playbook personalizzati da usare su più PC.",
+      features: ["Profili portatili", "Script e playbook", "Backup e rollback"],
       owner: "PrimeBuild-pc",
       repo: "TweakHub",
       comingSoon: false,
@@ -63,8 +63,8 @@ const AppsSection = () => {
     {
       name: "ZapTweaks",
       description:
-        "App per veloci tweaks su Windows 11, ideale per ottimizzazioni base su una fresh install.",
-      features: ["Tweaks rapidi", "Ottimizzazione Win11", "Fresh install"],
+        "Ottimizzatore avanzato per gaming, latenza, hardware e rete: completa il setup di base con diagnostica, verifiche e ripristino.",
+      features: ["Gaming e latenza", "Controlli hardware mirati", "Diagnostica e ripristino"],
       owner: "PrimeBuild-pc",
       repo: "ZapTweaks",
       comingSoon: false,
