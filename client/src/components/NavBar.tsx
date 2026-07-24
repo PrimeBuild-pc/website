@@ -93,7 +93,8 @@ const NavBar = () => {
           <a href="/#services" className="text-sm font-medium text-neutral-300 transition-colors hover:text-white">Servizi</a>
           <a href="/#builds" className="text-sm font-medium text-neutral-300 transition-colors hover:text-white">Build</a>
           <a href="/#apps" className="text-sm font-medium text-neutral-300 transition-colors hover:text-white">App</a>
-          <Link href="/guides" className="text-sm font-medium text-neutral-300 transition-colors hover:text-white">Guide</Link>
+          <Link href="/guides/" className="text-sm font-medium text-neutral-300 transition-colors hover:text-white">Guide</Link>
+          <Link href="/chi-siamo/" className="text-sm font-medium text-neutral-300 transition-colors hover:text-white">Chi siamo</Link>
           <a href="/#contact" className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-primary">Parliamone</a>
           <div className="ml-1 flex gap-2">
             <a
@@ -144,8 +145,11 @@ const NavBar = () => {
             <a href="/#services" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Servizi</a>
             <a href="/#builds" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Build</a>
             <a href="/#apps" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">App</a>
-            <Link href="/guides" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">
+            <Link href="/guides/" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">
               Guide
+            </Link>
+            <Link href="/chi-siamo/" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">
+              Chi siamo
             </Link>
             <a href="/#contact" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Contatti</a>
             <div className="flex space-x-4 p-4">

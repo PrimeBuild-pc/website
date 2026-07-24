@@ -26,7 +26,7 @@ const cardVariants = {
 
 const Guides = () => {
   useSEO({
-    title: "Guide Tecniche | Prime Build",
+    title: "Guide PC Gaming e Ottimizzazione | Prime Build",
     description:
       "Guide tecniche Prime Build su PC gaming, latenza, DLSS, audio competitivo, rete e ottimizzazione Windows.",
     path: "/guides",
@@ -39,7 +39,7 @@ const Guides = () => {
       <div className="container mx-auto relative z-10">
         <header className="mb-10 md:mb-12">
           <h1 className="text-3xl md:text-5xl font-bold font-montserrat text-primary">
-            Report Tecnici
+            Guide PC Gaming e Ottimizzazione
           </h1>
           <p className="mt-3 text-sm md:text-base text-zinc-400 max-w-2xl">
             Analisi tecniche, configurazioni avanzate e report per ottimizzare le tue performance competitive.
@@ -55,7 +55,7 @@ const Guides = () => {
           {guides.map((guide) => (
             <motion.div key={guide.id} variants={cardVariants}>
               <Link
-                href={`/guides/${guide.slug}`}
+                href={`/guides/${guide.slug}/`}
                 className="group block bg-zinc-900/50 border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg hover:shadow-primary/10"
               >
                 <div className="aspect-square bg-zinc-900 overflow-hidden border-b border-white/10 grid place-items-center">
@@ -65,6 +65,8 @@ const Guides = () => {
                       alt={`Copertina guida ${guide.title}`}
                       className="w-full h-full object-contain object-center"
                       loading="lazy"
+                      width={1024}
+                      height={1024}
                     />
                   ) : (
                     <div className="w-full h-full bg-zinc-900 grid place-items-center">

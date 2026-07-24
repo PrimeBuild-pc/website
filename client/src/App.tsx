@@ -9,6 +9,7 @@ import SkipLink from "@/components/SkipLink";
 import { Toaster } from "@/components/ui/toaster";
 
 const Privacy = lazy(() => import("@/pages/Privacy"));
+const About = lazy(() => import("@/pages/About"));
 const Guides = lazy(() => import("@/pages/Guides"));
 const GuideDetail = lazy(() => import("@/pages/GuideDetail"));
 const ServiceDetail = lazy(() => import("@/pages/ServiceDetail"));
@@ -19,6 +20,7 @@ const Router = () => (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/privacy" component={Privacy} />
+      <Route path="/chi-siamo" component={About} />
       <Route path="/guides" component={Guides} />
       <Route path="/guides/:slug" component={GuideDetail} />
       <Route path="/servizi/:slug" component={ServiceDetail} />

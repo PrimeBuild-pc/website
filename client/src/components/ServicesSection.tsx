@@ -37,7 +37,7 @@ const ServiceCard = ({
         ))}
       </ul>
       <a
-        href={`/servizi/${slug}`}
+        href={`/servizi/${slug}/`}
         onClick={() => trackCTAClick(cta, 'services')}
         className="inline-flex items-center gap-2 font-semibold text-primary"
       >
