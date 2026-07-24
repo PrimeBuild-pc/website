@@ -4,7 +4,8 @@ compatibility_date = "2024-01-01"
 
 [vars]
 MAIL_TO = "primebuild.official@gmail.com"
-MAIL_FROM = "noreply@primebuild.website"
+MAIL_FROM = "preventivi@primebuild.website"
+MAIL_REPLY_TO = "preventivi@primebuild.website"
 ALLOWED_ORIGINS = "https://primebuild.website"
 EMAIL_STRICT = "1"
 TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
@@ -12,6 +13,7 @@ DEBUG = "0"
 
 # IMPORTANT: keep secrets out of repo.
 # Configure via dashboard or CLI:
-#   wrangler secret put RESEND_API_KEY
-#   wrangler secret put TURNSTILE_SECRET_KEY
-#   wrangler secret put GITHUB_TOKEN
+#   npx wrangler pages secret put RESEND_API_KEY --project-name website
+#   npx wrangler pages secret put TURNSTILE_SECRET_KEY --project-name website
+# Set QUALIFICATION_FORM_URL in Cloudflare Pages environment variables.
+# GITHUB_TOKEN is only needed by the release-download function.
