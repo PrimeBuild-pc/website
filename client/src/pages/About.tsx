@@ -47,7 +47,7 @@ const About = () => {
           <h2 className="text-3xl font-bold">Identità e contatti ufficiali</h2>
           <ul className="mt-5 space-y-3 text-neutral-300">
             <li>Sede operativa: Montegrotto Terme, 35036 (PD), Italia</li>
-            <li>Email: <a className="text-primary underline" href="mailto:primebuild.official@gmail.com">primebuild.official@gmail.com</a></li>
+            <li>Email: <a className="text-primary underline" href="mailto:preventivi@primebuild.website">preventivi@primebuild.website</a></li>
             <li><a className="text-primary underline" href="https://www.instagram.com/prime_build_/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             <li><a className="text-primary underline" href="https://github.com/PrimeBuild-pc" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             <li><a className="text-primary underline" href="https://discord.gg/ERUwSxE79q" target="_blank" rel="noopener noreferrer">Community Discord</a></li>

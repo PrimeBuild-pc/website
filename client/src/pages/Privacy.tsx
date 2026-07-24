@@ -29,7 +29,7 @@ const Privacy = () => {
         <div className="prose prose-invert prose-neutral max-w-none space-y-8">
           <section>
             <p className="text-neutral-300 text-sm">
-              Ultimo aggiornamento: 7 Dicembre 2025
+              Ultimo aggiornamento: 24 luglio 2026
             </p>
           </section>
 
@@ -39,7 +39,7 @@ const Privacy = () => {
               Il titolare del trattamento dei dati personali e Prime Build, con sede a Padova, Italia.
             </p>
             <p className="text-neutral-300">
-              Email di contatto: <a href="mailto:primebuild.official@gmail.com" className="text-primary hover:underline">primebuild.official@gmail.com</a>
+              Email di contatto: <a href="mailto:preventivi@primebuild.website" className="text-primary hover:underline">preventivi@primebuild.website</a>
             </p>
           </section>
 
@@ -53,6 +53,7 @@ const Privacy = () => {
               <li>Nome</li>
               <li>Indirizzo email</li>
               <li>Oggetto e contenuto del messaggio</li>
+              <li>Informazioni tecniche e di budget fornite nel questionario preventivo</li>
             </ul>
 
             <h3 className="text-xl font-medium text-white mb-2 mt-6">2.2 Dati raccolti automaticamente (con consenso)</h3>
@@ -75,7 +76,8 @@ const Privacy = () => {
             <h2 className="text-2xl font-semibold text-white mb-4">3. Finalita del Trattamento</h2>
             <p className="text-neutral-300 mb-4">I tuoi dati vengono utilizzati per:</p>
             <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
-              <li><strong>Rispondere alle richieste</strong> inviate tramite il modulo di contatto</li>
+              <li><strong>Rispondere e inviare conferme operative</strong> per le richieste trasmesse tramite il modulo</li>
+              <li><strong>Qualificare le richieste di preventivo</strong> e preparare la stima scelta dall'utente</li>
               <li><strong>Migliorare il sito web</strong> analizzando statistiche anonime di utilizzo</li>
               <li><strong>Garantire la sicurezza</strong> del sito prevenendo abusi e spam</li>
             </ul>
@@ -112,15 +114,16 @@ const Privacy = () => {
               I tuoi dati non vengono venduti a terzi. Potrebbero essere condivisi solo con:
             </p>
             <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4 mt-4">
-              <li><strong>Google LLC</strong> - Per l'elaborazione delle statistiche Analytics (soggetto alle loro policy privacy)</li>
-              <li><strong>Cloudflare Inc.</strong> - Per l'hosting e la protezione del sito</li>
+              <li><strong>Google LLC</strong> - Per Google Analytics e, se compilato, per il questionario Google Forms</li>
+              <li><strong>Cloudflare Inc.</strong> - Per hosting, protezione anti-spam e gestione tecnica delle richieste</li>
+              <li><strong>Resend</strong> - Per l'invio delle email operative e delle conferme automatiche</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">6. Conservazione dei Dati</h2>
             <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
-              <li>I messaggi inviati tramite il form di contatto vengono conservati per il tempo necessario a evadere la richiesta</li>
+              <li>I messaggi e le risposte al questionario vengono conservati per il tempo necessario a valutare ed evadere la richiesta</li>
               <li>I dati di Google Analytics vengono conservati per 14 mesi, poi automaticamente eliminati</li>
             </ul>
           </section>
@@ -138,8 +141,8 @@ const Privacy = () => {
             </ul>
             <p className="text-neutral-300 mt-4">
               Per esercitare questi diritti, contattaci a{" "}
-              <a href="mailto:primebuild.official@gmail.com" className="text-primary hover:underline">
-                primebuild.official@gmail.com
+              <a href="mailto:preventivi@primebuild.website" className="text-primary hover:underline">
+                preventivi@primebuild.website
               </a>
             </p>
           </section>
@@ -169,7 +172,7 @@ const Privacy = () => {
               puoi contattarci a:
             </p>
             <ul className="list-none text-neutral-300 space-y-1 mt-4">
-              <li>Email: <a href="mailto:primebuild.official@gmail.com" className="text-primary hover:underline">primebuild.official@gmail.com</a></li>
+              <li>Email: <a href="mailto:preventivi@primebuild.website" className="text-primary hover:underline">preventivi@primebuild.website</a></li>
               <li>Instagram: <a href="https://www.instagram.com/prime_build_/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@prime_build_</a></li>
               <li>Discord: <a href="https://discord.gg/ERUwSxE79q" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Prime Build Community</a></li>
             </ul>

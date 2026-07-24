@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build && tsx scripts/prerender-meta.ts && tsx scripts/check-seo.ts",
     "preview": "vite preview",
-    "check": "tsc",
+    "check": "tsc && node scripts/check-contact-email.mjs",
     "knip": "knip"
   },
   "dependencies": {

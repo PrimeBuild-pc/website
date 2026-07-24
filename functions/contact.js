@@ -5,6 +5,7 @@
 
 const DEFAULT_ALLOWED_ORIGIN = 'https://primebuild.website';
 const DEFAULT_TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const RESEND_EMAILS_URL = 'https://api.resend.com/emails';
 
 function parseAllowedOrigins(env) {
   const configured = (env.ALLOWED_ORIGINS || DEFAULT_ALLOWED_ORIGIN)
@@ -60,17 +61,72 @@ function jsonResponse(payload, status, allowOrigin = null) {
   });
 }
 
-function sanitize(value, max) {
-  if (!value) return '';
+function clean(value, max) {
+  return value ? String(value).trim().slice(0, max) : '';
+}
 
-  return String(value)
+function escapeHtml(value) {
+  return value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
-    .trim()
-    .slice(0, max);
+    .replace(/'/g, '&#039;');
+}
+
+function getHttpsUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' ? url.toString() : '';
+  } catch {
+    return '';
+  }
+}
+
+async function sendEmail(apiKey, payload) {
+  return fetch(RESEND_EMAILS_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify(payload),
+  });
+}
+
+function buildConfirmation(name, qualificationFormUrl) {
+  const safeName = escapeHtml(name);
+  const safeUrl = escapeHtml(qualificationFormUrl);
+  const subject = 'Abbiamo ricevuto la tua richiesta | Prime Build';
+  const text = `Ciao ${name},
+
+abbiamo ricevuto il tuo primo contatto.
+
+Per richiedere un preventivo, completa il questionario: ${qualificationFormUrl}
+
+Ci permette di valutare budget, utilizzo, giochi o software, risoluzione, componenti già disponibili e tempistiche. Le richieste di preventivo vengono esaminate dopo la compilazione.
+
+PREVENTIVO BASE — GRATUITO
+Stima generale dei costi e indicazione della fascia di configurazione più adatta. Non include una distinta completa con modelli e link di acquisto.
+
+PREVENTIVO COMPLETO — €25
+Selezione precisa dei componenti con modello esatto, link diretti di acquisto al miglior prezzo trovato al momento della ricerca e checklist completa di compatibilità. È pensato anche per chi vuole acquistare i componenti e assemblare il PC in autonomia.
+
+Se ci hai contattato per assistenza su un servizio già in corso, puoi rispondere direttamente a questa email senza compilare il questionario.
+
+Team Prime Build`;
+  const html = `<p>Ciao ${safeName},</p>
+<p>abbiamo ricevuto il tuo primo contatto.</p>
+<p>Per richiedere un preventivo, completa il questionario: ci permette di valutare budget, utilizzo, giochi o software, risoluzione, componenti già disponibili e tempistiche. Le richieste di preventivo vengono esaminate dopo la compilazione.</p>
+<p><a href="${safeUrl}" style="display:inline-block;padding:12px 20px;border-radius:6px;background:#ff6600;color:#000;text-decoration:none;font-weight:700">Completa il questionario</a></p>
+<h2 style="font-size:18px">Preventivo Base — gratuito</h2>
+<p>Stima generale dei costi e indicazione della fascia di configurazione più adatta. Non include una distinta completa con modelli e link di acquisto.</p>
+<h2 style="font-size:18px">Preventivo Completo — €25</h2>
+<p>Selezione precisa dei componenti con modello esatto, link diretti di acquisto al miglior prezzo trovato al momento della ricerca e checklist completa di compatibilità. È pensato anche per chi vuole acquistare i componenti e assemblare il PC in autonomia.</p>
+<p>Se ci hai contattato per assistenza su un servizio già in corso, puoi rispondere direttamente a questa email senza compilare il questionario.</p>
+<p>Team Prime Build</p>`;
+
+  return { subject, text, html };
 }
 
 async function verifyTurnstileToken(request, env, token, debugEnabled) {
@@ -143,11 +199,11 @@ export const onRequestPost = async (context) => {
       return jsonResponse({ success: true, skipped: true }, 200, allowOrigin);
     }
 
-    const name = sanitize(data.name, 100);
-    const email = sanitize(data.email, 254);
-    const subject = sanitize(data.subject, 150);
-    const message = sanitize(data.message, 5000);
-    const turnstileToken = sanitize(data.turnstileToken, 4096);
+    const name = clean(data.name, 100);
+    const email = clean(data.email, 254);
+    const subject = clean(data.subject, 150);
+    const message = clean(data.message, 5000);
+    const turnstileToken = clean(data.turnstileToken, 4096);
 
     if (!name || !email || !subject || !message || !turnstileToken) {
       return jsonResponse({ success: false, error: 'Missing fields' }, 400, allowOrigin);
@@ -164,72 +220,90 @@ export const onRequestPost = async (context) => {
 
     const mailTo = env.MAIL_TO || 'primebuild.official@gmail.com';
     const resendApiKey = env.RESEND_API_KEY;
-    if (!mailTo || !resendApiKey) {
-      console.error('Email service not configured');
+    const qualificationFormUrl = getHttpsUrl(env.QUALIFICATION_FORM_URL);
+    if (!mailTo || !resendApiKey || !qualificationFormUrl) {
+      console.error('Email service or qualification form not configured');
       return jsonResponse({ success: false, error: 'Email service misconfigured' }, 503, allowOrigin);
     }
 
-    const fromEmail = env.MAIL_FROM || 'noreply@primebuild.website';
-    const prefix = env.MAIL_SUBJECT_PREFIX ? `${env.MAIL_SUBJECT_PREFIX.trim()} ` : '';
+    const fromEmail = env.MAIL_FROM || 'preventivi@primebuild.website';
+    const replyTo = env.MAIL_REPLY_TO || fromEmail;
+    const prefix = env.MAIL_SUBJECT_PREFIX ? `${env.MAIL_SUBJECT_PREFIX.trim()} ` : '[PRIMO CONTATTO] ';
 
     const html =
-      `<p><strong>Nome:</strong> ${name}</p>
-       <p><strong>Email:</strong> ${email}</p>
-       <p><strong>Oggetto:</strong> ${subject}</p>
-       <p><strong>Messaggio:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>`;
+      `<p><strong>Nome:</strong> ${escapeHtml(name)}</p>
+       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+       <p><strong>Oggetto:</strong> ${escapeHtml(subject)}</p>
+       <p><strong>Messaggio:</strong><br/>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>`;
     const plain =
       `Nome: ${name}\nEmail: ${email}\nOggetto: ${subject}\nMessaggio:\n${message}`;
 
+    let notificationSent = false;
     try {
-      const mailResp = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${resendApiKey}`,
-        },
-        body: JSON.stringify({
-          from: `Modulo Contatti <${fromEmail}>`,
-          to: [mailTo],
-          reply_to: email,
-          subject: `${prefix}${subject}`,
-          html,
-          text: plain,
-        }),
+      const notificationResponse = await sendEmail(resendApiKey, {
+        from: `Sito Prime Build <${fromEmail}>`,
+        to: [mailTo],
+        reply_to: email,
+        subject: `${prefix}${subject}`,
+        html,
+        text: plain,
       });
 
-      if (!mailResp.ok) {
-        const errTxt = await mailResp.text().catch(() => '');
-        console.error('Resend send failed', mailResp.status, errTxt);
-        const payload = {
-          success: strictEmail ? false : true,
-          warning: 'Email send failed',
-          degraded: !strictEmail,
-        };
+      if (!notificationResponse.ok) {
+        const errorText = await notificationResponse.text().catch(() => '');
+        console.error('Resend notification failed', notificationResponse.status, errorText);
+        return jsonResponse(
+          {
+            success: !strictEmail,
+            warning: 'Email send failed',
+            degraded: !strictEmail,
+          },
+          strictEmail ? 502 : 200,
+          allowOrigin
+        );
+      }
 
-        if (debugEnabled) {
-          console.debug('Resend error body:', errTxt.slice(0, 400));
-        }
+      notificationSent = true;
+      const confirmation = buildConfirmation(name, qualificationFormUrl);
+      const confirmationResponse = await sendEmail(resendApiKey, {
+        from: `Prime Build Preventivi <${fromEmail}>`,
+        to: [email],
+        reply_to: replyTo,
+        ...confirmation,
+      });
 
-        return jsonResponse(payload, strictEmail ? 502 : 200, allowOrigin);
+      if (!confirmationResponse.ok) {
+        const errorText = await confirmationResponse.text().catch(() => '');
+        console.error('Resend confirmation failed', confirmationResponse.status, errorText);
+        return jsonResponse(
+          {
+            success: true,
+            confirmationSent: false,
+            warning: 'Confirmation email failed',
+            ms: Date.now() - start,
+          },
+          200,
+          allowOrigin
+        );
       }
     } catch (error) {
       console.error('Resend exception', error);
-      const payload = {
-        success: strictEmail ? false : true,
-        warning: 'Email send exception',
-        degraded: !strictEmail,
-      };
-
       if (debugEnabled) {
         console.debug('Resend exception message:', (error && error.message) || String(error));
       }
-
-      return jsonResponse(payload, strictEmail ? 502 : 200, allowOrigin);
+      return jsonResponse(
+        notificationSent
+          ? { success: true, confirmationSent: false, warning: 'Confirmation email failed' }
+          : { success: false, error: 'Email send exception' },
+        notificationSent ? 200 : 502,
+        allowOrigin
+      );
     }
 
     return jsonResponse(
       {
         success: true,
+        confirmationSent: true,
         message: 'Message received successfully!',
         ms: Date.now() - start,
       },

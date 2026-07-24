@@ -13,7 +13,7 @@ export const buildSchema = (location: string) => {
     url: `${SITE_URL}/`,
     logo: { "@type": "ImageObject", url: assetUrl("/logo.png"), width: 302, height: 302 },
     image: assetUrl("/og-image.png"),
-    email: "primebuild.official@gmail.com",
+    email: "preventivi@primebuild.website",
     description: "Assemblaggio PC gaming su misura, assistenza tecnica e ottimizzazione a Montegrotto Terme, Padova e in tutta Italia.",
     address: {
       "@type": "PostalAddress",

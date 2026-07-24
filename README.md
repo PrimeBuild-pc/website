@@ -75,7 +75,7 @@ Questo progetto è sotto licenza MIT. Consulta il file `LICENSE` per maggiori in
 
 ## 📞 Contatti
 
-PrimeBuild PC - [primebuild.official@gmail.com](mailto:primebuild.official@gmail.com)
+PrimeBuild PC - [preventivi@primebuild.website](mailto:preventivi@primebuild.website)
 
 Project Link: [https://github.com/PrimeBuild-pc/webapp](https://github.com/PrimeBuild-pc/webapp)
 
