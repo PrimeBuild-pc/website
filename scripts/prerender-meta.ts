@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
+import sanitizeHtml from "sanitize-html";
 import { guides } from "../client/src/data/guides";
 import { services } from "../client/src/data/services";
 import { buildSchema } from "../client/src/lib/schema";
@@ -62,24 +63,56 @@ const escapeHtml = (value: string) => value
   .replaceAll("<", "&lt;")
   .replaceAll(">", "&gt;");
 
-const cleanTrustedHtml = (source: string) => {
-  const body = source.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1] ?? source;
-  return body
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
-    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
-    .replace(/<header\b[^>]*>[\s\S]*?<\/header>/gi, "")
-    .replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi, "")
-    .replace(/<iframe\b[^>]*>[\s\S]*?<\/iframe>/gi, '<p><a href="/images/guides/dlss_programming_guide_release.pdf" target="_blank" rel="noopener noreferrer">Apri il DLSS Programming Guide (PDF, 6 MB)</a></p>')
-    .replace(/\s+on\w+=("[^"]*"|'[^']*')/gi, "")
-    .replace(/src=("|')images\//gi, 'src=$1/images/guides/')
-    .replace(/<img\b(?![^>]*\bloading=)([^>]*)>/gi, '<img loading="lazy"$1>')
-    .replace(/href=("|')\/guides(\/[^"']*)?("|')/gi, (_match, quote, suffix = "", endQuote) => {
-      const href = pagePath(`/guides${suffix}`);
-      return `href=${quote}${href}${endQuote}`;
-    })
-    .replace(/<h([2-6])\b[^>]*>(?:\s|<[^>]+>)*<\/h\1>/gi, "")
-    .trim();
-};
+const cleanTrustedHtml = (source: string) => sanitizeHtml(source, {
+  allowedTags: [
+    "article", "section", "div", "p", "h1", "h2", "h3", "h4", "h5", "h6",
+    "ul", "ol", "li", "strong", "em", "span", "a", "img", "table", "thead",
+    "tbody", "tfoot", "tr", "th", "td", "colgroup", "col", "caption", "sup",
+    "mark", "u", "kbd", "br", "hr", "blockquote", "code", "pre", "header", "footer", "iframe",
+  ],
+  allowedAttributes: {
+    "*": ["class", "id"],
+    a: ["href", "target", "rel"],
+    img: ["src", "alt", "loading", "width", "height"],
+    ol: ["type"],
+    td: ["colspan", "rowspan"],
+    th: ["colspan", "rowspan", "scope"],
+  },
+  transformTags: {
+    iframe: () => ({
+      tagName: "a",
+      attribs: {
+        href: "/images/guides/dlss_programming_guide_release.pdf",
+        target: "_blank",
+        rel: "noopener noreferrer",
+      },
+      text: "Apri il DLSS Programming Guide (PDF, 6 MB)",
+    }),
+    img: (_tagName, attributes) => ({
+      tagName: "img",
+      attribs: {
+        ...attributes,
+        src: attributes.src?.startsWith("images/") ? `/images/guides/${attributes.src.slice(7)}` : attributes.src,
+        loading: attributes.loading ?? "lazy",
+      },
+    }),
+    a: (_tagName, attributes) => {
+      const href = attributes.href?.startsWith("/guides") ? pagePath(attributes.href) : attributes.href;
+      return {
+        tagName: "a",
+        attribs: {
+          ...attributes,
+          href,
+          ...(attributes.target === "_blank" ? { rel: "noopener noreferrer" } : {}),
+        },
+      };
+    },
+  },
+  exclusiveFilter: (frame) =>
+    frame.tag === "header" ||
+    frame.tag === "footer" ||
+    (/^h[2-6]$/.test(frame.tag) && !frame.text.trim()),
+}).trim();
 
 const textToHtml = (source: string) => source
   .replace(/\r\n/g, "\n")
