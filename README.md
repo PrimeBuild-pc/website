@@ -2,17 +2,24 @@
 
 <div align="center">
   <a href="https://primebuild.website/">
-    <img src="client/public/logo.png" alt="Logo Prime Build" width="260">
+    <img src="client/public/logo-readme.png" alt="Logo circolare Prime Build" width="240">
   </a>
 
   <h3>PC gaming su misura, assistenza tecnica e ottimizzazione</h3>
 
-  [![Website](https://img.shields.io/website?url=https%3A%2F%2Fprimebuild.website&style=for-the-badge&label=Website)](https://primebuild.website/)
-  [![Deploy](https://img.shields.io/github/actions/workflow/status/PrimeBuild-pc/website/deploy.yml?branch=main&style=for-the-badge&label=Deploy)](https://github.com/PrimeBuild-pc/website/actions/workflows/deploy.yml)
-  [![CodeQL](https://img.shields.io/github/actions/workflow/status/PrimeBuild-pc/website/codeql.yml?branch=main&style=for-the-badge&label=CodeQL)](https://github.com/PrimeBuild-pc/website/actions/workflows/codeql.yml)
-  [![Last commit](https://img.shields.io/github/last-commit/PrimeBuild-pc/website?style=for-the-badge)](https://github.com/PrimeBuild-pc/website/commits/main/)
-  [![Repo size](https://img.shields.io/github/repo-size/PrimeBuild-pc/website?style=for-the-badge)](https://github.com/PrimeBuild-pc/website)
-  [![Issues](https://img.shields.io/github/issues/PrimeBuild-pc/website?style=for-the-badge)](https://github.com/PrimeBuild-pc/website/issues)
+  [![Website](https://img.shields.io/website?url=https%3A%2F%2Fprimebuild.website&style=plastic&label=website)](https://primebuild.website/)
+  [![Deploy](https://img.shields.io/github/actions/workflow/status/PrimeBuild-pc/website/deploy.yml?branch=main&style=plastic&logo=githubactions&label=deploy)](https://github.com/PrimeBuild-pc/website/actions/workflows/deploy.yml)
+  [![CodeQL](https://img.shields.io/github/actions/workflow/status/PrimeBuild-pc/website/codeql.yml?branch=main&style=plastic&logo=github&label=CodeQL)](https://github.com/PrimeBuild-pc/website/actions/workflows/codeql.yml)
+  [![Last commit](https://img.shields.io/github/last-commit/PrimeBuild-pc/website?style=plastic&logo=github)](https://github.com/PrimeBuild-pc/website/commits/main/)
+  [![Issues](https://img.shields.io/github/issues/PrimeBuild-pc/website?style=plastic&logo=github)](https://github.com/PrimeBuild-pc/website/issues)
+  [![Pull requests](https://img.shields.io/github/issues-pr/PrimeBuild-pc/website?style=plastic&logo=github)](https://github.com/PrimeBuild-pc/website/pulls)
+
+  [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=plastic&logo=react&logoColor=111111)](https://react.dev/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=plastic&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Vite](https://img.shields.io/badge/Vite-8.2-646CFF?style=plastic&logo=vite&logoColor=white)](https://vite.dev/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=plastic&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-0055FF?style=plastic&logo=framer&logoColor=white)](https://motion.dev/)
+  [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-live-F38020?style=plastic&logo=cloudflarepages&logoColor=white)](https://pages.cloudflare.com/)
 </div>
 
 ## Il progetto
@@ -27,13 +34,6 @@ Repository del sito ufficiale di Prime Build, realtà italiana specializzata in 
 - Galleria delle configurazioni realizzate
 - Modulo di contatto per preventivi
 - SEO, dati strutturati e pagine prerenderizzate
-
-## Stack
-
-- React, TypeScript e Vite
-- Tailwind CSS e Framer Motion
-- Cloudflare Pages e Functions
-- GitHub Actions e CodeQL
 
 ## Link
 
