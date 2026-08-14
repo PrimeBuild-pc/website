@@ -8,9 +8,9 @@ type Props = React.ImgHTMLAttributes<HTMLImageElement> & {
 
 /**
  * ImageWithFallback tries WebP first for better performance, then falls back to
- * .jpg/.png if WebP fails, and finally falls back to /logo.png to avoid broken images.
+ * .jpg/.png if WebP fails, and finally falls back to the logo to avoid broken images.
  */
-export default function ImageWithFallback({ src, alt, fallbackSrc = "/logo.png", loading, ...rest }: Props) {
+export default function ImageWithFallback({ src, alt, fallbackSrc = "/logo.png?v=20260814", loading, ...rest }: Props) {
   const originalSrc = React.useRef(src);
 
   const [current, setCurrent] = React.useState(() => {

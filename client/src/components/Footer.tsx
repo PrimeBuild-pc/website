@@ -20,7 +20,7 @@ const Footer = () => {
               <div className="flex items-center mb-4">
                 <div className="h-10 w-10 mr-2 relative">
                   <img
-                    src="/logo.png"
+                    src="/logo.png?v=20260814"
                     alt="Prime Build Logo"
                     width={40}
                     height={40}
