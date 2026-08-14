@@ -82,7 +82,7 @@ const NavBar = () => {
         scrolled ? "border-white/15 bg-black/85 shadow-2xl shadow-black/40 backdrop-blur-2xl" : "border-white/10 bg-black/45 backdrop-blur-xl"
       )}>
         <Link href="/" className="flex items-center gap-2.5">
-          <img src="/logo.png" alt="Prime Build" width={38} height={38} className="h-9 w-9 object-contain" />
+          <img src="/logo.png?v=20260814" alt="Prime Build" width={38} height={38} className="h-9 w-9 object-contain" />
           <span className="font-montserrat text-sm font-semibold tracking-[0.12em]">
             PRIME<span className="text-primary">BUILD</span>
           </span>
