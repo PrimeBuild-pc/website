@@ -1,86 +1,57 @@
-# PrimeBuild PC - Website
+# Prime Build
 
 <div align="center">
-  <img src="client/public/logo.png" alt="PrimeBuild PC Logo" width="250">
-  <h3>Gaming PC Builder & Service Provider</h3>
+  <a href="https://primebuild.website/">
+    <img src="client/public/logo.png" alt="Logo Prime Build" width="260">
+  </a>
+
+  <h3>PC gaming su misura, assistenza tecnica e ottimizzazione</h3>
+
+  [![Website](https://img.shields.io/website?url=https%3A%2F%2Fprimebuild.website&style=for-the-badge&label=Website)](https://primebuild.website/)
+  [![Deploy](https://img.shields.io/github/actions/workflow/status/PrimeBuild-pc/website/deploy.yml?branch=main&style=for-the-badge&label=Deploy)](https://github.com/PrimeBuild-pc/website/actions/workflows/deploy.yml)
+  [![CodeQL](https://img.shields.io/github/actions/workflow/status/PrimeBuild-pc/website/codeql.yml?branch=main&style=for-the-badge&label=CodeQL)](https://github.com/PrimeBuild-pc/website/actions/workflows/codeql.yml)
+  [![Last commit](https://img.shields.io/github/last-commit/PrimeBuild-pc/website?style=for-the-badge)](https://github.com/PrimeBuild-pc/website/commits/main/)
+  [![Repo size](https://img.shields.io/github/repo-size/PrimeBuild-pc/website?style=for-the-badge)](https://github.com/PrimeBuild-pc/website)
+  [![Issues](https://img.shields.io/github/issues/PrimeBuild-pc/website?style=for-the-badge)](https://github.com/PrimeBuild-pc/website/issues)
 </div>
 
-## 📋 Descrizione
+## Il progetto
 
-PrimeBuild PC è un'azienda specializzata nella costruzione di PC gaming personalizzati di alta qualità, riparazioni e soluzioni di ottimizzazione. Questo repository contiene il sito web ufficiale dell'azienda che mostra i nostri servizi, build personalizzate e componenti.
+Repository del sito ufficiale di Prime Build, realtà italiana specializzata in PC gaming personalizzati, consulenza hardware, assistenza tecnica e ottimizzazione.
 
-## 🚀 Caratteristiche
+## Contenuti
 
-- 💻 Showcase delle build gaming personalizzate
-- 🔧 Servizi di riparazione e ottimizzazione
-- 🛠️ Componenti di alta qualità
-- 📱 Design responsive per tutti i dispositivi
-- 🔍 SEO ottimizzato
+- Build gaming bilanciate per budget e utilizzo
+- Servizi di assemblaggio, assistenza e ottimizzazione
+- Guide tecniche su prestazioni, latenza, rete e audio
+- Galleria delle configurazioni realizzate
+- Modulo di contatto per preventivi
+- SEO, dati strutturati e pagine prerenderizzate
 
-## 🛠️ Tecnologie
+## Stack
 
-- **Frontend**: React.js, TailwindCSS, Shadcn UI
-- **Backend**: Node.js, Express
-- **Database**: PostgreSQL (opzionale)
-- **Strumenti**: Vite, TypeScript, TanStack Query
+- React, TypeScript e Vite
+- Tailwind CSS e Framer Motion
+- Cloudflare Pages e Functions
+- GitHub Actions e CodeQL
 
-## 🚀 Installazione
+## Link
 
-1. Clona il repository
-   ```bash
-   git clone https://github.com/PrimeBuild-pc/webapp.git
-   cd webapp
-   ```
+- [Sito ufficiale](https://primebuild.website/)
+- [Guide tecniche](https://primebuild.website/guides/)
+- [Instagram](https://www.instagram.com/prime_build_/)
+- [Discord](https://discord.gg/ERUwSxE79q)
 
-2. Installa le dipendenze
-   ```bash
-   npm install
-   ```
+## Supporta Prime Build
 
-3. Avvia l'applicazione in modalità sviluppo
-   ```bash
-   npm run dev
-   ```
+[![PayPal](https://img.shields.io/badge/Supporta%20su-PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT)
 
-## 📱 Responsive Design
+## Contatti
 
-Il sito è completamente responsivo e ottimizzato per:
-- Desktop
-- Tablet
-- Smartphone
-
----
-
-## 💖 Supporta il progetto
-
-Ti piace questo tool? Offrimi un caffè ☕:
-
-[![PayPal](https://img.shields.io/badge/Supporta%20su-PayPal-blue?logo=paypal)](https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT)
-
----
-
-## 🤝 Contribuire
-
-Se desideri contribuire al progetto, segui questi passaggi:
-
-1. Forka il repository
-2. Crea un branch per la tua feature (`git checkout -b feature/amazing-feature`)
-3. Fai commit delle tue modifiche (`git commit -m 'Aggiungi una feature incredibile'`)
-4. Pusha al branch (`git push origin feature/amazing-feature`)
-5. Apri una Pull Request
-
-## 📜 Licenza
-
-Questo progetto è sotto licenza MIT. Consulta il file `LICENSE` per maggiori informazioni.
-
-## 📞 Contatti
-
-PrimeBuild PC - [preventivi@primebuild.website](mailto:preventivi@primebuild.website)
-
-Project Link: [https://github.com/PrimeBuild-pc/webapp](https://github.com/PrimeBuild-pc/webapp)
+[preventivi@primebuild.website](mailto:preventivi@primebuild.website)
 
 ---
 
 <div align="center">
-  <p>© 2025 PrimeBuild PC. Tutti i diritti riservati.</p>
+  © 2026 Prime Build. Tutti i diritti riservati.
 </div>
