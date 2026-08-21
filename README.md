@@ -1,6 +1,9 @@
 <div align="center">
   <a href="https://primebuild.website/">
-    <img src="readme-banner.svg" alt="Prime Build — PC gaming su misura, assistenza e ottimizzazione" width="100%">
+    <a href="https://primebuild.website/">
+      <img src="client/public/logo-readme.png" alt="Logo circolare Prime Build" width="240">
+    </a>
+    <h1>Prime Build</h1>
   </a>
   <p><strong>PC gaming su misura, assistenza tecnica e ottimizzazione.</strong></p>
   <p>
