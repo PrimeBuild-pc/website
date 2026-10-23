@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Prima localizzare, poi decidere</title>
+<desc id="desc">Percorso diagnostico, non attribuzione certa. Sintomo solo Wi-Fi, solo sotto carico, più servizi in fasce orarie o singolo servizio: verifica locale, code, diario o percorso/server. Uscita dati insufficienti e non cambiare; arresto prima della cattura avanzata.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="900" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Prima localizzare, poi decidere</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<rect x="40" y="153" width="1120" height="69" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="600.0" y="195.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Sintomo ripetibile? Prima: cavo / link, contesto e traffico concorrente</text>
+<rect x="40" y="258" width="450" height="81" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="265.0" y="306.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Solo Wi-Fi?</text>
+<path d="M 490 298 L 640 298" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="565" y="285" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Sì</text>
+<rect x="640" y="258" width="520" height="81" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="900.0" y="290.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Confronto Ethernet</text>
+<text x="900.0" y="322.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">radio / roaming / backhaul</text>
+<path d="M 265 339 L 265 378" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="292" y="368" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">No</text>
+<rect x="40" y="378" width="450" height="81" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="265.0" y="426.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Solo sotto carico?</text>
+<path d="M 490 418 L 640 418" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="565" y="405" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Sì</text>
+<rect x="640" y="378" width="520" height="81" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="900.0" y="410.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Limitare la propria app</text>
+<text x="900.0" y="442.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">poi valutare code / SQM</text>
+<path d="M 265 459 L 265 498" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="292" y="488" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">No</text>
+<rect x="40" y="498" width="450" height="81" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="265.0" y="546.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Più servizi, ore di punta?</text>
+<path d="M 490 538 L 640 538" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="565" y="525" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Sì</text>
+<rect x="640" y="498" width="520" height="81" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="900.0" y="530.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Diario e fasce comparabili</text>
+<text x="900.0" y="562.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">poi ticket ISP</text>
+<path d="M 265 579 L 265 618" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="292" y="608" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">No</text>
+<rect x="40" y="618" width="450" height="81" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="265.0" y="666.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Solo un servizio?</text>
+<path d="M 490 658 L 640 658" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="565" y="645" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Sì</text>
+<rect x="640" y="618" width="520" height="81" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="900.0" y="650.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Percorso / rete del servizio</text>
+<text x="900.0" y="682.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">e statistiche applicative</text>
+<text x="40" y="761" font-size="26" fill="#4ade80" text-anchor="start" font-weight="400">Nessun ramo confermato → dati insufficienti: non cambiare.</text>
+<path d="M 40 802 L 1160 802" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="838" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Percorso diagnostico, non attribuzione certa: serve una seconda evidenza.</text>
+<text x="40" y="870" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">STOP prima di cattura avanzata. Se il servizio manca, contatta l’assistenza.</text>
+</svg>

@@ -7,13 +7,13 @@ import SchemaMarkup from "@/components/SchemaMarkup";
 import CookieBanner from "@/components/CookieBanner";
 import SkipLink from "@/components/SkipLink";
 import { Toaster } from "@/components/ui/toaster";
+import GuideDetail from "@/pages/GuideDetail";
+import NotFound from "@/pages/not-found";
 
 const Privacy = lazy(() => import("@/pages/Privacy"));
 const About = lazy(() => import("@/pages/About"));
 const Guides = lazy(() => import("@/pages/Guides"));
-const GuideDetail = lazy(() => import("@/pages/GuideDetail"));
 const ServiceDetail = lazy(() => import("@/pages/ServiceDetail"));
-const NotFound = lazy(() => import("@/pages/not-found"));
 
 const Router = () => (
   <Suspense fallback={<div className="min-h-screen bg-[#050505]" />}>

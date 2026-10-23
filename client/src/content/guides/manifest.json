@@ -1,0 +1,667 @@
+[
+  {
+    "id": 1,
+    "file": "01-windows-setup.md",
+    "title": "Windows 11: costruire una base misurabile",
+    "description": "Un buon setup non è il Windows con meno voci in Gestione attività. È un sistema che riconosce l'hardware, esegue ciò che ti serve, resta aggiornabile e ti…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2025-12-06",
+    "dateModified": "2026-10-23",
+    "slug": "low-latency-gaming-guide",
+    "image": "/images/guides/diagrams/kernel-scheduler.svg",
+    "sha256": "cc0e3c5d80f30413b12c1043f29be7572e54c7db988fa581525fbbe661b6c2ad",
+    "figures": [
+      {
+        "heading": "3. Il sistema come catena",
+        "asset": "kernel-scheduler",
+        "alt": "Processi, scheduler e interrupt",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "3. Il sistema come catena",
+        "asset": "memory",
+        "alt": "RAM, commit e working set",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "4. Preparare un recupero reale",
+        "asset": "recovery",
+        "alt": "Preparare il ritorno",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "7. Account, driver e ritorno online",
+        "asset": "driver",
+        "alt": "Identità del driver",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "9. Energia, scheduler e sicurezza",
+        "asset": "power",
+        "alt": "Tre controlli energetici",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "file": "02-stabilita-occt.md",
+    "title": "Stabilità e overclock: CPU, GPU, RAM e test che contano",
+    "description": "Un overclock può alzare gli FPS, ma non è automaticamente un intervento sulla latenza. Può migliorare la regolarità dei frame quando il collo di bottiglia è…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "slug": "stabilita-occt",
+    "image": "/images/guides/diagrams/limits.svg",
+    "sha256": "67206a1b6a66fbfc6acc7ceaa408db1badf6eb27df9cf8de2d17d77d13a3bbcc",
+    "figures": [
+      {
+        "heading": "2. Che cosa cambia davvero un overclock",
+        "asset": "limits",
+        "alt": "Le variabili di un overclock",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "5. RAM: il guadagno più sottile, la validazione più lunga",
+        "asset": "memory-clocks",
+        "alt": "AM5: tre domini di clock",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "9. MemTest86, WHEA e lettura dei sensori",
+        "asset": "frequenza-clock",
+        "alt": "Clock reported ed effective: dati diversi",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "7. Protocollo di validazione: A–B–A, non “un test e via”",
+        "asset": "validation",
+        "alt": "Una modifica, più prove",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "1. Prima di toccare il BIOS: baseline e ritorno",
+        "asset": "recovery",
+        "alt": "Preparare il ritorno",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "file": "03-driver-latencymon.md",
+    "title": "Driver e LatencyMon: dal sintomo a una verifica utile",
+    "description": "Un nome di driver in cima a una tabella non è ancora una diagnosi. Può identificare il componente coinvolto, oppure una parte di Windows che lavora per…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "slug": "driver-latencymon",
+    "image": "/images/guides/diagrams/driver.svg",
+    "sha256": "65076ec8b10bcd8cb4bf7e3a9c0a28b37c2775409fb33f6b4278c760e62dcd62",
+    "figures": [
+      {
+        "heading": "Identificare il driver e preparare il ritorno",
+        "asset": "driver",
+        "alt": "Identità del driver",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "La topologia USB/PCIe: quando il driver non è il colpevole",
+        "asset": "usb-percorsi",
+        "alt": "USB: porte diverse, topologia condivisa",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "Che cosa osserva LatencyMon",
+        "asset": "isr",
+        "alt": "Interrupt e lavoro differito",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "Start, Stop, salvataggio e sessione nuova",
+        "asset": "latencymon",
+        "alt": "Cinque viste, cinque domande",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "Una sola modifica, poi confronto A–B–A",
+        "asset": "validation",
+        "alt": "Una modifica, più prove",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "file": "04-cpu-gpu-presentmon.md",
+    "title": "CPU e GPU: la pipeline, PresentMon e il collo di bottiglia",
+    "description": "Un gioco può mostrare molti frame al secondo e rispondere ai comandi con un ritardo percepibile. Può anche avere una media FPS alta e presentare scatti.…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-03-30",
+    "dateModified": "2026-10-23",
+    "slug": "ottimizzazione-build-240hz",
+    "image": "/images/guides/diagrams/pipeline-rendering.svg",
+    "sha256": "0a2fe8199ff76186e4875a81e914b75ae6c89eb47b4be27f4f89a0ae4a5da96e",
+    "figures": [
+      {
+        "heading": "1. Dal comando all'immagine: un percorso con più code",
+        "asset": "pipeline-rendering",
+        "alt": "CPU e GPU: lavoro sovrapposto",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "2. PresentMon: componenti distinti, non un solo contatore",
+        "asset": "cadence",
+        "alt": "Intervalli nominali a cadenza costante",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "3. Le latenze: conservare gli estremi, non soltanto il nome",
+        "asset": "boundaries",
+        "alt": "Dichiarare gli estremi della misura",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "4. Frame Type, Frame Generation e HAGS",
+        "asset": "fg",
+        "alt": "Frame renderizzati e immagini generate",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "5. Cercare un limite senza inventare il tempo di coda",
+        "asset": "presentazione-percorsi",
+        "alt": "Presentazione: il menu non è il percorso",
+        "width": 1200,
+        "height": 640
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "file": "05-sincronizzazione-limiter.md",
+    "title": "Sincronizzazione, presentazione e limiter: scegliere il compromesso giusto",
+    "description": "Non esiste un profilo che massimizzi insieme reattività, immagine integra, fluidità, consumi e FPS. Prima scegli che cosa vuoi migliorare: la risposta in un…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "slug": "sincronizzazione-limiter",
+    "image": "/images/guides/diagrams/pipeline-limiter.svg",
+    "sha256": "ed40d414547dbfe02ff7d623cb580f90cd105defc5b69e0904d2af4426a594c1",
+    "figures": [
+      {
+        "heading": "5. I limiter: quale ritmo controllano e dove aspettano",
+        "asset": "pipeline-limiter",
+        "alt": "Limiter: attesa e punto osservato",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "4. DWM, flip model, MPO e FSO: verificare il percorso prima dei tweak",
+        "asset": "presentazione-percorsi",
+        "alt": "Presentazione: il menu non è il percorso",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "2. Come arrivano le immagini al monitor",
+        "asset": "vrr",
+        "alt": "Il range del Variable Refresh Rate",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "1. Contenere l'anticipo: cap, Reflex e Anti-Lag",
+        "asset": "fg",
+        "alt": "Frame renderizzati e immagini generate",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "6. Un confronto piccolo, completo e ripristinabile",
+        "asset": "cadence",
+        "alt": "Intervalli nominali a cadenza costante",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "file": "06-display-cavi.md",
+    "title": "Display e cavi: verificare il segnale prima di ottimizzare",
+    "description": "Un collegamento che trasporta correttamente la modalità desiderata non diventa più reattivo soltanto perché il cavo costa di più. Il problema pratico è…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "slug": "display-cavi",
+    "image": "/images/guides/diagrams/display.svg",
+    "sha256": "bf2d3fc09008595d46b09daf80eceb0b29fd657a4ec2369e823ddbbc38a540e0",
+    "figures": [
+      {
+        "heading": "1. Il collegamento è una catena, non un cavo",
+        "asset": "display",
+        "alt": "Verificare tutto il collegamento",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "2. Refresh, scanout e latenza: tre misure diverse",
+        "asset": "scanout",
+        "alt": "Invio progressivo dell’immagine",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "3. Che cosa determina la banda necessaria",
+        "asset": "bandwidth",
+        "alt": "Che cosa richiede banda al collegamento",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "6. DisplayPort o HDMI? Scegliere la funzione reale",
+        "asset": "vrr",
+        "alt": "Il range del Variable Refresh Rate",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "8. Elaborazione del monitor: non confonderla con il cavo",
+        "asset": "boundaries",
+        "alt": "Dichiarare gli estremi della misura",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "file": "07-input-usb.md",
+    "title": "Mouse, tastiere e USB: capire il percorso prima di cambiare il polling",
+    "description": "Un input poco regolare non dipende necessariamente dal mouse. Il gesto deve essere rilevato dalla periferica, trasportato al PC, letto dal gioco e…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "slug": "input-usb",
+    "image": "/images/guides/diagrams/input.svg",
+    "sha256": "197129e8cbbf1f9729bffc95126f58325d3ada74e274feabe296ac05aa3c92ae",
+    "figures": [
+      {
+        "heading": "1. Dal gesto alla risposta: tre numeri da non confondere",
+        "asset": "input",
+        "alt": "Dal gesto all’immagine",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "2. Quanto cambia l'attesa ideale fra 125 e 8000 Hz",
+        "asset": "polling",
+        "alt": "Intervallo nominale dei report",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "4. Leggere la topologia USB, non il colore delle prese",
+        "asset": "usb-percorsi",
+        "alt": "USB: porte diverse, topologia condivisa",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "8. HIDUSBF: preparare la rimozione prima dell'installazione",
+        "asset": "hidfilter",
+        "alt": "Rimuovere il filtro nell’ordine previsto",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "9. Chiudere il confronto senza inventare un risultato",
+        "asset": "boundaries",
+        "alt": "Dichiarare gli estremi della misura",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "file": "08-audio-cuffie-dac.md",
+    "title": "Cuffie, IEM e DAC: scegliere la catena sonora in base al problema",
+    "description": "Un passo può arrivare presto ed essere difficile da localizzare; può essere riconoscibile ma coperto dalla voce; può sembrare più evidente soltanto perché…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "slug": "audio-cuffie-dac",
+    "image": "/images/guides/diagrams/audio-percorsi.svg",
+    "sha256": "e399baaf19605d7e2ebef69170d60a4cacce18937a30d13baf1794dd157149c0",
+    "figures": [
+      {
+        "heading": "Prima domanda: dove comincia e finisce il suono che misuri?",
+        "asset": "audio-percorsi",
+        "alt": "Audio: render e capture sono direzioni diverse",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "La cuffia va adattata prima di equalizzarla",
+        "asset": "fit",
+        "alt": "Prima della curva EQ",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "Cavo, radio proprietaria e Bluetooth",
+        "asset": "transport",
+        "alt": "Tre collegamenti audio distinti",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "DAC e amplificatore: acquistare per un limite identificato",
+        "asset": "dac",
+        "alt": "Dal digitale al trasduttore",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "Il motore, l'API e i buffer restano nel percorso",
+        "asset": "buffers",
+        "alt": "Durata di un blocco a 48 kHz",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "file": "09-audio-windows-eq.md",
+    "title": "Audio Windows, Peace ed EQ: configurare un percorso verificabile",
+    "description": "L'equalizzazione (EQ) non risolve un'uscita sbagliata, un buffer più piccolo non corregge la tenuta delle cuffie e una voce più forte può coprire proprio…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-03-17",
+    "dateModified": "2026-10-23",
+    "slug": "setup-audio",
+    "image": "/images/guides/diagrams/endpoint.svg",
+    "sha256": "4afceba739ea331a7db0d02d5d22cedfcc4b18ff2aa86e6f0151609734341ebc",
+    "figures": [
+      {
+        "heading": "Preparare il riferimento e riconoscere l'endpoint",
+        "asset": "endpoint",
+        "alt": "Seguire l’uscita realmente ascoltata",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "Formato, shared ed exclusive: non scegliere il massimo per principio",
+        "asset": "audio-percorsi",
+        "alt": "Audio: render e capture sono direzioni diverse",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "Baseline No APO: escludere trattamenti opzionali, non tutte le funzioni OEM",
+        "asset": "noapo",
+        "alt": "Due riferimenti audio separati",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "LowAudioLatency: una prova facoltativa del periodo shared",
+        "asset": "buffers",
+        "alt": "Durata di un blocco a 48 kHz",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "Due strategie EQ, senza preset ricostruiti",
+        "asset": "eq-strategia-b",
+        "alt": "Curva B: risposta e correzione sono diverse",
+        "width": 1200,
+        "height": 640
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "file": "10-rete-domestica.md",
+    "title": "Rete domestica: trovare il problema prima di cambiare impostazioni",
+    "description": "Una connessione può trasferire molti dati e diventare poco reattiva appena parte un backup. Può funzionare bene accanto al router e male nella stanza del…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-01-06",
+    "dateModified": "2026-10-23",
+    "slug": "setup-rete-anti-bufferbloat",
+    "image": "/images/guides/diagrams/rete-metriche.svg",
+    "sha256": "1b8291ba5ce4ebeada451de72ec7e2d63e481e50b93f50ae834a46932169425e",
+    "figures": [
+      {
+        "heading": "2. Impara a distinguere capacità, ritardo e risposte mancanti",
+        "asset": "rete-metriche",
+        "alt": "Capacità, RTT, variabilità e perdita",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "heading": "3. Disegna il percorso che hai davvero",
+        "asset": "rete-percorsi",
+        "alt": "Dal provider alla casa: tre accessi",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "heading": "6. Scegli Ethernet per il requisito, non per la scritta «gaming»",
+        "asset": "ethernet-canale",
+        "alt": "Ethernet: il canale è l’intero collegamento",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "heading": "7. T568A e T568B: cambia il colore, non la prestazione",
+        "asset": "ethernet-t568",
+        "alt": "T568A e T568B: stessi requisiti, stessi tempi",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "heading": "9. Cerca la tratta radio che non vedi: DFS, AP e backhaul",
+        "asset": "wifi-mesh",
+        "alt": "Wi-Fi e mesh: posizione e backhaul",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "heading": "12. Leggi un percorso senza inventare il punto guasto",
+        "asset": "rete-hop",
+        "alt": "Hop silenzioso ≠ perdita end-to-end",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "heading": "14. Capisci quale coda può controllare SQM",
+        "asset": "rete-sqm",
+        "alt": "Code sotto carico: cosa controlla SQM",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "heading": "16. Fai un confronto A–B–A che risponda alla tua domanda",
+        "asset": "rete-aba",
+        "alt": "Confronto A → B → A: una sola modifica",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "heading": "17. Localizza un'ipotesi con almeno due evidenze",
+        "asset": "rete-diagnosi",
+        "alt": "Prima localizzare, poi decidere",
+        "width": 1200,
+        "height": 900
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "file": "11-parametri-windows.md",
+    "title": "Parametri Windows: interrupt, priorità e timer senza preset universali",
+    "description": "Una casella chiamata «High», un timer da 0,5 ms o un valore nel registro possono sembrare scorciatoie per rendere il PC più rapido. In realtà controllano…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "slug": "parametri-windows",
+    "image": "/images/guides/diagrams/kernel-scheduler.svg",
+    "sha256": "df9fe65e280394dcdca3ca31b793f23198752b425a70e5eb6543b2f0f5b2d67a",
+    "figures": [
+      {
+        "heading": "1. Chiedi prima che cosa controlla un'impostazione",
+        "asset": "kernel-scheduler",
+        "alt": "Processi, scheduler e interrupt",
+        "width": 1200,
+        "height": 640
+      },
+      {
+        "heading": "2. Interrupt su linea, MSI e MSI-X: il target è un dispositivo",
+        "asset": "isr",
+        "alt": "Interrupt e lavoro differito",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "5. MMCSS: la presenza di Games non registra un gioco",
+        "asset": "mmcss",
+        "alt": "MMCSS: serve la partecipazione dell’app",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "6. Timer, timestamp e risvegli: quattro proprietà differenti",
+        "asset": "timers",
+        "alt": "Quattro proprietà temporali",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "7. BCD: riconosci una forzatura senza cancellare alla cieca",
+        "asset": "recovery",
+        "alt": "Preparare il ritorno",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "file": "12-misure-verifica.md",
+    "title": "Misure e verifica: capire se una modifica ha davvero aiutato",
+    "description": "Non basta che tutti i contatori siano verdi per considerare riuscito un setup. È riuscito quando il problema iniziale è stato risolto o ridotto, le funzioni…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "slug": "misure-verifica",
+    "image": "/images/guides/diagrams/boundaries.svg",
+    "sha256": "f9cc4c47b7f58a0a5233961a160f64ab074c9f8f217e50b54169da32246bfb96",
+    "figures": [
+      {
+        "heading": "2. Non confondere grandezze che hanno tutte l'unità «tempo»",
+        "asset": "boundaries",
+        "alt": "Dichiarare gli estremi della misura",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "3. Guarda la distribuzione, non soltanto una media",
+        "asset": "distribution",
+        "alt": "Dieci intervalli: un esempio didattico",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "5. Esegui il ragionamento A–B–A, non una gara di risultati migliori",
+        "asset": "validation",
+        "alt": "Una modifica, più prove",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "6. Acquisisci frame time senza trasformarli in click→fotone",
+        "asset": "cadence",
+        "alt": "Intervalli nominali a cadenza costante",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "8. Usa LatencyMon e le prove di rete come indizi nel loro ambito",
+        "asset": "latencymon",
+        "alt": "Cinque viste, cinque domande",
+        "width": 1200,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "file": "13-dlss-fsr-frame-generation.md",
+    "title": "DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering",
+    "description": "Un contatore può passare da 70 a 210 FPS con Multi Frame Generation, ma gli aggiornamenti della simulazione non diventano automaticamente sei volte più…",
+    "date": "23 ottobre 2026",
+    "datePublished": "2026-01-09",
+    "dateModified": "2026-10-23",
+    "slug": "guida-dlss-frame-generation",
+    "image": "/images/guides/diagrams/upscale.svg",
+    "sha256": "e6ea41ed24c34cf17b80ce8d3801e7dadaefb624fc3272cc99d3043345451eb8",
+    "figures": [
+      {
+        "heading": "1. Tre funzioni che non vanno confuse",
+        "asset": "upscale",
+        "alt": "Ricostruzione dell’immagine",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "2. DLSS 4.5: upscaling, Ray Reconstruction e Multi Frame Generation",
+        "asset": "fg",
+        "alt": "Frame renderizzati e immagini generate",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "7. Scegliere un preset senza inseguire il numero più alto",
+        "asset": "quality",
+        "alt": "Confrontare qualità e comportamento",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "8. Problemi frequenti e diagnosi",
+        "asset": "validation",
+        "alt": "Una modifica, più prove",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "3. DLSS 5: neural rendering, non un upscaler",
+        "asset": "pipeline-rendering",
+        "alt": "CPU e GPU: lavoro sovrapposto",
+        "width": 1200,
+        "height": 640
+      }
+    ]
+  }
+]

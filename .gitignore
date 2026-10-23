@@ -7,3 +7,6 @@ vite.config.ts.*
 .env
 .dev.vars
 *.pem
+# Generated from the definitive Markdown during predev/prebuild
+client/public/guide-content/
+tmp/

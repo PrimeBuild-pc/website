@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Clock reported ed effective: dati diversi</title>
+<desc id="desc">Reported clock indica la frequenza riportata al campionamento dalla sorgente del sensore. Effective clock riflette attività effettiva media nell’intervallo secondo il contatore e il tool, incluse eventuali pause o clock gating. Schema concettuale senza MHz o benchmark sintetici.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="640" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Clock reported ed effective: dati diversi</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<rect x="40" y="167" width="540" height="117" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="310.0" y="201.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">REPORTED CLOCK</text>
+<text x="310.0" y="233.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Frequenza riportata dal sensore</text>
+<text x="310.0" y="265.65999999999997" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">al campionamento</text>
+<rect x="620" y="167" width="540" height="117" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="890.0" y="201.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">EFFECTIVE CLOCK</text>
+<text x="890.0" y="233.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Attività effettiva nell’intervallo</text>
+<text x="890.0" y="265.65999999999997" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">secondo contatore / tool</text>
+<text x="40" y="337" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">ATTIVITÀ CONCETTUALE — non grafico di una CPU reale</text>
+<rect x="40" y="375" width="230" height="68" rx="12" fill="#244536" stroke="#8896a7" stroke-width="2"/>
+<text x="155.0" y="418" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Attivo</text>
+<rect x="270" y="375" width="160" height="68" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="350.0" y="418" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Pausa</text>
+<rect x="430" y="375" width="230" height="68" rx="12" fill="#244536" stroke="#8896a7" stroke-width="2"/>
+<text x="545.0" y="418" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Attivo</text>
+<rect x="660" y="375" width="160" height="68" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="740.0" y="418" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Pausa</text>
+<rect x="820" y="375" width="230" height="68" rx="12" fill="#244536" stroke="#8896a7" stroke-width="2"/>
+<text x="935.0" y="418" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Attivo</text>
+<path d="M 40 458 V 478 H 1050 V 458" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="545" y="512" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Intervallo di osservazione: attività e pause contribuiscono</text>
+<path d="M 40 542 L 1160 542" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="578" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Una lettura reported alta non garantisce lavoro continuo o prestazioni alte.</text>
+<text x="40" y="610" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Effective dipende dalla metrica: non prova, da solo, throttling o clock stretching.</text>
+</svg>

@@ -151,7 +151,7 @@ export const buildSchema = (location: string) => {
           "@id": `${url}#article`,
           headline: guide.title,
           description: guide.description,
-          image: assetUrl(guide.image),
+          image: assetUrl("/og-image.png"),
           datePublished: guide.datePublished,
           dateModified: guide.dateModified,
           author: { "@id": `${SITE_URL}/#business` },

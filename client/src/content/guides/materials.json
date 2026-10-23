@@ -1,0 +1,110 @@
+[
+  {
+    "path": "analisi/REVISIONE-TEMATICA.md",
+    "sha256": "4dabdb38a89fef2b6a2a9c83cfa523be049f1de93cec919c9996f4f597673735",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "analisi/VERIFICA-SETUP-E-STRUMENTI-V3.md",
+    "sha256": "5afd612178ed05c73a230c7f38cc189c818b7e618613e62457921b215ea544c7",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "analisi/VERIFICA-TOOL-PRIMEBUILD-RETE-V3.md",
+    "sha256": "45b2d45f5175763f6b3491389e0d5c17beaec9d52237a55b8cce81a5638ceaea",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "analisi/VERIFICA-VIDEO-E-RTSS.md",
+    "sha256": "23b375213c88b3de39f51e4064ae29490adb5cfdbb77981253327436b2b2cb86",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "bozza-v3/CREDITI-IMMAGINI.md",
+    "sha256": "c06508c5f6e3777b8beff08171c9cdb4b13e8f11e7497a374cc208d95fb3d958",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "discord-revisione-v5/pacchetti/PrimeBuild-Audio-v4.zip",
+    "sha256": "c73fe4bc9bdaafd95ff49058b4f4fc31d48ceadcd728ee00a2849dc6fea99287",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "discord-revisione-v5/pacchetti/PrimeBuild-Diagnostica-v4.zip",
+    "sha256": "065fdef771c550396c41ad1ba3f39e5dd816f0274f1be73173836c81fa859987",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "discord-revisione-v5/pacchetti/PrimeBuild-FirstSetup-v4.zip",
+    "sha256": "5086d10e4ead12bd82b9e49d462bebb5381618216ce8367e68da50e0f681278e",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "discord-revisione-v5/pacchetti/PrimeBuild-Input-v4.zip",
+    "sha256": "d96e3bf74e3448305da0180746deae0139a54b7b3e1a719f1ee666ad65707d79",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "discord-revisione-v5/pdf/01-primo-setup.pdf",
+    "sha256": "c9534d4f906a24bd9f93cb2fac81a0f9622341f42dac73013fad69631561ed70",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "discord-revisione-v5/pdf/02-latencymon-e-driver.pdf",
+    "sha256": "0a4a4f53d93f4e9e9387206fb20e35225ba0cb5d0d70f6226915207751b27fbb",
+    "status": "blocked-rights",
+    "reason": "Third-party illustrations: permission not documented in supplied image register."
+  },
+  {
+    "path": "discord-revisione-v5/pdf/03-audio-competitivo.pdf",
+    "sha256": "ae8dd06d0caf400fcd78c4e4823e7dd712e5e4477767aa2fd6d380ddfd7ce9fb",
+    "status": "blocked-rights",
+    "reason": "Third-party illustrations: permission not documented in supplied image register."
+  },
+  {
+    "path": "discord-revisione-v5/pdf/04-frame-cap-e-presentazione.pdf",
+    "sha256": "85747142ee477a26625962078d1de6c4687b114b58c943cc757bc8047050af9a",
+    "status": "blocked-rights",
+    "reason": "Third-party illustrations: permission not documented in supplied image register."
+  },
+  {
+    "path": "discord-revisione-v5/pdf/05-displayport-hdmi.pdf",
+    "sha256": "a68317fd504b34a79ed3b53203913013c758a26dab535683a55d9f57b295fcf4",
+    "status": "blocked-rights",
+    "reason": "Third-party illustrations: permission not documented in supplied image register."
+  },
+  {
+    "path": "discord-revisione-v5/pdf/06-input-mouse-usb.pdf",
+    "sha256": "5d102dcf87419ce341c1b6b5b84be990356b07366f69e67db2a1022868101170",
+    "status": "blocked-rights",
+    "reason": "Third-party illustrations: permission not documented in supplied image register."
+  },
+  {
+    "path": "discord-revisione-v5/pdf/07-rete.pdf",
+    "sha256": "b238949cebdda8dd718c6b747fb165d5403babbe315eab9f23ac04e3bb316405",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "discord-revisione-v5/scripts/PrimeBuild-Diagnostica.ps1",
+    "sha256": "0b7af433a63c8bc23c4c74f18f2fba8a2cce97e3d83d92404cf87088a9725ca8",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  },
+  {
+    "path": "discord-revisione-v5/scripts/README.md",
+    "sha256": "5be69a513c77a79175abe385aa67255beb6aebe33fc420243e2c7806e155a185",
+    "status": "included",
+    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+  }
+]

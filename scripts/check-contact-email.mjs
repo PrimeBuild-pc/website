@@ -59,4 +59,9 @@ assert.match(resendPayloads[1].text, /sottratti dal costo della manodopera/);
 assert.match(resendPayloads[1].text, /Il mercato dei componenti può cambiare rapidamente/);
 assert.match(resendPayloads[1].text, /https:\/\/docs\.google\.com\/forms/);
 
-console.log('Contact email flow check passed.');
+for (const [body, expected] of [['null',400], ['[]',400], ['{"name":{}}',400], ['invalid',400], ['x'.repeat(16385),413]]) {
+  const invalid = new Request('https://primebuild.website/contact', {method:'POST',headers:{Origin:'https://primebuild.website'},body});
+  assert.equal((await onRequestPost({request:invalid,env})).status,expected);
+}
+assert.equal(resendPayloads.length,2,'Invalid input must not send email');
+console.log('Contact email flow, JSON types and body limit checks passed.');

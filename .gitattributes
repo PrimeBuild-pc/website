@@ -1,0 +1,2 @@
+/client/src/content/guides/*.md -text
+/client/public/guide-materials/** -text
