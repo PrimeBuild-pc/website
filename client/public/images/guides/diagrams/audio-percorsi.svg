@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Audio: render e capture sono direzioni diverse</title>
+<desc id="desc">Render: app, motore audio e driver, dispositivo fisico locale e uscita sonora. Capture: microfono locale, dispositivo e driver, motore audio, app. La rete è un percorso separato nelle app di comunicazione, con codec, buffer e trasporto. Nessuna latenza presunta.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="640" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Audio: render e capture sono direzioni diverse</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="160" font-size="26" fill="#4ade80" text-anchor="start" font-weight="400">RENDER / USCITA LOCALE →</text>
+<rect x="40" y="181" width="250" height="86" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="165.0" y="216.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">App</text>
+<text x="165.0" y="248.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">riproduzione</text>
+<path d="M 290 224 L 325 224" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="325" y="181" width="250" height="86" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="450.0" y="216.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Motore audio</text>
+<text x="450.0" y="248.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">e driver</text>
+<path d="M 575 224 L 610 224" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="610" y="181" width="250" height="86" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="735.0" y="216.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Dispositivo</text>
+<text x="735.0" y="248.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">DAC / uscita</text>
+<path d="M 860 224 L 895 224" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="895" y="181" width="250" height="86" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="1020.0" y="216.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Cuffie /</text>
+<text x="1020.0" y="248.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">altoparlanti</text>
+<text x="40" y="313" font-size="26" fill="#4ade80" text-anchor="start" font-weight="400">CAPTURE / INGRESSO LOCALE →</text>
+<rect x="40" y="335" width="250" height="86" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="165.0" y="370.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Microfono</text>
+<text x="165.0" y="402.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">segnale fisico</text>
+<path d="M 290 378 L 325 378" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="325" y="335" width="250" height="86" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="450.0" y="370.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Dispositivo</text>
+<text x="450.0" y="402.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">ADC / ingresso</text>
+<path d="M 575 378 L 610 378" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="610" y="335" width="250" height="86" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="735.0" y="370.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Driver e</text>
+<text x="735.0" y="402.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">motore audio</text>
+<path d="M 860 378 L 895 378" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="895" y="335" width="250" height="86" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="1020.0" y="370.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">App</text>
+<text x="1020.0" y="402.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">registrazione</text>
+<text x="40" y="470" font-size="26" fill="#4ade80" text-anchor="start" font-weight="400">RETE / SOLO SE L’APP LA USA</text>
+<text x="40" y="511" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">App ⇄ codec / buffer ⇄ trasporto rete ⇄ app remota</text>
+<path d="M 40 542 L 1160 542" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="578" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Percorsi fisici locali separati dalla rete; USB e jack dipendono dal dispositivo.</text>
+<text x="40" y="610" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Modalità audio e buffer cambiano il percorso: nessuna latenza è qui misurata.</text>
+</svg>

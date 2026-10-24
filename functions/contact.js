@@ -6,6 +6,7 @@
 const DEFAULT_ALLOWED_ORIGIN = 'https://primebuild.website';
 const DEFAULT_TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const RESEND_EMAILS_URL = 'https://api.resend.com/emails';
+const MAX_BODY_BYTES = 16384;
 
 function parseAllowedOrigins(env) {
   const configured = (env.ALLOWED_ORIGINS || DEFAULT_ALLOWED_ORIGIN)
@@ -91,6 +92,7 @@ async function sendEmail(apiKey, payload) {
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(10000),
   });
 }
 
@@ -157,6 +159,7 @@ async function verifyTurnstileToken(request, env, token, debugEnabled) {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body,
+      signal: AbortSignal.timeout(10000),
     });
 
     if (!verifyResp.ok) {
@@ -192,12 +195,33 @@ export const onRequestPost = async (context) => {
   }
 
   try {
-    const bodyText = await request.text();
+    const reader = request.body?.getReader();
+    const chunks = [];
+    let size = 0;
+    if (reader) {
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          size += value.byteLength;
+          if (size > MAX_BODY_BYTES) {
+            await reader.cancel();
+            return jsonResponse({ success: false, error: 'Request too large' }, 413, allowOrigin);
+          }
+          chunks.push(value);
+        }
+      } finally { reader.releaseLock(); }
+    }
+    const bodyText = await new Blob(chunks).text();
     let data;
     try {
       data = JSON.parse(bodyText);
     } catch {
       return jsonResponse({ success: false, error: 'Invalid JSON' }, 400, allowOrigin);
+    }
+    if (!data || typeof data !== 'object' || Array.isArray(data)
+      || ['name', 'email', 'subject', 'message', 'turnstileToken', 'website'].some(key => data[key] !== undefined && typeof data[key] !== 'string')) {
+      return jsonResponse({ success: false, error: 'Invalid fields' }, 400, allowOrigin);
     }
 
     // Honeypot trap for basic bots

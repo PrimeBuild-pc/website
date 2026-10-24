@@ -1,107 +1,83 @@
-import { lazy, Suspense } from "react";
-import { Link, useRoute } from "wouter";
+import React, { useEffect, useState } from "react";
+import { Link, Redirect, useRoute } from "wouter";
 import { guides } from "@/data/guides";
-import BackgroundEffect from "@/components/BackgroundEffect";
 import useSEO from "@/hooks/useSEO";
+import NotFound from "@/pages/not-found";
+import DOMPurify from "dompurify";
 
-const SetupAudioContent = lazy(() => import("@/components/guides/SetupAudioContent"));
-const DlssContent = lazy(() => import("@/components/guides/DlssContent"));
-const BufferbloatContent = lazy(() => import("@/components/guides/BufferbloatContent"));
-const PresentationModelsContent = lazy(
-  () => import("@/components/guides/PresentationModelsContent")
-);
-const LowLatencyGuideContent = lazy(() => import("@/components/guides/LowLatencyGuideContent"));
+type Content = { html: string; toc: { id: string; text: string }[] };
+type Guide = (typeof guides)[number];
+const initialGuide = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('[data-guide-slug]');
+const initialArticle = initialGuide?.querySelector('article.guide-prose');
+const sanitize = (html: string) => DOMPurify.sanitize(html, {USE_PROFILES:{html:true}, ADD_ATTR:['target']});
+const initialContent: Content | null = initialArticle ? {
+  html: sanitize(initialArticle.innerHTML),
+  toc: Array.from(initialArticle.querySelectorAll('h2[id]'), heading => ({id:heading.id,text:heading.textContent || ''})),
+} : null;
 
-const formatSlug = (slug: string) =>
-  slug
-    .split("-")
-    .filter(Boolean)
-    .map((chunk) => chunk.charAt(0).toUpperCase() + chunk.slice(1))
-    .join(" ");
-
-const GuideDetail = () => {
-  const [, params] = useRoute("/guides/:slug");
-  const slug = params?.slug ?? "";
-  const guide = guides.find((item) => item.slug === slug);
-  const fallbackTitle = slug ? formatSlug(slug) : "Guida";
-  const isSetupAudio = slug === "setup-audio";
-  const isDlssGuide = slug === "guida-dlss-frame-generation";
-  const isBufferbloatGuide = slug === "setup-rete-anti-bufferbloat";
-  const isPresentationGuide = slug === "ottimizzazione-build-240hz";
-  const isLowLatencyGuide = slug === "low-latency-gaming-guide";
-
-  useSEO({
-    title: `${guide?.title ?? fallbackTitle} | Prime Build`,
-    description:
-      guide?.description ??
-      `Guida tecnica Prime Build: ${fallbackTitle}. Analisi pratiche per prestazioni competitive e latenza ottimizzata.`,
-    path: `/guides/${slug}`,
-    image: guide?.image,
-    type: "article",
-    datePublished: guide?.datePublished,
-    dateModified: guide?.dateModified,
-  });
-
-  return (
-    <section className="relative isolate min-h-[calc(100vh-8rem)] bg-black text-white pt-28 pb-16 px-4 overflow-hidden">
-      <BackgroundEffect />
-
-      <div className="container mx-auto max-w-4xl relative z-10">
-        <Link
-          href="/guides/"
-          className="inline-flex items-center text-sm text-zinc-300 hover:text-primary transition-colors border border-white/10 px-3 py-2 rounded-md bg-zinc-900/40"
-        >
-          ← Torna alle Guide
-        </Link>
-
-        <header className="mt-8">
-          <div className="rounded-xl border border-white/10 bg-zinc-900/70 p-6 md:p-8">
-            <p className="text-xs uppercase tracking-wider text-primary">Report tecnico</p>
-            <h1 className="mt-3 text-3xl md:text-5xl font-bold font-montserrat text-white">
-              {guide?.title ?? fallbackTitle}
-            </h1>
-            {guide?.description ? (
-              <p className="mt-4 max-w-3xl leading-relaxed text-zinc-300">{guide.description}</p>
-            ) : null}
-          </div>
-
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-wider">
-            <Link href="/chi-siamo/" className="px-2.5 py-1 rounded border border-white/10 bg-zinc-900/70 text-zinc-300 hover:text-primary">
-              A cura del team tecnico Prime Build
-            </Link>
-            {guide?.date ? (
-              <time dateTime={guide.dateModified} className="px-2.5 py-1 rounded border border-primary/30 bg-primary/10 text-primary">
-                Pubblicato il {guide.date}
-              </time>
-            ) : null}
-          </div>
-        </header>
-
-        <article className="mt-6 border border-white/10 bg-zinc-900/50 rounded-xl p-6 md:p-8">
-          <Suspense fallback={<div className="text-white">Caricamento guida...</div>}>
-            {isSetupAudio ? (
-              <SetupAudioContent />
-            ) : isDlssGuide ? (
-              <DlssContent />
-            ) : isBufferbloatGuide ? (
-              <BufferbloatContent />
-            ) : isPresentationGuide ? (
-              <PresentationModelsContent />
-            ) : isLowLatencyGuide ? (
-              <LowLatencyGuideContent />
-            ) : guide?.description ? (
-              <p className="text-zinc-300 leading-relaxed">{guide.description}</p>
-            ) : (
-              <p className="text-zinc-400 leading-relaxed">
-                Contenuto guida in preparazione.
-              </p>
-            )}
-          </Suspense>
-        </article>
-      </div>
-    </section>
-  );
+const GuideArticle = ({ guide }: { guide: Guide }) => {
+  const hasInitialContent = initialGuide?.dataset.guideSlug === guide.slug && initialContent !== null;
+  const [content, setContent] = useState<Content | null>(hasInitialContent ? initialContent : null);
+  const [failed, setFailed] = useState(false);
+  useSEO({title:`${guide.title} | Prime Build`,description:guide.description,path:`/guides/${guide.slug}/`,image:"/og-image.png",type:"article",datePublished:guide.datePublished,dateModified:guide.dateModified});
+  useEffect(() => {
+    if (!location.hash) window.scrollTo(0, 0);
+    const scrollToHash = () => {
+      if (location.hash) requestAnimationFrame(() => {
+        try { document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView(); } catch { /* Ignore malformed fragment URLs. */ }
+      });
+    };
+    if (hasInitialContent) { scrollToHash(); return; }
+    const controller = new AbortController();
+    fetch(`/guide-content/${guide.slug}.json`, { signal: controller.signal })
+      .then(response => { if (!response.ok) throw new Error("Guide unavailable"); return response.json(); })
+      .then((value: Content) => {
+        setContent({...value, html:sanitize(value.html)});
+        scrollToHash();
+      })
+      .catch(error => { if (error.name !== "AbortError") setFailed(true); });
+    return () => controller.abort();
+  }, [guide.slug, hasInitialContent]);
+  return <GuideArticleView guide={guide} content={content} failed={failed} />;
 };
 
-export default GuideDetail;
+export const GuideArticleView = ({guide,content,failed=false}: {guide:Guide;content:Content|null;failed?:boolean}) => {
+  const previous = guides[guide.id - 2];
+  const next = guides[guide.id];
+  return <section data-guide-slug={guide.slug} className="guide-page px-4 pb-20 pt-28 sm:px-6">
+    <div className="mx-auto max-w-7xl">
+      <nav aria-label="Percorso" className="mb-7 flex flex-wrap items-center gap-3 text-sm text-zinc-300">
+        <Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/guides/">Tutte le guide</Link><span aria-hidden="true">/</span><span>Guida {String(guide.id).padStart(2,"0")}</span>
+      </nav>
+      <div className="guide-layout">
+        <aside className="guide-index"><details open={typeof window !== 'undefined' && window.matchMedia('(min-width: 1100px)').matches}>
+          <summary>In questa guida</summary>
+          <nav aria-label="Indice della guida"><ol>{content?.toc.map(item=><li key={item.id}><a href={`#${item.id}`}>{item.text}</a></li>)}</ol></nav>
+        </details></aside>
+        <div className="min-w-0">
+          <div className="mb-6 flex flex-wrap gap-3 text-sm text-zinc-400">
+            <span className="text-primary">{String(guide.id).padStart(2,"0")} / 13</span>
+            <time dateTime={guide.dateModified}>Aggiornata il {guide.date}</time>
+            <Link href="/chi-siamo/">Team tecnico Prime Build</Link>
+          </div>
+          {failed ? <div role="alert"><p>Non è stato possibile caricare la guida.</p><a href={`/guides/${guide.slug}/`} className="underline">Riprova</a></div>
+            : content ? <article className="guide-prose" dangerouslySetInnerHTML={{__html:content.html}} />
+            : <p role="status">Caricamento guida…</p>}
+          <nav aria-label="Altre guide" className="mt-14 flex flex-wrap justify-between gap-6 border-t border-white/15 pt-6 text-sm">
+            {previous && <Link href={`/guides/${previous.slug}/`} className="max-w-xs text-zinc-300">← {previous.title}</Link>}
+            {next && <Link href={`/guides/${next.slug}/`} className="max-w-xs text-zinc-300">{next.title} →</Link>}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>;
+};
 
+export default function GuideDetail() {
+  const [,params] = useRoute("/guides/:slug");
+  const slug = params?.slug ?? "";
+  const guide = guides.find(item=>item.slug===slug);
+  const sourceAlias = guides.find(item=>item.file===slug);
+  if (sourceAlias) return <Redirect to={`/guides/${sourceAlias.slug}/`} />;
+  return guide ? <GuideArticle key={guide.slug} guide={guide} /> : <NotFound />;
+}

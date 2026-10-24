@@ -1,0 +1,43 @@
+.guide-page { background: #080808; }
+.guide-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+.guide-index details { border-block: 1px solid #343434; padding-block: 1rem; }
+.guide-index summary { cursor: pointer; font-weight: 600; color: #ff9d5b; }
+.guide-index ol { list-style: none; margin: 1rem 0 0; padding: 0; }
+.guide-index a { display: block; padding: .4rem 0; color: #b8b8be; font-size: .85rem; line-height: 1.5; }
+.guide-index a:hover { color: white; }
+.guide-prose { color: #d4d4d8; line-height: 1.85; font-size: 1.04rem; overflow-wrap: anywhere; }
+.guide-prose h1, .guide-prose h2, .guide-prose h3, .guide-prose h4 { color: #fafafa; line-height: 1.25; scroll-margin-top: 7rem; text-wrap: balance; }
+.guide-prose h1 { font: 700 clamp(2rem,4vw,3.5rem)/1.12 Montserrat,sans-serif; letter-spacing: -.04em; margin-bottom: 2rem; }
+.guide-prose h2 { font-size: clamp(1.6rem,2.4vw,2rem); margin: 3.5rem 0 1.25rem; border-top: 1px solid #333; padding-top: 1.5rem; }
+.guide-prose h3 { font-size: 1.3rem; margin: 2rem 0 1rem; }
+.guide-prose h4 { font-size: 1.15rem; margin: 1.5rem 0 1rem; }
+.guide-prose p, .guide-prose ul, .guide-prose ol, .guide-prose blockquote { margin-block: 1.2rem; }
+.guide-prose ul, .guide-prose ol { padding-left: 1.5rem; }
+.guide-prose ul { list-style: disc; }
+.guide-prose ol { list-style: decimal; }
+.guide-prose li { padding-left: .25rem; margin-block: .4rem; }
+.guide-prose li::marker { color: #ff9d5b; }
+.guide-prose strong { color: #fafafa; font-weight: 650; }
+.guide-prose a { color: #ffad73; text-decoration: underline; text-underline-offset: .2em; }
+.guide-prose a:hover { color: #ffd2b2; }
+.guide-prose pre { white-space: pre; overflow-x: auto; padding: 1.25rem; border: 1px solid #3e3e44; border-radius: .5rem; background: #111115; line-height: 1.6; margin-block: 1.5rem; font-size: .85rem; }
+.guide-prose code { font-family: Consolas,monospace; font-size: .88em; background: #252529; color: #f0f0f3; padding: .15em .3em; border-radius: .2rem; }
+.guide-prose pre code { padding: 0; background: transparent; font-size: inherit; }
+.guide-table { overflow-x: auto; margin-block: 1.8rem; border: 1px solid #414147; border-radius: .5rem; }
+.guide-prose table { border-collapse: collapse; width: 100%; font-size: .9rem; line-height: 1.65; }
+.guide-prose th, .guide-prose td { padding: .85rem 1rem; min-width: 10rem; text-align: left; vertical-align: top; border-bottom: 1px solid #36363b; }
+.guide-prose th { background: #232327; color: #fff; font-weight: 600; }
+.guide-prose tbody tr:nth-child(even) { background: #ffffff04; }
+.guide-prose blockquote { border-left: 3px solid #ff8b3d; padding: .2rem 1.25rem; background: #ff8b3d08; }
+.guide-prose figure { margin: 2rem 0; }
+.guide-prose figure img { display: block; width: 100%; height: auto; border-radius: .5rem; }
+.guide-prose figcaption { font-size: .8rem; color: #b0b0b8; margin-top: .65rem; line-height: 1.5; }
+@media (min-width: 1100px) {
+  .guide-layout { grid-template-columns: 16rem minmax(0, 52rem); gap: 3rem; }
+  .guide-index { position: sticky; top: 7rem; align-self: start; max-height: calc(100dvh - 9rem); overflow-y: auto; padding-right: .8rem; }
+}
+@media (max-width: 640px) {
+  .guide-index nav { max-height: 16rem; overflow-y: auto; }
+  .guide-prose { font-size: 1rem; }
+  .guide-prose th, .guide-prose td { padding: .65rem; min-width: 9rem; }
+}

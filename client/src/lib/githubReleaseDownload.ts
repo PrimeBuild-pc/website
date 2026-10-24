@@ -17,8 +17,8 @@ interface ResolvedDownloadResult {
   error?: string;
 }
 
-const REPO_PART_REGEX = /^[A-Za-z0-9_.-]+$/;
-const ALLOWED_DOWNLOAD_HOSTS = new Set(['github.com', 'api.github.com', 'objects.githubusercontent.com']);
+const REPO_PART_REGEX = /^[A-Za-z0-9][A-Za-z0-9_.-]*$/;
+const ALLOWED_DOWNLOAD_HOSTS = new Set(['github.com', 'api.github.com', 'objects.githubusercontent.com', 'github-releases.githubusercontent.com', 'release-assets.githubusercontent.com']);
 
 function isValidRepoPart(value: string): boolean {
   return REPO_PART_REGEX.test(value);
@@ -26,7 +26,7 @@ function isValidRepoPart(value: string): boolean {
 
 function isAllowedDownloadHost(hostname: string): boolean {
   const host = hostname.toLowerCase();
-  return ALLOWED_DOWNLOAD_HOSTS.has(host) || host.endsWith('.githubusercontent.com');
+  return ALLOWED_DOWNLOAD_HOSTS.has(host);
 }
 
 export function buildGitHubRepoUrl(owner: string, repo: string): string {
@@ -51,7 +51,7 @@ function getResolverEndpoint(): string {
 function isValidResolvedDownloadUrl(url: string): boolean {
   try {
     const parsed = new URL(url);
-    return parsed.protocol === 'https:' && isAllowedDownloadHost(parsed.hostname);
+    return parsed.protocol === 'https:' && !parsed.username && !parsed.password && !parsed.port && isAllowedDownloadHost(parsed.hostname);
   } catch {
     return false;
   }

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Limiter: attesa e punto osservato</title>
+<desc id="desc">Schema del limite di frame: attesa prima del campionamento input rispetto ad attesa vicino alla presentazione; la metrica può osservare inizio frame, Present o display.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="640" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Limiter: attesa e punto osservato</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="161" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">DUE POSIZIONI POSSIBILI — non una classifica dei programmi</text>
+<text x="40" y="205" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="700">A / attesa prima dell’input</text>
+<rect x="40" y="233" width="204" height="91" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="142.0" y="286.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Attesa</text>
+<path d="M 244 279 L 268 279" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="268" y="233" width="204" height="91" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="370.0" y="270.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Input /</text>
+<text x="370.0" y="302.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">inizio frame</text>
+<path d="M 472 279 L 496 279" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="496" y="233" width="204" height="91" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="598.0" y="270.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Simulazione /</text>
+<text x="598.0" y="302.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">rendering</text>
+<path d="M 700 279 L 724 279" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="724" y="233" width="204" height="91" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="826.0" y="286.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Present</text>
+<path d="M 928 279 L 952 279" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="952" y="233" width="204" height="91" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="1054.0" y="286.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Display</text>
+<text x="40" y="381" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="700">B / attesa vicina a Present</text>
+<rect x="40" y="409" width="204" height="91" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="142.0" y="446.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Input /</text>
+<text x="142.0" y="478.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">inizio frame</text>
+<path d="M 244 455 L 268 455" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="268" y="409" width="204" height="91" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="370.0" y="446.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Simulazione /</text>
+<text x="370.0" y="478.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">rendering</text>
+<path d="M 472 455 L 496 455" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="496" y="409" width="204" height="91" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="598.0" y="462.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Attesa</text>
+<path d="M 700 455 L 724 455" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="724" y="409" width="204" height="91" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="826.0" y="462.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Present</text>
+<path d="M 928 455 L 952 455" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="952" y="409" width="204" height="91" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="1054.0" y="462.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Display</text>
+<text x="40" y="527" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">Osservazione: inizio frame / chiamata Present / cambio al display</text>
+<path d="M 40 542 L 1160 542" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="578" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">La posizione dell’attesa dipende da motore e implementazione.</text>
+<text x="40" y="610" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Pacing regolare ≠ input recente. Nessuna distanza indica ms o penalità fisse.</text>
+</svg>

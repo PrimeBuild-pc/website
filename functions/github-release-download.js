@@ -65,12 +65,16 @@ function jsonResponse(payload, status, allowOrigin = null) {
 }
 
 function isValidRepoPart(value) {
-  return /^[A-Za-z0-9_.-]+$/.test(value);
+  return /^[A-Za-z0-9][A-Za-z0-9_.-]*$/.test(value);
 }
 
 function isAllowedGitHubHost(hostname) {
   const host = String(hostname || '').toLowerCase();
-  return ALLOWED_GITHUB_HOSTS.has(host) || host.endsWith('.githubusercontent.com');
+  return ALLOWED_GITHUB_HOSTS.has(host);
+}
+
+function isAllowedGitHubUrl(url) {
+  return url.protocol === 'https:' && !url.username && !url.password && !url.port && isAllowedGitHubHost(url.hostname);
 }
 
 function getReleasePageUrl(owner, repo) {
@@ -167,7 +171,7 @@ function isAssetFromRequestedRepo(asset, owner, repo) {
     const apiUrl = new URL(asset.url);
     const downloadUrl = new URL(asset.browser_download_url);
 
-    if (apiUrl.protocol !== 'https:' || downloadUrl.protocol !== 'https:') return false;
+    if (!isAllowedGitHubUrl(apiUrl) || !isAllowedGitHubUrl(downloadUrl)) return false;
     if (apiUrl.hostname.toLowerCase() !== 'api.github.com') return false;
     if (!isAllowedGitHubHost(downloadUrl.hostname)) return false;
 
@@ -194,12 +198,12 @@ async function resolveGitHubOnlyRedirectChain(initialUrl, env) {
 
   for (let hop = 0; hop <= MAX_REDIRECT_HOPS; hop += 1) {
     const parsedCurrent = new URL(currentUrl);
-    if (!isAllowedGitHubHost(parsedCurrent.hostname)) {
+    if (!isAllowedGitHubUrl(parsedCurrent)) {
       throw new Error('Redirect host not allowed');
     }
 
     const headers = getGitHubApiHeaders(
-      env,
+      parsedCurrent.hostname === 'api.github.com' ? env : {},
       parsedCurrent.hostname.toLowerCase() === 'api.github.com' ? 'application/octet-stream' : '*/*'
     );
     headers.Range = 'bytes=0-0';
@@ -208,7 +212,10 @@ async function resolveGitHubOnlyRedirectChain(initialUrl, env) {
       method: 'GET',
       headers,
       redirect: 'manual',
+      signal: AbortSignal.timeout(10000),
     });
+
+    await response.body?.cancel();
 
     if (isRedirectStatus(response.status)) {
       const location = response.headers.get('Location');
@@ -217,7 +224,7 @@ async function resolveGitHubOnlyRedirectChain(initialUrl, env) {
       }
 
       const nextUrl = new URL(location, currentUrl);
-      if (!isAllowedGitHubHost(nextUrl.hostname)) {
+      if (!isAllowedGitHubUrl(nextUrl)) {
         throw new Error('Redirect target host not allowed');
       }
 
@@ -227,7 +234,7 @@ async function resolveGitHubOnlyRedirectChain(initialUrl, env) {
 
     if (response.status >= 200 && response.status < 300) {
       const finalUrl = new URL(currentUrl);
-      if (!isAllowedGitHubHost(finalUrl.hostname)) {
+      if (!isAllowedGitHubUrl(finalUrl)) {
         throw new Error('Final download host not allowed');
       }
       return finalUrl.toString();
@@ -266,9 +273,18 @@ export const onRequestGet = async (context) => {
   const releasesApiUrl = `${GITHUB_API_BASE}/repos/${owner}/${repo}/releases`;
 
   try {
+    // The public resolver must never expose releases accessible only with the server token.
+    const repositoryResponse = await fetch(`${GITHUB_API_BASE}/repos/${owner}/${repo}`, {
+      headers: getGitHubApiHeaders(env), redirect: 'error', signal: AbortSignal.timeout(10000),
+    });
+    if (!repositoryResponse.ok || (await repositoryResponse.json()).private !== false) {
+      return jsonResponse({ success: false, error: 'Public repository unavailable' }, 404, allowOrigin);
+    }
     const releasesResponse = await fetch(releasesApiUrl, {
       method: 'GET',
       headers: getGitHubApiHeaders(env),
+      redirect: 'error',
+      signal: AbortSignal.timeout(10000),
     });
 
     if (!releasesResponse.ok) {

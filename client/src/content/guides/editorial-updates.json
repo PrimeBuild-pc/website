@@ -1,0 +1,71 @@
+{
+  "12-misure-verifica.md": [
+    {
+      "before": "I sette PDF preesistenti sono consultabili come **base editoriale precedente**, non come esportazione dei nuovi Markdown:\n\n- [Primo setup](../discord-revisione-v5/pdf/01-primo-setup.pdf)\n- [LatencyMon e driver](../discord-revisione-v5/pdf/02-latencymon-e-driver.pdf)\n- [Audio competitivo](../discord-revisione-v5/pdf/03-audio-competitivo.pdf)\n- [Frame cap e presentazione](../discord-revisione-v5/pdf/04-frame-cap-e-presentazione.pdf)\n- [DisplayPort e HDMI](../discord-revisione-v5/pdf/05-displayport-hdmi.pdf)\n- [Input, mouse e USB](../discord-revisione-v5/pdf/06-input-mouse-usb.pdf)\n- [Rete](../discord-revisione-v5/pdf/07-rete.pdf)\n\nNon sono stati rigenerati in questa fase. Quando testi e allegati divergono, non mescolare automaticamente le procedure; identifica versione e contesto prima di usare un'istruzione operativa.\n\n",
+      "after": "",
+      "reason": "User 2026-10-24: remove the seven historical PDF references; use the integrated web guides."
+    },
+    {
+      "before": "**Crediti e permessi sono distinti.** La consegna precedente include 54 figure di terzi/UI con diritti di riuso da verificare. Il [registro dei crediti](../bozza-v3/CREDITI-IMMAGINI.md) conserva provenienza e limiti, non concede una licenza. Codice open source non significa automaticamente screenshot, loghi e grafici liberi. Questo testo non incorpora nuove immagini, non autorizza pubblicazione o integrazione nel sito e non risolve quei permessi.",
+      "after": "Le figure riportano autore e fonte originale nelle didascalie. Gli esempi dei produttori e dei video mantengono il proprio contesto: non sono risultati misurati da Prime Build.",
+      "reason": "User authorizes reuse with original attribution; replace the obsolete pre-publication note."
+    }
+  ],
+  "09-audio-windows-eq.md": [
+    {
+      "before": "i precedenti test di script o PDF non validano queste istruzioni sul PC del lettore. Non sono state incorporate immagini e i diritti di riuso delle figure preesistenti non vengono considerati risolti.",
+      "after": "i precedenti test degli script non validano queste istruzioni sul PC del lettore. Le schermate e i grafici riportano fonte e contesto nelle rispettive didascalie.",
+      "reason": "Remove the obsolete PDF and no-images statements after the authorized image integration."
+    }
+  ],
+  "02-stabilita-occt.md": [
+    {
+      "before": "### 8.4 Sicurezza e risultato",
+      "insertFile": "occt-details.md",
+      "reason": "User 2026-10-24: explain the settings, test scope and instruction sets alongside official OCCT screenshots."
+    },
+    {
+      "before": "## 9. MemTest86, WHEA e lettura dei sensori",
+      "insertFile": "occt-gpu-details.md",
+      "reason": "Explain the controls shown in the official 3D Adaptive and VRAM screenshots."
+    },
+    {
+      "before": "Le schermate ufficiali usate dal progetto mostrano l'interfaccia **v13**; la pagina download della precedente verifica indicava **17.1.7**. Non sono una cattura della GUI corrente installata. Il manuale contiene riferimenti di release diverse: controlli, disponibilità, limiti di durata e report vanno verificati per la versione/edizione effettiva.",
+      "after": "Le schermate ufficiali incluse mostrano **OCCT 17.0.14 Supporter**, come riportato nella pagina Personal Features del produttore. Non sono una cattura della GUI installata sul PC del lettore. Il manuale contiene riferimenti di release diverse: controlli, disponibilità, limiti di durata e report vanno verificati per la versione/edizione effettiva.",
+      "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
+    },
+    {
+      "before": "Questa versione Markdown non incorpora nuove figure né risolve i permessi di riuso.",
+      "after": "Le schermate ufficiali riportano versione e fonte nelle didascalie; non sono acquisizioni di test sul PC del lettore.",
+      "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
+    }
+  ],
+  "03-driver-latencymon.md": [
+    {
+      "before": "questa guida non incorpora la figura e non presume risolti i diritti di pubblicazione.",
+      "after": "la figura è ora inclusa con la fonte originale nella didascalia.",
+      "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
+    }
+  ],
+  "07-input-usb.md": [
+    {
+      "before": "Le copie dei grafici non sono state acquisite nuovamente né incorporate: crediti e materiali disponibili non risolvono i diritti di riproduzione.",
+      "after": "Il grafico incorporato dai materiali forniti riporta la fonte originale nella didascalia; non è una nuova acquisizione.",
+      "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
+    }
+  ],
+  "08-audio-cuffie-dac.md": [
+    {
+      "before": "Non sono state incorporate nuove immagini o ricostruite curve. Campioni grezzi, intervalli di confidenza, provenienza del grafico blu, compatibilità e diritti di riuso restano aperti.",
+      "after": "Le figure incorporate dai materiali forniti riportano la fonte originale; non sono state ricostruite curve. Campioni grezzi, intervalli di confidenza, provenienza del grafico blu non incorporato e compatibilità restano aperti.",
+      "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
+    }
+  ],
+  "10-rete-domestica.md": [
+    {
+      "before": "Questo testo non risolve i collaudi hardware, il recupero reale delle configurazioni né i permessi delle figure della consegna precedente. Non incorpora nuove immagini e non costituisce autorizzazione alla pubblicazione.",
+      "after": "Questo testo non risolve i collaudi hardware né il recupero reale delle configurazioni. Gli schemi illustrativi inclusi non sono misure della rete del lettore.",
+      "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
+    }
+  ]
+}
