@@ -4,17 +4,18 @@ import { createHash } from 'node:crypto';
 import { parseDocument } from 'htmlparser2';
 import guides from '../client/src/content/guides/manifest.json' with {type:'json'};
 import materials from '../client/src/content/guides/materials.json' with {type:'json'};
-import { renderGuide } from './prepare-guides.mjs';
+import { renderGuide, readGuideSource } from './prepare-guides.mjs';
 
 const documents=new Map(); const external=new Set(); const blocked=new Set();
 const elements=nodes=>nodes.flatMap(node=>node.type==='tag'?[node,...elements(node.children)]:[]);
-for(const guide of guides) documents.set(guide.slug,elements(parseDocument(renderGuide(await readFile(`client/src/content/guides/${guide.file}`,'utf8'),guide.figures).html).children));
+for(const guide of guides) documents.set(guide.slug,elements(parseDocument(renderGuide(await readGuideSource(guide),guide.figures).html).children));
 for(const material of materials.filter(m=>m.status==='included')) {
   const bytes=await readFile(`client/public/guide-materials/${material.path}`);
   assert.equal(createHash('sha256').update(bytes).digest('hex'),material.sha256,material.path);
 }
 for(const [slug,nodes] of documents) for(const node of nodes.filter(n=>n.name==='a'&&n.attribs.href)) {
   const url=new URL(node.attribs.href,`https://primebuild.website/guides/${slug}/`);
+  assert.ok(!url.pathname.includes('/discord-revisione-v5/pdf/'),`Historical PDF still linked: ${url}`);
   if(url.origin!=='https://primebuild.website') {if(/^https?:/.test(url.protocol))external.add(url.href);continue;}
   if(url.pathname.startsWith('/guides/')) {
     const target=documents.get(url.pathname.split('/')[2]);

@@ -4,11 +4,11 @@
     "file": "01-windows-setup.md",
     "title": "Windows 11: costruire una base misurabile",
     "description": "Un buon setup non è il Windows con meno voci in Gestione attività. È un sistema che riconosce l'hardware, esegue ciò che ti serve, resta aggiornabile e ti…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2025-12-06",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "low-latency-gaming-guide",
-    "image": "/images/guides/diagrams/kernel-scheduler.svg",
+    "image": "/images/guides/covers/low-latency-gaming-guide.svg",
     "sha256": "cc0e3c5d80f30413b12c1043f29be7572e54c7db988fa581525fbbe661b6c2ad",
     "figures": [
       {
@@ -53,20 +53,13 @@
     "file": "02-stabilita-occt.md",
     "title": "Stabilità e overclock: CPU, GPU, RAM e test che contano",
     "description": "Un overclock può alzare gli FPS, ma non è automaticamente un intervento sulla latenza. Può migliorare la regolarità dei frame quando il collo di bottiglia è…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "stabilita-occt",
-    "image": "/images/guides/diagrams/limits.svg",
+    "image": "/images/guides/covers/stabilita-occt.svg",
     "sha256": "67206a1b6a66fbfc6acc7ceaa408db1badf6eb27df9cf8de2d17d77d13a3bbcc",
     "figures": [
-      {
-        "heading": "2. Che cosa cambia davvero un overclock",
-        "asset": "limits",
-        "alt": "Le variabili di un overclock",
-        "width": 1200,
-        "height": 600
-      },
       {
         "heading": "5. RAM: il guadagno più sottile, la validazione più lunga",
         "asset": "memory-clocks",
@@ -82,18 +75,59 @@
         "height": 640
       },
       {
-        "heading": "7. Protocollo di validazione: A–B–A, non “un test e via”",
-        "asset": "validation",
-        "alt": "Una modifica, più prove",
-        "width": 1200,
-        "height": 600
+        "asset": "occt-memory",
+        "src": "/images/guides/screenshots/occt-memory.png",
+        "heading": "8.2 Memory: opzioni che contano",
+        "alt": "OCCT Memory: tipo di test, memoria allocata, thread e preset Heat",
+        "caption": "Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build.",
+        "credit": "OCBASE / OCCT",
+        "source": "https://www.ocbase.com/personal-features",
+        "width": 1584,
+        "height": 897
       },
       {
-        "heading": "1. Prima di toccare il BIOS: baseline e ritorno",
-        "asset": "recovery",
-        "alt": "Preparare il ritorno",
-        "width": 1200,
-        "height": 600
+        "asset": "occt-cpu-ram",
+        "src": "/images/guides/screenshots/occt-cpu-ram.png",
+        "heading": "8.3 CPU + RAM: non copiare il pannello come preset",
+        "alt": "OCCT CPU + RAM: dataset, modalità, carico, ciclo, istruzioni e thread",
+        "caption": "Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build.",
+        "credit": "OCBASE / OCCT",
+        "source": "https://www.ocbase.com/personal-features",
+        "width": 1584,
+        "height": 897
+      },
+      {
+        "asset": "occt-cpu",
+        "src": "/images/guides/screenshots/occt-cpu.png",
+        "heading": "CPU: modalità, cicli e core da osservare",
+        "alt": "OCCT CPU: modalità e Core Cycling con intervallo e thread per core",
+        "caption": "Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build.",
+        "credit": "OCBASE / OCCT",
+        "source": "https://www.ocbase.com/personal-features",
+        "width": 1584,
+        "height": 897
+      },
+      {
+        "asset": "occt-3d-adaptive",
+        "src": "/images/guides/screenshots/occt-3d-adaptive.png",
+        "heading": "8.5 GPU e VRAM",
+        "alt": "OCCT 3D Adaptive: GPU, modalità di variazione e tipo di carico",
+        "caption": "Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build.",
+        "credit": "OCBASE / OCCT",
+        "source": "https://www.ocbase.com/personal-features",
+        "width": 1584,
+        "height": 897
+      },
+      {
+        "asset": "occt-vram",
+        "src": "/images/guides/screenshots/occt-vram.png",
+        "heading": "Leggere i pannelli 3D Adaptive e VRAM",
+        "alt": "OCCT VRAM: selezione della GPU e quota di memoria video",
+        "caption": "Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build.",
+        "credit": "OCBASE / OCCT",
+        "source": "https://www.ocbase.com/personal-features",
+        "width": 1584,
+        "height": 897
       }
     ]
   },
@@ -102,11 +136,11 @@
     "file": "03-driver-latencymon.md",
     "title": "Driver e LatencyMon: dal sintomo a una verifica utile",
     "description": "Un nome di driver in cima a una tabella non è ancora una diagnosi. Può identificare il componente coinvolto, oppure una parte di Windows che lavora per…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "driver-latencymon",
-    "image": "/images/guides/diagrams/driver.svg",
+    "image": "/images/guides/covers/driver-latencymon.svg",
     "sha256": "65076ec8b10bcd8cb4bf7e3a9c0a28b37c2775409fb33f6b4278c760e62dcd62",
     "figures": [
       {
@@ -131,18 +165,22 @@
         "height": 600
       },
       {
-        "heading": "Start, Stop, salvataggio e sessione nuova",
-        "asset": "latencymon",
-        "alt": "Cinque viste, cinque domande",
-        "width": 1200,
-        "height": 600
-      },
-      {
         "heading": "Una sola modifica, poi confronto A–B–A",
         "asset": "validation",
         "alt": "Una modifica, più prove",
         "width": 1200,
         "height": 600
+      },
+      {
+        "asset": "ui-latencymon-main",
+        "src": "/images/guides/screenshots/ui-latencymon-main.png",
+        "heading": "Main: che cosa riassume la sessione",
+        "alt": "LatencyMon 7.31: riepilogo, durata e massimi ISR/DPC",
+        "caption": "Cattura locale esistente di LatencyMon 7.31. Condizioni di raccolta non controllate; il verdetto non misura la latenza clic→display.",
+        "credit": "Resplendence",
+        "source": "https://www.resplendence.com/latencymon_using",
+        "width": 1613,
+        "height": 743
       }
     ]
   },
@@ -151,34 +189,13 @@
     "file": "04-cpu-gpu-presentmon.md",
     "title": "CPU e GPU: la pipeline, PresentMon e il collo di bottiglia",
     "description": "Un gioco può mostrare molti frame al secondo e rispondere ai comandi con un ritardo percepibile. Può anche avere una media FPS alta e presentare scatti.…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-03-30",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "ottimizzazione-build-240hz",
-    "image": "/images/guides/diagrams/pipeline-rendering.svg",
+    "image": "/images/guides/covers/ottimizzazione-build-240hz.svg",
     "sha256": "0a2fe8199ff76186e4875a81e914b75ae6c89eb47b4be27f4f89a0ae4a5da96e",
     "figures": [
-      {
-        "heading": "1. Dal comando all'immagine: un percorso con più code",
-        "asset": "pipeline-rendering",
-        "alt": "CPU e GPU: lavoro sovrapposto",
-        "width": 1200,
-        "height": 640
-      },
-      {
-        "heading": "2. PresentMon: componenti distinti, non un solo contatore",
-        "asset": "cadence",
-        "alt": "Intervalli nominali a cadenza costante",
-        "width": 1200,
-        "height": 600
-      },
-      {
-        "heading": "3. Le latenze: conservare gli estremi, non soltanto il nome",
-        "asset": "boundaries",
-        "alt": "Dichiarare gli estremi della misura",
-        "width": 1200,
-        "height": 600
-      },
       {
         "heading": "4. Frame Type, Frame Generation e HAGS",
         "asset": "fg",
@@ -192,6 +209,72 @@
         "alt": "Presentazione: il menu non è il percorso",
         "width": 1200,
         "height": 640
+      },
+      {
+        "asset": "ui-presentmon-main",
+        "src": "/images/guides/screenshots/ui-presentmon-main.png",
+        "heading": "Configurazione della Capture Application",
+        "alt": "Intel PresentMon 2.6.0: processo, preset, durata, tasto di cattura e cartella CSV",
+        "caption": "PresentMon 2.6.0, cattura locale: controlli di acquisizione. Nessun gioco o benchmark in esecuzione.",
+        "credit": "Intel · MIT",
+        "source": "https://github.com/GameTechDev/PresentMon/blob/main/LICENSE.txt",
+        "width": 1344,
+        "height": 1012
+      },
+      {
+        "asset": "ui-presentmon-metriche",
+        "src": "/images/guides/screenshots/ui-presentmon-metriche.png",
+        "heading": "2. PresentMon: componenti distinti, non un solo contatore",
+        "alt": "Intel PresentMon 2.6.0: editor delle metriche del widget",
+        "caption": "PresentMon 2.6.0: selezione delle metriche nel widget. Le grandezze conservano gli estremi descritti nella guida.",
+        "credit": "Intel · MIT",
+        "source": "https://github.com/GameTechDev/PresentMon/blob/main/LICENSE.txt",
+        "width": 1344,
+        "height": 1012
+      },
+      {
+        "asset": "nvidia-latency-pipeline-with-overlap",
+        "src": "/images/guides/screenshots/nvidia-latency-pipeline-with-overlap.png",
+        "heading": "1. Dal comando all'immagine: un percorso con più code",
+        "alt": "NVIDIA: sovrapposizione delle fasi della pipeline di latenza",
+        "caption": "Illustrazione del produttore NVIDIA: modello della pipeline, non una misura eseguita su questa build.",
+        "credit": "NVIDIA",
+        "source": "https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform/",
+        "width": 3840,
+        "height": 1869
+      },
+      {
+        "asset": "nvidia-system-latency",
+        "src": "/images/guides/screenshots/nvidia-system-latency.png",
+        "heading": "3. Le latenze: conservare gli estremi, non soltanto il nome",
+        "alt": "NVIDIA: estremi di latenza periferica, PC e sistema",
+        "caption": "Illustrazione del produttore NVIDIA: modello della pipeline, non una misura eseguita su questa build.",
+        "credit": "NVIDIA",
+        "source": "https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform/",
+        "width": 3840,
+        "height": 1818
+      },
+      {
+        "asset": "nvidia-cpu-bound-latency-pipline",
+        "src": "/images/guides/screenshots/nvidia-cpu-bound-latency-pipline.png",
+        "heading": "5. Cercare un limite senza inventare il tempo di coda",
+        "alt": "NVIDIA: pipeline con limite CPU",
+        "caption": "Illustrazione del produttore NVIDIA: modello della pipeline, non una misura eseguita su questa build.",
+        "credit": "NVIDIA",
+        "source": "https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform/",
+        "width": 3840,
+        "height": 1431
+      },
+      {
+        "asset": "nvidia-gpu-bound-latency-pipline",
+        "src": "/images/guides/screenshots/nvidia-gpu-bound-latency-pipline.png",
+        "heading": "5. Cercare un limite senza inventare il tempo di coda",
+        "alt": "NVIDIA: pipeline con limite GPU e accodamento",
+        "caption": "Illustrazione del produttore NVIDIA: modello della pipeline, non una misura eseguita su questa build.",
+        "credit": "NVIDIA",
+        "source": "https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform/",
+        "width": 3840,
+        "height": 1422
       }
     ]
   },
@@ -200,11 +283,11 @@
     "file": "05-sincronizzazione-limiter.md",
     "title": "Sincronizzazione, presentazione e limiter: scegliere il compromesso giusto",
     "description": "Non esiste un profilo che massimizzi insieme reattività, immagine integra, fluidità, consumi e FPS. Prima scegli che cosa vuoi migliorare: la risposta in un…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "sincronizzazione-limiter",
-    "image": "/images/guides/diagrams/pipeline-limiter.svg",
+    "image": "/images/guides/covers/sincronizzazione-limiter.svg",
     "sha256": "ed40d414547dbfe02ff7d623cb580f90cd105defc5b69e0904d2af4426a594c1",
     "figures": [
       {
@@ -229,18 +312,37 @@
         "height": 600
       },
       {
-        "heading": "1. Contenere l'anticipo: cap, Reflex e Anti-Lag",
-        "asset": "fg",
-        "alt": "Frame renderizzati e immagini generate",
-        "width": 1200,
-        "height": 600
+        "asset": "nvidia-frame-warp",
+        "src": "/images/guides/screenshots/nvidia-frame-warp.jpg",
+        "heading": "Upscaling e Frame Generation: più immagini non equivalgono a più simulazioni",
+        "alt": "NVIDIA Reflex 2: posizione recente del mouse e Frame Warp",
+        "caption": "Illustrazione NVIDIA di Frame Warp. Il claim percentuale appartiene all’esempio del produttore e non è un guadagno garantito.",
+        "credit": "NVIDIA",
+        "source": "https://www.nvidia.com/en-us/geforce/news/reflex-2-even-lower-latency-gameplay-with-frame-warp/",
+        "width": 3840,
+        "height": 2160
       },
       {
-        "heading": "6. Un confronto piccolo, completo e ripristinabile",
-        "asset": "cadence",
-        "alt": "Intervalli nominali a cadenza costante",
-        "width": 1200,
-        "height": 600
+        "asset": "limiter-200",
+        "src": "/images/guides/screenshots/limiter-200.png",
+        "heading": "Che cosa dimostra il benchmark CS2 Kitchen",
+        "alt": "CS2 Kitchen: confronto fra limiter al cap 200",
+        "caption": "Confronto del video CS2 Kitchen con cap 200: configurazione e metodo dell’autore, non una penalità fissa attribuibile al limiter.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
+        "width": 1788,
+        "height": 1006
+      },
+      {
+        "asset": "fullscreen-borderless",
+        "src": "/images/guides/screenshots/fullscreen-borderless.png",
+        "heading": "Una prova per gioco, con ripristino",
+        "alt": "CS2 Kitchen: confronto Borderless e FullScreen",
+        "caption": "Prova dell’autore su CS2, Cache e nove bot: non dimostra equivalenza fra modalità in ogni gioco.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
+        "width": 1779,
+        "height": 995
       }
     ]
   },
@@ -249,11 +351,11 @@
     "file": "06-display-cavi.md",
     "title": "Display e cavi: verificare il segnale prima di ottimizzare",
     "description": "Un collegamento che trasporta correttamente la modalità desiderata non diventa più reattivo soltanto perché il cavo costa di più. Il problema pratico è…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "display-cavi",
-    "image": "/images/guides/diagrams/display.svg",
+    "image": "/images/guides/covers/display-cavi.svg",
     "sha256": "bf2d3fc09008595d46b09daf80eceb0b29fd657a4ec2369e823ddbbc38a540e0",
     "figures": [
       {
@@ -285,11 +387,15 @@
         "height": 600
       },
       {
+        "asset": "materiale-222322",
+        "src": "/images/guides/screenshots/materiale-222322.png",
         "heading": "8. Elaborazione del monitor: non confonderla con il cavo",
-        "asset": "boundaries",
-        "alt": "Dichiarare gli estremi della misura",
-        "width": 1200,
-        "height": 600
+        "alt": "CS2 Kitchen: Display Scaling rispetto a GPU Scaling",
+        "caption": "Il grafico confronta dove avviene lo scaling, non DisplayPort contro HDMI. I dati appartengono al test CS2 Kitchen.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
+        "width": 1762,
+        "height": 989
       }
     ]
   },
@@ -298,11 +404,11 @@
     "file": "07-input-usb.md",
     "title": "Mouse, tastiere e USB: capire il percorso prima di cambiare il polling",
     "description": "Un input poco regolare non dipende necessariamente dal mouse. Il gesto deve essere rilevato dalla periferica, trasportato al PC, letto dal gioco e…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "input-usb",
-    "image": "/images/guides/diagrams/input.svg",
+    "image": "/images/guides/covers/input-usb.svg",
     "sha256": "197129e8cbbf1f9729bffc95126f58325d3ada74e274feabe296ac05aa3c92ae",
     "figures": [
       {
@@ -334,11 +440,15 @@
         "height": 600
       },
       {
-        "heading": "9. Chiudere il confronto senza inventare un risultato",
-        "asset": "boundaries",
-        "alt": "Dichiarare gli estremi della misura",
-        "width": 1200,
-        "height": 600
+        "asset": "materiale-222152",
+        "src": "/images/guides/screenshots/materiale-222152.png",
+        "heading": "Un report HID non è il clic del mouse acquistato",
+        "alt": "CS2 Kitchen: Reflex disattivato, attivo e Boost",
+        "caption": "Confronto input→risposta visiva nella scena dell’autore. Non isola il polling né misura la latenza del solo mouse.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
+        "width": 1755,
+        "height": 998
       }
     ]
   },
@@ -347,11 +457,11 @@
     "file": "08-audio-cuffie-dac.md",
     "title": "Cuffie, IEM e DAC: scegliere la catena sonora in base al problema",
     "description": "Un passo può arrivare presto ed essere difficile da localizzare; può essere riconoscibile ma coperto dalla voce; può sembrare più evidente soltanto perché…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "audio-cuffie-dac",
-    "image": "/images/guides/diagrams/audio-percorsi.svg",
+    "image": "/images/guides/covers/audio-cuffie-dac.svg",
     "sha256": "e399baaf19605d7e2ebef69170d60a4cacce18937a30d13baf1794dd157149c0",
     "figures": [
       {
@@ -369,25 +479,66 @@
         "height": 600
       },
       {
-        "heading": "Cavo, radio proprietaria e Bluetooth",
-        "asset": "transport",
-        "alt": "Tre collegamenti audio distinti",
-        "width": 1200,
-        "height": 600
-      },
-      {
-        "heading": "DAC e amplificatore: acquistare per un limite identificato",
-        "asset": "dac",
-        "alt": "Dal digitale al trasduttore",
-        "width": 1200,
-        "height": 600
-      },
-      {
         "heading": "Il motore, l'API e i buffer restano nel percorso",
         "asset": "buffers",
         "alt": "Durata di un blocco a 48 kHz",
         "width": 1200,
         "height": 600
+      },
+      {
+        "asset": "materiale-215519",
+        "src": "/images/guides/screenshots/materiale-215519.png",
+        "heading": "Evento locale ed evento remoto",
+        "alt": "CS2 Kitchen: audio locale e dipendente dal server",
+        "caption": "Misure del video CS2 Kitchen, nella catena e nelle condizioni indicate dall’autore. Le barre non costituiscono prestazioni universali dei collegamenti o dei dispositivi.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+        "width": 1772,
+        "height": 1023
+      },
+      {
+        "asset": "materiale-215609",
+        "src": "/images/guides/screenshots/materiale-215609.png",
+        "heading": "Cavo, radio proprietaria e Bluetooth",
+        "alt": "CS2 Kitchen: cavo, radio proprietaria e Bluetooth",
+        "caption": "Misure del video CS2 Kitchen, nella catena e nelle condizioni indicate dall’autore. Le barre non costituiscono prestazioni universali dei collegamenti o dei dispositivi.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+        "width": 1777,
+        "height": 997
+      },
+      {
+        "asset": "materiale-215622",
+        "src": "/images/guides/screenshots/materiale-215622.png",
+        "heading": "USB e jack analogico: cercare il sintomo giusto",
+        "alt": "CS2 Kitchen: lo stesso dispositivo USB su porte diverse",
+        "caption": "Misure del video CS2 Kitchen, nella catena e nelle condizioni indicate dall’autore. Le barre non costituiscono prestazioni universali dei collegamenti o dei dispositivi.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+        "width": 1778,
+        "height": 1004
+      },
+      {
+        "asset": "materiale-215745",
+        "src": "/images/guides/screenshots/materiale-215745.png",
+        "heading": "Uscite del monitor e presa cuffie del microfono",
+        "alt": "CS2 Kitchen: uscite audio lungo percorsi differenti",
+        "caption": "Misure del video CS2 Kitchen, nella catena e nelle condizioni indicate dall’autore. Le barre non costituiscono prestazioni universali dei collegamenti o dei dispositivi.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+        "width": 1777,
+        "height": 988
+      },
+      {
+        "asset": "materiale-215822",
+        "src": "/images/guides/screenshots/materiale-215822.png",
+        "heading": "DAC e amplificatore: acquistare per un limite identificato",
+        "alt": "CS2 Kitchen: dispositivi e modalità USB audio",
+        "caption": "Misure del video CS2 Kitchen, nella catena e nelle condizioni indicate dall’autore. Le barre non costituiscono prestazioni universali dei collegamenti o dei dispositivi.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+        "width": 1774,
+        "height": 1011
       }
     ]
   },
@@ -396,11 +547,11 @@
     "file": "09-audio-windows-eq.md",
     "title": "Audio Windows, Peace ed EQ: configurare un percorso verificabile",
     "description": "L'equalizzazione (EQ) non risolve un'uscita sbagliata, un buffer più piccolo non corregge la tenuta delle cuffie e una voce più forte può coprire proprio…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-03-17",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "setup-audio",
-    "image": "/images/guides/diagrams/endpoint.svg",
+    "image": "/images/guides/covers/setup-audio.svg",
     "sha256": "4afceba739ea331a7db0d02d5d22cedfcc4b18ff2aa86e6f0151609734341ebc",
     "figures": [
       {
@@ -418,25 +569,70 @@
         "height": 640
       },
       {
+        "asset": "ui-peace-main",
+        "src": "/images/guides/screenshots/ui-peace-main.png",
+        "heading": "Che cosa mostrano realmente le catture locali",
+        "alt": "Peace 1.6.9.11: interfaccia, frequenze, gain, Q e preamplificazione",
+        "caption": "Peace 1.6.9.11, cattura locale con EQ disattivato. Il profilo visibile è un esempio esistente, non un preset da copiare.",
+        "credit": "Peter Verbeek / Peace · GPL-2.0",
+        "source": "https://sourceforge.net/projects/peace-equalizer-apo-extension/",
+        "width": 760,
+        "height": 666
+      },
+      {
+        "asset": "ui-apo-editor",
+        "src": "/images/guides/screenshots/ui-apo-editor.png",
+        "heading": "Equalizer APO e Peace: dimostrare prima che il filtro raggiunga l'uscita",
+        "alt": "Equalizer APO 1.4.2: dispositivo selezionato e inclusione di peace.txt",
+        "caption": "Equalizer APO 1.4.2, Configuration Editor: dispositivo, include peace.txt e pannello di analisi. La schermata non dimostra da sola che il filtro sia applicato.",
+        "credit": "Jonas Thedering / Equalizer APO · GPL-2.0",
+        "source": "https://sourceforge.net/projects/equalizerapo/",
+        "width": 1024,
+        "height": 799
+      },
+      {
+        "asset": "ui-peace-graph-preamp",
+        "src": "/images/guides/screenshots/ui-peace-graph-preamp.png",
+        "heading": "Headroom: conta la risposta combinata",
+        "alt": "Peace: grafico della risposta con preamplificazione inclusa",
+        "caption": "Peace 1.6.9.11: risposta calcolata con preamplificazione. Non è una misura acustica della cuffia.",
+        "credit": "Peter Verbeek / Peace · GPL-2.0",
+        "source": "https://sourceforge.net/projects/peace-equalizer-apo-extension/",
+        "width": 892,
+        "height": 637
+      },
+      {
+        "asset": "materiale-215758",
+        "src": "/images/guides/screenshots/materiale-215758.png",
+        "heading": "Formato, shared ed exclusive: non scegliere il massimo per principio",
+        "alt": "Confronto documentale CS2 Kitchen delle API audio e dei buffer",
+        "caption": "Esempio CS2 Kitchen citato nel testo: condizioni dell’autore, non nuova misura locale. I preset o effetti raffigurati non sono un profilo Equalizer APO da copiare.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+        "width": 1762,
+        "height": 999
+      },
+      {
+        "asset": "materiale-215729",
+        "src": "/images/guides/screenshots/materiale-215729.png",
         "heading": "Baseline No APO: escludere trattamenti opzionali, non tutte le funzioni OEM",
-        "asset": "noapo",
-        "alt": "Due riferimenti audio separati",
-        "width": 1200,
-        "height": 600
+        "alt": "CS2 Kitchen: effetti cumulativi sulla catena Sony H7",
+        "caption": "Esempio CS2 Kitchen citato nel testo: condizioni dell’autore, non nuova misura locale. I preset o effetti raffigurati non sono un profilo Equalizer APO da copiare.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+        "width": 1787,
+        "height": 991
       },
       {
-        "heading": "LowAudioLatency: una prova facoltativa del periodo shared",
-        "asset": "buffers",
-        "alt": "Durata di un blocco a 48 kHz",
-        "width": 1200,
-        "height": 600
-      },
-      {
-        "heading": "Due strategie EQ, senza preset ricostruiti",
-        "asset": "eq-strategia-b",
-        "alt": "Curva B: risposta e correzione sono diverse",
-        "width": 1200,
-        "height": 640
+        "asset": "materiale-215832",
+        "src": "/images/guides/screenshots/materiale-215832.png",
+        "heading": "Confrontare a pari volume senza perdere la protezione",
+        "alt": "CS2 Kitchen: preset audio interni Natural, Smooth e Crisp",
+        "caption": "Esempio CS2 Kitchen citato nel testo: condizioni dell’autore, non nuova misura locale. I preset o effetti raffigurati non sono un profilo Equalizer APO da copiare.",
+        "credit": "CS2 Kitchen",
+        "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+        "width": 1764,
+        "height": 984
       }
     ]
   },
@@ -445,11 +641,11 @@
     "file": "10-rete-domestica.md",
     "title": "Rete domestica: trovare il problema prima di cambiare impostazioni",
     "description": "Una connessione può trasferire molti dati e diventare poco reattiva appena parte un backup. Può funzionare bene accanto al router e male nella stanza del…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-01-06",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "setup-rete-anti-bufferbloat",
-    "image": "/images/guides/diagrams/rete-metriche.svg",
+    "image": "/images/guides/covers/setup-rete-anti-bufferbloat.svg",
     "sha256": "1b8291ba5ce4ebeada451de72ec7e2d63e481e50b93f50ae834a46932169425e",
     "figures": [
       {
@@ -522,11 +718,11 @@
     "file": "11-parametri-windows.md",
     "title": "Parametri Windows: interrupt, priorità e timer senza preset universali",
     "description": "Una casella chiamata «High», un timer da 0,5 ms o un valore nel registro possono sembrare scorciatoie per rendere il PC più rapido. In realtà controllano…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "parametri-windows",
-    "image": "/images/guides/diagrams/kernel-scheduler.svg",
+    "image": "/images/guides/covers/parametri-windows.svg",
     "sha256": "df9fe65e280394dcdca3ca31b793f23198752b425a70e5eb6543b2f0f5b2d67a",
     "figures": [
       {
@@ -571,11 +767,11 @@
     "file": "12-misure-verifica.md",
     "title": "Misure e verifica: capire se una modifica ha davvero aiutato",
     "description": "Non basta che tutti i contatori siano verdi per considerare riuscito un setup. È riuscito quando il problema iniziale è stato risolto o ridotto, le funzioni…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "misure-verifica",
-    "image": "/images/guides/diagrams/boundaries.svg",
+    "image": "/images/guides/covers/misure-verifica.svg",
     "sha256": "f9cc4c47b7f58a0a5233961a160f64ab074c9f8f217e50b54169da32246bfb96",
     "figures": [
       {
@@ -600,18 +796,44 @@
         "height": 600
       },
       {
-        "heading": "6. Acquisisci frame time senza trasformarli in click→fotone",
-        "asset": "cadence",
-        "alt": "Intervalli nominali a cadenza costante",
-        "width": 1200,
-        "height": 600
-      },
-      {
         "heading": "8. Usa LatencyMon e le prove di rete come indizi nel loro ambito",
         "asset": "latencymon",
         "alt": "Cinque viste, cinque domande",
         "width": 1200,
         "height": 600
+      },
+      {
+        "asset": "ui-presentmon-main",
+        "src": "/images/guides/screenshots/ui-presentmon-main.png",
+        "heading": "6. Acquisisci frame time senza trasformarli in click→fotone",
+        "alt": "Intel PresentMon 2.6.0: processo, preset, durata, tasto di cattura e cartella CSV",
+        "caption": "PresentMon 2.6.0, cattura locale: controlli di acquisizione. Nessun gioco o benchmark in esecuzione.",
+        "credit": "Intel · MIT",
+        "source": "https://github.com/GameTechDev/PresentMon/blob/main/LICENSE.txt",
+        "width": 1344,
+        "height": 1012
+      },
+      {
+        "asset": "capframex-190-capture",
+        "src": "/images/guides/screenshots/capframex-190-capture.png",
+        "heading": "6. Acquisisci frame time senza trasformarli in click→fotone",
+        "alt": "CapFrameX 1.9.0.7: processo, tasto di cattura, durata e ritardo",
+        "caption": "Documentazione CapFrameX, interfaccia 1.9.0.7: Capture settings. I valori visibili appartengono all’esempio del progetto, non sono un preset della guida.",
+        "credit": "DevTechProfile / CapFrameX · MIT",
+        "source": "https://github.com/CXWorld/CapFrameX",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "asset": "capframex-190-analysis",
+        "src": "/images/guides/screenshots/capframex-190-analysis.png",
+        "heading": "3. Guarda la distribuzione, non soltanto una media",
+        "alt": "CapFrameX 1.9.0.7: serie temporale dei frame e distribuzione delle prestazioni",
+        "caption": "Documentazione CapFrameX: esempio di Analysis su Metro Exodus. Dati del progetto, non misure eseguite da Prime Build e non una promessa di prestazioni.",
+        "credit": "DevTechProfile / CapFrameX · MIT",
+        "source": "https://github.com/CXWorld/CapFrameX",
+        "width": 1920,
+        "height": 1080
       }
     ]
   },
@@ -620,11 +842,11 @@
     "file": "13-dlss-fsr-frame-generation.md",
     "title": "DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering",
     "description": "Un contatore può passare da 70 a 210 FPS con Multi Frame Generation, ma gli aggiornamenti della simulazione non diventano automaticamente sei volte più…",
-    "date": "23 ottobre 2026",
+    "date": "24 ottobre 2026",
     "datePublished": "2026-01-09",
-    "dateModified": "2026-10-23",
+    "dateModified": "2026-10-24",
     "slug": "guida-dlss-frame-generation",
-    "image": "/images/guides/diagrams/upscale.svg",
+    "image": "/images/guides/covers/guida-dlss-frame-generation.svg",
     "sha256": "e6ea41ed24c34cf17b80ce8d3801e7dadaefb624fc3272cc99d3043345451eb8",
     "figures": [
       {

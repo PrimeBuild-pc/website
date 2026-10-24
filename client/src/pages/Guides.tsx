@@ -58,15 +58,15 @@ const Guides = () => {
                 href={`/guides/${guide.slug}/`}
                 className="group block bg-zinc-900/50 border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg hover:shadow-primary/10"
               >
-                <div className="aspect-[2/1] bg-zinc-900 overflow-hidden border-b border-white/10 grid place-items-center">
+                <div className="aspect-square bg-zinc-900 overflow-hidden border-b border-white/10 grid place-items-center">
                   {guide.image ? (
                     <img
                       src={guide.image}
                       alt={`Copertina guida ${guide.title}`}
                       className="w-full h-full object-contain object-center"
                       loading="lazy"
-                      width={1200}
-                      height={600}
+                      width={1000}
+                      height={1000}
                     />
                   ) : (
                     <div className="w-full h-full bg-zinc-900 grid place-items-center">

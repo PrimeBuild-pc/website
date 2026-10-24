@@ -3,7 +3,7 @@ import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { chromium } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import guides from '../client/src/content/guides/manifest.json' with {type:'json'};
-import { renderGuide } from './prepare-guides.mjs';
+import { renderGuide, readGuideSource } from './prepare-guides.mjs';
 
 const base=process.argv[2] || 'http://127.0.0.1:5173';
 const output=process.env.QA_OUTPUT || 'tmp/browser-qa';
@@ -21,7 +21,8 @@ try {
       await page.locator('article.guide-prose h1').waitFor();
       assert.equal(await page.locator('h1').count(),1,guide.slug);
       assert.equal(await page.locator('article h1').innerText(),guide.title);
-      const original=renderGuide(await readFile(`client/src/content/guides/${guide.file}`,'utf8')).html;
+      assert.equal(await page.locator('article a[href*="discord-revisione-v5/pdf/"]').count(),0);
+      const original=renderGuide(await readGuideSource(guide)).html;
       const fidelity=await page.locator('article.guide-prose').evaluate((article,html)=>{
         const expected=document.createElement('div'); expected.innerHTML=html;
         const actual=article.cloneNode(true); actual.querySelectorAll('figure[data-guide-figure]').forEach(el=>el.remove());
@@ -50,6 +51,14 @@ try {
     }
     await page.goto(`${base}/guides/`);
     await page.locator('a[href*="stabilita-occt"]').first().waitFor();
+    const covers=page.locator('img[alt^="Copertina guida"]');
+    assert.equal(await covers.count(),13);
+    for(const cover of await covers.all()) {
+      await cover.scrollIntoViewIfNeeded();
+      await cover.evaluate(el=>el.decode());
+      assert.ok(await cover.evaluate(el=>el.naturalWidth>0));
+    }
+    await page.evaluate(()=>scrollTo(0,0));
     await page.screenshot({path:`${output}/index-${width}.png`});
     await page.goto(`${base}/guides/${guides[0].slug}/`);
     await page.locator('article.guide-prose h1').waitFor();

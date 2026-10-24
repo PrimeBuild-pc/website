@@ -1,0 +1,163 @@
+[
+  {
+    "file": "occt-memory.png",
+    "source": "https://www.ocbase.com/personal-features",
+    "credit": "OCBASE / OCCT",
+    "sha256": "13e4054e6085d48758c7108e2ca80784abe7fe6096eef2c997356a38b647cedd",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "occt-cpu-ram.png",
+    "source": "https://www.ocbase.com/personal-features",
+    "credit": "OCBASE / OCCT",
+    "sha256": "8a3d8f8b874ecaf78fa5c72c8ae37999c6eaf6ec072c832bb898520bbdc1e389",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "occt-cpu.png",
+    "source": "https://www.ocbase.com/personal-features",
+    "credit": "OCBASE / OCCT",
+    "sha256": "18772b272d6aba26ad8499436b8e04fe6a5ea460929ff5f4cc347a9eaafba852",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "occt-3d-adaptive.png",
+    "source": "https://www.ocbase.com/personal-features",
+    "credit": "OCBASE / OCCT",
+    "sha256": "77dde0b3950b3a2b633888b22462814c463c22562693fabf88bdf15855b9d2e3",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "occt-vram.png",
+    "source": "https://www.ocbase.com/personal-features",
+    "credit": "OCBASE / OCCT",
+    "sha256": "e8ef99df6226f0a73d816fdcca67d262985469523689697f2d81be427689af8c",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "ui-latencymon-main.png",
+    "source": "https://www.resplendence.com/latencymon_using",
+    "credit": "Resplendence",
+    "sha256": "0370327de131accb98894c195b2d06d807fab95004a0801b1b9c7ab8d38ffc16",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "nvidia-latency-pipeline-with-overlap.png",
+    "source": "https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform/",
+    "credit": "NVIDIA",
+    "sha256": "b37ed6480a03284c6468b39a040aca52928ebeec2ab7b30443161c0a9c367b10",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "nvidia-system-latency.png",
+    "source": "https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform/",
+    "credit": "NVIDIA",
+    "sha256": "f094db984f0b76f77e9b8cc5fb458f5cfd38d2ba8964eb001a3452b361a734e3",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "nvidia-cpu-bound-latency-pipline.png",
+    "source": "https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform/",
+    "credit": "NVIDIA",
+    "sha256": "5137ad6d7a93fd37c98fb2de80f6a854a778e411ecf6b5c60160128b57618a32",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "nvidia-gpu-bound-latency-pipline.png",
+    "source": "https://www.nvidia.com/en-us/geforce/news/reflex-low-latency-platform/",
+    "credit": "NVIDIA",
+    "sha256": "12f8dd6f5cb3792d3d3d588a1f10a16d6dd3d2d7a430c11f76c80849dc06c32d",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "nvidia-frame-warp.jpg",
+    "source": "https://www.nvidia.com/en-us/geforce/news/reflex-2-even-lower-latency-gameplay-with-frame-warp/",
+    "credit": "NVIDIA",
+    "sha256": "ea07d731369809f8866985441dc6149c59963b6d326128814334f6171d3c4e68",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "limiter-200.png",
+    "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
+    "credit": "CS2 Kitchen",
+    "sha256": "258859ca36487285e3b96852588669c40ecbd9a37006178108a9fe8b8c44ed37",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "fullscreen-borderless.png",
+    "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
+    "credit": "CS2 Kitchen",
+    "sha256": "6bd6414295785cb154e5b48791fdb74f8def5f694317cfa69f957f5aef7ec980",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-222322.png",
+    "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
+    "credit": "CS2 Kitchen",
+    "sha256": "f7d99ef806beabcbfb00d3029550e0eb85bf851f9c7875c35bef85ec8050e4d3",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-222152.png",
+    "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
+    "credit": "CS2 Kitchen",
+    "sha256": "dd6def7c7f00e8cd4174153063a77e2047133e3a21cfc6efa6ca229af23de254",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-215519.png",
+    "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+    "credit": "CS2 Kitchen",
+    "sha256": "81abccd70262b7ac2a6a67876779b05f9926a5370577cf51266733dcfc31ce42",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-215609.png",
+    "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+    "credit": "CS2 Kitchen",
+    "sha256": "502a99c90a148ddba628f4b25e60eddefe495b9b37b46806c88a5122fedb09bd",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-215622.png",
+    "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+    "credit": "CS2 Kitchen",
+    "sha256": "5b46d5aa4b73f63f0a29fde80a885efa539cd64d27c0828a78b131716a168a9a",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-215745.png",
+    "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+    "credit": "CS2 Kitchen",
+    "sha256": "3cbb0eb5c93bce50f8a5d8611424c515ce1b7c344d1729543805b385eaf8eb5e",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-215822.png",
+    "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+    "credit": "CS2 Kitchen",
+    "sha256": "b1b27cfc6786e80f7d488813e5b47772ca72043bd0ab78ecde302cbf01c107d0",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-215758.png",
+    "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+    "credit": "CS2 Kitchen",
+    "sha256": "c3704454fad61c0a2be3661497daf19d41342c36135b8f22926ddb2cb11a0d9e",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-215729.png",
+    "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+    "credit": "CS2 Kitchen",
+    "sha256": "14f30ffa285002efd8559d7eed6aae28c71ba928004dafd576dbe1df746ad04f",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  },
+  {
+    "file": "materiale-215832.png",
+    "source": "https://www.youtube.com/watch?v=P-3Os4btIg4",
+    "credit": "CS2 Kitchen",
+    "sha256": "8707948f52d949f98419176d545d81f972298c18d5236ae173ea2d35880f6383",
+    "authorization": "User request 2026-10-24: reuse provided PDF images and official OCCT screenshots with original-source attribution; no open licence inferred."
+  }
+]

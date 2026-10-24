@@ -10,3 +10,5 @@ vite.config.ts.*
 # Generated from the definitive Markdown during predev/prebuild
 client/public/guide-content/
 tmp/
+# Local, verified snapshots of the guides before replacement
+backups/
