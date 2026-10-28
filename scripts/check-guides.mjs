@@ -13,8 +13,9 @@ function canonical(nodes, original=false, pre=false) {
     if(node.type==='text') return pre || node.data.trim() ? [['text',node.data]] : [];
     if(node.type!=='tag') return [];
     if(node.name==='figure' && node.attribs['data-guide-figure']) return [];
+    if(node.name==='summary') return [];
     const children=canonical(node.children,original,pre||node.name==='pre');
-    if(node.name==='div' && node.attribs.class==='guide-table') return children;
+    if(node.name==='div' && node.attribs.class==='guide-table' || node.name==='details') return children;
     const attributes={};
     for(const key of ['href','title','src','alt','start','align']) if(node.attribs[key]!==undefined) attributes[key]=key==='href'&&original?guideHref(node.attribs[key]):node.attribs[key];
     return [[node.name,attributes,children]];

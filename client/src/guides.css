@@ -41,3 +41,12 @@
   .guide-prose { font-size: 1rem; }
   .guide-prose th, .guide-prose td { padding: .65rem; min-width: 9rem; }
 }
+.guide-prose details.guide-sources { margin-block: 1.5rem; border: 1px solid #3e3e44; border-radius: .5rem; background: #111115; }
+.guide-prose .guide-sources summary { cursor: pointer; padding: .9rem 1.1rem; font-weight: 600; color: #fafafa; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-radius: .5rem; }
+.guide-prose .guide-sources summary::-webkit-details-marker { display: none; }
+.guide-prose .guide-sources summary::after { content: ""; width: .55rem; height: .55rem; border: solid #ffad73; border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .2s; flex: none; }
+.guide-prose .guide-sources[open] summary::after { transform: rotate(-135deg); }
+.guide-prose .guide-sources summary:hover { background: #ffffff08; }
+.guide-prose .guide-sources summary:focus-visible { outline: 2px solid #ffad73; outline-offset: 2px; }
+.guide-prose .guide-sources ol { margin: 0; padding: .5rem 1.1rem 1.1rem 2.6rem; border-top: 1px solid #36363b; font-size: .92rem; line-height: 1.7; }
+@media (prefers-reduced-motion: reduce) { .guide-prose .guide-sources summary::after { transition: none; } }
