@@ -13,8 +13,9 @@ function canonical(nodes, original=false, pre=false) {
     if(node.type==='text') return pre || node.data.trim() ? [['text',node.data]] : [];
     if(node.type!=='tag') return [];
     if(node.name==='figure' && node.attribs['data-guide-figure']) return [];
+    if(node.name==='summary') return [];
     const children=canonical(node.children,original,pre||node.name==='pre');
-    if(node.name==='div' && node.attribs.class==='guide-table') return children;
+    if(node.name==='div' && node.attribs.class==='guide-table' || node.name==='details') return children;
     const attributes={};
     for(const key of ['href','title','src','alt','start','align']) if(node.attribs[key]!==undefined) attributes[key]=key==='href'&&original?guideHref(node.attribs[key]):node.attribs[key];
     return [[node.name,attributes,children]];
@@ -29,11 +30,16 @@ for(const guide of manifest) {
   if(process.argv[2]) assert.deepEqual(bytes,await readFile(resolve(process.argv[2],guide.file)),`${guide.file}: original mismatch`);
   const source=await readGuideSource(guide);
   assert.ok(!source.includes('../discord-revisione-v5/pdf/'),`${guide.file}: historical PDF reference`);
+  for(const obsolete of ['https://github.com/TestMem5/.github/releases','https://github.com/TestMem5-Config','https://www.usb.org/document-library/hid-1-11','https://www.vesa.org/vesa-certified-products/']) assert.ok(!source.includes(obsolete),`${guide.file}: obsolete reference ${obsolete}`);
   assert.ok(!/non incorpora (?:nuove immagini|la figura|nuove figure)|non sono state incorporate|né incorporate/i.test(source),`${guide.file}: obsolete image disclaimer`);
   if(guide.id===2) {
     assert.ok(!source.includes('interfaccia **v13**'),'OCCT screenshot version is obsolete');
     for(const topic of ['SSE, AVX, AVX2 e AVX-512','Core Cycling','Mirror Move','Check','Device selection']) assert.ok(source.includes(topic),`Missing OCCT explanation: ${topic}`);
     for(const asset of ['occt-cpu','occt-cpu-ram','occt-memory','occt-3d-adaptive','occt-vram']) assert.ok(guide.figures.some(f=>f.asset===asset),`Missing real screenshot: ${asset}`);
+  }
+  if(guide.id===6) {
+    for(const topic of ['### HDMI e DisplayPort: che cosa cambia nel collegamento','### Tabella delle generazioni e della banda','### Risoluzione, Hz e colore','### Perché si consiglia spesso DP sul PC e HDMI sulla console','### GPU NVIDIA e AMD','### Uscita GPU, cavo e ingresso monitor','al video DisplayPort']) assert.ok(source.includes(topic),`Missing display explanation: ${topic}`);
+    assert.ok(!source.includes('**due o quattro corsie** ai dati USB'),'USB-C lane allocation is obsolete');
   }
   const actual=renderGuide(source,guide.figures);
   assert.deepEqual(canonical(parseDocument(actual.html).children),canonical(parseDocument(new Marked({gfm:true}).parse(source)).children,true),`${guide.file}: editorial content mismatch`);

@@ -38,7 +38,7 @@ const pages = [
     path: `/guides/${guide.slug}`,
     title: `${guide.title} | Prime Build`,
     description: guide.description,
-    image: "/og-image.png",
+    image: `/og/${guide.slug}.png`,
     type: "article",
     datePublished: guide.datePublished,
     dateModified: guide.dateModified,
@@ -99,6 +99,8 @@ for (const page of pages) {
   html = html.replace(/(<meta property="og:title" content=")[^"]*("\s*\/?>)/, `$1${escapeHtml(page.title)}$2`);
   html = html.replace(/(<meta property="og:description" content=")[^"]*("\s*\/?>)/, `$1${escapeHtml(page.description)}$2`);
   html = html.replace(/(<meta property="og:image" content=")[^"]*("\s*\/?>)/, `$1${image}$2`);
+  html = html.replace(/(<meta property="og:image:alt" content=")[^"]*("\s*\/?>)/, `$1${escapeHtml(page.title)}$2`);
+  html = html.replace(/(<meta name="twitter:image:alt" content=")[^"]*("\s*\/?>)/, `$1${escapeHtml(page.title)}$2`);
   html = html.replace(/(<meta name="twitter:title" content=")[^"]*("\s*\/?>)/, `$1${escapeHtml(page.title)}$2`);
   html = html.replace(/(<meta name="twitter:description" content=")[^"]*("\s*\/?>)/, `$1${escapeHtml(page.description)}$2`);
   html = html.replace(/(<meta name="twitter:image" content=")[^"]*("\s*\/?>)/, `$1${image}$2`);

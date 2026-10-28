@@ -19,7 +19,7 @@ const GuideArticle = ({ guide }: { guide: Guide }) => {
   const hasInitialContent = initialGuide?.dataset.guideSlug === guide.slug && initialContent !== null;
   const [content, setContent] = useState<Content | null>(hasInitialContent ? initialContent : null);
   const [failed, setFailed] = useState(false);
-  useSEO({title:`${guide.title} | Prime Build`,description:guide.description,path:`/guides/${guide.slug}/`,image:"/og-image.png",type:"article",datePublished:guide.datePublished,dateModified:guide.dateModified});
+  useSEO({title:`${guide.title} | Prime Build`,description:guide.description,path:`/guides/${guide.slug}/`,image:`/og/${guide.slug}.png`,type:"article",datePublished:guide.datePublished,dateModified:guide.dateModified});
   useEffect(() => {
     if (!location.hash) window.scrollTo(0, 0);
     const scrollToHash = () => {

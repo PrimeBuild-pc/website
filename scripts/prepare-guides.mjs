@@ -70,11 +70,20 @@ export function renderGuide(source, figures=[]) {
   const rendered=parser.parse(source);const body=rendered+pending.map(f=>f.html).join('');
   for(const figure of figures) assert.ok(allHeadings.includes(figure.heading),`Missing figure section: ${figure.heading}`);
   const clean=sanitizeHtml(body,{
-    allowedTags:[...sanitizeHtml.defaults.allowedTags,'img','figure','figcaption'],
+    allowedTags:[...sanitizeHtml.defaults.allowedTags,'img','figure','figcaption','details','summary'],
     allowedAttributes:{'*':['id','class'],a:['href','title','target','rel','aria-label'],img:['src','alt','width','height','loading','decoding'],div:['class','tabindex','role','aria-label'],pre:['tabindex','aria-label'],figure:['data-guide-figure'],ol:['start'],th:['align'],td:['align'],code:['class']},
     allowedSchemes:['https','http','mailto'],allowProtocolRelative:false,
   });
-  return {html:clean,toc:headings};
+  return {html:collapseSources(clean),toc:headings};
+}
+
+// The closing "Fonti" section keeps its heading and notes; only the link list folds into a closed <details>.
+function collapseSources(html){
+  const start=html.lastIndexOf('<h2');
+  if(start<0||!/fonti/i.test(html.slice(start,html.indexOf('</h2>',start)))) return html;
+  const tail=html.slice(start);
+  assert.equal(tail.split('<ol>').length,2,'sources section must contain exactly one list');
+  return html.slice(0,start)+tail.replace(/<ol>[\s\S]*?<\/ol>/,list=>`<details class="guide-sources"><summary>Elenco delle fonti (${list.split('<li>').length-1})</summary>${list}</details>`);
 }
 
 export async function prepareGuides(){
