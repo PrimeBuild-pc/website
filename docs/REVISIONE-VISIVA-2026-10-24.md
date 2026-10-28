@@ -1,5 +1,7 @@
 # Integrazione finale guide — 24 ottobre 2026
 
+> Aggiornamento del 28 ottobre: la revisione descritta qui è stata pubblicata con PR55, unita il 24 ottobre (`5e22d783`). Le indicazioni «non pubblicata», conflitti e prossimo commit nella sezione finale descrivono lo stato storico precedente alla pubblicazione, non quello attuale. Per gli approfondimenti HDMI/DisplayPort, la correzione dei link e i controlli correnti vedere `CHIUSURA-GUIDE-2026-10-28.md` e `GUIDE-LINK-CHECK-2026-10-28.md`.
+
 ## Completato localmente
 
 - Backup completo delle vecchie guide: `backups/guide-pre-aggiornamento-2026-10-24/website-main-936d2f7.zip`, SHA-256 e CRC verificati. Escluso da Git; originali conservati.

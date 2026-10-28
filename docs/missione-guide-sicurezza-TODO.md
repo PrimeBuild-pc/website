@@ -1,6 +1,6 @@
 # Missione guide e sicurezza — 23 ottobre 2026
 
-Stato aggiornato il 24 ottobre: intervento iniziale autorizzato e inviato nelle PR55 Website / PR99 Fantafort; nuova revisione visiva/editoriale completata localmente, non pubblicata. I punti della baseline del 23 ottobre sotto restano storico del lavoro.
+Stato aggiornato il 28 ottobre: Website PR55 unita il 24 ottobre, workflow di deploy riuscito e guide pubbliche raggiungibili. La revisione immagini/OCCT è inclusa nella pubblicazione. Approfondimenti HDMI/DisplayPort e correzioni dei quattro link 404 completati localmente; il proprietario ha ricevuto il riepilogo e autorizzato commit e push di queste ultime modifiche; merge e deploy restano fuori da questa autorizzazione. Dettagli in `CHIUSURA-GUIDE-2026-10-28.md`. Fantafort non ricontrollato in questa sessione. I punti della baseline del 23 ottobre sotto restano storico del lavoro.
 
 - [x] Percorsi verificati; website su `codex/fix-dompurify-3-4-16`, Fantafort su `main` nella sottocartella `fantafort`.
 - [x] Baseline Git: website ha la cancellazione staged preesistente di `.claude/settings.local.json`; Fantafort pulito. Preservare la cancellazione ed escluderla dai commit proposti.
@@ -28,9 +28,20 @@ Vincoli verifiche: non eseguire script che scrivono su Supabase remoto, inviano 
 - [x] Cinque screenshot OCCT ufficiali 17.0.14 e spiegazioni dettagliate; 18 ulteriori immagini dai materiali con fonte originale. Totale 83 figure + 13 copertine.
 - [x] Review e correzione note obsolete, originali immutabili e nessun richiamo ai PDF.
 - [x] Check, build, link interni e 26 casi browser superati; link esterni documentati separatamente.
-- [ ] Nuova approvazione prima di pubblicare le correzioni.
+- [x] Revisione immagini/OCCT pubblicata tramite PR55; stato verificato su GitHub il 28 ottobre.
 
 Dettagli: `REVISIONE-VISIVA-2026-10-24.md`.
 
 - [x] Verificata la copertura dei sette PDF (214 pagine, 127 sezioni): nessun capitolo/procedura mancante individuato; differenze non letterali documentate.
 - [x] Nuovo audit: Zod dev transitivo 4.4.3 → 4.6.7; audit completo/produzione zero, check/build/link interni superati. Vedi `VERIFICA-PDF-DIPENDENZE-2026-10-24.md`.
+
+## Chiusura locale del 28 ottobre
+
+- [x] Integrati gli approfondimenti HDMI/DisplayPort: generazioni, banda, PC/console e catena GPU/cavo/monitor; corretta l'allocazione corsie USB-C.
+- [x] Sostituiti i quattro URL 404 tramite emendamenti, senza modificare i Markdown originali.
+- [x] Aggiunti controlli di regressione sui nuovi contenuti e sui riferimenti obsoleti.
+- [x] Check, build/SEO, link interni, audit e 26 casi browser desktop/mobile superati; scorrimento delle nuove tabelle verificato anche da tastiera.
+- [x] Ricontrollati i link esterni: nessun 404, nove fonti ancora limitate da anti-bot/TLS/rete; vedi `GUIDE-LINK-CHECK-2026-10-28.md`.
+- [x] Aggiornata la documentazione distinguendo pubblicazione precedente e nuovo lavoro locale.
+- [x] Riepilogo presentato al proprietario e autorizzazione esplicita ricevuta per commit/push di questa chiusura.
+- [ ] Merge e pubblicazione della chiusura (non inclusi nella richiesta di commit/push).

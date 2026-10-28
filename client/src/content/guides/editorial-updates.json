@@ -1,4 +1,26 @@
 {
+  "06-display-cavi.md": [
+    {
+      "before": "## 4. DisplayPort: versione, link rate e certificazione del cavo",
+      "insertFile": "display-standards.md",
+      "reason": "User 2026-10-24: compare HDMI and DisplayPort generations, transport, bandwidth and gaming signal requirements."
+    },
+    {
+      "before": "## 7. Una procedura di verifica e diagnosi senza accumulare cambi",
+      "insertFile": "display-gaming.md",
+      "reason": "User 2026-10-24: explain PC versus console recommendations and GPU/cable/monitor compatibility using recent AMD and NVIDIA hardware."
+    },
+    {
+      "before": "In USB-C/DP Alt Mode il percorso può riservare **due o quattro corsie** ai dati USB; un dock può condividere banda fra display e altri flussi.",
+      "after": "In USB-C/DP Alt Mode il percorso può riservare **due o quattro corsie** al video DisplayPort; un dock può condividere banda fra display e altri flussi.",
+      "reason": "Correct the lane allocation in the expanded technical comparison: the two or four lanes described are assigned to DisplayPort video."
+    },
+    {
+      "before": "[VESA Certified Products](https://www.vesa.org/vesa-certified-products/)",
+      "after": "[VESA Certified DisplayPort Products — Cables & Adaptors](https://www.displayport.org/product-category/cables-adaptors/)",
+      "reason": "Replace the obsolete certification URL with the current official cable and adapter database, verified 2026-10-24."
+    }
+  ],
   "12-misure-verifica.md": [
     {
       "before": "I sette PDF preesistenti sono consultabili come **base editoriale precedente**, non come esportazione dei nuovi Markdown:\n\n- [Primo setup](../discord-revisione-v5/pdf/01-primo-setup.pdf)\n- [LatencyMon e driver](../discord-revisione-v5/pdf/02-latencymon-e-driver.pdf)\n- [Audio competitivo](../discord-revisione-v5/pdf/03-audio-competitivo.pdf)\n- [Frame cap e presentazione](../discord-revisione-v5/pdf/04-frame-cap-e-presentazione.pdf)\n- [DisplayPort e HDMI](../discord-revisione-v5/pdf/05-displayport-hdmi.pdf)\n- [Input, mouse e USB](../discord-revisione-v5/pdf/06-input-mouse-usb.pdf)\n- [Rete](../discord-revisione-v5/pdf/07-rete.pdf)\n\nNon sono stati rigenerati in questa fase. Quando testi e allegati divergono, non mescolare automaticamente le procedure; identifica versione e contesto prima di usare un'istruzione operativa.\n\n",
@@ -19,6 +41,11 @@
     }
   ],
   "02-stabilita-occt.md": [
+    {
+      "before": "12. TestMem5, [release ufficiali](https://github.com/TestMem5/.github/releases) e [config anta777](https://github.com/TestMem5-Config). Tool e config di comunità; verificare provenienza e integrità.",
+      "after": "12. TestMem5, [release della versione mantenuta da CoolCmd](https://github.com/CoolCmd/TestMem5/releases) e [config di comunità, incluse anta777, raccolte da integralfx](https://github.com/integralfx/MemTestHelper/tree/oc-guide/TM5-Configs). La versione CoolCmd deriva da quella originale di Serj: verificare compatibilità della config con la versione utilizzata, provenienza e integrità; non disattivare le protezioni antivirus per eseguire un download.",
+      "reason": "User 2026-10-28: close remaining broken links; verify the maintained TestMem5 repository and community configuration collection without presenting the fork as Serj's original release."
+    },
     {
       "before": "### 8.4 Sicurezza e risultato",
       "insertFile": "occt-details.md",
@@ -41,6 +68,11 @@
     }
   ],
   "03-driver-latencymon.md": [
+    {
+      "before": "https://www.usb.org/document-library/hid-1-11",
+      "after": "https://www.usb.org/document-library/device-class-definition-hid-111",
+      "reason": "User 2026-10-28: replace the broken HID 1.11 reference with the USB-IF document page verified with GET."
+    },
     {
       "before": "questa guida non incorpora la figura e non presume risolti i diritti di pubblicazione.",
       "after": "la figura è ora inclusa con la fonte originale nella didascalia.",
