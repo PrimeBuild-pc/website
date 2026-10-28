@@ -34,6 +34,13 @@ export default function GallerySection() {
     { src: "/23.webp", alt: "Vista laterale di build Prime Build con case vetrato e hardware di fascia alta" },
     { src: "/24.webp", alt: "Assemblaggio professionale di PC gaming con dissipazione avanzata e look pulito" },
     { src: "/25.webp", alt: "Configurazione PC gaming completa ottimizzata per performance competitive" },
+    { src: "/26.webp", alt: "Case nero compatto con pannello mesh, dissipatore AIO e scheda video GeForce RTX, build Prime Build" },
+    { src: "/27.webp", alt: "Build compatta con vetro curvo, ventole e illuminazione ciano e radiatore AIO in evidenza" },
+    { src: "/28.webp", alt: "Mid tower in vetro con ventole laterali a illuminazione bianco-blu e scheda video GeForce RTX" },
+    { src: "/29.webp", alt: "Case con frontale mesh e tre ventole luminose, vista sull'interno con dissipatore e GPU" },
+    { src: "/30.webp", alt: "Build con illuminazione viola, ventole sincronizzate, raffreddamento a liquido e GPU GeForce RTX" },
+    { src: "/31.webp", alt: "Case nero con ventole laterali e ventole inferiori luminose, GPU GeForce RTX e AIO montato" },
+    { src: "/32.webp", alt: "Build con illuminazione arancione, scheda video AMD Radeon e raffreddamento a liquido, assemblata da Prime Build" },
   ];
 
   // Duplicate once for seamless CSS marquee
