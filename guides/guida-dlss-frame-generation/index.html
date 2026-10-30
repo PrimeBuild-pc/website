@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>if(new URLSearchParams(location.search).get("motion")==="on")document.documentElement.classList.add("motion-preview")</script>
+    <meta http-equiv="content-language" content="it" />
+    <link rel="alternate" hreflang="it" href="https://primebuild.website/guides/guida-dlss-frame-generation/" />
+    <link rel="alternate" hreflang="x-default" href="https://primebuild.website/guides/guida-dlss-frame-generation/" />
+    <title>DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering | Prime Build</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Un contatore può passare da 70 a 210 FPS con Multi Frame Generation, ma gli aggiornamenti della simulazione non diventano automaticamente sei volte più…" />
+    <meta name="author" content="Prime Build" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="geo.region" content="IT-PD" />
+    <meta name="geo.placename" content="Montegrotto Terme" />
+    <meta name="geo.position" content="45.3166667;11.7666667" />
+    <meta name="ICBM" content="45.3166667, 11.7666667" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://primebuild.website/guides/guida-dlss-frame-generation/" />
+    <meta property="og:title" content="DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering | Prime Build" />
+    <meta property="og:description" content="Un contatore può passare da 70 a 210 FPS con Multi Frame Generation, ma gli aggiornamenti della simulazione non diventano automaticamente sei volte più…" />
+    <meta property="og:image" content="https://primebuild.website/og/guida-dlss-frame-generation.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering | Prime Build" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Prime Build" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering | Prime Build" />
+    <meta name="twitter:description" content="Un contatore può passare da 70 a 210 FPS con Multi Frame Generation, ma gli aggiornamenti della simulazione non diventano automaticamente sei volte più…" />
+    <meta name="twitter:image" content="https://primebuild.website/og/guida-dlss-frame-generation.png" />
+    <meta name="twitter:image:alt" content="DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering | Prime Build" />
+    
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://primebuild.website/guides/guida-dlss-frame-generation/" />
+    
+    <!-- Preload critical assets for better LCP -->
+    <link rel="preload" href="/logo.png?v=20260814" as="image" type="image/png" fetchpriority="high">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico?v=20260814" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20260814" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20260814" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260814" />
+    <link rel="manifest" href="/site.webmanifest?v=20260814">
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-TileColor" content="#ff6600">
+
+      <script type="module" crossorigin src="/assets/index-BYESkKSr.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-DWHSJf6t.css">
+    <meta property="article:published_time" content="2026-01-09"><meta property="article:modified_time" content="2026-10-24"><script id="primebuild-schema" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","LocalBusiness"],"@id":"https://primebuild.website/#business","name":"Prime Build","alternateName":"PrimeBuild","url":"https://primebuild.website/","logo":{"@type":"ImageObject","url":"https://primebuild.website/logo.png?v=20260814","width":512,"height":512},"image":"https://primebuild.website/og-image-v2.png","email":"preventivi@primebuild.website","description":"Assemblaggio PC gaming su misura, assistenza tecnica e ottimizzazione a Montegrotto Terme, Padova e in tutta Italia.","address":{"@type":"PostalAddress","addressLocality":"Montegrotto Terme","postalCode":"35036","addressRegion":"PD","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":45.3166667,"longitude":11.7666667},"areaServed":[{"@type":"City","name":"Montegrotto Terme"},{"@type":"City","name":"Padova"},{"@type":"Country","name":"Italia"}],"priceRange":"€€","sameAs":["https://www.instagram.com/prime_build_/","https://discord.gg/ERUwSxE79q","https://github.com/PrimeBuild-pc"],"knowsAbout":["PC gaming custom","Assemblaggio PC","Assistenza tecnica PC","Ottimizzazione PC","Latenza gaming"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Servizi Prime Build","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Assemblaggio PC gaming su misura","url":"https://primebuild.website/servizi/pc-gaming-su-misura/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Assistenza e riparazione PC","url":"https://primebuild.website/servizi/assistenza-riparazione-pc/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Ottimizzazione PC gaming","url":"https://primebuild.website/servizi/ottimizzazione-pc-gaming/"}}]}},{"@type":"WebSite","@id":"https://primebuild.website/#website","url":"https://primebuild.website/","name":"Prime Build","alternateName":"PrimeBuild","inLanguage":"it-IT","publisher":{"@id":"https://primebuild.website/#business"}},{"@type":"Article","@id":"https://primebuild.website/guides/guida-dlss-frame-generation/#article","headline":"DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering","description":"Un contatore può passare da 70 a 210 FPS con Multi Frame Generation, ma gli aggiornamenti della simulazione non diventano automaticamente sei volte più…","image":"https://primebuild.website/og-image-v2.png","datePublished":"2026-01-09","dateModified":"2026-10-24","author":{"@id":"https://primebuild.website/#business"},"publisher":{"@id":"https://primebuild.website/#business"},"mainEntityOfPage":{"@id":"https://primebuild.website/guides/guida-dlss-frame-generation/#webpage"},"inLanguage":"it-IT"},{"@type":"WebPage","@id":"https://primebuild.website/guides/guida-dlss-frame-generation/#webpage","url":"https://primebuild.website/guides/guida-dlss-frame-generation/","name":"DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering","isPartOf":{"@id":"https://primebuild.website/#website"},"breadcrumb":{"@id":"https://primebuild.website/guides/guida-dlss-frame-generation/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://primebuild.website/guides/guida-dlss-frame-generation/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://primebuild.website/"},{"@type":"ListItem","position":2,"name":"Guide","item":"https://primebuild.website/guides/"},{"@type":"ListItem","position":3,"name":"DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering","item":"https://primebuild.website/guides/guida-dlss-frame-generation/"}]}]}</script></head>
+  <body>
+    <div id="root"><section data-guide-slug="guida-dlss-frame-generation" class="guide-page px-4 pb-20 pt-28 sm:px-6"><div class="mx-auto max-w-7xl"><nav aria-label="Percorso" class="mb-7 flex flex-wrap items-center gap-3 text-sm text-zinc-300"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/guides/">Tutte le guide</a><span aria-hidden="true">/</span><span>Guida 13</span></nav><div class="guide-layout"><aside class="guide-index"><details><summary>In questa guida</summary><nav aria-label="Indice della guida"><ol><li><a href="#1-tre-funzioni-che-non-vanno-confuse">1. Tre funzioni che non vanno confuse</a></li><li><a href="#2-dlss-4-5-upscaling-ray-reconstruction-e-multi-frame-generation">2. DLSS 4.5: upscaling, Ray Reconstruction e Multi Frame Generation</a></li><li><a href="#3-dlss-5-neural-rendering-non-un-upscaler">3. DLSS 5: neural rendering, non un upscaler</a></li><li><a href="#4-fsr-4-1-e-redstone-hardware-e-funzioni-separati">4. FSR 4.1 e Redstone: hardware e funzioni separati</a></li><li><a href="#5-matrice-di-supporto-nvidia-cosa-e-ufficiale-e-cosa-no">5. Matrice di supporto NVIDIA: cosa è ufficiale e cosa no</a></li><li><a href="#6-sviluppi-futuri-annunci-ufficiali-test-isolati-e-leak">6. Sviluppi futuri: annunci ufficiali, test isolati e leak</a></li><li><a href="#7-scegliere-un-preset-senza-inseguire-il-numero-piu-alto">7. Scegliere un preset senza inseguire il numero più alto</a></li><li><a href="#8-problemi-frequenti-e-diagnosi">8. Problemi frequenti e diagnosi</a></li><li><a href="#9-miti-da-chiudere">9. Miti da chiudere</a></li><li><a href="#10-mod-e-tool-della-community">10. Mod e tool della community</a></li><li><a href="#11-limiti-e-fonti">11. Limiti e fonti</a></li></ol></nav></details></aside><div class="min-w-0"><div class="mb-6 flex flex-wrap gap-3 text-sm text-zinc-400"><span class="text-primary">13 / 13</span><time dateTime="2026-10-24">Aggiornata il 24 ottobre 2026</time><a href="/chi-siamo/">Team tecnico Prime Build</a></div><article class="guide-prose"><h1 id="dlss-fsr-e-frame-generation-ricostruzione-interpolazione-e-neural-rendering">DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering</h1>
+<p>Un contatore può passare da 70 a 210 FPS con Multi Frame Generation, ma gli aggiornamenti della simulazione non diventano automaticamente sei volte più numerosi. Lo stesso menu può mostrare DLSS 4.5, FSR 4.1 e un moltiplicatore 6X come se fossero tre livelli della stessa funzione: non lo sono. Prima separa ciò che ricostruisce un'immagine, ciò che inserisce immagini aggiuntive e ciò che modifica l'aspetto della scena; poi scegli il compromesso.</p>
+<p>Questa guida considera Windows 11 25H2/26H2 e lo stato documentale di ottobre 2026. Non certifica build future, driver, elenchi di giochi o anti-cheat. Non sono stati eseguiti test hardware, benchmark, catture o modifiche di gioco per questa stesura: i dati di prestazioni citati sono dichiarazioni dei produttori o esempi documentali, non misure di questo PC. Le guide <a href="/guides/ottimizzazione-build-240hz/">CPU/GPU e PresentMon</a>, <a href="/guides/sincronizzazione-limiter/">Sincronizzazione e limiter</a> e <a href="/guides/misure-verifica/">Misure e verifica</a> restano i riferimenti per il percorso del frame e per un confronto A–B–A.</p>
+<h2 id="1-tre-funzioni-che-non-vanno-confuse">1. Tre funzioni che non vanno confuse</h2>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Funzione</th>
+<th>Cosa riceve</th>
+<th>Cosa produce</th>
+<th>Cosa non garantisce</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Upscaling</strong></td>
+<td>Un frame a risoluzione interna, dati di movimento e storia temporale</td>
+<td>Un frame alla risoluzione di uscita scelta</td>
+<td>Una nuova simulazione o una latenza inferiore</td>
+</tr>
+<tr>
+<td><strong>Frame Generation (FG)</strong></td>
+<td>Frame già renderizzati, motion vector, depth e, quando disponibili, buffer di interfaccia</td>
+<td>Immagini intermedie presentate al display</td>
+<td>Nuovi campionamenti dell'input; può aggiungere latenza</td>
+</tr>
+<tr>
+<td><strong>Ray Reconstruction (RR)</strong></td>
+<td>Buffer ray-tracing rumoroso e dati del motore</td>
+<td>Una ricostruzione denoisata dell'illuminazione</td>
+<td>Frame aggiuntivi o prestazioni maggiori</td>
+</tr>
+<tr>
+<td><strong>DLSS 5 / neural rendering</strong></td>
+<td>Colore e motion vector di un frame renderizzato</td>
+<td>Un frame migliorato con illuminazione e materiali neurali</td>
+<td>Un upscaler attivabile su ogni gioco o frame aggiuntivi</td>
+</tr>
+</tbody></table>
+</div><p>L'upscaling riduce il numero di pixel che la GPU deve campionare, ma aggiunge un passaggio di ricostruzione e può cambiare dettaglio, bordi e stabilità. La Frame Generation non inventa una nuova posizione del giocatore o un nuovo evento di gioco: genera immagini intermedie plausibili. Il neural rendering di DLSS 5 non è né l'uno né l'altro; è uno stadio che modifica l'immagine già renderizzata, con un ingresso e un'uscita per frame [3][4].</p>
+<p>Questa distinzione conta anche quando leggi un overlay. Gli FPS mostrati descrivono immagini presentate, non necessariamente nuovi tick della simulazione. In PresentMon, <code>Frame Type</code> va interpretato solo se il gioco e il driver forniscono una classificazione valida; un valore generico non dimostra che tutte le immagini siano applicative [4]. Non dividere CPU Busy per il moltiplicatore di FG per ricavare una presunta latenza.</p>
+<figure data-guide-figure="upscale"><a href="/images/guides/diagrams/upscale.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Ricostruzione dell’immagine"><img src="/images/guides/diagrams/upscale.svg" alt="Ricostruzione dell’immagine" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>Ricostruzione dell’immagine · Schema illustrativo Prime Build</figcaption></figure><h2 id="2-dlss-4-5-upscaling-ray-reconstruction-e-multi-frame-generation">2. DLSS 4.5: upscaling, Ray Reconstruction e Multi Frame Generation</h2>
+<p>DLSS 4.5 Super Resolution è disponibile dal 5 gennaio 2026 su tutte le GPU GeForce RTX, con un secondo modello transformer e oltre 400 giochi e applicazioni dichiarati [1]. Non è un unico interruttore: comprende almeno Super Resolution, Ray Reconstruction, Frame Generation e Multi Frame Generation, con requisiti hardware e disponibilità per gioco differenti.</p>
+<h3 id="preset-m-l-e-k">Preset M, L e K</h3>
+<p>NVIDIA App sostituisce la voce “Latest” con “Recommended”. La scelta automatica applica:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Modalità DLSS</th>
+<th>Preset “Recommended”</th>
+<th>Nota</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DLAA, Quality, Balanced</td>
+<td>K</td>
+<td>È il modello transformer di DLSS 4.0; resta il riferimento per questi modi.</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>M</td>
+<td>Ottimizzato per DLSS Performance.</td>
+</tr>
+<tr>
+<td>Ultra Performance</td>
+<td>L</td>
+<td>Ottimizzato per DLSS Ultra Performance a 4K.</td>
+</tr>
+</tbody></table>
+</div><p>M e L possono essere selezionati anche in Quality, Balanced e DLAA, ma il vantaggio qualità/prestazioni previsto è soprattutto in Performance e Ultra Performance [1]. Su RTX 20 e 30 manca il supporto nativo FP8: M e L hanno un impatto prestazionale più pesante e K può essere il compromesso migliore. Non esiste quindi un preset “migliore” indipendente dalla GPU, dalla risoluzione e dal gioco.</p>
+<p>Il preset si applica per gioco o globalmente. Prima di lasciarlo attivo, verifica nell'overlay NVIDIA quale modello è realmente in uso: una voce selezionata nell'app non dimostra che il titolo la accetti. Se compaiono ghosting, shimmering o un calo di prestazioni, confronta K, M e L nella stessa scena invece di attribuire il difetto all'upscaler in generale [1].</p>
+<h3 id="dlss-4-5-ray-reconstruction">DLSS 4.5 Ray Reconstruction</h3>
+<p>DLSS 4.5 Ray Reconstruction è disponibile da agosto 2026 per tutte le GPU RTX e usa un secondo modello transformer dedicato al denoising di contenuti ray-tracing e path-tracing [5]. NVIDIA App espone “Recommended” o il preset F. Non è Frame Generation: ricostruisce illuminazione e dettaglio dove i raggi non sono stati campionati, e può migliorare stabilità e pulizia dell'immagine senza aumentare il numero di frame.</p>
+<p>La qualità dipende anche dai dati del motore. Un gioco con path tracing e buffer ben preparati può trarre un beneficio diverso da uno che usa solo ray-tracing parziale. Non promettere da questa funzione un guadagno FPS universale: il costo del modello e il risultato visivo vanno verificati nel titolo [5].</p>
+<h3 id="multi-frame-generation-moltiplicatore-modalita-e-preset">Multi Frame Generation: moltiplicatore, modalità e preset</h3>
+<p>La Frame Generation classica introduce un moltiplicatore 2X: un frame aggiuntivo per ogni frame renderizzato. DLSS 4 ha portato il Multi Frame Generation 4X su RTX 50; DLSS 4.5 aggiunge i modi 5X e 6X, dove 6X significa un frame renderizzato e cinque frame generati [2]. Il 2X è disponibile su RTX 40 e 50; MFG 4X, 5X e 6X richiedono RTX 50. Nei titoli MFG il 4X è la base, mentre 5X e 6X dipendono da una DLL di Frame Generation recente e dall'integrazione del gioco [2].</p>
+<p>I preset M, L e K non sono preset di MFG: appartengono a Super Resolution. Nel menu NVIDIA App la Frame Generation distingue invece:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Voce</th>
+<th>Cosa seleziona</th>
+<th>Effetto</th>
+<th>Disponibilità</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Frame Generation Mode: Fixed</strong></td>
+<td>Un moltiplicatore scelto</td>
+<td>Forza lo stesso numero di frame generati per frame renderizzato</td>
+<td>RTX 40: 2X; RTX 50: fino a 6X, secondo il titolo</td>
+</tr>
+<tr>
+<td><strong>Frame Generation Mode: Dynamic</strong></td>
+<td>Un target di refresh o un limite custom</td>
+<td>Cambia il moltiplicatore durante il gioco per raggiungere il target</td>
+<td>RTX 50; non compatibile con limiter e V-Sync [2]</td>
+</tr>
+<tr>
+<td><strong>Model Preset B</strong></td>
+<td>Enhanced Frame Generation</td>
+<td>Usa buffer di interfaccia aggiuntivi per HUD, minimappa e UI</td>
+<td>RTX 40/50, titoli supportati [2]</td>
+</tr>
+<tr>
+<td><strong>Model Preset C</strong></td>
+<td>Performance Mode per FG</td>
+<td>Sostituisce il secondo modello di optical flow con un algoritmo più leggero</td>
+<td>RTX 40/50 e RTX Spark, NVIDIA App beta [19]</td>
+</tr>
+</tbody></table>
+</div><p>“Use 3D application setting” lascia decidere al gioco e non è equivalente a forzare 2X dall'app. Se vuoi il 2X puro, seleziona quell'opzione e attiva la Frame Generation nel gioco, invece di sovrapporre un override Fixed [2].</p>
+<p>Il preset C è la novità di ottobre 2026. Non è un moltiplicatore aggiuntivo e non è il preset “Performance” di Super Resolution: è una modalità della Frame Generation che riduce il costo del modello di optical flow, con un compromesso minore sulla qualità dell'immagine. NVIDIA dichiara fino al 35% in più su una RTX 5060; sono dati del produttore, non una misura indipendente [19]. Preset C non riduce da solo la latenza d'input: aumenta il throughput della generazione, mentre la reattività dipende anche da base frame rate, Reflex, coda CPU/GPU e display.</p>
+<p>Per attivarlo, serve la beta dell'app: <code>Settings &gt; About &gt; Opt in to access Beta or experimental features</code>, poi <code>Graphics &gt; Driver Settings &gt; DLSS Override - Model Presets &gt; Custom &gt; Frame Generation &gt; Preset C</code>. Se la voce non compare, NVIDIA suggerisce un riavvio [19]. Applica il preset per gioco, non globalmente, finché non hai verificato artefatti e stabilità.</p>
+<p>Con Dynamic Multi Frame Generation, il sistema sceglie il moltiplicatore in tempo reale per raggiungere un target di refresh o un limite scelto. Non è un cap del gioco: è una politica che cambia quanti frame generare. NVIDIA specifica che la modalità Dynamic non è attualmente compatibile con frame rate limiter e V-Sync [2]. Se usi quel percorso, non aggiungere un cap o V-Sync e poi attribuire il comportamento strano alla GPU. Preset C può essere usato anche con Dynamic, ma l'incompatibilità con limiter e V-Sync resta.</p>
+<p>NVIDIA dichiara che il passaggio da 4X a 6X aumenta fino al 35% gli FPS a 4K nei titoli path-traced, e che Reflex può contenere l'impatto sulla reattività [2]. Sono dati del produttore, non una garanzia per ogni gioco. La generazione ha un costo, richiede una base di frame già sostenibile e non corregge un limite CPU.</p>
+<p>Il modello Enhanced Frame Generation, selezionabile come preset B in titoli supportati, usa buffer di interfaccia aggiuntivi per gestire meglio minimappa, HUD e altri elementi statici su RTX 40 e 50 [2]. Non è lo stesso modello di Super Resolution e non si applica necessariamente a ogni gioco.</p>
+<figure data-guide-figure="fg"><a href="/images/guides/diagrams/fg.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Frame renderizzati e immagini generate"><img src="/images/guides/diagrams/fg.svg" alt="Frame renderizzati e immagini generate" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>Frame renderizzati e immagini generate · Schema illustrativo Prime Build</figcaption></figure><h2 id="3-dlss-5-neural-rendering-non-un-upscaler">3. DLSS 5: neural rendering, non un upscaler</h2>
+<p>DLSS 5 è stato annunciato il 16 marzo 2026 ed è disponibile da settembre 2026 in NBA 2K27 su GPU RTX 50 desktop e laptop e GeForce NOW, con RTX Spark dal 16 ottobre 2026 [3][4][19]. Non è un'opzione che si attiva dall'overlay NVIDIA su un gioco qualsiasi: richiede integrazione nel motore e un modello addestrato per quel contesto.</p>
+<p>Il modello usa il frame renderizzato dal motore, inclusi geometria, texture e buffer di illuminazione, come base. Prende colore e motion vector e aggiunge illuminazione e materiali fotorealistici ancorati alla scena 3D, con un modello <strong>one-frame-in, one-frame-out</strong>: un frame in ingresso, un frame in uscita, senza generare immagini intermedie [4]. Gira localmente su una singola RTX 50 e arriva fino a 4K. NVIDIA precisa che i modelli girano su ogni frame, quindi non esiste un frame rate minimo per attivarlo [20].</p>
+<p>I controlli sono nelle mani dello sviluppatore: selezione del modello, intensità della struttura, intensità del tono, maschere semantiche e maschere a livello di motore. Questo serve a preservare identità dei personaggi, composizione e intenzione artistica. Un input ray-tracing o path-tracing più ricco può dare risultati più precisi; anche il raster tradizionale può essere migliorato, ma con meno informazioni [4]. Per il giocatore, invece, DLSS 5 è un semplice on/off; i controlli granulari non sono esposti [20].</p>
+<h3 id="cosa-e-cambiato-il-13-ottobre-2026">Cosa è cambiato il 13 ottobre 2026</h3>
+<p>Il modello distribuito a ottobre è più leggero: NVIDIA dichiara il doppio delle prestazioni rispetto alla versione di settembre, il 24% di parametri in meno (circa 118 milioni), il 20% di VRAM in meno a 4K e metà del carico GPU, con qualità visiva comparabile. Rispetto al modello annunciato a marzo, il guadagno complessivo dichiarato è 10X [19]. Il nuovo modello debutta in NBA 2K27 il 16 ottobre 2026 e aumenta gli FPS fino a 1,4X su RTX 50, RTX Spark e GeForce NOW [19]. Sono claim del produttore, non misure indipendenti.</p>
+<p>Il calendario ufficiale delle implementazioni è: RTX Remix il 23 ottobre 2026, Hogwarts Legacy il 5 novembre 2026, Where Winds Meet nella parte finale di novembre 2026 [19]. RTX Spark è una piattaforma laptop, non una scheda desktop: non confonderla con una fascia RTX 50 desktop.</p>
+<p>DLSS 5 non è DLSS 4.5 con un numero più alto. DLSS 4.5 è la famiglia di upscaling, Ray Reconstruction e Frame Generation; DLSS 5 è uno stadio di neural rendering. Non è nemmeno Frame Generation: non crea cinque frame da uno. Se un gioco usa DLSS 5 e MFG, sono due funzioni distinte nella pipeline e vanno valutate separatamente.</p>
+<p>La disponibilità è per titolo. NBA 2K27 è la prima implementazione documentata; NVIDIA ha annunciato altri giochi, ma un annuncio non equivale a una build pubblica con la funzione attiva [4]. Al 23 ottobre 2026 DLSS 5 è ufficiale su RTX 50, RTX Spark e GeForce NOW, non su RTX 40. NVIDIA ha confermato a The Verge che, dopo aver ottimizzato la versione RTX 50, intende estendere il supporto ufficiale alla RTX 40; non è una data di rilascio e non riguarda RTX 20/30 [20]. Non promettere quindi che DLSS 5 “sistemi” un gioco vecchio o che sia già disponibile su RTX 40: oggi richiede RTX 50 o RTX Spark e integrazione del titolo [3][4][19].</p>
+<figure data-guide-figure="pipeline-rendering"><a href="/images/guides/diagrams/pipeline-rendering.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: CPU e GPU: lavoro sovrapposto"><img src="/images/guides/diagrams/pipeline-rendering.svg" alt="CPU e GPU: lavoro sovrapposto" width="1200" height="640" loading="lazy" decoding="async" /></a><figcaption>CPU e GPU: lavoro sovrapposto · Schema illustrativo Prime Build</figcaption></figure><h2 id="4-fsr-4-1-e-redstone-hardware-e-funzioni-separati">4. FSR 4.1 e Redstone: hardware e funzioni separati</h2>
+<p>AMD FSR “Redstone” è una suite di tecnologie ML: FSR Upscaling, FSR Frame Generation, FSR Ray Regeneration e FSR Radiance Caching. Non tutte sono disponibili su tutte le GPU e non tutte sono attive solo perché il gioco offre “FSR” [6].</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>FSR Upscaling 4.1</th>
+<th>Redstone completo</th>
+<th>Nota</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Radeon RX 9000 / RDNA 4</td>
+<td>Sì</td>
+<td>Sì, dove il gioco integra le funzioni</td>
+<td>Upscaling ML, FG ML, Ray Regeneration e Radiance Caching previsti.</td>
+</tr>
+<tr>
+<td>Radeon RX 7000 / RDNA 3</td>
+<td>Sì da luglio 2026</td>
+<td>No</td>
+<td>Supporto dichiarato solo per l'upscaling.</td>
+</tr>
+<tr>
+<td>Radeon RX 6000 / RDNA 2</td>
+<td>Sì dal 20 ottobre 2026</td>
+<td>No</td>
+<td>Richiede driver Adrenalin 26.10.1 o successivo; solo upscaling.</td>
+</tr>
+<tr>
+<td>Radeon RX 5000 / RDNA 1</td>
+<td>No, resta su FSR 3</td>
+<td>No</td>
+<td>Frame Generation FSR 3, non Redstone.</td>
+</tr>
+<tr>
+<td>Ryzen AI Max 300/400, Ryzen AI 9 300/400</td>
+<td>Sì</td>
+<td>No</td>
+<td>Upscaling 4.1; non è Redstone completo.</td>
+</tr>
+</tbody></table>
+</div><p>FSR Upscaling 4.1 è disponibile su RX 6000, 7000 e 9000; il supporto RX 6000 è stato distribuito con il driver 26.10.1 del 20 ottobre 2026 [7][8]. RX 7000 lo ha ricevuto da luglio 2026. “Redstone completo” resta invece una disponibilità RX 9000, e anche lì dipende dal gioco e dalle funzioni effettivamente integrate [6]. La disponibilità su Ryzen AI Max 300/400 e Ryzen AI 9 300/400 riguarda l'upscaling, non l'intera suite Redstone [8].</p>
+<p>Per i giochi con FSR 3.1, AMD Software può aggiornare l'upscaling a ML senza una patch del titolo; per la Frame Generation ML serve almeno FSR 3.1.4, Windows 11 e DirectX 12, secondo la pagina dei giochi supportati [9]. Questo non significa che ogni gioco FSR 3.1 riceva anche Ray Regeneration o Radiance Caching: sono funzioni separate.</p>
+<p>FSR 4.1 non è “FSR 3 con un numero più alto”. Il modello ML ricostruisce da una risoluzione interna e mira a migliorare qualità e stabilità rispetto a FSR 3.1, ma il risultato varia con il gioco e con la modalità. Le prestazioni dichiarate da AMD sono misure di laboratorio su hardware specifico, non un valore da sommare al tuo FPS [6].</p>
+<h3 id="fsr-4-tramite-optiscaler">FSR 4 tramite OptiScaler</h3>
+<p>OptiScaler può sostituire l'upscaler nativo e instradare FSR 4 su GPU discrete RDNA 3 e RDNA 4; è un percorso della community, non un supporto AMD ufficiale [10]. Su RDNA 2 il supporto FSR 4 non è quello dichiarato dal progetto, anche se altri esperimenti della community possono esistere. Non presentare un test riuscito su una configurazione come compatibilità generale.</p>
+<h2 id="5-matrice-di-supporto-nvidia-cosa-e-ufficiale-e-cosa-no">5. Matrice di supporto NVIDIA: cosa è ufficiale e cosa no</h2>
+<p>La tabella descrive il supporto dichiarato al 23 ottobre 2026, non ciò che un mod può forzare. “Titoli supportati” significa che il gioco deve integrare la funzione: la presenza della GPU non basta.</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>DLSS 4.5 SR/RR</th>
+<th>FG 2X</th>
+<th>MFG 4X–6X</th>
+<th>Dynamic MFG</th>
+<th>DLSS 5</th>
+<th>Preset C</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RTX 50 desktop/laptop</td>
+<td>Sì</td>
+<td>Sì</td>
+<td>Sì; 4X nei titoli MFG, 5X/6X solo con DLL recente</td>
+<td>Sì</td>
+<td>Sì nei titoli integrati</td>
+<td>Sì, beta</td>
+<td>6X non è universale; richiede gioco e DLL compatibili [2][19].</td>
+</tr>
+<tr>
+<td>RTX 40</td>
+<td>Sì</td>
+<td>Sì</td>
+<td>No</td>
+<td>No</td>
+<td>No al 23 ottobre; piano annunciato</td>
+<td>Sì, beta; solo FG 2X</td>
+<td>NVIDIA intende estendere DLSS 5 dopo l'ottimizzazione RTX 50, senza data [20].</td>
+</tr>
+<tr>
+<td>RTX 20/30</td>
+<td>Sì</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>M/L più pesanti senza FP8; nessuna FG hardware [1].</td>
+</tr>
+<tr>
+<td>GTX 10/16</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>DLSS non supportato.</td>
+</tr>
+<tr>
+<td>RTX Spark laptop</td>
+<td>Sì</td>
+<td>Sì</td>
+<td>Sì, Dynamic MFG</td>
+<td>Sì</td>
+<td>Sì</td>
+<td>Sì, beta</td>
+<td>Piattaforma laptop; supporto dichiarato, non una GPU desktop [19].</td>
+</tr>
+</tbody></table>
+</div><p>La matrice non dice che una funzione sia conveniente. Per esempio, MFG 6X su RTX 50 richiede una base di frame sostenibile e un gioco con DLL recente; DLSS 5 richiede un titolo che la integri e, oggi, una RTX 50. Una RTX 40 può usare DLSS 4.5, FG 2X e Preset C, ma non MFG o DLSS 5 ufficiale. Una RTX 20/30 può usare SR e RR 4.5, ma non Frame Generation o DLSS 5.</p>
+<p>In pratica:</p>
+<ul>
+<li><strong>RTX 50</strong>: tutte le funzioni NVIDIA discusse qui, con disponibilità per titolo; MFG fino a 6X e Preset C sono le novità più rilevanti.</li>
+<li><strong>RTX 40</strong>: SR/RR 4.5, FG 2X e Preset C; niente MFG, niente DLSS 5 al 23 ottobre 2026. Il piano RTX 40 per DLSS 5 è ufficiale ma senza data [20].</li>
+<li><strong>RTX 20/30</strong>: SR/RR 4.5; nessuna FG/MFG/DLSS 5. I mod leakati non cambiano il supporto.</li>
+<li><strong>GTX 10/16</strong>: nessuna funzione DLSS; resta il percorso FSR del gioco, se disponibile.</li>
+</ul>
+<h2 id="6-sviluppi-futuri-annunci-ufficiali-test-isolati-e-leak">6. Sviluppi futuri: annunci ufficiali, test isolati e leak</h2>
+<h3 id="ufficiale-e-datato">Ufficiale e datato</h3>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Cosa</th>
+<th>Stato</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>23 ottobre 2026</td>
+<td>RTX Remix: DLSS 5 e Preset C</td>
+<td>Annunciato da NVIDIA; non verificato su questo PC [19].</td>
+</tr>
+<tr>
+<td>5 novembre 2026</td>
+<td>Hogwarts Legacy: DLSS 5</td>
+<td>Annunciato per RTX 50, GeForce NOW e RTX Spark [19].</td>
+</tr>
+<tr>
+<td>Fine novembre 2026</td>
+<td>Where Winds Meet: DLSS 5</td>
+<td>Annunciato, senza giorno esatto [19].</td>
+</tr>
+<tr>
+<td>Nessuna data</td>
+<td>DLSS 5 su RTX 40</td>
+<td>Piano confermato a The Verge; non rilasciato al 23 ottobre 2026 [20].</td>
+</tr>
+<tr>
+<td>Nessuna data</td>
+<td>Altri titoli DLSS 5</td>
+<td>Annunci vari; NVIDIA non ha riconfermato l'elenco precedente [20].</td>
+</tr>
+</tbody></table>
+</div><h3 id="non-ufficiale-test-mod-e-leak">Non ufficiale: test, mod e leak</h3>
+<p>Queste informazioni non sono supporto NVIDIA e non vanno usate per decidere un acquisto o per dichiarare una compatibilità.</p>
+<ul>
+<li><strong>RTX 4070 Super, DLSS 5 con libreria/mod non ufficiale (17 ottobre 2026).</strong> Un post su X riporta, in Control Resonant a 1440p con DLSS Quality e RT/FG off, circa 43–44 FPS prima e 53–54 FPS dopo, 1% low da 39–41 a 47–48 FPS e latenza da 107,3 a 65,1 ms. È una singola esecuzione della community, non una replica indipendente; non dimostra che DLSS 5 sia supportato su RTX 40 [21].</li>
+<li><strong>RTX 30, DLSS 5 leakato (30 agosto 2026).</strong> Un post di TechPowerUp descrive prestazioni non utilizzabili e crash. Non è un percorso supportato e non va presentato come “DLSS 5 su RTX 30” [22].</li>
+<li><strong>MFG forzato su RTX 40.</strong> Sono comparsi addon della community che sbloccano 3X/4X/6X su RTX 40 e correggono il midpoint temporale. Non sono supportati da NVIDIA, possono rompere il frame pacing e non cambiano la matrice ufficiale: RTX 40 resta FG 2X.</li>
+<li><strong>MFG 8X/10X.</strong> Al 23 ottobre 2026 non esiste una fonte credibile: il massimo ufficiale è 6X. Non inserire 8X o 10X in una guida come se fossero annunciati.</li>
+<li><strong>DLSS 5 su RTX 20/30.</strong> Non è stato annunciato da NVIDIA; i test con mod non sono supporto. Aspettati crash, qualità incoerente e prestazioni non rappresentative.</li>
+</ul>
+<p>La conclusione operativa è semplice: se hai una RTX 40, oggi puoi usare FG 2X e Preset C, non MFG; se hai una RTX 50, puoi valutare MFG e Dynamic, ma il guadagno dipende dal titolo. Non comprare una GPU per un leak, per un test X o per un moltiplicatore che non è ancora ufficiale.</p>
+<h2 id="7-scegliere-un-preset-senza-inseguire-il-numero-piu-alto">7. Scegliere un preset senza inseguire il numero più alto</h2>
+<p>Un punto di partenza ragionevole è:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Uscita</th>
+<th>Prima prova</th>
+<th>Alternativa</th>
+<th>Cosa controllare</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1080p</td>
+<td>Quality</td>
+<td>DLAA o nativo</td>
+<td>Bordi, erba, particelle, UI</td>
+</tr>
+<tr>
+<td>1440p</td>
+<td>Quality</td>
+<td>Balanced</td>
+<td>Dettaglio in movimento e stabilità</td>
+</tr>
+<tr>
+<td>4K</td>
+<td>Quality o Balanced</td>
+<td>Performance</td>
+<td>Foliage, riflessi, testo e HUD</td>
+</tr>
+<tr>
+<td>4K ad alto refresh</td>
+<td>Balanced o Performance</td>
+<td>Ultra Performance solo se necessario</td>
+<td>Artefatti e carico GPU reale</td>
+</tr>
+</tbody></table>
+</div><p>Non è una tabella di preset universali. A parità di etichetta, la risoluzione interna cambia con il gioco e con la modalità; “Performance” a 1080p è molto più aggressivo di “Performance” a 4K. Ultra Performance ha senso soprattutto quando il monitor o il titolo richiedono molti pixel e la GPU non sostiene la modalità superiore; il preset L è ottimizzato per 4K Ultra Performance, non per ogni risoluzione [1].</p>
+<p>Procedura prudente:</p>
+<ol>
+<li>Fissa risoluzione, refresh, VRR, cap e Reflex/Anti-Lag. Non cambiare anche questi durante il confronto dell'upscaler.</li>
+<li>Crea una baseline nativa o con TAA nella stessa scena, alla stessa risoluzione di uscita. Salva un'immagine ferma e una in movimento.</li>
+<li>Prova una sola modalità di upscaling. Se possibile, confronta K, M e L senza cambiare il resto.</li>
+<li>Solo dopo valuta la Frame Generation. La base deve già essere giocabile e il compromise di reattività accettabile; non usare FG per nascondere un limite CPU. Se provi Preset C, mantieni lo stesso moltiplicatore e confronta B/C.</li>
+<li>Se usi Dynamic MFG, togli cap e V-Sync come richiesto dalla modalità e imposta il target di refresh. Se usi Fixed, scegli un moltiplicatore e verifica il frame pacing.</li>
+<li>Controlla artefatti su personaggi, capelli, tessuti, vetri, erba, particelle e HUD, non solo su un paesaggio fermo.</li>
+<li>Esegui A–B–A: baseline, modifica, ritorno. Se A non torna simile ad A, il confronto non ha isolato la variabile.</li>
+</ol>
+<p>In competitivo, la Frame Generation non è automaticamente vantaggiosa. Può rendere il movimento più continuo, ma non riduce il tempo di simulazione e può aggiungere latenza. Provala con la stessa scena e con un metodo di misura pertinente; se non hai una misura end-to-end, puoi descrivere la percezione, non un guadagno in millisecondi [4][12].</p>
+<figure data-guide-figure="quality"><a href="/images/guides/diagrams/quality.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Confrontare qualità e comportamento"><img src="/images/guides/diagrams/quality.svg" alt="Confrontare qualità e comportamento" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>Confrontare qualità e comportamento · Schema illustrativo Prime Build</figcaption></figure><h2 id="8-problemi-frequenti-e-diagnosi">8. Problemi frequenti e diagnosi</h2>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Sintomo</th>
+<th>Meccanismo plausibile</th>
+<th>Verifica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Scia o ghosting su personaggi e oggetti</td>
+<td>Storia temporale insufficiente, motion vector imprecisi, denoiser o FG</td>
+<td>Confronta upscaler nativo, preset diversi e FG OFF; osserva oggetti che si sovrappongono.</td>
+</tr>
+<tr>
+<td>Shimmering su erba, griglie e riflessi</td>
+<td>Risoluzione interna bassa, dettaglio sottile, sharpening</td>
+<td>Passa a Quality, riduci sharpening, prova DLAA/nativo.</td>
+</tr>
+<tr>
+<td>HUD o mirino che vibra</td>
+<td>Frame Generation senza buffer UI adeguati</td>
+<td>Prova il modello Enhanced FG se disponibile; altrimenti disabilita FG.</td>
+</tr>
+<tr>
+<td>Artefatti su UI o riflessi con Preset C</td>
+<td>Optical flow più leggero, con compromesso dichiarato</td>
+<td>Confronta B/C nello stesso punto e con lo stesso moltiplicatore; se il difetto resta, torna a B.</td>
+</tr>
+<tr>
+<td>Input più lento con FG attiva</td>
+<td>Costo di generazione e coda aggiuntiva</td>
+<td>Misura la base senza FG, poi con FG; controlla Reflex e il frame pacing.</td>
+</tr>
+<tr>
+<td>FPS alti ma movimento a scatti</td>
+<td>Frame pacing, VRR, cap o carico CPU</td>
+<td>Guarda frame time e Frame Type, non solo il contatore medio.</td>
+</tr>
+<tr>
+<td>Crash o schermo nero dopo un override</td>
+<td>DLL o modello incompatibile, driver, mod</td>
+<td>Ripristina la DLL originale e verifica l'integrità del gioco.</td>
+</tr>
+<tr>
+<td>Microstutter dopo l'avvio</td>
+<td>Compilazione shader o cache in aggiornamento</td>
+<td>Attendi la compilazione, ripeti la scena, non attribuire tutto all'upscaler.</td>
+</tr>
+</tbody></table>
+</div><p>Un upscaler non corregge un gioco limitato dalla CPU, un server lento o una simulazione irregolare. La Frame Generation non rende più fresca la posizione del giocatore e non moltiplica gli eventi di rete. Se il sintomo è un comando percepito in ritardo, separa coda CPU/GPU, sync, input e display: la guida <a href="/guides/sincronizzazione-limiter/">Sincronizzazione e limiter</a> descrive il percorso.</p>
+<figure data-guide-figure="validation"><a href="/images/guides/diagrams/validation.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Una modifica, più prove"><img src="/images/guides/diagrams/validation.svg" alt="Una modifica, più prove" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>Una modifica, più prove · Schema illustrativo Prime Build</figcaption></figure><h2 id="9-miti-da-chiudere">9. Miti da chiudere</h2>
+<ul>
+<li><strong>“DLSS 5 è DLSS 4.5 con più frame.”</strong> No: DLSS 5 è neural rendering, con un frame in ingresso e uno in uscita; MFG è una funzione diversa [3][4].</li>
+<li><strong>“6X significa sei volte la reattività.”</strong> No: significa un frame renderizzato e cinque generati; la simulazione non diventa sei volte più frequente [2].</li>
+<li><strong>“Preset C è un moltiplicatore in più.”</strong> No: è un modello di Frame Generation più leggero; il moltiplicatore resta quello scelto [19].</li>
+<li><strong>“La MFG ha i preset M, L e K.”</strong> No: M, L e K sono preset di Super Resolution; per la Frame Generation hai modalità Fixed/Dynamic e preset B/C [1][2][19].</li>
+<li><strong>“DLSS 5 è già ufficiale su RTX 40.”</strong> No: al 23 ottobre 2026 è ufficiale su RTX 50, RTX Spark e GeForce NOW; il supporto RTX 40 è pianificato, senza data [19][20].</li>
+<li><strong>“Un test su X dimostra che RTX 40 o RTX 30 supportano DLSS 5.”</strong> No: un mod può avviarsi e produrre numeri in una scena, ma non è supporto, stabilità o qualità garantita [20][21][22].</li>
+<li><strong>“Arriverà MFG 8X/10X.”</strong> No: al 23 ottobre 2026 il massimo ufficiale è 6X; non c'è una fonte credibile per 8X o 10X.</li>
+<li><strong>“La Frame Generation elimina il collo di bottiglia CPU.”</strong> No: può aumentare la fluidità visiva, ma non accelerare la logica di gioco o la rete.</li>
+<li><strong>“L'upscaling riduce sempre la latenza.”</strong> No: riduce il lavoro GPU solo se il carico è GPU-bound e il costo di ricostruzione non annulla il guadagno.</li>
+<li><strong>“Il preset più recente è sempre il migliore.”</strong> No: M e L possono pesare di più su RTX 20/30 e K può essere preferibile [1].</li>
+<li><strong>“FSR 4 funziona su tutte le GPU.”</strong> No: l'upscaling ML ha requisiti hardware; il Redstone completo è RX 9000 e le funzioni dipendono dal gioco [6][7].</li>
+<li><strong>“Una DLL nuova basta per aggiornare qualsiasi gioco.”</strong> No: servono integrazione, API, modello e compatibilità; un override può peggiorare stabilità o qualità.</li>
+<li><strong>“Più FPS mostrati = meno latenza.”</strong> No: gli FPS descrivono il throughput delle immagini presentate, non il tempo di un singolo input.</li>
+</ul>
+<h2 id="10-mod-e-tool-della-community">10. Mod e tool della community</h2>
+<p>Gli override ufficiali coprono molti casi: NVIDIA App per DLSS, driver AMD per l'upscaling FSR 4.1. I tool della community servono soprattutto quando il gioco spedisce una DLL vecchia, non offre FSR 4 o non espone un'opzione. Sono strumenti non ufficiali: possono violare regole di gioco, essere rilevati da anti-cheat, introdurre crash o essere sovrascritti da un aggiornamento. Non usarli in competitivo senza verificare la policy del titolo.</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Cosa fa</th>
+<th>Link</th>
+<th>Limite</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>OptiScaler</strong></td>
+<td>Sostituisce l'upscaler e instrada DLSS, XeSS, FSR 2/3/4</td>
+<td><a href="https://github.com/optiscaler/OptiScaler">github.com/optiscaler/OptiScaler</a></td>
+<td>FSR 4 dichiarato su RDNA 3/4 discrete; non è supporto AMD ufficiale.</td>
+</tr>
+<tr>
+<td><strong>OptiPatcher</strong></td>
+<td>Plugin ASI che espone input DLSS/DLSSG senza spoofing</td>
+<td><a href="https://github.com/optiscaler/OptiPatcher">github.com/optiscaler/OptiPatcher</a></td>
+<td>Compatibilità per gioco; può essere bloccato o instabile.</td>
+</tr>
+<tr>
+<td><strong>DLSS Swapper</strong></td>
+<td>Gestisce e sostituisce DLL DLSS, con backup</td>
+<td><a href="https://github.com/beeradmoore/dlss-swapper">github.com/beeradmoore/dlss-swapper</a></td>
+<td>La DLL giusta non garantisce che il gioco accetti il modello.</td>
+</tr>
+<tr>
+<td><strong>DLSS Enabler</strong></td>
+<td>Installer e wrapper per abilitare percorsi DLSS su giochi supportati</td>
+<td><a href="https://github.com/artur-graniszewski/DLSS-Enabler">github.com/artur-graniszewski/DLSS-Enabler</a></td>
+<td>Progetto non ufficiale; qualità e stabilità variano.</td>
+</tr>
+<tr>
+<td><strong>UPSCALE IT</strong></td>
+<td>Manager MIT per OptiScaler, DLSS Enabler e aggiornamento DLL</td>
+<td><a href="https://github.com/NODIX-TECH/UPSCALE-IT">github.com/NODIX-TECH/UPSCALE-IT</a></td>
+<td>Gestisce tool di terzi; non certifica compatibilità o sicurezza.</td>
+</tr>
+<tr>
+<td><strong>DLSS 5 MANAGER</strong></td>
+<td>Manager indipendente per DLSS 5, ReShade e OptiScaler</td>
+<td><a href="https://github.com/NODIX-TECH/DLSS-5-MANAGER">github.com/NODIX-TECH/DLSS-5-MANAGER</a></td>
+<td>Non affiliato a NVIDIA; raccoglie mod e componenti di terzi.</td>
+</tr>
+</tbody></table>
+</div><p>Le date e le release cambiano rapidamente. Al momento della revisione, OptiScaler risultava <code>v0.9.4</code> del 18 luglio 2026, OptiPatcher una release <code>rolling</code> del 14 maggio 2026, DLSS Swapper <code>v1.2.7.0</code> del 18 ottobre 2026 e DLSS Enabler <code>v0.9.4</code> del 19 luglio 2026 [10][11][12][13]. UPSCALE IT risultava <code>1.0.1</code> del 13 giugno 2026 e DLSS 5 MANAGER <code>1.3.7</code> del 19 ottobre 2026 [14][15]. Verifica sempre la release e il sorgente prima di eseguire un binario.</p>
+<p>Procedura di prova:</p>
+<ol>
+<li>Conserva la cartella del gioco e il file di configurazione originali; annota versione del gioco, driver e tool.</li>
+<li>Prova un solo tool e un solo gioco, preferibilmente offline o single-player.</li>
+<li>Disabilita overlay e mod concorrenti; non sommare OptiScaler, DLSS Enabler e un manager nello stesso titolo.</li>
+<li>Se il gioco non si avvia, ripristina le DLL e il config, poi verifica l'integrità dei file. Non aggirare l'anti-cheat.</li>
+<li>Se funziona, documenta artefatti, crash, frame pacing e versione usata. Un avvio riuscito non è una certificazione di qualità.</li>
+</ol>
+<p>Le risorse ufficiali per download e sviluppo restano <a href="https://www.nvidia.com/en-us/software/nvidia-app/">NVIDIA App</a>, <a href="https://github.com/NVIDIA-RTX/Streamline">NVIDIA Streamline</a>, <a href="https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK">AMD FidelityFX SDK</a> e i driver AMD dal sito ufficiale [16][17][18]. Non scaricare DLL o “unlocker” da repository non identificati, non distribuire file di gioco modificati e non assumere che un hash pubblicato su un forum sia una verifica di sicurezza.</p>
+<h2 id="11-limiti-e-fonti">11. Limiti e fonti</h2>
+<p>Questa guida non stabilisce quale preset sia migliore per il tuo gioco. Non dispone di misure di latenza end-to-end, non certifica la disponibilità futura di DLSS 5, non conferma il supporto RTX 40 — oggi solo pianificato — e non verifica le promesse di FPS dei produttori. Le prestazioni dipendono da GPU, CPU, risoluzione, API, driver, versione del gioco e integrazione. I test X citati sono singole esecuzioni non replicate e non sono misure di questa guida. Un test riuscito con un tool della community non dimostra compatibilità generale né assenza di rischi. Non sono stati eseguiti test di Preset C, DLSS 5 o MFG su questo PC.</p>
+<details class="guide-sources"><summary>Elenco delle fonti (22)</summary><ol>
+<li>NVIDIA, <a href="https://www.nvidia.com/en-us/geforce/news/dlss-4-5-geforce-game-ready-driver/">NVIDIA App Update Adds DLSS 4.5 Super Resolution &amp; New GeForce Game Ready Driver</a>, 5 gennaio 2026. Preset M/L/K, requisiti RTX 20/30 e oltre 400 titoli.</li>
+<li>NVIDIA, <a href="https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-generation-6x-mode-released/">DLSS 4.5 Dynamic Multi Frame Generation &amp; Multi Frame Generation 6X Available Now</a>, 31 marzo 2026. 6X, Dynamic, incompatibilità con limiter/V-Sync e dato “fino al 35%”.</li>
+<li>NVIDIA, <a href="https://www.nvidia.com/en-us/geforce/news/dlss5-breakthrough-in-visual-fidelity-for-games/">NVIDIA DLSS 5 Delivers AI-Powered Breakthrough In Visual Fidelity For Games</a>, 16 marzo 2026. Annuncio, input, controlli e requisito RTX 50.</li>
+<li>NVIDIA Developer, <a href="https://developer.nvidia.com/blog/whats-new-for-game-developers-dlss-5-with-3d-guided-neural-rendering-nvidia-ace-updates-and-new-rtx-kit-capabilities/">What's New for Game Developers: DLSS 5 with 3D-Guided Neural Rendering</a>, 22 settembre 2026. One-frame-in/one-frame-out, 4K, controlli e NBA 2K27.</li>
+<li>NVIDIA, <a href="https://www.nvidia.com/en-us/geforce/news/gamescom-2026-nvidia-geforce-rtx-dlss-4-5-announcements">GeForce at Gamescom 2026: DLSS 4.5 Ray Reconstruction &amp; More</a>, 25 agosto 2026. Disponibilità, preset F/Recommended e perimetro RTX.</li>
+<li>AMD, <a href="https://www.amd.com/fsr">AMD FSR Technologies</a>, consultato il 23 ottobre 2026. Suite Redstone, requisiti RX 9000/7000/6000 e definizioni delle funzioni.</li>
+<li>AMD Newsroom, <a href="https://newsroom.amd.com/news/amd-fsr-upscaling-4-1-boosts-frames-image-quality/">AMD FSR Upscaling 4.1 Boosts Frames and Image Quality on More Devices</a>, 20 ottobre 2026. RX 6000, driver 26.10.1 e cronologia RX 7000.</li>
+<li>AMD, <a href="https://www.amd.com/en/resources/support-articles/release-notes/rn-rad-win-26-10-1.html">AMD Software: Adrenalin Edition 26.10.1 Release Notes</a>, 20 ottobre 2026. FSR Upscaling 4.1 su RX 6000 e Ryzen AI.</li>
+<li>AMD, <a href="https://www.amd.com/en/products/graphics/technologies/fidelityfx/supported-games.html">AMD Gaming Technologies Supported Games</a>, consultato il 23 ottobre 2026. Requisiti FSR 3.1/3.1.4 e aggiornamento via driver.</li>
+<li>OptiScaler, <a href="https://github.com/optiscaler/OptiScaler">repository ufficiale</a>, release <code>v0.9.4</code> del 18 luglio 2026. Licenza GPL-3.0 e perimetro FSR 4 su RDNA 3/4.</li>
+<li>OptiPatcher, <a href="https://github.com/optiscaler/OptiPatcher">repository ufficiale</a>, release <code>rolling</code> del 14 maggio 2026. Plugin ASI, letto staticamente.</li>
+<li>DLSS Swapper, <a href="https://github.com/beeradmoore/dlss-swapper">repository ufficiale</a>, release <code>v1.2.7.0</code> del 18 ottobre 2026. Gestione DLL e backup.</li>
+<li>DLSS Enabler, <a href="https://github.com/artur-graniszewski/DLSS-Enabler">repository ufficiale</a>, release <code>v0.9.4</code> del 19 luglio 2026. Installer non ufficiale.</li>
+<li>NODIX-TECH, <a href="https://github.com/NODIX-TECH/UPSCALE-IT">UPSCALE IT</a>, release <code>1.0.1</code> del 13 giugno 2026, licenza MIT. Manager di tool di terzi.</li>
+<li>NODIX-TECH, <a href="https://github.com/NODIX-TECH/DLSS-5-MANAGER">DLSS 5 MANAGER</a>, release <code>1.3.7</code> del 19 ottobre 2026. Progetto indipendente, non affiliato a NVIDIA.</li>
+<li>NVIDIA, <a href="https://www.nvidia.com/en-us/software/nvidia-app/">NVIDIA App</a>, pagina ufficiale del programma.</li>
+<li>NVIDIA, <a href="https://github.com/NVIDIA-RTX/Streamline">Streamline</a>, repository SDK per l'integrazione DLSS.</li>
+<li>AMD GPUOpen, <a href="https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK">FidelityFX SDK</a>, repository SDK per le tecnologie FidelityFX.</li>
+<li>NVIDIA, <a href="https://www.nvidia.com/en-us/geforce/news/dlss-5-faster-ai-model-hogwarts-legacy-rtx-spark-laptops/">DLSS 5 Comes To Hogwarts Legacy &amp; RTX Spark, Powered By 2X Faster Model</a>, 13 ottobre 2026. Modello 2X, 118 milioni di parametri, 24% in meno, 20% di VRAM in meno, 10X complessivo, 1,4X in NBA 2K27, Hogwarts Legacy, Where Winds Meet, RTX Remix e Preset C.</li>
+<li>The Verge, <a href="https://www.theverge.com/games/989978/nvidia-dlss-5-rtx-40">Nvidia will officially bring DLSS 5 to older GPUs — but won’t give gamers full control</a>, 4 settembre 2026. Piano RTX 40, natura on/off per il giocatore e modelli eseguiti su ogni frame.</li>
+<li>GameGPU (@GameGPU_com), <a href="https://x.com/GameGPU_com/status/2111476910064562591">post su X del 17 ottobre 2026</a>, consultato il 23 ottobre 2026. Test community su RTX 4070 Super; dati non replicati.</li>
+<li>TechPowerUp (@TechPowerUp), <a href="https://x.com/TechPowerUp/status/2094103704597098568">post su X del 30 agosto 2026</a>, consultato il 23 ottobre 2026. DLSS 5 su RTX 30: prestazioni e stabilità non utilizzabili.</li>
+</ol></details>
+</article><nav aria-label="Altre guide" class="mt-14 flex flex-wrap justify-between gap-6 border-t border-white/15 pt-6 text-sm"><a href="/guides/misure-verifica/" class="max-w-xs text-zinc-300">← Misure e verifica: capire se una modifica ha davvero aiutato</a></nav></div></div></div></section></div>
+  </body>
+</html>
+
+
+

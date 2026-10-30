@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>if(new URLSearchParams(location.search).get("motion")==="on")document.documentElement.classList.add("motion-preview")</script>
+    <meta http-equiv="content-language" content="it" />
+    <link rel="alternate" hreflang="it" href="https://primebuild.website/guides/stabilita-occt/" />
+    <link rel="alternate" hreflang="x-default" href="https://primebuild.website/guides/stabilita-occt/" />
+    <title>Stabilità e overclock: CPU, GPU, RAM e test che contano | Prime Build</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Un overclock può alzare gli FPS, ma non è automaticamente un intervento sulla latenza. Può migliorare la regolarità dei frame quando il collo di bottiglia è…" />
+    <meta name="author" content="Prime Build" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="geo.region" content="IT-PD" />
+    <meta name="geo.placename" content="Montegrotto Terme" />
+    <meta name="geo.position" content="45.3166667;11.7666667" />
+    <meta name="ICBM" content="45.3166667, 11.7666667" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://primebuild.website/guides/stabilita-occt/" />
+    <meta property="og:title" content="Stabilità e overclock: CPU, GPU, RAM e test che contano | Prime Build" />
+    <meta property="og:description" content="Un overclock può alzare gli FPS, ma non è automaticamente un intervento sulla latenza. Può migliorare la regolarità dei frame quando il collo di bottiglia è…" />
+    <meta property="og:image" content="https://primebuild.website/og/stabilita-occt.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Stabilità e overclock: CPU, GPU, RAM e test che contano | Prime Build" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Prime Build" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Stabilità e overclock: CPU, GPU, RAM e test che contano | Prime Build" />
+    <meta name="twitter:description" content="Un overclock può alzare gli FPS, ma non è automaticamente un intervento sulla latenza. Può migliorare la regolarità dei frame quando il collo di bottiglia è…" />
+    <meta name="twitter:image" content="https://primebuild.website/og/stabilita-occt.png" />
+    <meta name="twitter:image:alt" content="Stabilità e overclock: CPU, GPU, RAM e test che contano | Prime Build" />
+    
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://primebuild.website/guides/stabilita-occt/" />
+    
+    <!-- Preload critical assets for better LCP -->
+    <link rel="preload" href="/logo.png?v=20260814" as="image" type="image/png" fetchpriority="high">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico?v=20260814" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20260814" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20260814" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260814" />
+    <link rel="manifest" href="/site.webmanifest?v=20260814">
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-TileColor" content="#ff6600">
+
+      <script type="module" crossorigin src="/assets/index-BYESkKSr.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-DWHSJf6t.css">
+    <meta property="article:published_time" content="2026-10-23"><meta property="article:modified_time" content="2026-10-30"><script id="primebuild-schema" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","LocalBusiness"],"@id":"https://primebuild.website/#business","name":"Prime Build","alternateName":"PrimeBuild","url":"https://primebuild.website/","logo":{"@type":"ImageObject","url":"https://primebuild.website/logo.png?v=20260814","width":512,"height":512},"image":"https://primebuild.website/og-image-v2.png","email":"preventivi@primebuild.website","description":"Assemblaggio PC gaming su misura, assistenza tecnica e ottimizzazione a Montegrotto Terme, Padova e in tutta Italia.","address":{"@type":"PostalAddress","addressLocality":"Montegrotto Terme","postalCode":"35036","addressRegion":"PD","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":45.3166667,"longitude":11.7666667},"areaServed":[{"@type":"City","name":"Montegrotto Terme"},{"@type":"City","name":"Padova"},{"@type":"Country","name":"Italia"}],"priceRange":"€€","sameAs":["https://www.instagram.com/prime_build_/","https://discord.gg/ERUwSxE79q","https://github.com/PrimeBuild-pc"],"knowsAbout":["PC gaming custom","Assemblaggio PC","Assistenza tecnica PC","Ottimizzazione PC","Latenza gaming"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Servizi Prime Build","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Assemblaggio PC gaming su misura","url":"https://primebuild.website/servizi/pc-gaming-su-misura/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Assistenza e riparazione PC","url":"https://primebuild.website/servizi/assistenza-riparazione-pc/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Ottimizzazione PC gaming","url":"https://primebuild.website/servizi/ottimizzazione-pc-gaming/"}}]}},{"@type":"WebSite","@id":"https://primebuild.website/#website","url":"https://primebuild.website/","name":"Prime Build","alternateName":"PrimeBuild","inLanguage":"it-IT","publisher":{"@id":"https://primebuild.website/#business"}},{"@type":"Article","@id":"https://primebuild.website/guides/stabilita-occt/#article","headline":"Stabilità e overclock: CPU, GPU, RAM e test che contano","description":"Un overclock può alzare gli FPS, ma non è automaticamente un intervento sulla latenza. Può migliorare la regolarità dei frame quando il collo di bottiglia è…","image":"https://primebuild.website/og-image-v2.png","datePublished":"2026-10-23","dateModified":"2026-10-30","author":{"@id":"https://primebuild.website/#business"},"publisher":{"@id":"https://primebuild.website/#business"},"mainEntityOfPage":{"@id":"https://primebuild.website/guides/stabilita-occt/#webpage"},"inLanguage":"it-IT"},{"@type":"WebPage","@id":"https://primebuild.website/guides/stabilita-occt/#webpage","url":"https://primebuild.website/guides/stabilita-occt/","name":"Stabilità e overclock: CPU, GPU, RAM e test che contano","isPartOf":{"@id":"https://primebuild.website/#website"},"breadcrumb":{"@id":"https://primebuild.website/guides/stabilita-occt/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://primebuild.website/guides/stabilita-occt/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://primebuild.website/"},{"@type":"ListItem","position":2,"name":"Guide","item":"https://primebuild.website/guides/"},{"@type":"ListItem","position":3,"name":"Stabilità e overclock: CPU, GPU, RAM e test che contano","item":"https://primebuild.website/guides/stabilita-occt/"}]}]}</script></head>
+  <body>
+    <div id="root"><section data-guide-slug="stabilita-occt" class="guide-page px-4 pb-20 pt-28 sm:px-6"><div class="mx-auto max-w-7xl"><nav aria-label="Percorso" class="mb-7 flex flex-wrap items-center gap-3 text-sm text-zinc-300"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/guides/">Tutte le guide</a><span aria-hidden="true">/</span><span>Guida 02</span></nav><div class="guide-layout"><aside class="guide-index"><details><summary>In questa guida</summary><nav aria-label="Indice della guida"><ol><li><a href="#1-prima-di-toccare-il-bios-baseline-e-ritorno">1. Prima di toccare il BIOS: baseline e ritorno</a></li><li><a href="#2-che-cosa-cambia-davvero-un-overclock">2. Che cosa cambia davvero un overclock</a></li><li><a href="#3-mappa-delle-piattaforme-nel-2026">3. Mappa delle piattaforme nel 2026</a></li><li><a href="#4-cpu-pbo-curve-optimizer-tensione-e-llc">4. CPU: PBO, Curve Optimizer, tensione e LLC</a></li><li><a href="#5-ram-il-guadagno-piu-sottile-la-validazione-piu-lunga">5. RAM: il guadagno più sottile, la validazione più lunga</a></li><li><a href="#6-gpu-overclock-undervolt-e-power-limit">6. GPU: overclock, undervolt e power limit</a></li><li><a href="#7-protocollo-di-validazione-a-b-a-non-un-test-e-via">7. Protocollo di validazione: A–B–A, non “un test e via”</a></li><li><a href="#8-occt-prima-la-domanda-poi-il-test">8. OCCT: prima la domanda, poi il test</a></li><li><a href="#9-memtest86-whea-e-lettura-dei-sensori">9. MemTest86, WHEA e lettura dei sensori</a></li><li><a href="#10-che-cosa-dicono-community-e-pro-e-che-cosa-adottiamo">10. Che cosa dicono community e pro, e che cosa adottiamo</a></li><li><a href="#11-miti-da-chiudere">11. Miti da chiudere</a></li><li><a href="#12-quando-la-base-e-abbastanza-chiara-per-proseguire">12. Quando la base è abbastanza chiara per proseguire</a></li><li><a href="#fonti-e-limiti">Fonti e limiti</a></li></ol></nav></details></aside><div class="min-w-0"><div class="mb-6 flex flex-wrap gap-3 text-sm text-zinc-400"><span class="text-primary">02 / 13</span><time dateTime="2026-10-30">Aggiornata il 30 ottobre 2026</time><a href="/chi-siamo/">Team tecnico Prime Build</a></div><article class="guide-prose"><h1 id="stabilita-e-overclock-cpu-gpu-ram-e-test-che-contano">Stabilità e overclock: CPU, GPU, RAM e test che contano</h1>
+<p>Un overclock può alzare gli FPS, ma non è automaticamente un intervento sulla latenza. Può migliorare la regolarità dei frame quando il collo di bottiglia è la CPU o la GPU, peggiorarla quando introduce errori corretti in silenzio, e lasciare tutto invariato quando il limite è il gioco, il server o il display. Prima di cercare un millisecondo conviene risolvere una domanda più semplice: il PC esegue il lavoro corretto, con margini termici ed elettrici credibili?</p>
+<p>Questa guida separa tre livelli che vengono spesso confusi:</p>
+<ul>
+<li><strong>stabilità</strong>: il sistema non produce errori di calcolo, crash, artefatti o riavvii;</li>
+<li><strong>prestazioni</strong>: il lavoro viene svolto più velocemente o con frame time più regolari;</li>
+<li><strong>latenza percepita</strong>: il percorso input→gioco→display→occhio umano. L'overclock può influirvi, ma non la misura da solo.</li>
+</ul>
+<p><strong>Stabilità, prestazioni e latenza non sono sinonimi.</strong> Gli FPS descrivono il ritmo di produzione dei frame; il frame time descrive gli intervalli nella metrica raccolta. Le <strong>ISR</strong> (Interrupt Service Routine) e le <strong>DPC</strong> (Deferred Procedure Call) sono routine dei driver il cui lavoro può interferire con attività a scadenza. Un test memoria non misura nessuna di queste latenze, e un report LatencyMon favorevole non dimostra RAM affidabile.</p>
+<p>Il riferimento è Windows 11 25H2/26H2, con piattaforme desktop AMD AM5, Intel LGA1851 e GPU NVIDIA/AMD recenti. Non vengono certificate in anticipo build future, BIOS non pubblicati o sample engineering. Le procedure seguenti sono documentate: per questa stesura non sono stati installati OCCT, eseguiti stress test o collaudati recuperi sul PC del lettore.</p>
+<h2 id="1-prima-di-toccare-il-bios-baseline-e-ritorno">1. Prima di toccare il BIOS: baseline e ritorno</h2>
+<p>Una <strong>baseline</strong> è la configurazione di riferimento a cui confrontare una modifica. Non basta annotare “tutto stock”: un BIOS può applicare automaticamente profili memoria, boost estesi, limiti di potenza OEM o impostazioni diverse da quelle dichiarate dal produttore della CPU.</p>
+<p>Registra almeno:</p>
+<ul>
+<li>modello CPU, GPU, scheda madre e versione BIOS;</li>
+<li>versione <strong>AGESA</strong> o microcode, se disponibile;</li>
+<li>kit RAM, capacità, numero di moduli, slot occupati e profilo JEDEC/XMP/EXPO;</li>
+<li>overclock e undervolt attivi, compresi quelli applicati da utility Windows;</li>
+<li>piano energetico, driver GPU e versione di Windows;</li>
+<li>alimentatore, dissipatore, ventole e temperatura ambiente;</li>
+<li>risultati delle prove baseline, non solo il punteggio massimo.</li>
+</ul>
+<p>Un <strong>undervolt</strong> riduce la tensione rispetto al percorso di riferimento; può funzionare in alcune condizioni e fallire in altre. <strong>XMP ed EXPO</strong> applicano profili di frequenza, timing e tensione RAM: sono overclock, anche se disponibili con un clic [6][7][23]. <strong>PBO</strong> è anch'esso overclock secondo AMD e può invalidare la garanzia [1][3]. Non chiamare “stock” una configurazione che non lo è.</p>
+<p>Salva il lavoro, i dati importanti e le impostazioni pertinenti. Prepara il <strong>rollback</strong> prima di modificare:</p>
+<ul>
+<li>profilo BIOS esportato su USB, se la scheda lo supporta;</li>
+<li>foto delle schermate con i valori originali;</li>
+<li>posizione del jumper/clear CMOS o del pulsante di reset del firmware;</li>
+<li>chiave di recupero BitLocker e password dell'account, accessibili da un altro dispositivo;</li>
+<li>installer o pacchetto driver GPU conservato, se stai per cambiarli.</li>
+</ul>
+<p>Non caricare indiscriminatamente tutti i default BIOS. Potresti cambiare storage/VMD/RAID, boot o sicurezza e rendere non avviabile il Windows esistente. Un profilo salvato non garantisce di poter entrare nel firmware se la configurazione della memoria impedisce l'avvio.</p>
+<p>Dopo una modifica RAM, il <strong>memory training</strong> cerca parametri di funzionamento. Soprattutto con DDR5 può rendere il primo avvio più lungo e includere riavvii. Segui tempi e LED del manuale; non interrompere ripetutamente l'alimentazione durante il training previsto. Il completamento del training significa che il sistema è riuscito ad avviarsi, non che la memoria sia stabile. Se non riparte, usa il recupero documentato o assistenza, senza alzare tensioni a tentativi.</p>
+<h2 id="2-che-cosa-cambia-davvero-un-overclock">2. Che cosa cambia davvero un overclock</h2>
+<h3 id="la-scala-dei-guadagni-non-e-universale">La scala dei guadagni non è universale</h3>
+<p>Un overclock della CPU aiuta soprattutto quando il gioco è <strong>CPU-bound</strong>: molti oggetti, fisica, IA, draw call, simulazioni, risoluzioni basse o competitive con GPU molto veloce. Un overclock della GPU aiuta quando il limite è il rendering: risoluzione alta, ray tracing, texture, effetti. La RAM e la cache aiutano di più nei giochi con accessi frequenti alla memoria e nei minimi, non necessariamente nella media.</p>
+<p>Questo significa che:</p>
+<ul>
+<li><strong>+5% di clock non equivale a +5% di FPS</strong>: il collo di bottiglia può spostarsi;</li>
+<li><strong>la media può salire e i minimi peggiorare</strong> se l'overclock introduce errori corretti o instabilità termica;</li>
+<li><strong>la risoluzione cambia il collo di bottiglia</strong>: un profilo CPU stabile a 1080p può essere irrilevante a 4K, e viceversa;</li>
+<li><strong>il frame time è più informativo della media</strong> per capire se il gioco “scatta” nonostante FPS alti.</li>
+</ul>
+<p>La <a href="/guides/misure-verifica/">guida alle misure</a> entra nel merito di presentazione e frame time. Qui basta fissare il principio: un overclock si valuta con la metrica che descrive il problema, non con un numero scelto a priori.</p>
+<h3 id="la-silicon-lottery-non-e-una-scusa-e-un-dato">La silicon lottery non è una scusa: è un dato</h3>
+<p>Ogni CPU e GPU esce dalla fabbrica con una curva tensione/frequenza leggermente diversa. Due 9800X3D possono raggiungere la stessa frequenza con tensioni diverse, e due RTX 5090 possono avere limiti di potenza e temperature diversi. Per questo:</p>
+<ul>
+<li>i valori “stabili” visti su un forum sono <strong>punti di partenza</strong>, non obiettivi;</li>
+<li>un offset di tensione che funziona su un sample può essere instabile su un altro;</li>
+<li>la stessa scheda può comportarsi diversamente dopo un aggiornamento BIOS, driver o dissipatore;</li>
+<li>il silicio può degradarsi nel tempo se sottoposto a tensione, corrente e temperatura elevate.</li>
+</ul>
+<p>La guida non propone quindi un “profilo universale”. Propone un <strong>metodo</strong> per trovare il limite del tuo sample e per riconoscere quando il guadagno non vale il rischio.</p>
+<h3 id="le-quattro-variabili-che-contano">Le quattro variabili che contano</h3>
+<ol>
+<li><strong>Frequenza</strong>: il clock target. Non è libero: dipende dalla curva V/F, dai limiti e dalla temperatura.</li>
+<li><strong>Tensione</strong>: spinge la frequenza, ma aumenta potenza, calore e stress. “Più tensione” non significa “più stabile” oltre un certo punto.</li>
+<li><strong>Corrente e potenza</strong>: CPU e GPU hanno limiti PPT/TDC/EDC o PL1/PL2/ICCMax. Sbloccarli senza raffreddamento adeguato produce throttling, non prestazioni.</li>
+<li><strong>Temperatura</strong>: riduce l'efficienza della curva e può attivare protezioni. Un margine termico è parte del progetto, non un optional.</li>
+</ol>
+<h2 id="3-mappa-delle-piattaforme-nel-2026">3. Mappa delle piattaforme nel 2026</h2>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Piattaforma</th>
+<th>Leve principali</th>
+<th>Rischi tipici</th>
+<th>Verifica minima</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AMD AM5, Ryzen 7000/9000</strong></td>
+<td>PBO, Curve Optimizer, Curve Shaper, boost override, eCLK su schede selezionate, EXPO</td>
+<td>tensioni SoC, instabilità per-core, clock stretching, calore IOD</td>
+<td>test per-core, WHEA, effective clock, temperature, EXPO/JEDEC</td>
+</tr>
+<tr>
+<td><strong>Intel LGA1851, Core Ultra 200S</strong></td>
+<td>PL1/PL2/Tau, ICCMax, adaptive voltage, LLC, ratio P/E, ring, XMP</td>
+<td>limiti OEM, throttling, instabilità a basso carico, tensione adattiva</td>
+<td>profilo Intel Default, test misti, temperature, frequenze effettive</td>
+</tr>
+<tr>
+<td><strong>DDR5 su entrambe</strong></td>
+<td>XMP/EXPO, frequenza, timing primari/secondari/terziari, tensione VDD/VDDQ/VDDIO, tREFI</td>
+<td>training, errori tardivi, sensibilità al calore, IMC</td>
+<td>TM5/y-cruncher/Karhu/OCCT, test a caldo, cold boot</td>
+</tr>
+<tr>
+<td><strong>NVIDIA RTX 50</strong></td>
+<td>power limit, curva V/F, core offset, memory offset, undervolt</td>
+<td>12V-2x6, transient, artefatti, memoria con correzione errori</td>
+<td>3DMark/giochi, OCCT VRAM, driver reset, temperature</td>
+</tr>
+<tr>
+<td><strong>AMD RX 9000</strong></td>
+<td>power limit, voltage offset, core/memory offset, undervolt</td>
+<td>instabilità a frequenze intermedie, driver reset, calore memoria</td>
+<td>giochi, stress GPU, artefatti, frame time</td>
+</tr>
+</tbody></table>
+</div><p>La tabella non è un elenco di preset. È una mappa di ciò che può essere regolato e di ciò che va verificato. Le piattaforme più vecchie (AM4, LGA1700, RTX 30/40, RX 6000/7000) seguono gli stessi principi, ma non riutilizzare valori o guide pensate per un'altra generazione: cambiano IMC, VRM, curve e protezioni.</p>
+<h2 id="4-cpu-pbo-curve-optimizer-tensione-e-llc">4. CPU: PBO, Curve Optimizer, tensione e LLC</h2>
+<h3 id="4-1-amd-pbo-non-e-turbo-mode">4.1 AMD: PBO non è “turbo mode”</h3>
+<p><strong>Precision Boost Overdrive</strong> permette alla CPU di operare oltre i limiti di fabbrica, entro i limiti della scheda madre e del raffreddamento [1]. Le schede prodotto AMD elencano PBO, EXPO e Curve Optimizer tra le funzioni supportate, non un esito garantito [2]. I parametri principali sono:</p>
+<ul>
+<li><strong>PPT</strong>: potenza totale del socket;</li>
+<li><strong>TDC</strong>: corrente sostenuta;</li>
+<li><strong>EDC</strong>: corrente di picco;</li>
+<li><strong>Boost Override</strong>: alza il limite massimo di frequenza, non la garantisce;</li>
+<li><strong>PBO Scalar</strong>: modifica l'aggressività della curva di boost;</li>
+<li><strong>Curve Optimizer</strong>: sposta la curva tensione/frequenza, di solito in negativo per ridurre la tensione a parità di frequenza [1].</li>
+</ul>
+<p>Un errore comune è credere che <code>+200 MHz</code> significhi “+200 MHz sempre”. Significa che la CPU è autorizzata a salire fino a quel limite <strong>se</strong> la curva V/F, la temperatura, la corrente e la potenza lo consentono. Con un carico all-core, il limite può essere raggiunto solo per poco.</p>
+<p><strong>Curve Optimizer</strong> non è un undervolt lineare: è un offset alla curva V/F. Un valore negativo può far raggiungere una frequenza più alta a parità di tensione, oppure ridurre la tensione a parità di frequenza. Per questo va testato per core, non solo con un test all-core. Un core “buono” può reggere -30 mentre un altro è instabile a -15.</p>
+<p><strong>Curve Shaper</strong>, disponibile su Ryzen 9000 e gestito da Ryzen Master recente, permette di modulare la curva in regioni diverse (minimo, basso, medio, alto, massimo) e in base alla temperatura. È un secondo passaggio: prima si trova un offset all-core stabile, poi si raffina. Non è un modo per “aggirare” un core instabile. La comunità AM5 discute per-core offset, eCLK e Curve Shaper con risultati molto diversi; usali come ipotesi, non come valori [9].</p>
+<p><strong>eCLK</strong> (clock esterno asincrono) è una leva avanzata disponibile su alcune schede. Può alzare la frequenza senza aumentare direttamente la tensione della curva, ma cambia il dominio di clock e può interagire con PCIe, memoria e stabilità del sistema. Non è una prima scelta e non va attivato senza sapere quale clock stai modificando.</p>
+<p><strong>Esempio verificato, non preset:</strong> nella recensione TechPowerUp del 9800X3D, un sample ha raggiunto 5,3 GHz all-core a 1,35 V, con guadagno limitato rispetto al boost stock; con PBO ha trovato <code>-20</code> stabile e <code>-25</code> no. Lo stesso sample ha gestito DDR5-6200 1:1 a circa 1,23 V SoC, mentre DDR5-6400 a 1,3 V si avviava ma crashava nei benchmark [8]. Sono dati di <strong>un</strong> sample, non una ricetta.</p>
+<p><strong>Tensioni SoC:</strong> sulle piattaforme AM5 la tensione SoC alimenta anche il controller di memoria e parte dell'I/O. Non impostare un valore “per sentito dire”: verifica il valore applicato da EXPO, la stabilità e le temperature. Un valore più alto può aiutare una frequenza, ma non è gratis in termini di calore e affidabilità. TechPowerUp riporta 1,3 V come massimo consentito dal BIOS del sample, non come valore consigliato [8]. La guida non propone una tensione SoC universale.</p>
+<p><strong>Clock stretching:</strong> un undervolt troppo aggressivo può ridurre il lavoro utile senza crash evidente. Il sistema “sembra” stabile, ma i core effettivi calano e le prestazioni peggiorano. Confronta clock effettivi, punteggio e frame time tra stock e undervolt; non fermarti al fatto che il test non sia esploso.</p>
+<h3 id="4-2-intel-limiti-tensione-adattiva-e-llc">4.2 Intel: limiti, tensione adattiva e LLC</h3>
+<p>Sulle CPU Intel Core Ultra 200S i parametri più importanti sono:</p>
+<ul>
+<li><strong>PL1</strong>: potenza media sostenuta;</li>
+<li><strong>PL2</strong>: potenza di picco a breve termine;</li>
+<li><strong>Tau</strong>: durata della finestra PL2;</li>
+<li><strong>ICCMax</strong>: corrente massima;</li>
+<li><strong>ratio P-core/E-core</strong>: moltiplicatori dei due tipi di core;</li>
+<li><strong>ring/cache ratio</strong>: frequenza della cache;</li>
+<li><strong>adaptive voltage offset</strong>: riduce la tensione mantenendo il comportamento dinamico;</li>
+<li><strong>load-line calibration (LLC)</strong>: compensa la caduta di tensione sotto carico.</li>
+</ul>
+<p>Intel documenta, per esempio, che una SKU 125 W con 8 P-core e 16 E-core può avere PL1 125 W, PL2 250 W e Tau 56 s [5]. Questo non significa che la tua scheda applichi quegli stessi valori: molti BIOS usano profili “performance” o “extreme” che alzano PL1/PL2 e allungano Tau. Prima di overclockare, identifica il profilo attivo e confrontalo con il profilo Intel Default.</p>
+<p>Intel raccomanda di partire dalla baseline, cambiare un parametro per volta e, con raffreddamento ad aria o liquido tradizionale, di non superare 1,4 V e di tenere le temperature sotto controllo; sono indicazioni generali, non una garanzia per il tuo SKU [4].</p>
+<p><strong>LLC</strong> non è “più alto = meglio”. Un LLC aggressivo riduce il vdroop, ma può causare overshoot nei transitori e rendere la tensione meno prevedibile. Nella maggior parte dei casi si parte da un valore moderato, si misura la tensione sotto carico e si evita di compensare un LLC esagerato con un offset di tensione altrettanto esagerato. La tensione va letta sotto carico, non a riposo.</p>
+<p><strong>Tensione adattiva e carichi leggeri:</strong> un offset negativo stabile in Cinebench può fallire in idle, sospensione, avvio a freddo o carichi burst. Intel e la comunità segnalano da tempo che l'instabilità a basso carico è una categoria separata. Per questo la validazione include idle, sleep, browser, video e transizioni, non solo stress all-core.</p>
+<p><strong>Degradazione:</strong> non usare vecchi profili “daily” creati per altre generazioni o per BIOS precedenti. Se la piattaforma ha ricevuto aggiornamenti di microcodice o modifiche ai limiti, riparti dalla baseline e verifica le tensioni. La guida non fornisce valori di tensione “sicuri” universali: dipendono da SKU, scheda madre, LLC, raffreddamento e sample.</p>
+<h3 id="4-3-la-zona-che-non-conviene-oltrepassare">4.3 La zona che non conviene oltrepassare</h3>
+<ul>
+<li><strong>Non disabilitare protezioni</strong> (OCP, OVP, UVP, thermal throttling) per completare un test.</li>
+<li><strong>Non usare un LLC massimo</strong> solo perché “tiene la tensione”.</li>
+<li><strong>Non alzare la tensione</strong> per compensare un test fallito senza capire se il limite è termico, di corrente o di curva.</li>
+<li><strong>Non lasciare un overclock “quasi stabile”</strong> come daily: un errore corretto in silenzio è peggio di un crash evidente.</li>
+<li><strong>Non copiare un profilo BIOS</strong> da un altro sample, anche con lo stesso modello di CPU.</li>
+</ul>
+<h2 id="5-ram-il-guadagno-piu-sottile-la-validazione-piu-lunga">5. RAM: il guadagno più sottile, la validazione più lunga</h2>
+<h3 id="5-1-jedec-xmp-ed-expo">5.1 JEDEC, XMP ed EXPO</h3>
+<p>DDR5 parte da una configurazione <strong>JEDEC</strong>: frequenza, timing e tensione standard, conservativi. XMP (Intel) ed EXPO (AMD) applicano un profilo verificato dal produttore del kit, ma restano overclock del controller di memoria e della RAM [6][7][23]. Un kit “6000” indica 6000 MT/s (milioni di trasferimenti al secondo), non un clock fisico di 6000 MHz.</p>
+<p>Un profilo XMP/EXPO può essere stabile su una scheda e non su un'altra. Contano:</p>
+<ul>
+<li>numero di moduli e capacità;</li>
+<li>tipo di IC (Hynix A/M, Samsung, Micron) e ranking;</li>
+<li>topologia della scheda madre (2 o 4 slot, daisy-chain o T-topology);</li>
+<li>qualità dell'IMC (Integrated Memory Controller) della CPU;</li>
+<li>BIOS, AGESA/microcode e training;</li>
+<li>temperatura delle RAM e airflow.</li>
+</ul>
+<p><strong>Due moduli sono generalmente più facili da validare di quattro.</strong> Quattro moduli aumentano il carico sul controller e spesso richiedono frequenze più basse o timing più rilassati. Non è una regola assoluta, ma è un punto di partenza per capire perché lo stesso kit non raggiunge la stessa frequenza su un'altra build.</p>
+<h3 id="5-2-am5-uclk-mclk-e-fclk">5.2 AM5: UCLK, MCLK e FCLK</h3>
+<p>Su AM5 la frequenza della memoria non è l'unica variabile:</p>
+<ul>
+<li><strong>MCLK</strong> è il clock della DRAM;</li>
+<li><strong>UCLK</strong> è il clock del controller di memoria;</li>
+<li><strong>FCLK</strong> è il clock dell'Infinity Fabric.</li>
+</ul>
+<p>La modalità <strong>1:1</strong> (UCLK = MCLK) è spesso preferibile per la latenza. Salire di frequenza in 2:1 può aumentare la banda ma peggiorare la latenza, e non sempre compensa. TechPowerUp, per esempio, riporta che DDR5-8000 sul sample non era abbastanza vantaggioso rispetto alla perdita di UCLK 1:2 [8].</p>
+<p>FCLK e UCLK non sono indipendenti dalla stabilità: un FCLK troppo alto può causare errori che sembrano della RAM. La comunità AM5 usa spesso FCLK intorno a 2000–2133 MHz, ma il valore stabile dipende dal sample e dalla tensione. Non copiare un numero: testa con y-cruncher, TM5 e carichi misti, e controlla WHEA.</p>
+<p><strong>Esempio:</strong> un sample 9800X3D ha gestito 6200 MT/s 1:1 “facilmente” a circa 1,23 V SoC, mentre 6400 MT/s a 1,3 V si avviava ma crashava [8]. Questo illustra perché “6400 CL30 è meglio” non è una legge: su AM5 la combinazione 1:1, FCLK e tensioni può rendere 6000 CL30 più equilibrata di 6400 CL30.</p>
+<h3 id="5-3-timing-che-cosa-toccare-e-in-che-ordine">5.3 Timing: che cosa toccare e in che ordine</h3>
+<p>I timing DDR5 si dividono in:</p>
+<ul>
+<li><strong>primari</strong>: tCL, tRCD, tRP, tRAS;</li>
+<li><strong>secondari</strong>: tRFC, tREFI, tFAW, tRRD, tWTR, tWR;</li>
+<li><strong>terziari</strong>: resistenze e parametri di segnalazione, spesso dipendenti dalla scheda.</li>
+</ul>
+<p>La comunità (Overclock.net, r/overclocking) usa un metodo incrementale: si parte dal profilo XMP/EXPO stabile, si cambia <strong>un timing alla volta</strong>, si testa, si annota, e si torna indietro al primo errore. Non si toccano insieme frequenza, timing primari e tensioni. Un test breve può dare falsa sicurezza: alcuni errori compaiono solo dopo molti cicli o quando la RAM è calda [10]. La cheat sheet AM5 di r/overclocking raccoglie ordini di test e osservazioni, ma mescola sample e configurazioni: va letta come appunti, non come specifica [11].</p>
+<p><strong>tREFI</strong> è un caso tipico. Alzarlo può ridurre la latenza media, ma aumenta la sensibilità alla temperatura e può produrre errori tardivi. Un valore “massimo” visto su un forum non è un default sicuro. Se lo alzi, testa a lungo con RAM calda e verifica che il guadagno sia reale nel tuo workload.</p>
+<p><strong>Tensioni DDR5</strong> hanno nomi diversi tra piattaforme: VDD, VDDQ, VDDIO, VPP, SoC/SA. Non esiste una mappa unica “sicura” per ogni kit. Il produttore del kit e il BIOS della scheda sono il riferimento; la comunità può suggerire intervalli, ma il sample e la temperatura decidono. Non alzare VDDIO o SoC per far passare un test senza capire quale segnale stai compensando.</p>
+<h3 id="5-4-come-si-valida-la-ram">5.4 Come si valida la RAM</h3>
+<p>Nessun singolo programma è definitivo. Una strategia ragionevole, usata dalla comunità e compatibile con i tool descritti in questa guida:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Prova</th>
+<th>A cosa serve</th>
+<th>Limite</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TestMem5 con config anta777/1usmus</strong></td>
+<td>rilevare errori di timing e pattern; rapido per fare ipotesi [12]</td>
+<td>un config non copre ogni condizione; servono cicli e temperature representative</td>
+</tr>
+<tr>
+<td><strong>y-cruncher (VT3, N63, VST)</strong></td>
+<td>stressare IMC, cache e calcolo con pattern diversi [13]</td>
+<td>non è un test “RAM only”; può fallire per CPU/IMC</td>
+</tr>
+<tr>
+<td><strong>Karhu RAM Test</strong></td>
+<td>carico sostenuto con coverage elevata [14]</td>
+<td>licenza a pagamento; non sostituisce test misti</td>
+</tr>
+<tr>
+<td><strong>OCCT Memory / CPU+RAM</strong></td>
+<td>carichi controllati con rilevamento errori</td>
+<td>opzioni e durate cambiano per versione</td>
+</tr>
+<tr>
+<td><strong>MemTest86</strong></td>
+<td>test fuori da Windows, utile per escludere il sistema operativo</td>
+<td>non copre carichi reali e non misura DPC</td>
+</tr>
+<tr>
+<td><strong>Test a caldo + cold boot</strong></td>
+<td>errori termici e di training</td>
+<td>richiede tempo e condizioni controllate</td>
+</tr>
+</tbody></table>
+</div><p>La combinazione minima non è “un’ora di un test”. È <strong>più prove con pattern diversi</strong>, seguite da un uso reale: avvio a freddo, sospensione, gioco, browser con molte schede, compilazione shader, trasferimento file. Un errore in TM5 è sufficiente per fermarsi; un pass di TM5 non è una certificazione. Con TestMem5 leggi la config prima di importarla: Auto e SSE non sono equivalenti e un preset 1usmus/anta777 va usato con la versione e i cicli previsti. Anche un ciclo può durare circa dieci minuti, quindi tre cicli non sono una pausa veloce.</p>
+<h3 id="5-5-errori-temperatura-e-diagnosi">5.5 Errori, temperatura e diagnosi</h3>
+<p>Se compare un errore:</p>
+<ol>
+<li><strong>Ferma il test</strong> e annota configurazione, timing, tensione, temperatura e numero del test.</li>
+<li><strong>Torna all'ultima modifica</strong> o al profilo precedente; non aggiungere tensione a caso.</li>
+<li><strong>Ripeti</strong> con la stessa durata e le stesse condizioni per verificare se l'errore è riproducibile.</li>
+<li><strong>Separa le variabili</strong>: RAM JEDEC, poi EXPO/XMP, poi timing manuali, poi FCLK/SoC.</li>
+<li><strong>Controlla il raffreddamento</strong> delle RAM e il ricircolo d'aria: DDR5 è sensibile alla temperatura.</li>
+</ol>
+<p>Un errore sotto EXPO non prova automaticamente che un modulo sia guasto. Può essere il profilo, l'IMC, la scheda, il BIOS o la temperatura. Un errore a JEDEC, invece, è un segnale più forte e richiede diagnosi hardware.</p>
+<figure data-guide-figure="memory-clocks"><a href="/images/guides/diagrams/memory-clocks.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: AM5: tre domini di clock"><img src="/images/guides/diagrams/memory-clocks.svg" alt="AM5: tre domini di clock" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>AM5: tre domini di clock · Schema illustrativo Prime Build</figcaption></figure><h2 id="6-gpu-overclock-undervolt-e-power-limit">6. GPU: overclock, undervolt e power limit</h2>
+<h3 id="6-1-le-tre-strade">6.1 Le tre strade</h3>
+<ol>
+<li><strong>Power limit</strong>: riduce o aumenta il budget energetico. Abbassarlo riduce temperature e rumore, spesso con perdita contenuta di FPS; alzarlo ha senso solo se il dissipatore e l'alimentatore hanno margine.</li>
+<li><strong>Core offset</strong>: sposta la curva V/F verso l'alto. Può aumentare il boost, ma il guadagno dipende dal limite di potenza e dalla temperatura.</li>
+<li><strong>Undervolt</strong>: fissa una tensione più bassa per una data frequenza, o “appiattisce” la curva a un punto di tensione. Può ridurre consumi e temperature mantenendo prestazioni simili.</li>
+</ol>
+<p>L'undervolt non è la stessa cosa dell'overclock CPU e non garantisce più FPS. È spesso il compromesso più interessante per un PC daily: meno calore, meno rumore, prestazioni vicine allo stock. Ma anche qui non esistono valori universali.</p>
+<h3 id="6-2-esempio-verificato-non-preset">6.2 Esempio verificato, non preset</h3>
+<p>ASUS ROG ha documentato un RTX 5090 Astral OC con curva appiattita a circa 2.902 MHz a 950 mV, con una riduzione media di circa 10 °C e prestazioni nell'ordine di 1–3 FPS dal profilo OC, a seconda del gioco [18]. È un risultato di <strong>un sample</strong> con un dissipatore particolare: non copiare 950 mV o 2.902 MHz.</p>
+<p>TechPowerUp, nella recensione della RTX 5090 TUF, riporta un limite di memoria di +375 MHz stabile su diversi sample, con power limit 575/600 W [19]. Questo non significa che +375 sia il massimo per ogni scheda: significa che gli offset di memoria non sono comparabili tra generazioni.</p>
+<p>Sulle GeForce RTX 50 con GDDR7, NVIDIA dichiara ECC integrata nel die e sempre attiva, con correzione single-bit e <strong>EDR</strong> (Error Detection and Replay); non è un'opzione da attivare o disattivare [24]. Un offset di memoria troppo alto può quindi non produrre artefatti evidenti ma causare correzioni/retry e un guadagno nullo o negativo. Confronta punteggio e frame time, non solo l'assenza di crash.</p>
+<h3 id="6-3-come-si-cerca-il-limite">6.3 Come si cerca il limite</h3>
+<ol>
+<li><strong>Baseline</strong>: stock, ventole fisse o curva nota, driver e gioco registrati.</li>
+<li><strong>Power limit</strong>: decidi il budget in base a PSU, temperature e rumore. Non alzarlo se il hotspot o le memorie sono già al limite.</li>
+<li><strong>Core</strong>: piccoli passi, un solo parametro per volta. Dopo ogni passo, test breve e poi gioco reale.</li>
+<li><strong>Memoria</strong>: separata dal core. Se il punteggio sale ma il frame time peggiora, la memoria può correggere o ritrasmettere dati: torna indietro.</li>
+<li><strong>Undervolt</strong>: se vuoi efficienza, lavora sulla curva a una tensione target; non sommare offset core, undervolt e power limit nello stesso passaggio.</li>
+<li><strong>Validazione</strong>: giochi diversi, scene con shader compilation, transizioni, menu, idle. Un benchmark breve non basta.</li>
+</ol>
+<p><strong>Segnali di instabilità GPU:</strong> artefatti, flicker, texture corrotte, driver che si resetta (TDR), crash, schermo nero, ventole a fondo scala, frame time che peggiora nonostante clock più alto. Se compare uno di questi segnali, torna indietro e riprova: non “salvare” il profilo sperando che sia stabile.</p>
+<h3 id="6-4-alimentazione-e-connettore">6.4 Alimentazione e connettore</h3>
+<p>La RTX 5090 ha un TGP di 575 W e NVIDIA raccomanda un alimentatore da 1000 W, con cavo 12V-2x6 nativo o adattatore a quattro PCIe 8-pin [17]. Non è una raccomandazione valida per ogni scheda, ma mostra perché l'alimentazione è parte dell'overclock:</p>
+<ul>
+<li>usa cavi dedicati, non daisy-chain, quando il produttore lo richiede;</li>
+<li>inserisci il connettore fino in fondo, senza pieghe strette;</li>
+<li>non collegare/scollegare il connettore sotto carico;</li>
+<li>verifica che la PSU abbia margine per i transienti, non solo per la potenza media;</li>
+<li>se la scheda ha sensori per-pin, controllali dopo un carico sostenuto.</li>
+</ul>
+<p>Un overclock GPU che supera il budget della PSU può sembrare stabile in un benchmark e fallire in un gioco con transienti. La protezione dell'alimentatore non è un test di stabilità.</p>
+<h2 id="7-protocollo-di-validazione-a-b-a-non-un-test-e-via">7. Protocollo di validazione: A–B–A, non “un test e via”</h2>
+<h3 id="7-1-una-modifica-per-volta">7.1 Una modifica per volta</h3>
+<p>Parti da <strong>A</strong> (baseline stabile), applica <strong>B</strong> (una sola modifica), testa, e torna ad <strong>A</strong> per verificare che il comportamento segua la modifica. Se non puoi tornare ad A, non hai un esperimento: hai una configurazione nuova.</p>
+<p>Annota per ogni prova:</p>
+<ul>
+<li>data, temperatura ambiente, versione BIOS/driver;</li>
+<li>configurazione completa (non solo il valore cambiato);</li>
+<li>test, versione, durata, numero di cicli/pass;</li>
+<li>risultato: errori, WHEA, artefatti, crash, temperature, clock effettivi, punteggio, 1% lows;</li>
+<li>cosa hai ripristinato e come.</li>
+</ul>
+<h3 id="7-2-matrice-minima">7.2 Matrice minima</h3>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Prova breve</th>
+<th>Prova più lunga</th>
+<th>Cosa guardare</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>Cinebench/y-cruncher/OCCT CPU, 10–20 min</td>
+<td>1–2 h di carichi misti, se sorvegliata</td>
+<td>WHEA, clock effettivi, temperatura, tensione sotto carico</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>TM5 3 cicli o y-cruncher VT3</td>
+<td>più cicli/pattern, test a caldo, cold boot</td>
+<td>errori, temperatura RAM, training, sospensione</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>3DMark/gioco, 10–20 min</td>
+<td>1 h di giochi diversi + OCCT VRAM</td>
+<td>artefatti, TDR, clock, potenza, hotspot/VRAM</td>
+</tr>
+<tr>
+<td>Sistema</td>
+<td>gioco + Discord/OBS/browser</td>
+<td>uso reale per alcuni giorni</td>
+<td>frame time, stutter, crash, audio, rete</td>
+</tr>
+</tbody></table>
+</div><p>Le durate sono <strong>orientative</strong>, non certificazioni. Una prova breve serve a scartare subito i profili palesemente instabili; una prova lunga serve a cercare errori tardivi. Nessuna delle due copre ogni workload.</p>
+<h3 id="7-3-i-test-che-la-comunita-usa-e-perche">7.3 I test che la comunità usa, e perché</h3>
+<ul>
+<li><strong>Cinebench</strong> è utile come termometro e per confrontare la CPU, ma non è un test di stabilità definitivo.</li>
+<li><strong>y-cruncher</strong> stressa calcolo, cache e IMC con pattern diversi; è apprezzato per scoprire instabilità che altri test non vedono.</li>
+<li><strong>OCCT</strong> offre carichi separati e rilevamento errori; le opzioni vanno lette nella versione installata.</li>
+<li><strong>TestMem5</strong> con config anta777 è un punto di riferimento per la RAM, ma richiede configurazioni e cicli adeguati.</li>
+<li><strong>Karhu</strong> è usato per coverage elevata e carichi sostenuti.</li>
+<li><strong>3DMark</strong> è utile per confronti GPU, non per certificare stabilità.</li>
+<li><strong>Giochi reali</strong> sono indispensabili: shader compilation, streaming e transizioni non si riproducono in un benchmark sintetico.</li>
+</ul>
+<p>La <a href="/guides/misure-verifica/">guida alle misure</a> spiega come leggere frame time e presentazione con PresentMon/CapFrameX [22]; un test di stabilità non risponde alla domanda “il gioco è più fluido?”.</p>
+<h2 id="8-occt-prima-la-domanda-poi-il-test">8. OCCT: prima la domanda, poi il test</h2>
+<p><strong>OCCT</strong> controlla risultati di calcoli e trasferimenti sotto carichi scelti: non è un certificatore universale del PC [15]. Scaricalo soltanto dal produttore e scegli un'edizione con licenza adatta all'uso. <strong>Personal non autorizza attività professionali/commerciali</strong>: un menu che propone quella versione non modifica la licenza.</p>
+<p>Le schermate ufficiali incluse mostrano <strong>OCCT 17.0.14 Supporter</strong>, come riportato nella pagina Personal Features del produttore. Non sono una cattura della GUI installata sul PC del lettore. Il manuale contiene riferimenti di release diverse: controlli, disponibilità, limiti di durata e report vanno verificati per la versione/edizione effettiva.</p>
+<p><strong>Salva il lavoro e resta presente.</strong> CPU, RAM e GPU possono essere saturate; il sistema può scaldarsi, bloccarsi o riavviarsi. Chiudi documenti e applicazioni non necessarie. Nessun test pesante incustodito o notturno è richiesto qui.</p>
+<h3 id="8-1-separare-i-carichi">8.1 Separare i carichi</h3>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Domanda</th>
+<th>Prova pertinente</th>
+<th>Limite dell'attribuzione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Il percorso memoria mantiene dati corretti sotto carico?</td>
+<td><strong>Memory</strong>, da sola.</td>
+<td>Sollecita RAM e IMC: errore non significa automaticamente modulo guasto.</td>
+</tr>
+<tr>
+<td>Calcolo e trasferimenti CPU/RAM sono regolari?</td>
+<td><strong>CPU + RAM</strong>, in una sessione distinta.</td>
+<td>Coinvolge più parti, inclusa alimentazione: non localizza da sola il guasto.</td>
+</tr>
+<tr>
+<td>La CPU presenta errori in un carico più mirato?</td>
+<td><strong>CPU</strong>, se necessario e documentato dalla versione.</td>
+<td>Un core indicato non è una diagnosi completa; serve confronto della configurazione.</td>
+</tr>
+<tr>
+<td>Il problema compare sulla grafica?</td>
+<td><strong>3D</strong> con rilevamento errori e, separatamente, <strong>VRAM</strong>.</td>
+<td>Test 3D e memoria video cercano condizioni diverse; zero errori non copre ogni uso.</td>
+</tr>
+</tbody></table>
+</div><p>Se inizi da memoria, seleziona Memory e non avviare insieme uno stress GPU o un secondo checker. Dopo la prova lascia scendere le temperature e registra i risultati prima di cambiare carico. <strong>Power non è la prima prova</strong>: combina carichi importanti su CPU/GPU e può provocare un riavvio improvviso; non è un requisito di questo percorso.</p>
+<h3 id="8-2-memory-opzioni-che-contano">8.2 Memory: opzioni che contano</h3>
+<p>Il manuale distingue tre <strong>Test type</strong> [15]:</p>
+<ul>
+<li><strong>Legacy</strong>: test memoria storico, utile per una prima prova senza costruire sequenze.</li>
+<li><strong>Presets</strong>: sequenza inclusa; registra nome e versione, perché “ho fatto Memory” non rende la prova ripetibile.</li>
+<li><strong>Custom</strong>: sequenza di blocchi costruita/importata. Non è automaticamente “più approfondito”; i blocchi che scrivono e verificano dati devono rispettare un ordine e includere i controlli previsti.</li>
+</ul>
+<p>I blocchi <strong>All-In-One</strong>, come Legacy Test, includono scrittura, trasformazione e verifica: i loro dati non vanno controllati con un Check separato né trasformati con un blocco idempotente. Non costruire una sequenza senza verificarne le regole nel manuale.</p>
+<p>La voce <strong>Memory</strong> può esprimere quantità in percentuale o <strong>MiB</strong>. La percentuale si riferisce alla memoria libera, non automaticamente alla capacità totale. L'80% è un default della versione descritta, non un valore obbligatorio. Lascia margine per Windows, OCCT, monitoraggio e driver; non portare tutto al 100% della memoria libera. Se compaiono pressione di memoria e paging intenso, ferma o riduci l'allocazione.</p>
+<p><strong>Instruction set</strong> sceglie le istruzioni CPU (SSE, AVX, Auto). SSE e AVX non sono etichette di sicurezza; Auto non significa carico leggero. <strong>Threads</strong> decide quanti thread lavorano: Auto usa i processori disponibili; un numero fisso abilita il conteggio. Registra i valori effettivi.</p>
+<figure data-guide-figure="occt-memory"><a href="/images/guides/screenshots/occt-memory.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT Memory: tipo di test, memoria allocata, thread e preset Heat"><img src="/images/guides/screenshots/occt-memory.png" alt="OCCT Memory: tipo di test, memoria allocata, thread e preset Heat" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="8-3-cpu-ram-non-copiare-il-pannello-come-preset">8.3 CPU + RAM: non copiare il pannello come preset</h3>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Controllo</th>
+<th>Significato documentato</th>
+<th>Come usarlo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Data set</strong></td>
+<td>Large insiste sui trasferimenti CPU/RAM; Medium usa insiemi più piccoli e più grandi.</td>
+<td>Registra il dataset; non attribuire il guasto dal nome.</td>
+</tr>
+<tr>
+<td><strong>Mode</strong></td>
+<td>Normal dedica più lavoro al controllo errori; Extreme privilegia potenza/temperatura.</td>
+<td>Normal è un punto iniziale ragionevole, non innocuo.</td>
+</tr>
+<tr>
+<td><strong>Load type</strong></td>
+<td>Variable cambia operandi in cicli; Steady mantiene un carico costante.</td>
+<td>Scegli in base alla domanda; una prova breve può non coprire un ciclo.</td>
+</tr>
+<tr>
+<td><strong>Instruction set</strong></td>
+<td>Auto può scegliere AVX più alto disponibile; SSE/AVX2/AVX512 dipendono dalla CPU.</td>
+<td>L'Auto qui non è l'Auto di Memory.</td>
+</tr>
+<tr>
+<td><strong>Start at cycle</strong></td>
+<td>Sceglie il ciclo/insieme di operandi iniziale, non la durata totale.</td>
+<td>Lascia il primo se non stai riproducendo un ciclo già individuato.</td>
+</tr>
+<tr>
+<td><strong>Thread settings</strong></td>
+<td>Auto fissa affinità; Fixed usa il numero scelto; Core cycling gestisce i core.</td>
+<td>Registra scelta e numero; non cambiare più opzioni nella stessa prova.</td>
+</tr>
+</tbody></table>
+</div><p>Con Auto il programma può riferire un errore al core di esecuzione; con Fixed quell'attribuzione non è equivalente. Neppure il core indicato prova che il core fisico sia guasto.</p>
+<figure data-guide-figure="occt-cpu-ram"><a href="/images/guides/screenshots/occt-cpu-ram.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT CPU + RAM: dataset, modalità, carico, ciclo, istruzioni e thread"><img src="/images/guides/screenshots/occt-cpu-ram.png" alt="OCCT CPU + RAM: dataset, modalità, carico, ciclo, istruzioni e thread" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="leggere-le-schermate-versione-e-impostazioni-non-sono-una-ricetta">Leggere le schermate: versione e impostazioni non sono una ricetta</h3>
+<p>Le schermate della <a href="https://www.ocbase.com/personal-features">pagina ufficiale OCCT Personal Features</a> mostrano <strong>OCCT 17.0.14 Supporter</strong>. Servono a riconoscere i controlli, non a prescrivere Extreme, un'ora di prova o il preset Heat. Temperature, frequenze e hardware nella barra superiore appartengono alla cattura del produttore. La tua versione, edizione e CPU possono presentare opzioni differenti.</p>
+<p><strong>CPU</strong>, <strong>CPU + RAM</strong> e <strong>Memory</strong> rispondono a domande diverse. CPU concentra il lavoro di calcolo nelle cache; CPU + RAM coinvolge anche trasferimenti verso la memoria; Memory cerca errori nei dati sotto carico RAM/IMC. Un errore restringe l'indagine, ma non identifica da solo il componente guasto. Power somma carichi importanti e non diventa il primo passo di questo percorso solo perché è disponibile nel menu.</p>
+<h3 id="cpu-modalita-cicli-e-core-da-osservare">CPU: modalità, cicli e core da osservare</h3>
+<p>Nel <a href="https://www.ocbase.com/support/stability-testing-configuration-cpu">manuale CPU</a>, <strong>Normal</strong> dedica più lavoro alle verifiche; <strong>Extreme</strong> privilegia il carico di calcolo, mantenendo controlli d'errore. Non significa “più accurato in ogni situazione”. <strong>Variable</strong> cambia operandi tra i cicli; <strong>Steady</strong> mantiene il carico scelto, utile per osservare l'andamento termico. <strong>Start at cycle</strong> seleziona gli operandi iniziali: non imposta minuti né numero di ripetizioni.</p>
+<p><strong>Thread settings → Auto</strong> fissa l'affinità dei worker; <strong>Fixed</strong> lascia allo scheduler i thread nel numero scelto, quindi l'attribuzione dell'errore a un core non è equivalente. <strong>Core Cycling</strong> permette una selezione avanzata: nella schermata, <em>Cycle through all cores</em>, <em>Cycle interval</em> e <em>Threads per core</em> indicano ordine, permanenza e thread per core. <em>Custom</em> richiede di verificare la propria selezione. Cinque minuti e due thread sono valori della cattura, non raccomandazioni universali.</p>
+<p>Per confrontare una modifica per-core, conserva ordine e intervallo; per osservare il carico simultaneo non confondere il passaggio su un core alla volta con una prova all-core.</p>
+<figure data-guide-figure="occt-cpu"><a href="/images/guides/screenshots/occt-cpu.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT CPU: modalità e Core Cycling con intervallo e thread per core"><img src="/images/guides/screenshots/occt-cpu.png" alt="OCCT CPU: modalità e Core Cycling con intervallo e thread per core" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="sse-avx-avx2-e-avx-512-quale-lavoro-cambia">SSE, AVX, AVX2 e AVX-512: quale lavoro cambia</h3>
+<p>Sono <strong>famiglie di istruzioni</strong>, non quattro test associati rispettivamente a CPU, cache, RAM e alimentatore. Con SIMD, una singola istruzione opera su più elementi di dati. La larghezza del vettore non è la larghezza del bus della RAM, né una misura degli FPS.</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Scelta</th>
+<th>Differenza tecnica</th>
+<th>Come interpretare la prova</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>SSE</strong></td>
+<td>Famiglia SIMD con vettori da 128 bit.</td>
+<td>Un percorso di istruzioni distinto; superarlo non convalida automaticamente AVX.</td>
+</tr>
+<tr>
+<td><strong>AVX</strong></td>
+<td>Introduce operazioni vettoriali fino a 256 bit.</td>
+<td>Cambia il lavoro richiesto al processore, non seleziona una diversa periferica.</td>
+</tr>
+<tr>
+<td><strong>AVX2</strong></td>
+<td>Estende anche le operazioni intere a 256 bit.</td>
+<td>Non è “AVX a 512 bit”; la copertura dipende dal kernel di test.</td>
+</tr>
+<tr>
+<td><strong>AVX-512</strong></td>
+<td>Famiglia con operazioni fino a 512 bit e capacità aggiuntive.</td>
+<td>Richiede supporto hardware/software; un'opzione assente non va forzata.</td>
+</tr>
+</tbody></table>
+</div><p>Riferimenti: <a href="https://www.intel.com/content/www/us/en/support/articles/000005779/processors.html">Intel, famiglie di istruzioni</a> e <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-avx-512-instructions.html">architettura AVX-512</a>.</p>
+<p><strong>Auto non significa la stessa cosa in ogni pannello.</strong> Per CPU/CPU + RAM, il <a href="https://www.ocbase.com/support/stability-testing-configuration-cpu-memory">manuale OCCT</a> descrive la scelta dell'AVX più alto disponibile, con eccezioni per alcune CPU. Per Memory, il <a href="https://www.ocbase.com/support/stability-testing-configuration-memory">manuale specifico</a> descrive attualmente Auto come SSE: letture/scritture da 128 bit, contro i 256 bit dell'opzione AVX. Registra ciò che la release effettivamente usa; non dedurlo dal solo nome Auto.</p>
+<p>Il menu consente una famiglia di istruzioni, ma non espone la sequenza completa del kernel. Non permette quindi di affermare “questo verifica solo l'ALU” o “AVX512 prova soltanto la cache”. Potenza, frequenza e temperatura vanno osservate durante ciascuna prova. Intel documenta, per gli <a href="https://www.intel.com/content/www/us/en/support/articles/000090746/processors.html">Xeon W con carichi AVX</a>, possibili riduzioni di frequenza per rispettare i limiti: non trasferire una percentuale di calo a ogni CPU.</p>
+<h3 id="memory-il-preset-e-i-blocchi-non-sono-istruzioni-della-cpu">Memory: il preset e i blocchi non sono istruzioni della CPU</h3>
+<p>Nella schermata ufficiale è selezionato <strong>Presets → Heat</strong>. <strong>Selected preset</strong> sceglie una sequenza; <strong>Copy to Custom</strong> consente di modificarla. Prima di eseguirla annota autore, nome e blocchi. L'80% visualizzato riguarda la memoria libera, non tutta la RAM installata; il pannello indica MB mentre il manuale usa MiB: conserva unità e quantità riportate dalla tua release.</p>
+<p>La <a href="https://www.ocbase.com/news/occt-v17-beta-memory-test-overhaul">presentazione del Memory Test v17</a> separa generazione dei dati, trasformazioni e verifica. Un blocco che produce carico senza una verifica non dimostra assenza di errori. Nelle sequenze personalizzate occorre inizializzare i dati e poi controllarli; i blocchi All-In-One, come Legacy, includono già il controllo e non vanno trattati come semplici generatori. I loop non devono sovrapporsi. Un preset pronto è preferibile a una sequenza improvvisata di cui non comprendi le dipendenze.</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Blocco del manuale</th>
+<th>Operazione sui dati</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TM5 Refresh / Simple</td>
+<td>Pattern dipendente dall'indirizzo; Simple aggiunge interleaving.</td>
+</tr>
+<tr>
+<td>TM5 Inverted / Arithmetic</td>
+<td>Inversioni o semi aritmetici nella generazione.</td>
+</tr>
+<tr>
+<td>Checkerboard</td>
+<td>Alternanza di zero e uno.</td>
+</tr>
+<tr>
+<td>Walking Zero / One</td>
+<td>Spostamento del bit diverso dagli altri.</td>
+</tr>
+<tr>
+<td>Blank Read</td>
+<td>Lettura senza modifica.</td>
+</tr>
+<tr>
+<td>Mirror Move 1 / 2 / 4 / 128</td>
+<td>Scambi ripetuti, con partizioni o interleaving differenti.</td>
+</tr>
+<tr>
+<td>Double Flip</td>
+<td>Doppia inversione dei bit.</td>
+</tr>
+<tr>
+<td>Check</td>
+<td>Confronto con il pattern inizializzato.</td>
+</tr>
+<tr>
+<td>Loop / Idle</td>
+<td>Ripetizioni o pause; non sostituiscono Check.</td>
+</tr>
+<tr>
+<td>Legacy Test</td>
+<td>Test completo con verifica interna.</td>
+</tr>
+</tbody></table>
+</div><p>Nomi e funzioni: <a href="https://www.ocbase.com/support/stability-testing-configuration-memory">manuale Memory</a>. Questi pattern sollecitano accessi differenti: non assegnare a ciascuno un timing difettoso certo. Un fallimento resta da riprodurre con configurazione e condizioni annotate.</p>
+<h3 id="8-4-sicurezza-e-risultato">8.4 Sicurezza e risultato</h3>
+<p>Prima di Start prepara una scheda della prova: configurazione, versione/edizione OCCT, test, tutte le opzioni, quantità memoria, temperatura iniziale, durata prevista e sensori osservati. Non basta uno screenshot del contatore finale.</p>
+<ol>
+<li><strong>Imposta una durata finita.</strong> Una prima finestra sorvegliata di 5–10 minuti controlla risposta, errori immediati e andamento termico. Se regolare, una nuova sessione più lunga cerca errori tardivi. Non sono durate certificate.</li>
+<li><strong>Apri Settings → Security.</strong> Abilita <strong>Stop on error</strong> e <strong>Stop on WHEA error</strong> se pertinenti; verifica il rilevamento errori del test.</li>
+<li><strong>Valuta Critical temperature.</strong> Anche questo arresto può essere disabilitato per default. Quando attivo confronta la soglia con <strong>qualsiasi sensore di temperatura abilitato in OCCT</strong>. Un sensore escluso non partecipa.</li>
+<li><strong>Azzera le statistiche e annota l'orario.</strong> Avvia il solo carico scelto; controlla che timer e sensori rispondano.</li>
+<li><strong>Segui l'andamento, non solo il picco.</strong> Ferma al primo errore, nuovo WHEA, comportamento anomalo o temperatura prossima al limite.</li>
+<li><strong>Salva prima della prova successiva.</strong> Conserva log, report, opzioni, durata effettiva e dati sensori.</li>
+</ol>
+<p>Gli arresti software non proteggono da ogni blocco o riavvio. Se il sistema si blocca e non salva il report, conserva orario e condizioni: non ripetere automaticamente lo stesso carico più aggressivo. <strong>Stop on error</strong> non è sempre attivo: senza quell'opzione OCCT può continuare e produrre un report incompleto. Guarda l'esito, non soltanto la fine del timer; un test interrotto non è un pass.</p>
+<p>Per la CPU, una sessione sorvegliata di 30–60 minuti è un punto di partenza per un sospetto di instabilità, non una certificazione; test più lunghi richiedono presenza e margini termici. Un test completato senza errori non esclude un guasto intermittente, un errore di storage o un difetto che si manifesta solo in gioco.</p>
+<h3 id="8-5-gpu-e-vram">8.5 GPU e VRAM</h3>
+<p>Per una sessione GPU seleziona la scheda corretta, abilita il rilevamento errori previsto e parti da intensità contenuta. Nel 3D Adaptive documentato, <strong>Steady</strong> mantiene l'intensità costante, <strong>Variable</strong> la varia gradualmente e <strong>Switch</strong> introduce transitori: intensità non equivale alla percentuale d'uso letta dalla GPU. Per VRAM lascia spazio a desktop e altri usi della memoria video; non trasferire le opzioni Memory alla grafica.</p>
+<p>Un controllo sorvegliato di 5–10 minuti e un'eventuale nuova sessione indicativa di 20–30 minuti sono tappe prudenti di osservazione, non prescrizioni del produttore né certificazioni. Un test 3D non prova la stabilità della memoria video e un test VRAM non prova la stabilità del core grafico.</p>
+<figure data-guide-figure="occt-3d-adaptive"><a href="/images/guides/screenshots/occt-3d-adaptive.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT 3D Adaptive: GPU, modalità di variazione e tipo di carico"><img src="/images/guides/screenshots/occt-3d-adaptive.png" alt="OCCT 3D Adaptive: GPU, modalità di variazione e tipo di carico" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="leggere-i-pannelli-3d-adaptive-e-vram">Leggere i pannelli 3D Adaptive e VRAM</h3>
+<p>In <strong>3D Adaptive</strong>, <em>Device selection</em> identifica le GPU coinvolte. <strong>Steady</strong> mantiene l'intensità, <strong>Variable</strong> la fa variare gradualmente, <strong>Switch</strong> crea cambi bruschi. L'intensità non è la percentuale di utilizzo GPU: verifica entrambi i dati, insieme a clock e temperatura. La schermata 17.0.14 mostra anche <strong>Light, Heavy, Extreme e Custom</strong>: sono scelte di carico, non certificazioni. Il manuale consultato non assegna a quelle etichette percentuali universali; non inventarle. <strong>Coil whine</strong> riguarda l'osservazione del rumore sotto carico e non sostituisce la verifica degli errori. Disabilitare il rilevamento errori per aumentare l'utilizzo della GPU rende la prova inadatta a dichiarare “zero errori”. <a href="https://www.ocbase.com/support/stability-testing-configuration-3dadaptative">Manuale 3D Adaptive</a>.</p>
+<p>In <strong>VRAM</strong>, controlla <em>Device selection</em> e le caselle della scheda selezionata: la GPU integrata e quella dedicata sono dispositivi differenti. <em>Memory</em> stabilisce la quota in percentuale o quantità; lascia spazio agli altri usi. Il test esegue letture/scritture con pattern e verifica i dati, ma i meccanismi interni di correzione o ritrasmissione possono nascondere alcuni problemi di trasferimento. Un pass non certifica il core grafico; un pass 3D non certifica tutta la VRAM. <a href="https://www.ocbase.com/support/stability-testing-configuration-vram">Manuale VRAM</a>.</p>
+<figure data-guide-figure="occt-vram"><a href="/images/guides/screenshots/occt-vram.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT VRAM: selezione della GPU e quota di memoria video"><img src="/images/guides/screenshots/occt-vram.png" alt="OCCT VRAM: selezione della GPU e quota di memoria video" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="gli-altri-cinque-test-di-occt-uno-per-uno">Gli altri cinque test di OCCT, uno per uno</h3>
+<p>Finora abbiamo visto i pannelli che servono più spesso: CPU, CPU + RAM, Memory, 3D Adaptive e VRAM. OCCT ne offre altri cinque: <strong>Linpack</strong>, <strong>Storage</strong>, <strong>Power</strong>, <strong>Monitoring only</strong> e <strong>Combined</strong>. Tutti seguono lo stesso schema: scegli il test nella colonna centrale, imposti le opzioni nel pannello a destra, scegli la durata in alto a sinistra e premi <strong>Start</strong>, il pulsante verde in basso. Le schermate sono quelle ufficiali OCCT 17.0.14 Supporter: i valori che vedi selezionati servono a riconoscere i controlli, non sono impostazioni consigliate.</p>
+<p>Un'idea ti aiuta a scegliere. Secondo OCCT, un componente instabile può generare errori in qualsiasi momento, non solo sotto stress: il carico serve a farli comparire prima. Ogni test, quindi, è un modo diverso di mettere sotto pressione una parte diversa del PC. Ti conviene sceglierlo in base al sospetto, non in base a quanto suona impegnativo.</p>
+<h3 id="linpack-calcolo-intenso-e-verifica-dei-risultati">Linpack: calcolo intenso e verifica dei risultati</h3>
+<p><strong>Che cosa fa.</strong> Linpack nasce da Intel. Ogni passaggio ha due fasi: nella prima la CPU esegue calcoli molto pesanti; nella seconda, molto più leggera, il test ricontrolla i risultati. Più memoria gli concedi, più durano le due fasi.</p>
+<p><strong>Quando usarlo.</strong> Come conferma, non come primo test. Il manuale OCCT dice che il test CPU è in genere il più efficace, ma che in alcuni casi Linpack trova errori che CPU non vede: consiglia di partire da CPU e di usare Linpack per confermare la stabilità. Funziona meglio sulle CPU Intel.</p>
+<p><strong>Istruzione per istruzione</strong></p>
+<ol>
+<li>Seleziona <strong>Linpack</strong> nella colonna dei test.</li>
+<li><strong>Version</strong> sceglie la versione del test. Il manuale distingue una versione AMD64 (la più compatibile, ma meno gravosa sulle CPU moderne), una del 2012 (più carico e miglior rilevamento degli errori) e una "Large" (la più recente, fino ad AVX2, con il carico più alto). Nella schermata è selezionato 2019, il valore predefinito: parti da quello.</li>
+<li><strong>Threads</strong> decide quanti thread partono. <em>Physical only</em> ne avvia uno per core fisico (circa il 50% di utilizzo su una CPU con Hyper-Threading/SMT); <em>Physical and virtual</em> ne avvia uno per ogni core logico (circa il 100%). È il valore predefinito, ed è quello selezionato nella schermata.</li>
+<li><strong>Memory</strong> è la memoria in MB: 2048 nella schermata. Il manuale consiglia di restare vicino a 2 GB; la pagina delle funzioni indica 2–4 GB per tenere brevi le fasi. Non serve riempire la RAM.</li>
+<li>Imposta una durata finita e premi <strong>Start</strong>.</li>
+</ol>
+<p><strong>Come leggere il risultato.</strong> Un errore ti dice che il carico ha prodotto un risultato sbagliato, non quale componente sia responsabile. Confrontalo con il test CPU fatto nelle stesse condizioni.</p>
+<figure data-guide-figure="occt-linpack"><a href="/images/guides/screenshots/occt-linpack.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT Linpack: versione, thread e memoria"><img src="/images/guides/screenshots/occt-linpack.png" alt="OCCT Linpack: versione, thread e memoria" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="storage-scrivere-e-rileggere-dati-sul-disco">Storage: scrivere e rileggere dati sul disco</h3>
+<p><strong>Che cosa fa.</strong> Sollecita SSD e HDD con carichi pesanti e temperature elevate. OCCT avverte che un uso frequente può accorciare la vita dell'unità, mentre un uso normale comporta un rischio basso.</p>
+<p><strong>Quando usarlo.</strong> Solo se il sospetto riguarda il disco: file che si corrompono, errori di lettura, crash in fase di caricamento, un SSD che scalda molto. Non serve per validare overclock di CPU, RAM o GPU.</p>
+<p><strong>Istruzione per istruzione</strong></p>
+<ol>
+<li>Seleziona <strong>Storage</strong>.</li>
+<li><strong>Paths to test</strong> indica dove il test lavora. Il menu a sinistra sceglie l'unità (nella schermata, <code>C:\</code>); <em>Subfolder (optional)</em> permette di indicare una cartella; il pulsante con la cartella serve a sfogliare; il pulsante <strong>+</strong> aggiunge un altro percorso all'elenco.</li>
+<li><strong>Test size (MiB)</strong> è la quantità di dati di prova: 2048 MiB nella schermata, circa 2 GiB.</li>
+<li>Verifica di avere spazio libero e un backup dei dati importanti. Imposta una durata finita e premi <strong>Start</strong>.</li>
+</ol>
+<figure data-guide-figure="occt-storage"><a href="/images/guides/screenshots/occt-storage.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT Storage: percorsi da testare e dimensione del test"><img src="/images/guides/screenshots/occt-storage.png" alt="OCCT Storage: percorsi da testare e dimensione del test" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="power-cpu-e-gpu-insieme-per-l-alimentatore">Power: CPU e GPU insieme per l'alimentatore</h3>
+<p><strong>Che cosa fa.</strong> Secondo il manuale, Power combina un test CPU e un test 3D per mettere sotto carico contemporaneamente i due componenti che consumano di più. Il risultato è un picco di assorbimento, utile per capire se l'alimentatore regge il massimo. Se l'alimentazione non basta, il sintomo più comune non è un messaggio di errore: è un riavvio improvviso.</p>
+<p><strong>Quando usarlo.</strong> Dopo che CPU e GPU hanno superato da sole i rispettivi test, e solo se sospetti l'alimentatore: riavvii o spegnimenti sotto carico in gioco, oppure dopo aver cambiato alimentatore, scheda video o overclock. OCCT lo indica come test per l'alimentatore; questa guida lo colloca dopo gli altri perché un riavvio durante Power non dice quale dei tre pezzi sia in causa.</p>
+<p><strong>Istruzione per istruzione</strong></p>
+<ol>
+<li>Salva e chiudi tutto: un riavvio improvviso è un esito possibile.</li>
+<li>Seleziona <strong>Power</strong>.</li>
+<li><strong>Device selection</strong> sceglie la GPU da caricare. Nella schermata è <em>Discrete GPUs</em>; secondo il manuale, con più schede compare un selettore, e per impostazione predefinita sono incluse tutte quelle non integrate.</li>
+<li><strong>Instruction set</strong> sceglie le istruzioni della CPU: <em>Auto</em> usa il livello AVX più alto disponibile (con eccezioni su alcune Ryzen di prima generazione); <em>SSE</em> gira su quasi tutte le CPU; <em>AVX</em>, <em>AVX2</em> e <em>AVX512</em> consentono quelle famiglie. Lascia <em>Auto</em> se non hai un motivo per cambiare.</li>
+<li>Imposta una durata breve e premi <strong>Start</strong>. Resta davanti al PC.</li>
+</ol>
+<p><strong>Come leggere il risultato.</strong> Un riavvio improvviso indica un problema di alimentazione o di stabilità sotto picco, ma non identifica da solo l'alimentatore: ripeti i test singoli di CPU e GPU prima di concludere.</p>
+<figure data-guide-figure="occt-power"><a href="/images/guides/screenshots/occt-power.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT Power: selezione delle GPU e set di istruzioni"><img src="/images/guides/screenshots/occt-power.png" alt="OCCT Power: selezione delle GPU e set di istruzioni" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="monitoring-only-osservare-senza-stressare">Monitoring only: osservare senza stressare</h3>
+<p><strong>Che cosa fa.</strong> Non genera carico. Ha due modalità, selezionabili con i pulsanti in alto:</p>
+<ul>
+<li><strong>Only record values</strong> registra i sensori e produce il report, senza eseguire nessun test. È anche la pausa che puoi inserire tra due test programmati.</li>
+<li><strong>Launch external program</strong> avvia un programma esterno tramite tre script batch scritti da te (avvio, arresto e stato/risultato) e registra i sensori mentre gira.</li>
+</ul>
+<p><strong>Quando usarlo.</strong> Per fissare una baseline a PC a riposo, oppure per registrare temperature, frequenze e potenza durante una sessione di gioco reale e leggerle nel report. È il modo più semplice di vedere cosa succede in uso normale.</p>
+<p><strong>Istruzione per istruzione</strong></p>
+<ol>
+<li>Seleziona <strong>Monitoring only</strong>.</li>
+<li>Lascia <em>Only record values</em> (la schermata mostra la scritta <em>This test only record values</em>).</li>
+<li>Avvia la registrazione, fai quello che vuoi osservare (per esempio una partita) e fermala al termine.</li>
+<li>Salva il report. Usa <em>Launch external program</em> solo se sai preparare i tre script richiesti.</li>
+</ol>
+<figure data-guide-figure="occt-monitoring-only"><a href="/images/guides/screenshots/occt-monitoring-only.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT Monitoring only: sola registrazione o programma esterno"><img src="/images/guides/screenshots/occt-monitoring-only.png" alt="OCCT Monitoring only: sola registrazione o programma esterno" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="combined-piu-test-nello-stesso-momento">Combined: più test nello stesso momento</h3>
+<p><strong>Che cosa fa.</strong> Esegue in parallelo la combinazione di test che scegli. Alcuni abbinamenti si contendono le stesse risorse e rendono meno di quanto ti aspetti. OCBASE cita come esempio efficace il test 3D Adaptive in modalità <em>Switch</em> insieme a VRAM per far emergere il coil whine, il fischio elettrico delle schede sotto carico.</p>
+<p><strong>Quando usarlo.</strong> Solo dopo che i test singoli passano, per cercare problemi che compaiono quando più parti lavorano insieme. Non è il punto di partenza: con più variabili, un errore è difficile da attribuire.</p>
+<p><strong>Istruzione per istruzione</strong></p>
+<ol>
+<li>Seleziona <strong>Combined</strong>.</li>
+<li>Spunta in alto i test da eseguire: CPU + RAM, CPU, Linpack, Memory, 3D Adaptive, VRAM. Nella schermata ne sono spuntati quattro solo per mostrare l'interfaccia.</li>
+<li>Sotto compare una sezione di configurazione per ogni test spuntato; scorri la pagina per vederle tutte. Per CPU + RAM trovi <em>Priority</em>, <em>Data set</em>, <em>Mode</em>, <em>Load type</em>, <em>Start at cycle</em>, <em>Instruction set</em> e <em>Thread settings</em>; per CPU trovi <em>Priority</em>, <em>Mode</em>, <em>Load type</em> e <em>Start at cycle</em>. Il significato è lo stesso dei test singoli descritti sopra.</li>
+<li><em>Priority</em> indica la priorità con cui quel carico compete con il resto del sistema; lascia <em>Normal</em>.</li>
+<li>Imposta una durata finita e premi <strong>Start</strong>.</li>
+</ol>
+<figure data-guide-figure="occt-combined"><a href="/images/guides/screenshots/occt-combined.png" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: OCCT Combined: scelta dei test e relative configurazioni"><img src="/images/guides/screenshots/occt-combined.png" alt="OCCT Combined: scelta dei test e relative configurazioni" width="1584" height="897" loading="lazy" decoding="async" /></a><figcaption>Schermata ufficiale OCCT 17.0.14 Supporter. I valori selezionati illustrano l’interfaccia: non sono un preset consigliato né risultati Prime Build. · <a href="https://www.ocbase.com/personal-features" target="_blank" rel="noopener noreferrer">OCBASE / OCCT</a></figcaption></figure><h3 id="leggere-la-finestra-durante-il-test">Leggere la finestra durante il test</h3>
+<p>Quando il test parte, la schermata cambia. Secondo il manuale OCCT trovi:</p>
+<ul>
+<li>un <strong>riepilogo</strong> con il nome del test e i parametri usati;</li>
+<li>l'<strong>indicatore di stato</strong>: segno di spunta verde, nessun problema rilevato; punto esclamativo giallo, un avviso (per esempio un errore WHEA o il raggiungimento della temperatura massima consentita); punto esclamativo rosso, un errore di calcolo o un crash del test;</li>
+<li>il <strong>timer</strong>: tempo trascorso e tempo totale, oppure il simbolo di infinito se non hai fissato una durata;</li>
+<li>il <strong>log</strong>, con gli eventi della prova e un'icona che ne indica la gravità; un pulsante permette di copiarlo, utile per condividerlo;</li>
+<li>i pulsanti per <strong>fermare</strong> il test, <strong>salvare il report</strong> (nella versione Personal è un'immagine PNG) e <strong>tornare</strong> alla configurazione.</li>
+</ul>
+<p>Per la durata, <strong>Infinite</strong> è il valore predefinito: il test gira finché non lo fermi o, se hai attivato <em>Stop on error</em>, finché non trova un errore. <strong>Fixed</strong> lo ferma dopo il tempo indicato. La versione gratuita limita i test a un'ora.</p>
+<h3 id="quale-test-per-quale-domanda-guida-pratica-all-uso">Quale test per quale domanda: guida pratica all'uso</h3>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Situazione</th>
+<th>Test da usare</th>
+<th>Che cosa dimostra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hai cambiato RAM, EXPO/XMP o timing</td>
+<td><strong>Memory</strong>, poi <strong>CPU + RAM</strong></td>
+<td>I dati restano corretti sotto carico sulla memoria e sul percorso CPU–RAM.</td>
+</tr>
+<tr>
+<td>Hai cambiato PBO, Curve Optimizer o tensioni CPU</td>
+<td><strong>CPU</strong> (con Core Cycling per controllare un core alla volta), poi <strong>Linpack</strong> come conferma</td>
+<td>Che i core completino il calcolo senza errori.</td>
+</tr>
+<tr>
+<td>Hai cambiato clock, undervolt o power limit della GPU</td>
+<td><strong>3D Adaptive</strong> (Steady, poi Variable o Switch per i transitori)</td>
+<td>Che la GPU regga un carico da gioco senza artefatti o errori.</td>
+</tr>
+<tr>
+<td>Hai alzato la frequenza della memoria video</td>
+<td><strong>VRAM</strong></td>
+<td>Che i chip di memoria video leggano e scrivano correttamente.</td>
+</tr>
+<tr>
+<td>Il PC si riavvia sotto carico pesante</td>
+<td>Prima i test singoli di CPU e GPU, poi <strong>Power</strong></td>
+<td>Che l'alimentatore regga il picco di CPU e GPU insieme.</td>
+</tr>
+<tr>
+<td>Sospetti il disco</td>
+<td><strong>Storage</strong></td>
+<td>Che l'unità gestisca scritture e letture sostenute.</td>
+</tr>
+<tr>
+<td>Vuoi cercare coil whine o problemi di interazione</td>
+<td><strong>Combined</strong></td>
+<td>Come si comportano più componenti insieme.</td>
+</tr>
+<tr>
+<td>Vuoi capire cosa succede in gioco</td>
+<td><strong>Monitoring only</strong></td>
+<td>Temperature, frequenze e potenza in uso reale.</td>
+</tr>
+</tbody></table>
+</div><p>Un percorso ragionevole, in ordine:</p>
+<ol>
+<li><strong>Prepara la base.</strong> Annota la configurazione, azzera le statistiche di HWiNFO e apri <em>Settings → Security</em> per attivare <em>Stop on error</em> e <em>Stop on WHEA error</em>.</li>
+<li><strong>Cambia una cosa sola</strong> e scegli il test che corrisponde a quella modifica, dalla tabella.</li>
+<li><strong>Parti con una finestra finita e breve</strong>, sorvegliata. Se non compaiono errori, ripeti con una sessione più lunga.</li>
+<li><strong>Aggiungi Linpack, Power o Combined solo dopo</strong>, per confermare o per cercare problemi di interazione.</li>
+<li><strong>Chiudi il cerchio in uso reale</strong>, con <em>Monitoring only</em> e con il gioco che ti interessa: un test sintetico superato non garantisce fluidità né assenza di instabilità in gioco.</li>
+</ol>
+<p>Un test che finisce senza errori è un'evidenza, non una certificazione: copre solo quella combinazione di carico, durata e temperatura.</p>
+<h2 id="9-memtest86-whea-e-lettura-dei-sensori">9. MemTest86, WHEA e lettura dei sensori</h2>
+<h3 id="9-1-memtest86">9.1 MemTest86</h3>
+<p><strong>MemTest86 di PassMark</strong> è un percorso complementare fuori dal sistema operativo [21]. Non è LatencyMon, non misura DPC e non va confuso con Memtest86+, progetto distinto. Prepara una USB dedicata senza dati da conservare, avvia dal menu temporaneo di boot e non disattivare protezioni alla cieca. Verifica che la modalità di avvio e Secure Boot corrispondano alle istruzioni della release; non cambiare controller o timing tra una sessione e l'altra. Registra versione, test/passaggi e durata; zero errori è un'evidenza aggiuntiva, non una garanzia contro instabilità sotto altri carichi. Al termine rimuovi la USB e ripristina l'ordine di boot.</p>
+<h3 id="9-2-whea">9.2 WHEA</h3>
+<p><strong>WHEA</strong>, Windows Hardware Error Architecture, raccoglie segnalazioni hardware della piattaforma. I record possono contenere dati relativi a CPU, memoria, PCIe e altre sezioni [20]. Non sono sinonimo di hard pagefault e non vanno ridotti a “driver andato in crash”.</p>
+<p>Apri <strong>Visualizzatore eventi → Registri di Windows → Sistema → Filtra registro corrente</strong>, seleziona l'origine <strong>WHEA-Logger</strong> e l'intervallo della prova. Annota orario, ID, messaggio e dettagli; conserva o esporta gli eventi pertinenti senza cancellare il registro. «Corretto» non significa da ignorare, ma un evento isolato non identifica da solo il pezzo da sostituire. L'assenza di WHEA dopo una prova breve non dimostra che la macchina sia stabile in ogni condizione.</p>
+<h3 id="9-3-hwinfo">9.3 HWiNFO</h3>
+<p>Apri <strong>HWiNFO</strong> dalla fonte ufficiale in modalità sensori e lascia assestare il sistema a riposo [16]. Le colonne hanno ruoli distinti: <strong>Current</strong>, <strong>Minimum/Maximum</strong> e <strong>Average</strong>. Azzera le statistiche subito prima del singolo carico; un massimo rimasto da una sessione precedente non descrive la prova nuova.</p>
+<p>Se disponibili, aggiungi <strong>Effective Clock</strong> e <strong>Clock Stretching</strong>. Il clock nominale non prova che il core completi lavoro: l'Effective Clock riflette il tempo effettivamente produttivo e lo stretching segnala cicli di attesa. A riposo possono essere normali; leggili sotto lo stesso carico. Salva un CSV separato per ogni prova e annota l'intervallo di campionamento.</p>
+<p>Guarda CPU package/core, GPU, hotspot, memoria video (se disponibile), potenza e indicatori di limitazione. Hotspot e temperatura GPU generale non sono la stessa misura. Il <strong>throttling termico</strong> riduce frequenze per rispettare limiti; un limite di potenza può ridurre il boost anche con temperature moderate. Un indicatore di limite non dimostra da solo un guasto.</p>
+<figure data-guide-figure="frequenza-clock"><a href="/images/guides/diagrams/frequenza-clock.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Clock reported ed effective: dati diversi"><img src="/images/guides/diagrams/frequenza-clock.svg" alt="Clock reported ed effective: dati diversi" width="1200" height="640" loading="lazy" decoding="async" /></a><figcaption>Clock reported ed effective: dati diversi · Schema illustrativo Prime Build</figcaption></figure><h2 id="10-che-cosa-dicono-community-e-pro-e-che-cosa-adottiamo">10. Che cosa dicono community e pro, e che cosa adottiamo</h2>
+<p>Le impostazioni dei pro e dei tweaker sono utili come <strong>inventario di ipotesi</strong>, non come benchmark controllato. Cambiano con gioco, patch, monitor, sensibilità, sample e periodo. Le ho confrontate con specifiche, recensioni e test comunitari; quando una raccomandazione non è verificabile o è troppo rischiosa, la guida adotta la versione più conservativa.</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Affermazione diffusa</th>
+<th>Cosa c'è di vero</th>
+<th>Verdetto</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“PBO e Curve Optimizer -30 sono il setup giusto per 9800X3D”</td>
+<td>Il CO è sample-specific; un sample review ha trovato -20 stabile e -25 no [8].</td>
+<td>Parti da un offset piccolo, testa per core, non copiare -30.</td>
+</tr>
+<tr>
+<td>“DDR5-6400 CL30 è sempre meglio di 6000 CL30 su AM5”</td>
+<td>6400 può richiedere 2:1 o tensioni che peggiorano la latenza; 6000 1:1 è spesso più equilibrato, ma non universale.</td>
+<td>Confronta 1:1, FCLK e frame time; non solo la frequenza.</td>
+</tr>
+<tr>
+<td>“tREFI al massimo è gratis”</td>
+<td>Riduce la latenza media, ma aumenta la sensibilità al calore e può creare errori tardivi.</td>
+<td>Testa a caldo e a lungo; se non guadagni nel workload, lascia perdere.</td>
+</tr>
+<tr>
+<td>“LLC al massimo tiene la tensione”</td>
+<td>Riduce il vdroop, ma può causare overshoot e mascherare problemi.</td>
+<td>Usa un LLC moderato e misura sotto carico.</td>
+</tr>
+<tr>
+<td>“GPU +1500 MHz di memoria è sempre meglio”</td>
+<td>La correzione errori può nascondere instabilità; il guadagno dipende dal modello [19].</td>
+<td>Verifica frame time e artefatti, non solo il punteggio.</td>
+</tr>
+<tr>
+<td>“8 kHz di polling riduce sempre l'input lag”</td>
+<td>Dipende da CPU, gioco, controller USB e stabilità del polling; 2 kHz può essere più affidabile su alcuni sistemi.</td>
+<td>Trattalo come esperimento misurato, non come upgrade garantito. Vedi <a href="/guides/input-usb/">guida input</a>.</td>
+</tr>
+<tr>
+<td>“Un'ora di stress test = stabile”</td>
+<td>Copre solo quella combinazione di carico, durata e temperatura.</td>
+<td>Aggiungi pattern diversi, cold boot, sleep e uso reale.</td>
+</tr>
+<tr>
+<td>“XMP/EXPO è stock”</td>
+<td>È un profilo di overclock validato dal produttore del kit, non una garanzia sul tuo IMC [6][7].</td>
+<td>Trattalo come B, non come A.</td>
+</tr>
+<tr>
+<td>“Più tensione = più stabile”</td>
+<td>Oltre il punto ottimale aumentano calore, corrente e degradazione.</td>
+<td>Cerca il minimo stabile, non il massimo tollerato.</td>
+</tr>
+<tr>
+<td>“Il delid risolve le temperature”</td>
+<td>Può ridurre la temperatura, ma introduce rischio meccanico e invalidazione.</td>
+<td>Fuori dallo scopo di questa guida daily.</td>
+</tr>
+</tbody></table>
+</div><h2 id="11-miti-da-chiudere">11. Miti da chiudere</h2>
+<ul>
+<li><strong>“Overclock = meno latenza”</strong>: può aumentare gli FPS e i minimi, ma non riduce automaticamente il ritardo input→display. La latenza dipende anche da gioco, render queue, display e input.</li>
+<li><strong>“La RAM più veloce è sempre meglio”</strong>: su AM5 la combinazione 1:1/FCLK può contare più della frequenza; su Intel conta la modalità Gear e il training.</li>
+<li><strong>“Un test passato certifica il PC”</strong>: nessun test copre ogni workload, temperatura, driver o aggiornamento futuro.</li>
+<li><strong>“La CPU throttla solo se è troppo calda”</strong>: può limitare per potenza, corrente o tempo, anche con temperature moderate.</li>
+<li><strong>“L'undervolt è sempre sicuro”</strong>: è più sicuro di un overvoltage, ma un undervolt instabile può corrompere dati o causare crash. Va validato.</li>
+<li><strong>“La memoria GDDR corregge gli errori, quindi posso salire”</strong>: la ECC GDDR7 è sempre attiva e corregge errori singoli, ma non rende sicuro un offset fuori specifica. Se il guadagno sparisce, stai generando lavoro di correzione o replay [24].</li>
+<li><strong>“Basta alzare il power limit”</strong>: senza dissipatore, VRM e PSU adeguati ottieni più rumore e throttling, non più prestazioni.</li>
+</ul>
+<h2 id="12-quando-la-base-e-abbastanza-chiara-per-proseguire">12. Quando la base è abbastanza chiara per proseguire</h2>
+<p>L'esito utile non è “stabile per sempre”, ma un registro con configurazione, prove svolte, parametri, durate, sensori, errori e recupero. Se compare un errore, la priorità è risolverlo, non applicare timer o priorità. Se il problema rimasto è un click audio o un sospetto driver, passa alla <a href="/guides/driver-latencymon/">guida driver e LatencyMon</a>. Se è regolarità dei frame, serve una misura di rendering. Non trasformare una prova riuscita in una promessa di minore latenza fisica.</p>
+<h2 id="fonti-e-limiti">Fonti e limiti</h2>
+<details class="guide-sources"><summary>Elenco delle fonti (24)</summary><ol>
+<li>AMD, <a href="https://docs.amd.com/r/en-US/68886-ryzen-master-user-guide/CPU">Ryzen Master User Guide — PBO e Curve Optimizer</a>. Definizioni di PPT, TDC, EDC, Boost Override, Scalar e Curve Optimizer; disponibilità per modello.</li>
+<li>AMD, <a href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9800x3d.html">Ryzen 7 9800X3D</a> e <a href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x3d.html">Ryzen 9 9950X3D</a>. Specifiche, PBO, EXPO e CO dichiarati; nessun valore di tensione o overclock locale.</li>
+<li>AMD, <a href="https://www.amd.com/en/products/software/ryzen-master.html">Ryzen Master</a>, note su garanzia e overclock (GD-26, GD-135). PBO è overclock e può invalidare la garanzia.</li>
+<li>Intel, <a href="https://www.intel.com/content/www/us/en/gaming/resources/how-to-overclock.html">How to Overclock Your Unlocked Intel Core Ultra Processor</a>. Baseline, incrementi, tensione, temperature e avvertenze; guida generale, non specifica per ogni SKU.</li>
+<li>Intel, <a href="https://edc.intel.com/content/www/us/en/design/products/platforms/details/arrow-lake-s/core-ultra-200s-series-processors-datasheet-volume-1-of-2/processor-line-thermal-and-power-specifications">Core Ultra 200S datasheet — power specifications</a>. PL1/PL2/Tau per configurazioni 125 W/65 W/35 W; i valori del BIOS possono differire.</li>
+<li>Intel, <a href="https://www.intel.com/content/www/us/en/gaming/extreme-memory-profile-xmp.html">XMP</a>. XMP è overclock di memoria; note su garanzia e profili DDR5.</li>
+<li>JEDEC, <a href="https://www.jedec.org/standards-documents/docs/jesd79-5d">DDR5 SDRAM Standard JESD79-5D</a>. Standard DDR5; non contiene consigli di overclock.</li>
+<li>TechPowerUp, <a href="https://www.techpowerup.com/review/amd-ryzen-7-9800x3d/26.html">Ryzen 7 9800X3D — Overclocking</a>. Un sample: 5,3 GHz all-core a 1,35 V, PBO -20 stabile, 6200 1:1 a ~1,23 V SoC, 6400 a 1,3 V instabile. Non trasferibile.</li>
+<li>Overclock.net, <a href="https://www.overclock.net/threads/official-zen-5-x3d-owners-club-9800x3d-9900x3d-9950x3d.1812505/">Zen 5 X3D Owners Club</a> e <a href="https://www.overclock.net/threads/9800x3d-curve-optimizer-tips.1814218">Curve Optimizer tips</a>. Esperienze community su CO, per-core, eCLK e tensioni; non benchmark controllati.</li>
+<li>Overclock.net, <a href="https://www.overclock.net/threads/amd-hynix-ddr5-overclocking-guide.1801842">AMD Hynix DDR5 Overclocking Guide</a>. Metodo incrementale sui timing, Karhu/TM5, tREFI; dati di comunità, non universali.</li>
+<li>Reddit r/overclocking, <a href="https://www.reddit.com/r/overclocking/comments/1k3o7qe/am5_ddr5_tuning_cheat_sheet_observations_and_notes/">AM5 DDR5 tuning cheat sheet</a>. Raccolta di pratiche AM5; da verificare sul proprio sample.</li>
+<li>TestMem5, <a href="https://github.com/CoolCmd/TestMem5/releases">release della versione mantenuta da CoolCmd</a> e <a href="https://github.com/integralfx/MemTestHelper/tree/oc-guide/TM5-Configs">config di comunità, incluse anta777, raccolte da integralfx</a>. La versione CoolCmd deriva da quella originale di Serj: verificare compatibilità della config con la versione utilizzata, provenienza e integrità; non disattivare le protezioni antivirus per eseguire un download.</li>
+<li>y-cruncher, <a href="https://www.numberworld.org/y-cruncher/">sito ufficiale</a>. Test CPU/IMC; non è un certificatore universale.</li>
+<li>Karhu Software, <a href="https://www.karhusoftware.com/ramtest/index.html">RAM Test</a>. Test memoria a pagamento; licenza e risultati dipendono dalla versione.</li>
+<li>OCBASE, <a href="https://www.ocbase.com/support">manuale OCCT</a> e <a href="https://www.ocbase.com/">OCCT</a>. Opzioni documentali; la GUI e le durate cambiano per release/edizione.</li>
+<li>HWiNFO, <a href="https://www.hwinfo.com/">sito ufficiale</a>. Sensori e nomi dipendono da hardware/versione.</li>
+<li>NVIDIA, <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/">RTX 5090 specifications</a> e <a href="https://www.nvidia.com/content/geforce-gtx/GeForce_RTX_5090_User_Guide_Rev1.pdf">user guide</a>. TGP 575 W, PSU consigliata 1000 W, connettore 12V-2x6.</li>
+<li>ASUS ROG, <a href="https://rog-forum.asus.com/t5/push-the-limits/power-meets-precision-undervolting-your-rog-astral-oc-rtx-5090/ba-p/1093066">Undervolting ROG Astral OC RTX 5090</a>. Un sample: ~2.902 MHz a 950 mV, ~10 °C in meno, 1–3 FPS di differenza; non trasferibile.</li>
+<li>TechPowerUp, <a href="https://www.techpowerup.com/review/asus-geforce-rtx-5090-tuf/41.html">ASUS RTX 5090 TUF — Overclocking &amp; Power Limits</a>. Offset memoria +375 MHz su più sample, power limit 575/600 W; risultati di recensione.</li>
+<li>Microsoft Learn, <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/whea/error-records">WHEA Error Records</a>. Struttura e significato dei record; non è una diagnosi automatica.</li>
+<li>PassMark, <a href="https://www.memtest86.com/">MemTest86</a>. Test fuori da Windows; richiede USB dedicata e istruzioni della release.</li>
+<li>PresentMon/CapFrameX e la <a href="/guides/misure-verifica/">guida alle misure</a> del progetto. Strumenti per frame time e presentazione; non misurano la latenza fisica input→display.</li>
+<li>AMD, <a href="https://www.amd.com/en/products/processors/technologies/expo.html">EXPO Technology</a>. Profili di memoria overclock per AM5; la compatibilità con il singolo kit va verificata.</li>
+<li>NVIDIA, <a href="https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/quadro-product-literature/pdf/NVIDIA-RTX-Blackwell-PRO-GPU-Architecture-v1_1.pdf">RTX Blackwell PRO GPU Architecture</a>. ECC GDDR7 integrata e sempre attiva sulle GeForce RTX con GDDR7, correzione single-bit ed EDR; documento architetturale, non una guida di overclock.</li>
+</ol></details>
+<p>I tempi proposti sono tappe indicative di una prova sorvegliata, non soglie scientifiche di certificazione. Le fonti di comunità sono esperienze condivise, non studi controllati; le recensioni descrivono sample specifici. Le schermate ufficiali riportano versione e fonte nelle didascalie; non sono acquisizioni di test sul PC del lettore. Nessun software di stress può promettere protezione da tutti i guasti o un recupero automatico.</p>
+</article><nav aria-label="Altre guide" class="mt-14 flex flex-wrap justify-between gap-6 border-t border-white/15 pt-6 text-sm"><a href="/guides/low-latency-gaming-guide/" class="max-w-xs text-zinc-300">← Windows 11: costruire una base misurabile</a><a href="/guides/driver-latencymon/" class="max-w-xs text-zinc-300">Driver e LatencyMon: dal sintomo a una verifica utile →</a></nav></div></div></div></section></div>
+  </body>
+</html>
+
+
+

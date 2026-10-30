@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Capacità, RTT, variabilità e perdita</title>
+<desc id="desc">Quattro analogie non a scala: capacità del passaggio, viaggio di andata e ritorno, intervalli RTT variabili e una risposta assente. Jitter qui significa variabilità del RTT, non IPDV a senso unico.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="800" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Capacità, RTT, variabilità e perdita</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<rect x="40" y="150" width="540" height="230" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<rect x="620" y="150" width="540" height="230" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<rect x="40" y="410" width="540" height="230" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<rect x="620" y="410" width="540" height="230" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="64" y="191" font-size="26" fill="#4ade80" text-anchor="start" font-weight="700">BANDA / CAPACITÀ</text>
+<rect x="80" y="220" width="60" height="18" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<path d="M 154 229 L 420 229" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="80" y="248" width="60" height="18" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<path d="M 154 257 L 420 257" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="80" y="276" width="60" height="18" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<path d="M 154 285 L 420 285" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="80" y="304" width="60" height="18" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<path d="M 154 313 L 420 313" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 448 218 L 448 329" fill="none" stroke="#8896a7" stroke-width="3"/>
+<path d="M 480 218 L 480 329" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="64" y="355" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Quanti dati possono passare al secondo</text>
+<text x="644" y="191" font-size="26" fill="#4ade80" text-anchor="start" font-weight="700">RTT / ANDATA E RITORNO</text>
+<rect x="650" y="225" width="130" height="74" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="715.0" y="270.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">PC</text>
+<rect x="990" y="225" width="140" height="74" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="1060.0" y="270.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Host</text>
+<path d="M 780 239 H 990" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 990 283 H 780" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="885" y="227" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Andata</text>
+<text x="885" y="326" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Ritorno</text>
+<text x="644" y="355" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">RTT non è il tempo a senso unico</text>
+<text x="64" y="451" font-size="26" fill="#4ade80" text-anchor="start" font-weight="700">VARIABILITÀ DEL RTT</text>
+<path d="M 85 490 L 235 490" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="420" y="499" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Sonda A</text>
+<path d="M 85 528 L 395 528" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="420" y="537" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Sonda B</text>
+<path d="M 85 566 L 290 566" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="420" y="575" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Sonda C</text>
+<text x="64" y="621" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Intervalli diversi; nessuna scala temporale</text>
+<text x="644" y="451" font-size="26" fill="#4ade80" text-anchor="start" font-weight="700">LOSS / RISPOSTA ASSENTE</text>
+<rect x="650" y="485" width="82" height="70" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="691.0" y="528.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">A</text>
+<rect x="765" y="485" width="82" height="70" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="806.0" y="528.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">B</text>
+<rect x="880" y="485" width="82" height="70" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="921.0" y="528.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">—</text>
+<rect x="995" y="485" width="82" height="70" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="1036.0" y="528.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">D</text>
+<text x="644" y="591" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Assente entro il timeout della sonda:</text>
+<text x="644" y="623" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">non prova perdita dei pacchetti del gioco</text>
+<path d="M 40 702 L 1160 702" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="738" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Analogia didattica, non simulazione di una rete né misure reali.</text>
+<text x="40" y="770" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">“Jitter” qui: variabilità RTT; non la metrica IPDV della RFC 3393.</text>
+</svg>

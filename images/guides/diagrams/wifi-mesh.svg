@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Wi-Fi e mesh: posizione e backhaul</title>
+<desc id="desc">Pianta inventata con muro e mobile metallico. AP in spazio aperto e AP dietro mobile distinti per etichette. Un nodo con upstream utilizzabile e uno con upstream debole. Linea piena Ethernet e tratteggiata radio; cavo fra PC e satellite non rende cablato il backhaul.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="800" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Wi-Fi e mesh: posizione e backhaul</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<rect x="40" y="155" width="1120" height="370" rx="0" fill="#0b0f14" stroke="#8896a7" stroke-width="2"/>
+<path d="M 605 155 L 605 400" fill="none" stroke="#8896a7" stroke-width="3"/>
+<path d="M 605 468 L 605 525" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="631" y="190" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Muro / materiali</text>
+<rect x="70" y="208" width="220" height="88" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="180.0" y="244.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Router / AP</text>
+<text x="180.0" y="276.15999999999997" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">in spazio aperto</text>
+<rect x="855" y="208" width="270" height="88" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="990.0" y="244.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Nodo: upstream</text>
+<text x="990.0" y="276.15999999999997" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">da verificare</text>
+<path d="M 290 252 L 855 252" fill="none" stroke="#8896a7" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="455" y="237" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Backhaul radio</text>
+<rect x="70" y="346" width="295" height="142" rx="0" fill="#25313e" stroke="#8896a7" stroke-width="2"/>
+<text x="90" y="379" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Mobile metallico</text>
+<rect x="90" y="395" width="255" height="74" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="217.5" y="424.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">AP nascosto</text>
+<text x="217.5" y="456.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">ostacolo da evitare</text>
+<rect x="855" y="387" width="270" height="88" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="990.0" y="423.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Nodo in zona</text>
+<text x="990.0" y="455.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">upstream debole</text>
+<path d="M 692 430 L 855 430" fill="none" stroke="#8896a7" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#arrow)"/>
+<text x="714" y="415" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Radio</text>
+<text x="400" y="484" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">La pianta non calcola segnale né copertura.</text>
+<text x="40" y="567" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">DUE CATENE DISTINTE</text>
+<text x="40" y="613" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Router ⇄ Ethernet ⇄ nodo / AP ⇄ Wi-Fi ⇄ PC</text>
+<text x="40" y="660" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Router ⇄ radio ⇄ satellite ⇄ Ethernet ⇄ PC</text>
+<path d="M 40 702 L 1160 702" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="738" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Pianta illustrativa: nessun raggio fisso in metri, non previsione di copertura.</text>
+<text x="40" y="770" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Linea piena = cavo; tratteggiata = radio. Un PC cablato può avere uplink radio.</text>
+</svg>

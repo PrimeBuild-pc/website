@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>if(new URLSearchParams(location.search).get("motion")==="on")document.documentElement.classList.add("motion-preview")</script>
+    <meta http-equiv="content-language" content="it" />
+    <link rel="alternate" hreflang="it" href="https://primebuild.website/guides/low-latency-gaming-guide/" />
+    <link rel="alternate" hreflang="x-default" href="https://primebuild.website/guides/low-latency-gaming-guide/" />
+    <title>Windows 11: costruire una base misurabile | Prime Build</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Un buon setup non è il Windows con meno voci in Gestione attività. È un sistema che riconosce l'hardware, esegue ciò che ti serve, resta aggiornabile e ti…" />
+    <meta name="author" content="Prime Build" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="geo.region" content="IT-PD" />
+    <meta name="geo.placename" content="Montegrotto Terme" />
+    <meta name="geo.position" content="45.3166667;11.7666667" />
+    <meta name="ICBM" content="45.3166667, 11.7666667" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://primebuild.website/guides/low-latency-gaming-guide/" />
+    <meta property="og:title" content="Windows 11: costruire una base misurabile | Prime Build" />
+    <meta property="og:description" content="Un buon setup non è il Windows con meno voci in Gestione attività. È un sistema che riconosce l'hardware, esegue ciò che ti serve, resta aggiornabile e ti…" />
+    <meta property="og:image" content="https://primebuild.website/og/low-latency-gaming-guide.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Windows 11: costruire una base misurabile | Prime Build" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Prime Build" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Windows 11: costruire una base misurabile | Prime Build" />
+    <meta name="twitter:description" content="Un buon setup non è il Windows con meno voci in Gestione attività. È un sistema che riconosce l'hardware, esegue ciò che ti serve, resta aggiornabile e ti…" />
+    <meta name="twitter:image" content="https://primebuild.website/og/low-latency-gaming-guide.png" />
+    <meta name="twitter:image:alt" content="Windows 11: costruire una base misurabile | Prime Build" />
+    
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://primebuild.website/guides/low-latency-gaming-guide/" />
+    
+    <!-- Preload critical assets for better LCP -->
+    <link rel="preload" href="/logo.png?v=20260814" as="image" type="image/png" fetchpriority="high">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico?v=20260814" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20260814" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20260814" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260814" />
+    <link rel="manifest" href="/site.webmanifest?v=20260814">
+
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-TileColor" content="#ff6600">
+
+      <script type="module" crossorigin src="/assets/index-BYESkKSr.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-DWHSJf6t.css">
+    <meta property="article:published_time" content="2025-12-06"><meta property="article:modified_time" content="2026-10-24"><script id="primebuild-schema" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","LocalBusiness"],"@id":"https://primebuild.website/#business","name":"Prime Build","alternateName":"PrimeBuild","url":"https://primebuild.website/","logo":{"@type":"ImageObject","url":"https://primebuild.website/logo.png?v=20260814","width":512,"height":512},"image":"https://primebuild.website/og-image-v2.png","email":"preventivi@primebuild.website","description":"Assemblaggio PC gaming su misura, assistenza tecnica e ottimizzazione a Montegrotto Terme, Padova e in tutta Italia.","address":{"@type":"PostalAddress","addressLocality":"Montegrotto Terme","postalCode":"35036","addressRegion":"PD","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":45.3166667,"longitude":11.7666667},"areaServed":[{"@type":"City","name":"Montegrotto Terme"},{"@type":"City","name":"Padova"},{"@type":"Country","name":"Italia"}],"priceRange":"€€","sameAs":["https://www.instagram.com/prime_build_/","https://discord.gg/ERUwSxE79q","https://github.com/PrimeBuild-pc"],"knowsAbout":["PC gaming custom","Assemblaggio PC","Assistenza tecnica PC","Ottimizzazione PC","Latenza gaming"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Servizi Prime Build","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Assemblaggio PC gaming su misura","url":"https://primebuild.website/servizi/pc-gaming-su-misura/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Assistenza e riparazione PC","url":"https://primebuild.website/servizi/assistenza-riparazione-pc/"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Ottimizzazione PC gaming","url":"https://primebuild.website/servizi/ottimizzazione-pc-gaming/"}}]}},{"@type":"WebSite","@id":"https://primebuild.website/#website","url":"https://primebuild.website/","name":"Prime Build","alternateName":"PrimeBuild","inLanguage":"it-IT","publisher":{"@id":"https://primebuild.website/#business"}},{"@type":"Article","@id":"https://primebuild.website/guides/low-latency-gaming-guide/#article","headline":"Windows 11: costruire una base misurabile","description":"Un buon setup non è il Windows con meno voci in Gestione attività. È un sistema che riconosce l'hardware, esegue ciò che ti serve, resta aggiornabile e ti…","image":"https://primebuild.website/og-image-v2.png","datePublished":"2025-12-06","dateModified":"2026-10-24","author":{"@id":"https://primebuild.website/#business"},"publisher":{"@id":"https://primebuild.website/#business"},"mainEntityOfPage":{"@id":"https://primebuild.website/guides/low-latency-gaming-guide/#webpage"},"inLanguage":"it-IT"},{"@type":"WebPage","@id":"https://primebuild.website/guides/low-latency-gaming-guide/#webpage","url":"https://primebuild.website/guides/low-latency-gaming-guide/","name":"Windows 11: costruire una base misurabile","isPartOf":{"@id":"https://primebuild.website/#website"},"breadcrumb":{"@id":"https://primebuild.website/guides/low-latency-gaming-guide/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://primebuild.website/guides/low-latency-gaming-guide/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://primebuild.website/"},{"@type":"ListItem","position":2,"name":"Guide","item":"https://primebuild.website/guides/"},{"@type":"ListItem","position":3,"name":"Windows 11: costruire una base misurabile","item":"https://primebuild.website/guides/low-latency-gaming-guide/"}]}]}</script></head>
+  <body>
+    <div id="root"><section data-guide-slug="low-latency-gaming-guide" class="guide-page px-4 pb-20 pt-28 sm:px-6"><div class="mx-auto max-w-7xl"><nav aria-label="Percorso" class="mb-7 flex flex-wrap items-center gap-3 text-sm text-zinc-300"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/guides/">Tutte le guide</a><span aria-hidden="true">/</span><span>Guida 01</span></nav><div class="guide-layout"><aside class="guide-index"><details><summary>In questa guida</summary><nav aria-label="Indice della guida"><ol><li><a href="#come-leggere-questa-guida">Come leggere questa guida</a></li><li><a href="#1-definire-il-problema-prima-di-cambiare-qualcosa">1. Definire il problema prima di cambiare qualcosa</a></li><li><a href="#2-windows-11-nel-2026-25h2-26h1-26h2">2. Windows 11 nel 2026: 25H2, 26H1, 26H2</a></li><li><a href="#3-il-sistema-come-catena">3. Il sistema come catena</a></li><li><a href="#4-preparare-un-recupero-reale">4. Preparare un recupero reale</a></li><li><a href="#5-iso-usb-e-firmware">5. ISO, USB e firmware</a></li><li><a href="#6-installare-sul-disco-giusto-con-il-controller-giusto">6. Installare sul disco giusto, con il controller giusto</a></li><li><a href="#7-account-driver-e-ritorno-online">7. Account, driver e ritorno online</a></li><li><a href="#8-applicazioni-e-dipendenze-installare-cio-che-serve">8. Applicazioni e dipendenze: installare ciò che serve</a></li><li><a href="#9-energia-scheduler-e-sicurezza">9. Energia, scheduler e sicurezza</a></li><li><a href="#10-background-e-servizi-il-numero-non-e-l-obiettivo">10. Background e servizi: il numero non è l&#x27;obiettivo</a></li><li><a href="#11-la-baseline-da-conservare">11. La baseline da conservare</a></li><li><a href="#miti-da-chiudere">Miti da chiudere</a></li><li><a href="#fonti-e-limiti-delle-evidenze">Fonti e limiti delle evidenze</a></li></ol></nav></details></aside><div class="min-w-0"><div class="mb-6 flex flex-wrap gap-3 text-sm text-zinc-400"><span class="text-primary">01 / 13</span><time dateTime="2026-10-24">Aggiornata il 24 ottobre 2026</time><a href="/chi-siamo/">Team tecnico Prime Build</a></div><article class="guide-prose"><h1 id="windows-11-costruire-una-base-misurabile">Windows 11: costruire una base misurabile</h1>
+<p>Un buon setup non è il Windows con meno voci in Gestione attività. È un sistema che riconosce l'hardware, esegue ciò che ti serve, resta aggiornabile e ti permette di capire che cosa è cambiato quando compare un problema. Da questa base si possono confrontare prestazioni e ottimizzazioni; senza una base riconoscibile, ogni tweak aggiunge soltanto incertezza.</p>
+<p>Questa guida parte dal sistema operativo e arriva a driver, applicazioni, energia e attività in background. Non è una lista di tweak da applicare in blocco: è il capitolo che costruisce il riferimento per i successivi. La latenza che percepisci, infatti, attraversa più strati:</p>
+<pre tabindex="0" aria-label="Blocco di codice scorrevole"><code class="language-text">input → simulazione → rendering CPU/GPU → presentazione → display
+audio: applicazione → mixer → driver → DAC/cuffie
+rete: gioco → stack di rete → NIC/Wi-Fi → router → ISP
+</code></pre>
+<p>Il setup Windows non è l'unico strato, ma è quello che rende gli altri osservabili. Se il sistema è instabile o non sai ricostruire le modifiche, un risultato apparentemente migliore non è una misura: è una coincidenza non riproducibile.</p>
+<p>La guida è rivolta a Windows 11 25H2 e 26H2 su hardware supportato. Windows 11 26H1 esiste, ma è un ramo OEM con regole proprie: non è l'aggiornamento da installare su un PC esistente. I percorsi delle impostazioni possono cambiare leggermente con la build e con l'edizione. Le procedure sono documentate, non collaudate sul PC del lettore.</p>
+<h2 id="come-leggere-questa-guida">Come leggere questa guida</h2>
+<ul>
+<li><strong>Se Windows funziona già</strong>, non reinstallarlo per seguire la guida. Leggi la parte su versioni, memoria, inventario e recupero, poi passa ad applicazioni, energia e background.</li>
+<li><strong>Se scegli un'installazione pulita</strong>, considera la cancellazione dei dischi una decisione separata, da prendere solo dopo un backup verificato.</li>
+<li><strong>Se stai inseguendo un sintomo</strong>, non partire dal tweak. Definisci che cosa succede, quando succede e come misurerai il cambiamento. La <a href="/guides/misure-verifica/">guida misure</a> entra nel dettaglio; qui costruisci le condizioni perché quella misura abbia senso.</li>
+</ul>
+<p>L'ordine consigliato è: capire il sistema → preparare il recupero → installare o verificare → scegliere driver e applicazioni → impostare energia e background → conservare una baseline.</p>
+<h2 id="1-definire-il-problema-prima-di-cambiare-qualcosa">1. Definire il problema prima di cambiare qualcosa</h2>
+<h3 id="una-frase-verificabile">Una frase verificabile</h3>
+<p>«Il PC ha latenza» non distingue un problema di input, frame time, audio, rete o storage. Una descrizione utile è già un'ipotesi:</p>
+<ul>
+<li>«la voce si interrompe quando parte il download»;</li>
+<li>«la scena scatta dopo il caricamento della nuova area»;</li>
+<li>«il mouse sembra in ritardo solo con il gioco in finestra»;</li>
+<li>«l'audio gracchia quando apro OBS»;</li>
+<li>«il frame time peggiora dopo dieci minuti, non subito».</li>
+</ul>
+<p>Scrivi anche il contesto: gioco o applicazione, risoluzione, refresh, frame cap, impostazioni grafiche, periferiche, rete, carico in background. Una prova senza contesto non è ripetibile.</p>
+<h3 id="la-regola-a-b-a">La regola A–B–A</h3>
+<ol>
+<li><strong>A</strong>: registra lo stato iniziale e ripeti la scena senza modifiche.</li>
+<li><strong>B</strong>: cambia una sola cosa.</li>
+<li><strong>A</strong>: torna allo stato iniziale e ripeti.</li>
+</ol>
+<p>Se B migliora solo quando A peggiora, o se il risultato cambia senza una modifica, stai misurando rumore, temperatura, cache o rete. La regola vale per un piano energia, un driver, un'opzione del gioco e un tool di debloat.</p>
+<h3 id="baseline-minima">Baseline minima</h3>
+<p>Prima di toccare il sistema, conserva:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Voce</th>
+<th>Perché serve</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Edizione, versione e build di Windows (<code>winver</code>)</td>
+<td>Identifica patch, note e percorso di aggiornamento.</td>
+</tr>
+<tr>
+<td>Modello di CPU, GPU, scheda madre/notebook e revisione BIOS</td>
+<td>Senza questi dati i consigli “universali” non sono verificabili.</td>
+</tr>
+<tr>
+<td>RAM installata, configurazione e profilo (JEDEC/XMP/EXPO)</td>
+<td>Distingue capacità, frequenza e stabilità.</td>
+</tr>
+<tr>
+<td>Dischi e controller (SATA, NVMe, VMD/RST, RAID)</td>
+<td>Spiega gran parte dei problemi di installazione e storage.</td>
+</tr>
+<tr>
+<td>Driver effettivi di GPU, chipset, rete, audio e storage</td>
+<td>“Ultimo driver” non significa “driver giusto per questo hardware”.</td>
+</tr>
+<tr>
+<td>Piano e modalità di alimentazione, profilo OEM</td>
+<td>Cambiano boost, ventole e transizioni.</td>
+</tr>
+<tr>
+<td>Applicazioni e servizi necessari</td>
+<td>Il PC deve restare usabile, non solo vuoto.</td>
+</tr>
+<tr>
+<td>Punto di ripristino, backup e chiave BitLocker</td>
+<td>Stabiliscono come tornare indietro.</td>
+</tr>
+</tbody></table>
+</div><p>Un inventario non è una collezione di screenshot. È un file di testo o un foglio che puoi rileggere fra una settimana, con versioni e date.</p>
+<h3 id="strumenti-di-prima-lettura">Strumenti di prima lettura</h3>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Strumento</th>
+<th>Come iniziare</th>
+<th>Che cosa non conclude</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gestione attività</td>
+<td><strong>Ctrl+Maiusc+Esc</strong>. In Processi ordina per CPU, memoria o disco durante il sintomo; in Prestazioni → CPU osserva i processori logici.</td>
+<td>Un utilizzo totale moderato non esclude un thread limitante. Non terminare processi sconosciuti per “pulizia”.</td>
+</tr>
+<tr>
+<td>Monitoraggio risorse</td>
+<td>Cerca <strong>resmon</strong>. Controlla CPU, Memoria, Disco e Rete; usa la ricerca I/O per collegare il processo all'orario del sintomo.</td>
+<td>Un hard fault non dimostra RAM guasta; un contatore alto non attribuisce da solo la causa.</td>
+</tr>
+<tr>
+<td>Visualizzatore eventi</td>
+<td>Cerca <strong>eventvwr.msc</strong>. In Registri di Windows → Sistema/Applicazione filtra l'intervallo e salva origine, ID e messaggio; cerca anche errori driver o WHEA ripetuti.</td>
+<td>Kernel-Power dopo uno spegnimento descrive un evento, non ne identifica automaticamente la causa.</td>
+</tr>
+<tr>
+<td>Process Explorer</td>
+<td>Scaricalo dalla pagina Microsoft Sysinternals, estrailo e apri le proprietà del processo. L'elevazione mostra più dettagli, non autorizza a chiudere componenti critici.</td>
+<td>Firma e produttore aiutano a identificare il binario; non provano che sia utile o sicuro da chiudere.</td>
+</tr>
+<tr>
+<td>Autoruns</td>
+<td>Inventaria programmi al login, task, servizi e driver. Salva l'inventario prima di intervenire.</td>
+<td>Il filtro Microsoft facilita la lettura, ma non certifica tutte le voci rimaste.</td>
+</tr>
+</tbody></table>
+</div><p>Process Explorer e Autoruns sono strumenti Sysinternals [2]. In Autoruns togli la spunta a un autostart opzionale invece di cancellarlo: riavvia, prova la funzione e rimetti la spunta se serve. Non applicare lo stesso metodo ai driver di boot o di sicurezza.</p>
+<h2 id="2-windows-11-nel-2026-25h2-26h1-26h2">2. Windows 11 nel 2026: 25H2, 26H1, 26H2</h2>
+<p>La versione di Windows non è un numero da inseguire. È un percorso di aggiornamento con regole diverse:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Versione</th>
+<th>Stato e percorso</th>
+<th>Supporto indicativo</th>
+<th>A chi serve</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>25H2</strong></td>
+<td>Feature update distribuito dal 30 settembre 2025 come enablement package sopra 24H2 [29].</td>
+<td>Home/Pro 24 mesi; Enterprise/Education 36 mesi.</td>
+<td>PC esistenti che non sono ancora passati a 26H2.</td>
+</tr>
+<tr>
+<td><strong>26H1</strong></td>
+<td>Rilascio hardware-optimized, preinstallato su dispositivi selezionati da inizio 2026. Non viene offerto via Windows Update e non è un in-place update da 24H2/25H2.</td>
+<td>Pro 24 mesi; Enterprise 36 mesi.</td>
+<td>Solo hardware che nasce con questo ramo; non è una tappa verso 26H2.</td>
+</tr>
+<tr>
+<td><strong>26H2</strong></td>
+<td>Feature update GA dal 29 settembre 2026, distribuito come enablement package a 24H2/25H2, con un solo riavvio nella maggior parte dei casi.</td>
+<td>Home/Pro 24 mesi; Enterprise/Education 36 mesi.</td>
+<td>Aggiornamento annuale per i PC esistenti compatibili.</td>
+</tr>
+</tbody></table>
+</div><p>Se sei ancora su 24H2, il percorso di aggiornamento è 26H2; controlla il ciclo di supporto della tua edizione, perché per Home/Pro 24H2 è arrivato a fine servicing a ottobre 2026 [22]. 24H2 non è il riferimento di questa guida.</p>
+<p>Windows 11 26H1 non è una versione “migliore” da installare manualmente. Microsoft la descrive come release specializzata per nuova piattaforma hardware, non destinata alla distribuzione ampia. I dispositivi 26H1 non possono passare al successivo feature update annuale del secondo semestre 2026 perché il ramo di base è diverso; avranno un percorso in una release futura [22][23]. Se hai un PC 24H2 o 25H2, il percorso normale è 26H2, non 26H1.</p>
+<p>26H2 non è un “Windows nuovo” da zero: condivide la base di servicing con 24H2 e 25H2. Molte funzionalità sono già arrivate con gli aggiornamenti mensili; il passaggio abilita selezioni e resetta il ciclo di supporto [24]. Questo ha due conseguenze pratiche:</p>
+<ul>
+<li>un aggiornamento cumulativo può cambiare comportamento anche senza un nuovo numero di versione;</li>
+<li>un problema noto può essere già presente prima del passaggio a 26H2.</li>
+</ul>
+<p>Al 21 ottobre 2026 il rollout di 26H2 è a disponibilità piena per i dispositivi 25H2 e 24H2, ma restano problemi noti. Fra questi, alcuni dispositivi <strong>USB Audio Class 1.0</strong> hanno mostrato errori Code 10 o mancata uscita audio dopo il passaggio a 26H2 o gli aggiornamenti di settembre 2026; il problema è stato mitigato, non necessariamente risolto per ogni combinazione [25]. Se usi una scheda audio o un DAC USB di classe 1.0, controlla lo stato prima di aggiornare e tieni pronto il rollback. La <a href="/guides/setup-audio/">guida audio</a> entra nel merito del percorso audio.</p>
+<p>La versione conta anche per i driver: il nuovo criterio di fiducia del kernel, entrato nel servicing da aprile 2026 e incluso in 26H2, riguarda i driver firmati con il vecchio programma cross-signed. Non è un dettaglio da smanettoni: un driver vecchio ma funzionante può essere bloccato se non rientra nel programma WHCP o nella allow list. Ne parliamo nella sezione driver.</p>
+<p><strong>Cosa fare in pratica:</strong> apri <code>winver</code>, annota versione, build ed edizione. Non forzare 26H1. Se 26H2 è disponibile, aggiorna solo dopo backup e controllo dei driver critici. Se un problema noto riguarda il tuo hardware, attendi la correzione invece di accumulare workaround.</p>
+<h2 id="3-il-sistema-come-catena">3. Il sistema come catena</h2>
+<h3 id="processi-thread-scheduler-e-driver">Processi, thread, scheduler e driver</h3>
+<p>Il <strong>kernel</strong> coordina le risorse centrali. Le applicazioni operano normalmente in modalità utente e chiedono al sistema accesso a memoria e dispositivi; i <strong>driver</strong> collegano quelle richieste all'hardware. La separazione limita i danni di un'app difettosa, ma un problema in modalità kernel può coinvolgere l'intero sistema.</p>
+<p>Un <strong>processo</strong> è un programma in esecuzione con le proprie risorse. I suoi <strong>thread</strong> sono le attività che il processore può eseguire: un gioco può averne per simulazione, preparazione grafica, audio e caricamenti. Lo <strong>scheduler</strong> distribuisce il tempo ai thread pronti sui processori logici disponibili. Un thread che aspetta un file o una risposta di rete non diventa pronto solo perché gli assegni una priorità più alta.</p>
+<p>Windows non è un sistema hard real-time: non promette un limite temporale rigoroso per ogni evento. Gestisce comunque attività con scadenze, come l'audio. Carichi concorrenti, firmware e driver possono influire sul rispetto di quelle scadenze. Impostare un gioco su «Tempo reale», copiare affinità da un'altra CPU o disabilitare servizi in blocco può togliere risorse alle attività necessarie: non è un punto di partenza.</p>
+<p>Un <strong>interrupt</strong> segnala un evento al processore. La <strong>ISR</strong> (Interrupt Service Routine) gestisce la risposta immediata; la <strong>DPC</strong> (Deferred Procedure Call) svolge successivamente parte del lavoro del driver. Sul processore interessato questo lavoro può ritardare i thread ordinari. Non bisogna eliminarlo: durata, frequenza e coincidenza con una scadenza sono ciò che conta. <a href="/guides/driver-latencymon/">LatencyMon</a> aiuta a indagare queste condizioni, ma non misura il tempo fra clic e immagine sul display.</p>
+<h3 id="ram-quattro-cose-che-non-sono-la-stessa-cosa">RAM: quattro cose che non sono la stessa cosa</h3>
+<p>Molti problemi nascono dal confondere <strong>RAM fisica</strong>, <strong>spazio di indirizzi virtuale</strong>, <strong>commit</strong> e <strong>working set</strong>.</p>
+<ul>
+<li>La <strong>RAM fisica</strong> è la memoria installata. Il firmware può riservarne una parte per hardware, iGPU o altre funzioni; per questo “installata” e “utilizzabile” possono differire.</li>
+<li>Lo <strong>spazio virtuale</strong> è l'insieme degli indirizzi che un processo può usare. Non è una quantità di RAM consumata.</li>
+<li>Il <strong>commit</strong> è la memoria che Windows si è impegnato a fornire a processi e kernel. Può superare la RAM fisica perché può essere sostenuto dal pagefile.</li>
+<li>Il <strong>working set</strong> è la parte di memoria di un processo che in questo momento è residente in RAM. Include pagine condivise e private; non coincide con tutto ciò che il processo ha riservato [30].</li>
+</ul>
+<p>Gestione attività mostra questi valori con etichette che possono variare leggermente tra build:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Voce</th>
+<th>Che cosa rappresenta</th>
+<th>Come leggerla</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>In use</strong></td>
+<td>Working set dei processi + memoria non paginata + pagine modificate.</td>
+<td>È la memoria attivamente coinvolta, non tutta quella “persa”.</td>
+</tr>
+<tr>
+<td><strong>Available</strong></td>
+<td>Memoria standby + memoria libera.</td>
+<td>È la memoria che il sistema può riassegnare senza andare subito su disco.</td>
+</tr>
+<tr>
+<td><strong>Cached</strong></td>
+<td>Cache del sistema, standby e pagine modificate in attesa di scrittura.</td>
+<td>Può essere riutilizzata; un valore alto non è un errore.</td>
+</tr>
+<tr>
+<td><strong>Committed</strong></td>
+<td>Memoria promessa a processi e kernel.</td>
+<td>Se si avvicina al limite, il sistema può fallire le allocazioni.</td>
+</tr>
+<tr>
+<td><strong>Commit limit</strong></td>
+<td>RAM fisica + tutti i pagefile.</td>
+<td>È il tetto del commit, non il tetto della RAM.</td>
+</tr>
+<tr>
+<td><strong>Paged pool</strong></td>
+<td>Memoria kernel che può essere spostata su disco.</td>
+<td>Un valore in crescita può indicare un driver o un componente kernel.</td>
+</tr>
+<tr>
+<td><strong>Non-paged pool</strong></td>
+<td>Memoria kernel che non può essere spostata su disco.</td>
+<td>Una crescita continua è un caso da driver, non da “pulizia RAM”.</td>
+</tr>
+<tr>
+<td><strong>Hardware reserved</strong></td>
+<td>RAM riservata da firmware/hardware.</td>
+<td>Non è recuperabile con un tweak software.</td>
+</tr>
+</tbody></table>
+</div><p>Le formule semplificate aiutano a non leggere un solo numero: <strong>Memory In Use ≈ working set + non-paged + modified</strong>; <strong>Available ≈ standby + free</strong> [27]. In Gestione attività, “Cached” può includere standby, modified e cache di sistema. Non pretendere che la somma delle righe dei processi sia identica a “In use”: il kernel, i driver e le pagine condivise contano.</p>
+<h4 id="working-set-e-standby-non-sono-ram-sprecata">Working set e standby non sono RAM «sprecata»</h4>
+<p>La <strong>standby list</strong> contiene pagine non modificate che sono state tolte dai working set ma restano in RAM come cache. Se un processo le richiede, tornano disponibili senza leggere dal disco: è un <strong>soft fault</strong>. Se serve memoria, Windows può riutilizzarle. Per questo “RAM libera” non è l'obiettivo: un sistema che usa la RAM per cache è spesso più reattivo di uno che la tiene vuota.</p>
+<p>Il <strong>working set</strong> può essere ridotto dal sistema o da un tool. Ridurlo non cancella i dati: le pagine possono essere ricaricate. Ma svuotarlo a forza mentre un'applicazione sta lavorando provoca fault e letture che altrimenti non servirebbero. Un tool che “libera RAM” spesso sposta il costo dal presente al momento successivo.</p>
+<p>La <strong>memoria compressa</strong> è un altro livello: Windows può comprimere pagine in RAM invece di scriverle subito su disco. Gestione attività mostra una parte di “In use” come compressa. La compressione usa CPU e memoria; non è un leak e non va giudicata dal solo numero. Se vedi compressione alta insieme a un'applicazione che consuma molta memoria, la domanda è quale applicazione stia crescendo, non come disattivare la compressione.</p>
+<h4 id="pagefile-non-e-ram-in-piu-nel-senso-comune">Pagefile: non è “RAM in più” nel senso comune</h4>
+<p>Il <strong>pagefile</strong> assolve a tre funzioni distinte:</p>
+<ol>
+<li>permette di rimuovere dalla RAM pagine modificate e usate di rado, liberando spazio per dati più utili;</li>
+<li>estende il <strong>commit limit</strong> oltre la RAM fisica;</li>
+<li>può sostenere un <strong>crash dump</strong> di sistema.</li>
+</ol>
+<p>Il commit limit è la somma della RAM fisica e di tutti i pagefile. Se il commit charge arriva al limite, applicazioni e sistema possono non ottenere memoria, con errori, freeze o crash. Disattivare il pagefile non “elimina il paging”: riduce il tetto del commit e può rendere impossibile il dump. Su un sistema con molta RAM il pagefile può essere poco usato, ma questo non lo rende inutile.</p>
+<p>La gestione automatica è una base pratica. Microsoft la descrive come adattiva: il pagefile cresce in base alla cronologia d'uso, alla RAM e alle impostazioni di dump; quando il commit supera il 90% del limite, può crescere fino a tre volte la RAM o 4 GB, scegliendo il valore maggiore, con il vincolo dello spazio sul volume [1][26]. Non è una formula universale, ma è un comportamento documentato.</p>
+<p>Se scegli una dimensione manuale, devi considerare due cose separate:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Esigenza</th>
+<th>Conseguenza</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Crash dump</strong></td>
+<td>Il pagefile o un file di dump dedicato deve essere grande abbastanza per il tipo di dump scelto.</td>
+</tr>
+<tr>
+<td><strong>Picco del commit</strong></td>
+<td>Il pagefile deve sostenere il picco di memoria promessa, non solo la RAM “media” osservata a desktop.</td>
+</tr>
+</tbody></table>
+</div><p>Minimi documentati per i dump [26]:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Tipo di dump</th>
+<th>Requisito minimo del pagefile</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Small memory dump (256 KB)</td>
+<td>1 MB</td>
+</tr>
+<tr>
+<td>Kernel memory dump</td>
+<td>Dipende dalla memoria virtuale del kernel.</td>
+</tr>
+<tr>
+<td>Complete memory dump</td>
+<td>1 × RAM + 257 MB circa.</td>
+</tr>
+<tr>
+<td>Automatic memory dump</td>
+<td>Dipende dal kernel; può crescere dopo crash ravvicinati.</td>
+</tr>
+</tbody></table>
+</div><p>Un <strong>hard pagefault</strong> è una pagina richiesta che deve essere recuperata dallo storage. Può riguardare il pagefile, ma anche eseguibili, DLL o file mappati in memoria. Non è un errore fisico della RAM e non dimostra da solo un problema di memoria. Durante un sintomo, confronta commit, available, attività del disco e processi; un picco isolato è normale, una raffica continua durante il gioco merita indagine.</p>
+<p><strong>Cosa fare se il commit è alto:</strong></p>
+<ul>
+<li>identifica il processo che cresce nel tempo, non solo quello che occupa di più all'avvio;</li>
+<li>chiudi una sola applicazione pesante e ripeti la scena;</li>
+<li>controlla se il problema è un leak, una cache o un'app che tiene aperti troppi dati;</li>
+<li>se il picco supera stabilmente la RAM e il disco è sotto pressione, valuta più RAM o un pagefile adeguato;</li>
+<li>non cancellare il pagefile a mano e non impostarlo a zero per “guadagnare latenza”.</li>
+</ul>
+<p>Se avevi già disattivato, azzerato o spostato il pagefile, non continuare a misurare su quello stato: ripristina la gestione automatica o il valore annotato, riavvia e conserva l'esito come parte del rollback.</p>
+<h4 id="ram-cleaner-standby-list-e-islc">RAM cleaner, standby list e ISLC</h4>
+<p>Strumenti come <strong>ISLC</strong> (Intelligent Standby List Cleaner), <strong>EmptyStandbyList</strong> o le funzioni di pulizia di RAMMap possono svuotare la standby list o ridurre i working set. Che cosa cambiano davvero?</p>
+<ul>
+<li>Non aumentano la RAM fisica.</li>
+<li>Non eliminano un leak: se un'applicazione continua a chiedere memoria, il problema torna.</li>
+<li>Possono ridurre temporaneamente la cache e costringere il sistema a rileggere dati dal disco.</li>
+<li>In alcuni casi segnalati di stutter associato alla standby list, possono mascherare il sintomo; non sono una cura universale.</li>
+</ul>
+<p>Anche svuotare di continuo la <strong>shader cache</strong> del driver o della piattaforma sposta il costo: le shader vanno ricompilate e la prima esecuzione, soprattutto con emulatori, può essere più irregolare. Non è un guadagno permanente di latenza.</p>
+<p>La domanda corretta non è «quanta RAM libera ho?», ma «quale processo o driver sta consumando memoria in modo anomalo, e che cosa succede al commit e al disco?». Se non hai questa risposta, un RAM cleaner aggiunge una variabile, non una soluzione.</p>
+<p>Un caso legittimo è la diagnosi: osservi il sintomo, svuoti la standby list una volta, ripeti la scena e vedi se il comportamento cambia. Se cambia, hai un'indizio; se non cambia, non serve tenerlo attivo. Non impostare una pulizia periodica come baseline senza una prova A–B–A.</p>
+<figure data-guide-figure="kernel-scheduler"><a href="/images/guides/diagrams/kernel-scheduler.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Processi, scheduler e interrupt"><img src="/images/guides/diagrams/kernel-scheduler.svg" alt="Processi, scheduler e interrupt" width="1200" height="640" loading="lazy" decoding="async" /></a><figcaption>Processi, scheduler e interrupt · Schema illustrativo Prime Build</figcaption></figure><figure data-guide-figure="memory"><a href="/images/guides/diagrams/memory.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: RAM, commit e working set"><img src="/images/guides/diagrams/memory.svg" alt="RAM, commit e working set" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>RAM, commit e working set · Schema illustrativo Prime Build</figcaption></figure><h2 id="4-preparare-un-recupero-reale">4. Preparare un recupero reale</h2>
+<p>Un punto di ripristino Windows, un export dei driver e un backup dei dati coprono oggetti diversi. Nessuno dei tre, da solo, ricostruisce l'intero PC. Prima di reinstallare o aggiornare il firmware prepara:</p>
+<ul>
+<li>una copia esterna di dati, salvataggi e configurazioni, verificando che sia leggibile e non solo “copiata”;</li>
+<li>credenziali e password disponibili anche senza quel PC, licenza ed edizione Windows previste;</li>
+<li>chiave di recupero BitLocker o Crittografia dispositivo, conservata su un supporto sicuro accessibile dall'esterno;</li>
+<li>modello completo del notebook/preassemblato, oppure modello e revisione della scheda madre; CPU, RAM, GPU e dischi identificati per modello e capacità;</li>
+<li>manuale del modello, supporto Windows originale e istruzioni di recupero consultabili offline;</li>
+<li>installer completi di GPU, chipset, rete, audio e storage, con un documento delle versioni e dei link di origine; per storage e controller conserva anche i file <code>.inf</code>, <code>.sys</code> e <code>.cat</code> forniti dal produttore, perché il solo export della cartella driver non è un supporto di reinstallazione.</li>
+</ul>
+<p><strong>Fermati se non sai distinguere il disco da cancellare o non hai accesso al recupero della cifratura.</strong> Un account locale non garantisce che la chiave BitLocker sia archiviata nel cloud. Un backup sulla USB che stai per formattare non è un backup. Prova ad aprire almeno un file dalla copia esterna prima di considerarla valida.</p>
+<p>Per una modifica sul Windows già installato puoi verificare <strong>Protezione sistema</strong> e creare un punto di ripristino, controllando l'esito. È un aiuto per alcune modifiche del sistema, non un'assicurazione contro cancellazioni, firmware fallito o perdita dei dati personali.</p>
+<figure data-guide-figure="recovery"><a href="/images/guides/diagrams/recovery.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Preparare il ritorno"><img src="/images/guides/diagrams/recovery.svg" alt="Preparare il ritorno" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>Preparare il ritorno · Schema illustrativo Prime Build</figcaption></figure><h2 id="5-iso-usb-e-firmware">5. ISO, USB e firmware</h2>
+<h3 id="iso-e-chiavetta-conservare-un-originale-riconoscibile">ISO e chiavetta: conservare un originale riconoscibile</h3>
+<p>Una <strong>ISO</strong> è un'immagine del supporto d'installazione. Scarica Windows dalla pagina Microsoft, scegliendo lingua e architettura compatibili con il PC e l'edizione corretta per la licenza. Quando Microsoft pubblica SHA-256 per quell'immagine, confrontalo con il file scaricato. Un hash calcolato senza un riferimento attendibile identifica il file, ma non dimostra chi lo abbia prodotto [3].</p>
+<p>Per il percorso di base usa la ISO Microsoft conservata e <strong>Rufus</strong> ufficiale [4]. Prepara una USB Windows dedicata: almeno 16 GB è un margine pratico, non una promessa che qualunque immagine personalizzata vi entri.</p>
+<ol>
+<li>In Rufus controlla <strong>Dispositivo</strong> per nome e capacità, poi seleziona la ISO conservata.</li>
+<li>Per il percorso Windows 11 supportato scegli <strong>Installazione Windows standard</strong>, schema <strong>GPT</strong> e destinazione <strong>UEFI</strong>, senza CSM. UEFI è il firmware moderno; GPT è lo schema delle partizioni. Non scegliere Windows To Go, che ha un altro scopo.</li>
+<li>Lascia il filesystem proposto per quell'immagine. Non imporre FAT32 quando file grandi richiedono NTFS o un trattamento specifico del supporto.</li>
+<li>Nel dialogo <strong>Windows User Experience</strong> leggi tutte le caselle, comprese quelle già spuntate. Sul PC supportato non aggiungere bypass dei controlli TPM, Secure Boot, RAM o CPU. Account, preferenze regionali, cifratura, automazione e rimozioni app sono decisioni separate.</li>
+<li>Ricontrolla il dispositivo prima di confermare. La creazione cancella <strong>tutte le partizioni della USB</strong>, non soltanto una cartella. Attendi la conclusione e conserva log/opzioni utili.</li>
+</ol>
+<p>Una USB preparata con risposte personalizzate non è identica al supporto senza personalizzazioni, anche se la ISO sorgente rimane originale. Se il boot è rifiutato, verifica compatibilità di media, versione Rufus e firmware: non disattivare Secure Boot automaticamente per superare l'avviso. Gli aggiornamenti delle firme e delle revoche richiedono indicazioni Microsoft/OEM pertinenti alla macchina, non una procedura improvvisata sulle chiavi del firmware.</p>
+<p>Il ritorno consiste nel ricreare il supporto dalla ISO originale con opzioni note. <strong>Non recupera ciò che la formattazione ha cancellato.</strong> Per il BIOS prepara una USB distinta secondo il manuale: filesystem, nome file e porta possono essere diversi da quelli della USB Windows.</p>
+<h3 id="firmware-aggiornare-con-uno-scopo-e-con-i-prerequisiti">Firmware: aggiornare con uno scopo e con i prerequisiti</h3>
+<p>Il firmware inizializza piattaforma, memoria e controller. Una release aggiornata può correggere sicurezza e compatibilità anche prima di un guasto evidente; non è però una misura diretta di input lag. Cerca l'ultima release <strong>stabile e pertinente al modello/revisione</strong>, leggendo note, CPU supportate e dipendenze. “Ultima” non autorizza a saltare un BIOS intermedio, un aggiornamento ME/EC o un passaggio previsto dal produttore (OEM). Una beta va considerata per un'esigenza specifica, non perché ha il numero più alto [5].</p>
+<p>Prima del flash fotografa soltanto le impostazioni pertinenti: UEFI e ordine di boot, storage/VMD/RAID, TPM/Secure Boot, ventole e pompa, profilo RAM, ReBAR ed eventuali overclock o undervolt. Non includere chiavi e dati riservati. Leggi prima la procedura di recovery: FlashBack o dual BIOS non esistono su ogni modello, e il downgrade può essere vietato.</p>
+<p>Se la procedura lo richiede, sospendi la protezione BitLocker tramite il percorso supportato. Dove disponibile: <strong>Pannello di controllo → Sistema e sicurezza → Crittografia unità BitLocker → Sospendi protezione</strong>; dopo l'intervento usa <strong>Riprendi protezione</strong> e controlla lo stato [5]. Con la sospensione il volume resta cifrato, ma la protezione BitLocker è temporaneamente sospesa: riprendila appena concluso l'intervento. Decrittare rimuove invece la cifratura dal volume e non è un sinonimo della sospensione. Entrambe le operazioni sono distinte dal cancellare il TPM. Non presumere che ogni flasher OEM gestisca automaticamente sospensione e riattivazione.</p>
+<p>Usa alimentazione stabile; su notebook rispetta requisiti di alimentatore e batteria. Se il modello prevede un flasher Windows, può essere necessario un sistema funzionante prima dell'aggiornamento. Segui il metodo OEM, non un percorso di menu copiato da un'altra scheda. Non interrompere il flash o il primo avvio previsto dal manuale soltanto perché sembra lento.</p>
+<p>Dopo l'aggiornamento verifica versione e impostazioni. Un reset può cambiare storage, boot e sicurezza: controllali prima di avviare il Windows precedente. Non importare automaticamente un vecchio profilo di overclock fra BIOS diversi. Prova avvio e dispositivi a impostazioni sicure; ricostruisci poi una scelta alla volta. Riprendi BitLocker e verifica TPM/Secure Boot e le funzioni richieste. Un punto di ripristino Windows non recupera un firmware fallito.</p>
+<p><strong>XMP/EXPO</strong> sono profili RAM e restano overclock da verificare per stabilità. <strong>PBO</strong> modifica margini di boost/potenza sulle piattaforme che lo prevedono e può aumentare calore. <strong>Resizable BAR/ReBAR</strong> dipende da supporto della piattaforma, GPU, driver e applicazione. Non sono prerequisiti per un desktop funzionante: annota la singola scelta e verifica il carico reale. La <a href="/guides/stabilita-occt/">guida stabilità</a> spiega come separare configurazione standard, profilo memoria e undervolt.</p>
+<h4 id="nota-per-piattaforme-am5">Nota per piattaforme AM5</h4>
+<p>Le guide video AM5 possono aiutare a riconoscere i menu, ma non sostituiscono il manuale della scheda e della revisione BIOS installata. Le voci PBO possono comparire in più menu e valori/nomi non sono identici fra produttori e release. Il video FR33THY dedicato alle impostazioni e all'overclock AM5 riporta una correzione nei commenti: i limiti predefiniti dipendono dalla classe della CPU e il comportamento dell'opzione PBO “Disabled” può variare per scheda; l'autore consiglia di verificare i limiti effettivi invece di assumere che una selezione significhi “illimitato” [19]. Non copiare i numeri del video o attivare PBO, EXPO e altre voci in blocco. Registra il valore iniziale, cambia un solo parametro con un obiettivo preciso e controlla stabilità, temperatura e prestazione nel carico reale.</p>
+<p>Allo stesso modo, disabilitare una iGPU, il Bluetooth o un componente OEM non è automaticamente “pulizia”. Possono servire al display ibrido, all'encoding, a controller/cuffie, a ventole o tasti del notebook. Intervieni soltanto con una funzione alternativa certa, annota la voce e riattivala se perdi funzionalità.</p>
+<h2 id="6-installare-sul-disco-giusto-con-il-controller-giusto">6. Installare sul disco giusto, con il controller giusto</h2>
+<p>La parola <strong>M.2</strong> descrive un formato, non garantisce il protocollo. Un'unità M.2 può essere SATA oppure NVMe. <strong>AHCI</strong> riguarda il controller SATA; <strong>NVMe</strong> è un protocollo distinto per storage PCIe. Un SSD NVMe può inoltre essere presentato a Windows attraverso un controller VMD/RST o un array RAID [6].</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Situazione identificata</th>
+<th>Percorso prima dell'installazione</th>
+<th>Cosa evitare</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SATA senza necessità RAID/Optane</td>
+<td>Se il modello lo prevede, scegli AHCI prima dell'installazione nuova.</td>
+<td>Non passare ad AHCI sul Windows esistente come tweak: può non avviarsi.</td>
+</tr>
+<tr>
+<td>NVMe gestito nativamente</td>
+<td>Usa lo stack storage compatibile previsto da Windows/piattaforma.</td>
+<td>Non cercare “AHCI per NVMe” o cambiare driver perché si chiama “faster”.</td>
+</tr>
+<tr>
+<td>NVMe dietro VMD/RST</td>
+<td>Prepara il driver controller corretto ed estratto. In Setup usa <strong>Carica driver</strong> e indica quella cartella.</td>
+<td>Non rimuovere il driver di boot dopo l'installazione.</td>
+</tr>
+<tr>
+<td>RAID/Optane o configurazione OEM necessaria</td>
+<td>Conserva modalità, volumi e driver del modello, inclusi eventuali pacchetti RAID AMD.</td>
+<td>Non disattivare il controller o cancellare volumi per provare.</td>
+</tr>
+<tr>
+<td>Installazione nuova, VMD non necessario</td>
+<td>Se l'OEM documenta il ramo e non ci sono array/Optane o altre dipendenze, puoi scegliere gestione nativa prima di installare.</td>
+<td>Non trasferire il menu ASUS a ogni notebook, né applicare il cambio dopo l'installazione.</td>
+</tr>
+</tbody></table>
+</div><p>Avvia la voce <strong>UEFI della USB</strong> nel menu temporaneo di boot. La scelta “installazione pulita” comporta perdita delle partizioni eliminate: confronta modello e capacità del disco con il tuo inventario. Quando possibile e previsto dalle precauzioni hardware, scollega i dischi non destinati all'installazione; altrimenti lasciali intatti. Se non sai distinguerli, fermati. Non descrivere l'eliminazione di tutte le partizioni come una normale manutenzione del PC.</p>
+<p>In Setup scegli lingua e tastiera, poi <strong>Installa Windows 11</strong> e conferma la cancellazione soltanto se hai scelto davvero il percorso pulito. Se compare la scelta dell'edizione, seleziona quella coperta dalla tua licenza; una chiave nel firmware può preselezionarla. Alla schermata della destinazione, se vuoi azzerare il disco identificato, elimina una per una <strong>soltanto le sue partizioni</strong>, comprese quelle di recupero OEM che perderai. Non presumere che il bersaglio sia sempre «Disco 0». Seleziona lo <strong>spazio non allocato sul disco destinazione</strong>, prosegui con <strong>Avanti</strong>, ricontrolla il riepilogo e conferma <strong>Installa</strong> quando richiesto: Setup crea le partizioni necessarie. Nomi e schermate variano con il supporto di installazione. Questo passaggio non conserva file, applicazioni o personalizzazioni e non può essere annullato: il ritorno richiede il backup preparato [18].</p>
+<p>Se il firmware non rileva il disco, indaga hardware, collegamenti e configurazione con il manuale. Se il firmware lo rileva ma Setup no, verifica il controller e carica il driver di preinstallazione corretto. Formattare altri dischi non risolve un controller non riconosciuto. Dopo il primo riavvio segui <strong>Windows Boot Manager</strong> sul disco, senza ricominciare dalla USB.</p>
+<p>Per un mancato avvio dopo un cambio storage o reset BIOS, il primo recupero è ripristinare la modalità annotata. Non concatenare conversioni o riparazioni distruttive. Intel avverte esplicitamente che cambiare il percorso VMD/RST di un sistema già installato, o rimuoverne il driver necessario, può causare <strong>INACCESSIBLE_BOOT_DEVICE</strong> e compromettere l'accesso ai dati [6].</p>
+<h2 id="7-account-driver-e-ritorno-online">7. Account, driver e ritorno online</h2>
+<h3 id="account-locale-e-fase-offline">Account locale e fase offline</h3>
+<p>La fase iniziale guidata di Windows è chiamata <strong>OOBE</strong>, Out-of-Box Experience. Può richiedere rete e account Microsoft, secondo build, edizione e supporto. Un account locale è legato al dispositivo; non significa account senza password, auto-login, Windows Hello disattivato o cifratura spenta [7].</p>
+<p>La FAQ Rufus descrive l'opzione per rimuovere il requisito account online e, per quel percorso, richiede assenza di connettività <strong>alla creazione dell'account</strong>, non soltanto al primo boot [4]. Puoi sceglierla e annotarla quando prepari il supporto, ma la riuscita non è garantita su ogni build, modalità S o release del tool.</p>
+<p>Se il ramo locale non è disponibile, non ripetere comandi OOBE storici, URI o indirizzi email fittizi come procedura universale. Segui il percorso supportato disponibile oppure ricrea un supporto verificato. Se hai completato con un account Microsoft e vuoi successivamente passare al locale, Microsoft documenta <strong>Impostazioni → Account → Le tue info → Accedi con un account locale</strong>, con nome, password e conferma del cambio [7]. Verifica anche il metodo di recupero della password e dove conserverai la chiave della cifratura.</p>
+<p>Restare inizialmente offline può aiutare a installare i driver scelti senza download concorrenti. Non è un miglioramento di latenza dimostrato, né un motivo per mantenere Windows senza patch. Preparare i pacchetti completi prima rende possibile questa scelta; se manca il driver di rete, un link salvato non sostituisce l'installer.</p>
+<h3 id="driver-ordine-identita-e-ritorno">Driver: ordine, identità e ritorno</h3>
+<p>Non esiste un ordine universale che riduca la latenza. <strong>GPU → chipset/piattaforma → rete/audio/periferiche</strong> è una variante praticabile quando Windows dispone già delle funzioni di base e gli installer non impongono dipendenze differenti. Il driver storage necessario a riconoscere il disco viene naturalmente prima. Su notebook e sistemi ibridi possono precedere chipset, system interface, MEI, Serial IO, SST o iGPU richiesti dall'OEM; un installer online richiede invece una rete funzionante.</p>
+<p>Installa i pacchetti preparati, rispettando i riavvii. In Gestione dispositivi controlla stato, fornitore e versione; prova display/refresh, rete, audio e microfono, sospensione e funzioni OEM. L'assenza di triangoli gialli non significa che le prestazioni siano ottimali. Conserva il pacchetto precedente: la <a href="/guides/driver-latencymon/">guida driver</a> spiega identità, export, rollback e quando DDU ha senso. Non serve DDU come rito dopo un'installazione pulita.</p>
+<p>Ricollega Internet, completa <strong>Windows Update</strong> e gli aggiornamenti <strong>Microsoft Store</strong>, compresi App Installer e pannelli DCH necessari. Controlla nuovamente le versioni effettivamente associate se interviene un aggiornamento. Aspetta che download, indicizzazione e riavvii siano conclusi prima di misurare.</p>
+<p>L'esclusione dei driver dai normali aggiornamenti Windows è opzionale: serve a gestire manualmente versioni note, non a spegnere tutte le patch, e non blocca ogni percorso OEM o di installazione. Se la mantieni, assumi anche la manutenzione di rete, chipset e storage. Per annullarla torna allo stato registrato, non a un presunto “default” uguale su tutti i PC.</p>
+<h3 id="26h2-e-la-fiducia-dei-driver-kernel">26H2 e la fiducia dei driver kernel</h3>
+<p>Windows 11 26H2 include il nuovo criterio con cui il kernel considera affidabili i driver firmati con il vecchio programma <strong>cross-signed</strong>. Microsoft rimuove la fiducia predefinita per questi driver; restano ammessi i driver certificati <strong>WHCP</strong> e una allow list esplicita di driver legacy considerati affidabili. Il passaggio non è un interruttore immediato: il sistema entra in una fase di valutazione, osserva i driver caricati e attiva l'enforcement solo se non rileva driver che violerebbero il nuovo criterio [28].</p>
+<p>Al momento della verifica, la pagina “What's new” di 26H2 riportava <strong>100 ore e 3 riavvii</strong>, mentre il blog Microsoft, con la nota di aggiornamento di giugno 2026, indica <strong>250 ore di sistema e 3 riavvii</strong>. Prendi la soglia più recente come condizione di rollout, non come garanzia sul tuo PC. Se un driver cross-signed non è nella allow list, può essere bloccato dopo l'attivazione.</p>
+<p>Che cosa significa per te:</p>
+<ul>
+<li>un driver vecchio ma funzionante non è automaticamente compatibile con 26H2;</li>
+<li>“il dispositivo funziona ancora” durante la valutazione non dimostra che funzionerà dopo l'enforcement;</li>
+<li>non disattivare la firma dei driver o le protezioni del kernel per far passare un driver non supportato;</li>
+<li>controlla se il produttore offre un driver WHCP o una versione aggiornata prima di aggiornare Windows;</li>
+<li>per hardware legacy o industriale, verifica la allow list e il supporto del vendor, non un workaround trovato online.</li>
+</ul>
+<p>Questo è un motivo in più per conservare i pacchetti driver e per non aggiornare tutto nello stesso momento. La <a href="/guides/driver-latencymon/">guida driver</a> approfondisce identità, rollback e diagnosi.</p>
+<figure data-guide-figure="driver"><a href="/images/guides/diagrams/driver.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Identità del driver"><img src="/images/guides/diagrams/driver.svg" alt="Identità del driver" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>Identità del driver · Schema illustrativo Prime Build</figcaption></figure><h2 id="8-applicazioni-e-dipendenze-installare-cio-che-serve">8. Applicazioni e dipendenze: installare ciò che serve</h2>
+<h3 id="winget-senza-ambiguita">WinGet senza ambiguità</h3>
+<p><strong>WinGet</strong> è il gestore applicazioni Microsoft distribuito con <strong>App Installer</strong>. Non è un driver manager generale né un ottimizzatore. Al primissimo login potrebbe non essere ancora registrato o aggiornato: aggiorna App Installer dal suo Store e verifica prima di ricorrere a download casuali [8].</p>
+<p>Apri Terminale normalmente, senza elevare tutto per abitudine. Il seguente esempio installa 7-Zip solo se decidi di usarlo; cataloghi e installer possono cambiare, quindi leggi i risultati prima di procedere:</p>
+<pre tabindex="0" aria-label="Blocco di codice scorrevole"><code class="language-text">winget --version
+winget source list
+winget search 7zip --source winget
+winget show --id 7zip.7zip --exact --source winget
+</code></pre>
+<p>Controlla produttore, versione e URL dell'installer. Il nome visibile non è l'ID: <code>winget</code> è il catalogo comunitario, <code>msstore</code> è la sorgente Store. Se i metadati corrispondono alla tua scelta:</p>
+<pre tabindex="0" aria-label="Blocco di codice scorrevole"><code class="language-text">winget install --id 7zip.7zip --exact --source winget
+</code></pre>
+<p>Leggi gli accordi e l'eventuale richiesta del <strong>Controllo account utente (UAC)</strong>. L'installer determina anche l'ambito dell'installazione, per l'utente o per la macchina; il terminale non elevato non garantisce che ogni pacchetto tocchi soltanto quell'utente. Modalità silenziosa e accettazione automatica sono scelte deliberate, non prove dell'assenza di componenti opzionali. Non usare <code>--ignore-security-hash</code> o esclusioni delle scansioni per superare un errore.</p>
+<p><code>winget list</code> mostra le app riconosciute; <code>winget upgrade</code> elenca aggiornamenti. Per aggiornare il solo esempio, dopo aver verificato l'elenco:</p>
+<pre tabindex="0" aria-label="Blocco di codice scorrevole"><code class="language-text">winget upgrade --id 7zip.7zip --exact --source winget
+</code></pre>
+<p>Non aggiornare tutto durante una misura. Per il ritorno usa la disinstallazione supportata, dopo aver salvato dati/configurazioni; downgrade e conservazione dei profili non sono garantiti. L'installazione normale richiede rete: il comando download può preparare alcuni pacchetti, dipendenze e licenze, ma non rende ogni applicazione Store installabile o redistribuibile offline. Per la fase iniziale è più chiaro usare installer completi del produttore già preparati [8].</p>
+<h3 id="visual-c-e-directx-legacy">Visual C++ e DirectX legacy</h3>
+<p>Un <strong>runtime</strong> fornisce librerie richieste da un'applicazione. Installarlo può risolvere una dipendenza mancante; non è un tweak FPS. Le generazioni Visual C++ precedenti possono convivere con quelle recenti. L'architettura deve corrispondere all'app: su Windows x64 possono servire sia x86 per programmi a 32 bit sia x64 per quelli a 64 bit [9]. Non applicare quella coppia indiscriminatamente a ogni architettura di PC.</p>
+<p>Per un setup con molti giochi, anche vecchi, <strong>Visual C++ All-in-One di TechPowerUp</strong> è un'opzione di comodità offline. Installa però anche generazioni ulteriori rispetto a quelle necessarie per una singola app. L'alternativa mirata è scaricare i redistributable Microsoft richiesti; molti installer dei giochi lo fanno già. All-in-One non comprende automaticamente .NET, DirectX o tutte le dipendenze MSIX.</p>
+<p>Se scegli il pack, scaricalo dalla pagina esatta, confronta SHA-256 della <strong>stessa release</strong>, estrai tutto, leggi <code>install_all.bat</code> e verifica le firme Microsoft dei redistributable prima dell'esecuzione richiesta dal pacchetto. Le pagine sono state consultate, ma gli ZIP, i batch inclusi e le firme binarie non sono stati autenticati in questa stesura. Registra errori e riavvii. Per recuperare una dipendenza usa Repair o reinstalla la generazione richiesta; non eliminare tutti i VC++ come pulizia, perché le applicazioni li condividono. Il supporto dei runtime legacy resta un limite di compatibilità da considerare [9].</p>
+<p><strong>DirectX End-User Runtimes June 2010</strong> aggiunge componenti legacy affiancati, fra cui D3DX, XAudio 2.7 e XInput 1.3. Non sostituisce né aggiorna il DirectX 12 di Windows. Un gioco può richiedere queste librerie anche su un sistema moderno [10]. Puoi usare il redistributable Microsoft completo, oppure il pacchetto offline TechPowerUp dopo gli stessi controlli di provenienza e del batch. Estrai e segui <code>DXSETUP.exe</code>; non scaricare DLL isolate né copiarle a mano in System32/SysWOW64. Evita la doppia installazione di due raccolte dello stesso runtime senza motivo.</p>
+<p>Microsoft specifica che il runtime DirectX legacy <strong>non dispone di disinstallazione ordinaria</strong>. Non promettere un Undo: per uno stato seriamente compromesso serve una riparazione appropriata o il backup, non cancellare le librerie manualmente. .NET Framework, .NET Desktop Runtime e Windows App Runtime sono ulteriori dipendenze distinte: aggiungi la versione richiesta dall'app, non tutto il catalogo perché contiene la parola “gaming”.</p>
+<h3 id="debloat-ridurre-attivita-inutili-senza-perdere-dipendenze">Debloat: ridurre attività inutili senza perdere dipendenze</h3>
+<p>“Debloat” può significare rimuovere applicazioni non usate, ma molti tool cambiano anche servizi, policy e sicurezza. Una <strong>policy</strong> è una regola di configurazione; un <strong>task</strong> è un'attività automatica pianificata. Non sono equivalenti a un'app che occupa spazio. Meno software presente non dimostra, da solo, meno latenza fisica.</p>
+<p>Parti da <strong>Impostazioni → App → App installate</strong> per software riconosciuto e da <strong>App di avvio</strong> per ciò che parte al login. Disabilitare l'autostart non disinstalla il programma: puoi aprirlo manualmente e riabilitare la voce. Prima di disinstallare salva dati, salvataggi e profili, controlla dipendenze e possibilità di reinstallazione. La rimozione di pacchetti app <strong>AppX</strong> per l'utente corrente, la rimozione per tutti gli utenti e la modifica di un servizio hanno ambiti diversi.</p>
+<p>Se vuoi un'interfaccia più ampia, usa principalmente un solo tool per le modifiche scelte: non per un'incompatibilità tecnica fra tool, ma come modo per sapere chi abbia scritto l'ultimo valore. Non serve Select All e non è necessario eseguire contenuto remoto con <code>irm … | iex</code>.</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Uso pertinente</th>
+<th>Limite da conoscere prima di applicare</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CTT/WinUtil</strong></td>
+<td>Installazione app e singole impostazioni sul Windows attuale.</td>
+<td>Anche il preset Minimal modifica servizi/telemetria e altre voci. Restore point e Undo Selected non sono un'immagine completa. Non confonderlo con Creator [11].</td>
+</tr>
+<tr>
+<td><strong>Winhance</strong></td>
+<td>Gestione app e impostazioni, con import/export configurazioni.</td>
+<td>Recommended non è neutro. Import può applicare subito la configurazione oppure selezionare le caselle: verifica il dialogo della release. Il backup copre le impostazioni gestite dal tool, non tutto il PC [12].</td>
+</tr>
+<tr>
+<td><strong>Wintoys di Bogdan Pătrăucean</strong></td>
+<td>Frontend Store per app, servizi, informazioni e impostazioni.</td>
+<td>Codice chiuso; le descrizioni non equivalgono a ispezione interna. Non è un builder ISO. Il percorso offline richiede pacchetti e dipendenze, non un EXE universale [13].</td>
+</tr>
+</tbody></table>
+</div><p>Prima di applicare, salva lo stato precedente e una piccola lista delle voci comprese; dopo, prova le funzioni interessate e il percorso di ritorno documentato. <strong>Default Windows non equivale necessariamente allo stato OEM/utente precedente. Disinstallare il frontend non annulla i suoi interventi.</strong> Una release tracciabile aiuta a ricostruire la provenienza del pacchetto, ma non autentica ogni dipendenza o download successivo.</p>
+<h4 id="fr33thy-winsux-e-zaptweaks">FR33THY, WinSux e ZapTweaks</h4>
+<p>Il profilo FR33THY collega alternative diverse, non un'unica procedura da applicare integralmente. <strong>WinSux</strong> è un one-click: nel commit esaminato scarica e avvia componenti esterni, avvia più fasi automatiche anche dopo un riavvio in modalità provvisoria, usa PowerShell elevato e modifica numerose aree del sistema. Nei sorgenti si vedono, fra l'altro, interventi su UAC, Defender/SmartScreen, integrità memoria/VBS, firewall e attività di sicurezza; rimozione di Edge, app e feature Windows; cambi a servizi, attività pianificate, driver, risparmio energetico USB/rete e configurazioni di sistema. La prima fase invoca DDU per rimuovere driver audio e GPU di più produttori e riavviare. Non è una “pulizia leggera” né una prova di latenza: rimozioni e modifiche in blocco rendono difficile attribuire gli effetti e tornare esattamente allo stato iniziale [14][20].</p>
+<p><strong>Ultimate</strong> è più modulare: il repository separa controlli/benchmark, reinstallazione e setup, installer, driver/impostazioni grafiche, Windows, hardware e opzioni avanzate. Il suo script <strong>BIOS Check</strong> è una checklist stampata, non un rilevamento automatico della scheda: propone fra l'altro EXPO e PBO per AMD, ReBAR, disattivazione di funzioni considerate inutilizzate e ventole/pompa al massimo. Sono suggerimenti generici da valutare con manuale, CPU, raffreddamento e uso, non una configurazione AM5 universale [21]. Nelle sezioni avanzate il repository contiene anche modifiche a Defender/firewall, servizi, timer, priorità, MPO e driver: la presenza di script separati non dimostra che ognuno sia utile o reversibile sul tuo PC. Il video Ultimate è una panoramica, non il changelog né il manuale di ogni script. Se lo consulti come alternativa, parti da verifiche/inventario e leggi il codice della specifica revisione prima di qualsiasi applicazione; non usare URL di esecuzione remota come <code>iwr | iex</code>. Un commit fissato non autentica i download variabili puntati dal codice [14][20].</p>
+<p>In particolare, lo script NVMe “faster” esaminato avverte di incompatibilità con DirectStorage, e il suo ramo di ritorno cancella una chiave più ampia dei soli valori aggiunti. Non è un driver OEM scelto tramite Hardware ID, né una baseline per principianti. Non vengono qui consigliati aumenti di tensione, C-state OFF per categoria di CPU o disabilitazioni di sicurezza tratti da un one-click.</p>
+<p>Il <strong>wizard ZapTweaks</strong> verificato organizza inventario, informazioni hardware, controllo Windows Update, driver, app, debloat, privacy/interfaccia, preview, applicazione e report. La sua “baseline” è un inventario CPU/GPU/RAM/build, non un benchmark. L'apertura di Windows Update e la conferma dell'utente non provano che tutti gli update siano riusciti; contare dispositivi senza INF non certifica driver ottimali [15].</p>
+<p>Nel percorso esaminato selezioni app WinGet, AppX riconosciute dell'utente corrente e una scelta End Task nella taskbar. Controlla la preview e il risultato di ogni elemento. Il wizard <strong>non applica tuning rete, servizi o sicurezza</strong>: il TCP Optimizer è distinto. Il journal/snapshot nativo aiuta a ricostruire le impostazioni, ma non recupera automaticamente dati app cancellati e non va attribuito ai percorsi legacy. Non è stato provato un beneficio prestazionale locale.</p>
+<h3 id="pack-prime-build-opzionale">Pack Prime Build opzionale</h3>
+<p>Il <a href="/guide-materials/discord-revisione-v5/pacchetti/PrimeBuild-FirstSetup-v4.zip">pack First Setup v4 già presente</a> raccoglie un menu per app, diagnostica, input e avvio audio. Non è un requisito per seguire i passaggi manuali e non applica automaticamente gli altri menu. Il <a href="/guide-materials/discord-revisione-v5/scripts/README.md">README degli script</a> descrive privilegi e limiti: sorgenti non firmati, Windows 11 client build 26200+, cartelle script/TEMP senza <code>!</code>, provenienza dell'intero ZIP da verificare e collaudi funzionali ancora pendenti.</p>
+<p>Se lo scegli in una successiva attività autorizzata, estrai il pack intero in una cartella nuova e usa il launcher BAT, senza mescolare file o versioni. First Setup richiede elevazione per le azioni amministrative. La coda distingue installazioni WinGet da URL che aprono pagine: pagina aperta non significa app installata. Le voci WinUtil/Winhance non eseguono un launcher remoto; installazioni silenziose e accordi automatici delle voci WinGet sono invece azioni del pack da leggere prima della conferma.</p>
+<p>La policy driver opzionale conserva lo stato precedente di quella sola impostazione in <code>%LOCALAPPDATA%\PrimeBuild\Backups\WU-driver-policy.json</code>, nel profilo che esegue l'azione elevata. Credenziali di un altro amministratore possono quindi usare un altro profilo. Il ritorno verifica identità e stato e archivia il backup: non ripristina driver, GPO o tutto Windows. Se fallisce, conserva messaggio e backup; non forzare il registro. I pack correnti non annullano i vecchi preset di timer, servizi o MMCSS.</p>
+<h3 id="media-personalizzati-quando-ha-senso">Media personalizzati: quando ha senso</h3>
+<p>Per una singola installazione, ISO Microsoft conservata, Rufus e selezioni manuali sono più facili da controllare. I builder restano alternative legittime quando serve automatizzare un percorso già verificato. Un <strong>answer file</strong>, spesso <code>autounattend.xml</code>, contiene risposte per Setup e può avviare script: non è innocuo per il solo fatto di essere XML.</p>
+<p><strong>Win11 Creator di CTT/WinUtil</strong> richiede una ISO Microsoft originale, montaggio/verifica, scelta edizione, eventuali driver e export ISO/USB. Prepara spazio temporaneo (circa 10–15 GB). L'edizione Pro preselezionata non crea una licenza Pro. La verifica di struttura WIM/ESD non sostituisce la verifica dell'origine. Prima di eseguire, considera che account locale/unattended, bypass hardware, cifratura, rimozioni, policy e task possono essere azioni fisse dello snapshot, non caselle indipendenti. L'esportazione ISO richiede <code>oscdimg</code>; la scrittura USB cancella il dispositivo. <strong>Inject current system drivers richiede <code>sources\install.wim</code>; se la ISO contiene <code>install.esd</code>, lascia disattivata l'opzione</strong> [11].</p>
+<p>Il percorso documentato dell'interfaccia è <strong>Browse → Mount &amp; Verify ISO → scelta edizione → driver facoltativi → Run Modification → export ISO/USB</strong>; la barra indica l'avanzamento. Il pannello documenta 19 app e stima dimensioni vicine all'originale, non una mini-ISO garantita. Se <strong>Create USB</strong> cancella la chiavetta, non usare l'unica copia dei dati. L'export dei driver può includere solo una parte delle suite OEM: controlla anche <code>C:\Windows\Drivers</code> e conserva gli installer del produttore. Se la ISO include <code>install.esd</code>, l'iniezione dei driver non è disponibile con quel percorso.</p>
+<p><strong>WIMUtil di Winhance</strong> richiede una ISO Microsoft ufficiale e una directory di lavoro con circa 15–20 GB liberi. Il percorso dell'interfaccia va da <strong>Select ISO</strong> alla directory di lavoro, <strong>Start Extraction</strong>, scelta di un XML e driver facoltativi, quindi <strong>Create ISO</strong> tramite <code>oscdimg</code>/ADK: usa solo i passaggi presenti nella release. La conversione WIM↔ESD riguarda compressione e formato, non latenza gaming. Un XML personale può catturare gli stati Optimize/Customize del PC di preparazione; il template della release esaminata contiene già bypass, interventi OOBE/rete e abilitazione .NET 3.5. Zero app selezionate <strong>non produce automaticamente un XML neutro</strong>. Le app esterne non sono incluse nell'XML; il collegamento Install Winhance richiede rete. Se rimuovi Edge senza preparare un altro browser completo, puoi perdere il percorso pratico di download [12].</p>
+<p>Per entrambi i builder conserva originale, output, configurazioni e log. <strong>Non sovrapporre unattended Rufus, Winhance e FR33THY.</strong> Un profilo creato dalle impostazioni del PC corrente non equivale al template remoto UnattendedWinstall: se non vuoi catturare quello stato, usa un ambiente separato. Prima del PC principale prova il media in una VM o su un disco cancellabile; dopo il test controlla Windows Update, Store, cifratura e servizi, perché riabilitare un servizio non ricrea task o app rimossi. Il ripristino del sistema personalizzato può richiedere un'immagine di backup o una reinstallazione da originale, non la disinstallazione del programma che ha costruito la ISO. Microsoft documenta limitazioni di SetupComplete con chiavi OEM: non garantire l'installazione automatica di tutti i pacchetti su Home/Pro OEM [16].</p>
+<h2 id="9-energia-scheduler-e-sicurezza">9. Energia, scheduler e sicurezza</h2>
+<h3 id="piano-windows-modalita-e-profilo-oem">Piano Windows, modalità e profilo OEM</h3>
+<p>Il <strong>piano di alimentazione</strong> regola politiche energetiche; la modalità nelle Impostazioni aggiunge preferenze dove supportata. Il profilo OEM di un notebook può inoltre controllare potenza e ventole. Annota tutti e tre, insieme all'alimentazione da rete o batteria, prima di confrontare.</p>
+<p>Apri <strong>Impostazioni → Sistema → Alimentazione e batteria</strong>, o Alimentazione su desktop; poi <strong>Pannello di controllo → Opzioni risparmio energia</strong> per il piano attivo. Il piano Bilanciato sulle piattaforme moderne può aumentare rapidamente le prestazioni quando serve: non significa CPU sempre lenta. Prestazioni elevate o una modalità più aggressiva possono modificare transizioni e reattività, ma aumentare calore e rumore fino a peggiorare il boost sostenuto.</p>
+<p>Prova soltanto piani/modalità disponibili e supportati. <code>powercfg /a</code>, da Terminale, legge gli stati di sospensione supportati; su Modern Standby alcuni piani classici o Ultimate Performance possono non essere disponibili. Non forzarli tramite registro per imitare un desktop differente.</p>
+<p>Per una prova ripetibile:</p>
+<ol>
+<li>Registra piano, modalità e profilo OEM iniziali (<strong>A</strong>); scegli una scena ripetibile, stessa risoluzione, cap FPS, applicazioni e durata.</li>
+<li>Lascia assestare temperature e caricamenti. Su notebook usa la stessa alimentazione e non cambiare anche il profilo ventole.</li>
+<li>Cambia una sola scelta (<strong>B</strong>), ripeti e registra andamento dei frame time, potenza, temperature e frequenze effettive, non soltanto FPS medi.</li>
+<li>Torna ad A e ripeti. Se B non migliora in modo concordante o introduce regressioni, conserva A.</li>
+</ol>
+<p>Il <strong>frame time</strong> descrive l'intervallo temporale dei frame nella metrica raccolta, non la latenza completa input→fotone. Una frequenza a riposo più alta o il minimo CPU al 100% non dimostrano un vantaggio; il minimo al 100% può anche impedire risparmi energetici e il contatore CPU non dice da solo dove il gioco stia attendendo. La <a href="/guides/misure-verifica/">guida misure</a> approfondisce i confronti; il metodo essenziale è già qui.</p>
+<h3 id="boost-c-state-parking-e-core-e-smt">Boost, C-state, parking, E-core e SMT</h3>
+<p>Questi controlli non formano un preset da cumulare. Prima servono piattaforma e driver corretti; poi un sintomo e un'ipotesi.</p>
+<ul>
+<li><strong>Boost</strong> aumenta frequenza entro limiti di carico, potenza e temperatura. Disabilitarlo può servire a una diagnosi termica o a preferenze di rumore/autonomia, ma può ridurre le prestazioni. Se il controllo è documentato, salva lo stato, cambia solo quello e verifica il carico reale; ripristina il valore precedente. Non sbloccare opzioni nascoste come primo intervento.</li>
+<li><strong>C-state</strong> riducono consumo dei core inattivi. Il ritorno all'attività ha un costo dipendente dalla piattaforma; disabilitarli può cambiare jitter in casi specifici ma anche aumentare calore e ridurre margine di boost. “Intel K” non è una prova. Una voce documentata si confronta singolarmente, con monitoraggio termico e ritorno allo stato registrato.</li>
+<li><strong>Core parking</strong> permette a Windows di evitare temporaneamente alcuni processori logici quando non servono. Non significa core eliminati. Confronta prima i piani supportati; per attribuire un problema al parking servono dati di scheduling, non l'idea che “tutti sbloccati” sia sempre meglio.</li>
+<li><strong>E-core</strong> sulle CPU ibride aggiungono capacità e possono aiutare i carichi concorrenti. Escluderli può aggirare un problema specifico, ma riduce capacità complessiva. Solo con sintomo ripetibile e controllo documentato prova l'esclusione, poi riabilitali se non è utile; non copiare maschere da un'altra CPU.</li>
+<li><strong>SMT</strong> consente a due processori logici di condividere risorse di un core fisico. Disabilitarlo può favorire alcuni carichi e penalizzarne altri. Una prova firmware richiede riavvio, stessa scena e controllo anche di voce, streaming e multitasking; conserva il valore iniziale.</li>
+</ul>
+<p><strong>MSI/MSI-X</strong> sono modalità di segnalazione interrupt tramite messaggi, non installer MSI e non priorità massima. Supporto e uso dipendono dal driver. Forzarli può rendere un dispositivo inutilizzabile. L'hand-off EHCI/XHCI riguarda, dove esposto, il passaggio del controllo USB dal firmware al sistema: non è un interruttore generale di input lag. Priorità interrupt, timer, affinità e forzature restano interventi specialistici nella <a href="/guides/parametri-windows/">guida parametri Windows</a>, non passaggi del primo setup.</p>
+<h3 id="game-mode-game-bar-catture-e-hags">Game Mode, Game Bar, catture e HAGS</h3>
+<p>Tenere attiva la modalità gioco, in <strong>Impostazioni → Giochi → Modalità gioco</strong>, è una base ragionevole, non una certificazione. Un confronto OFF ha senso per un problema ripetibile e termina ripristinando lo stato annotato se la modifica non è utile.</p>
+<p><strong>Xbox Game Bar</strong> è distinta: con <strong>Win+G</strong> verifica overlay e funzioni realmente usate. In <strong>Giochi → Acquisizioni</strong> controlla la registrazione in background, per esempio “Registra quello che è successo”. Se non serve, disattiva quella funzione. È diverso dal disinstallare Game Bar o lo stack Xbox, da cui giochi e accessori possono dipendere. Per recuperare riattiva la stessa opzione e prova chat/cattura se rientrano nell'uso normale.</p>
+<p><strong>HAGS</strong>, Hardware-Accelerated GPU Scheduling, trasferisce parte dello scheduling GPU ad alta frequenza a un processore dedicato della GPU; Windows mantiene le decisioni di priorità. Non è Reflex e non elimina ogni coda [17]. Dove supportato trovi il controllo in <strong>Sistema → Schermo → Grafica → impostazioni grafiche predefinite/avanzate</strong>, secondo build. Annota stato, GPU e driver, cambia solo ON/OFF, <strong>riavvia</strong> e ripeti la scena e le funzioni di cattura. Alcune funzioni, inclusa Frame Generation in determinate implementazioni, possono richiederlo: controlla i requisiti prima. Per tornare indietro ripristina lo stato e riavvia. Non esiste un ON/OFF universale, né un obbligo universale di abbinarlo a MPO.</p>
+<p>Mantieni <strong>TPM, Secure Boot, Defender, firewall e protezioni come integrità della memoria/VBS</strong> nella baseline. Possono avere costi dipendenti dal carico, ma spegnerle cambia sicurezza e talvolta requisiti degli anti-cheat. Non è equivalente a chiudere un launcher. Nessun colore di LatencyMon o benchmark di un'altra CPU giustifica automaticamente quelle disattivazioni.</p>
+<figure data-guide-figure="power"><a href="/images/guides/diagrams/power.svg" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci: Tre controlli energetici"><img src="/images/guides/diagrams/power.svg" alt="Tre controlli energetici" width="1200" height="600" loading="lazy" decoding="async" /></a><figcaption>Tre controlli energetici · Schema illustrativo Prime Build</figcaption></figure><h2 id="10-background-e-servizi-il-numero-non-e-l-obiettivo">10. Background e servizi: il numero non è l'obiettivo</h2>
+<p>Un launcher disabilitato in App di avvio non parte al login, ma può essere già aperto e continuare download, sync o overlay. Chiudilo dalla sua interfaccia e verifica Gestione attività. Le autorizzazioni per le attività in background di Windows esistono solo per alcune app: non controllano ogni programma desktop.</p>
+<p>I <strong>servizi</strong> lavorano anche senza finestra. “Manuale” può significare avvio su evento, non inutilità. Con <code>services.msc</code> leggi descrizione e dipendenze. Se devi intervenire su un servizio opzionale identificato, conserva tipo di avvio, eventuale avvio ritardato e stato in esecuzione; cambia una sola voce, prova la funzione dipendente e ripristina gli stessi valori in caso di regressione. Non cambiare in blocco le voci da Manuale a Disabilitato e non spegnere update, storage, rete, audio o sicurezza.</p>
+<p>L'obiettivo finale è un PC che funziona con <strong>le applicazioni che userai davvero</strong>: gioco, voce, Alt-Tab, sospensione, rete, update e accessori. Fai una prima lettura con gli strumenti diagnostici, poi chiudili per il confronto finale: anche il monitoraggio introduce lavoro. Conserva soltanto modifiche comprese e utili in prove concordanti. Se non riesci a ricostruire lo stato, usa inventario e backup invece di sommare un altro optimizer.</p>
+<h2 id="11-la-baseline-da-conservare">11. La baseline da conservare</h2>
+<p>Alla fine del setup non ti serve un desktop “minimale”. Ti serve un sistema di cui puoi rispondere a quattro domande:</p>
+<ol>
+<li>Che cosa è installato e da quale fonte?</li>
+<li>Quali driver e firmware sono attivi?</li>
+<li>Quali modifiche ho fatto e come le annullo?</li>
+<li>Come misuro se un cambiamento ha migliorato qualcosa?</li>
+</ol>
+<p>Compila un registro semplice:</p>
+<div class="guide-table" tabindex="0" role="region" aria-label="Tabella scorrevole"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>25H2 o 26H2, build, edizione, data ultimo update.</td>
+</tr>
+<tr>
+<td>Firmware</td>
+<td>Versione BIOS/UEFI, data, impostazioni cambiate.</td>
+</tr>
+<tr>
+<td>Driver</td>
+<td>GPU, chipset, storage, rete, audio; versione e provenienza.</td>
+</tr>
+<tr>
+<td>Energia</td>
+<td>Piano, modalità, profilo OEM, alimentazione.</td>
+</tr>
+<tr>
+<td>Applicazioni</td>
+<td>Solo quelle necessarie; runtime e versione.</td>
+</tr>
+<tr>
+<td>Modifiche</td>
+<td>Una riga per modifica, con stato iniziale e ritorno.</td>
+</tr>
+<tr>
+<td>Misure</td>
+<td>Scena, durata, frame time/commit/driver latency e data.</td>
+</tr>
+</tbody></table>
+</div><p>Verifica accesso all'account, cifratura, aggiornamenti, Store, display, rete, audio, sospensione e gioco. Una base stabile e aggiornabile è il risultato del setup; una riduzione della latenza è una domanda successiva da misurare, non il timbro che si ottiene completando una lista.</p>
+<h2 id="miti-da-chiudere">Miti da chiudere</h2>
+<p><strong>“Più RAM libera significa più prestazioni.”</strong><br />No. La RAM usata come cache evita letture dal disco. Un sistema con molta standby list può essere più reattivo di uno con la RAM “vuota”. La domanda utile è se il commit è sotto controllo e se un processo consuma memoria in modo anomalo.</p>
+<p><strong>“Disattivare il pagefile elimina gli stutter.”</strong><br />No. Riduce il commit limit, può impedire i crash dump e può far fallire allocazioni anche quando la RAM sembra libera. Se il paging è frequente, la causa è la pressione di memoria o un'applicazione, non il file in sé.</p>
+<p><strong>“La formula giusta è 1,5× o 2× la RAM.”</strong><br />Non esiste una formula universale. Il pagefile dipende dal tipo di crash dump e dal picco del commit. La gestione automatica è una base ragionevole; una dimensione manuale richiede dati, non una proporzione copiata.</p>
+<p><strong>“26H1 è l'aggiornamento 2026 per tutti.”</strong><br />No. 26H1 è un ramo OEM preinstallato, non offerto via Windows Update ai PC esistenti e non percorso di upgrade verso 26H2. Per un PC 24H2/25H2 il riferimento è 26H2.</p>
+<p><strong>“Il driver più recente è sempre il migliore.”</strong><br />No. Contano modello, revisione, note del vendor e compatibilità con la build. Con 26H2 conta anche il nuovo criterio di fiducia del kernel: un driver vecchio può essere bloccato, ma un driver “nuovo” non certificato non è automaticamente una buona scelta.</p>
+<p><strong>“Debloat significa meno latenza.”</strong><br />No. Rimuovere app o servizi può ridurre lavoro in background, ma non dimostra un miglioramento di latenza. Un one-click che cambia in blocco servizi, sicurezza e driver rende difficile capire che cosa ha funzionato e come tornare indietro.</p>
+<p><strong>“Ultimate Performance, C-state OFF e HAGS ON sono sempre meglio.”</strong><br />No. Sono scelte dipendenti da piattaforma, carico, temperatura e driver. Possono migliorare una scena e peggiorarne un'altra. Vanno provate una alla volta, con ritorno allo stato iniziale.</p>
+<p><strong>“Disattivare Defender o VBS regala FPS.”</strong><br />No. Può cambiare il costo di alcune operazioni, ma altera sicurezza e a volte i requisiti degli anti-cheat. Non è una baseline e non è giustificato da un singolo numero.</p>
+<h2 id="fonti-e-limiti-delle-evidenze">Fonti e limiti delle evidenze</h2>
+<p>Le fonti del progetto sono istantanee documentali raccolte nell'ottobre 2026. Un sorgente letto non autentica automaticamente il binario di release o i suoi download successivi. Non sono stati collaudati firmware, storage, OOBE, installer, builder, rollback o guadagni su hardware del lettore. Le fonti 22–30 sono state consultate il 23 ottobre 2026 per aggiornare la parte su versioni, memoria e driver.</p>
+<details class="guide-sources"><summary>Elenco delle fonti (30)</summary><ol>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/introduction-to-the-page-file">Introduction to the page file</a>. Riferimento per commit e dump; il setup mantiene la gestione automatica.</li>
+<li>Microsoft Sysinternals, <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer">Process Explorer</a> e <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns">Autoruns</a>.</li>
+<li>Microsoft, <a href="https://www.microsoft.com/en-us/software-download/windows11">Download Windows 11</a>.</li>
+<li>Rufus, <a href="https://rufus.ie/en/">sito ufficiale</a> e <a href="https://github.com/pbatard/rufus/wiki/FAQ/1b7c603c439a04d007d72d36063fc378a8930685">FAQ fissata</a>. Indicazioni del progetto, non garanzia OOBE futura.</li>
+<li>ASUS, <a href="https://www.asus.com/support/faq/1044348/">aggiornamento BIOS</a>; Microsoft, <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/suspend-bitlocker-protection-non-microsoft-updates">sospensione BitLocker per aggiornamenti non Microsoft</a>. Esempio ASUS: prevale il manuale del modello reale.</li>
+<li>Intel, <a href="https://www.intel.com/content/www/us/en/support/articles/000057787/memory-and-storage/intel-optane-memory.html">VMD/RST</a>; ASUS, <a href="https://www.asus.com/support/faq/1044458/">disco non rilevato in Setup</a>; Microsoft, <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/nvme-features-supported-by-stornvme">StorNVMe</a>.</li>
+<li>Microsoft Support, <a href="https://support.microsoft.com/en-us/windows/change-from-a-local-account-to-a-microsoft-account-395203bf-9f1b-eb24-b042-5b8dae6c1d20">passaggio fra account locale e Microsoft</a>.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/">WinGet</a>, <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/install">install</a>, <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/source">source</a>, <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/download">download</a>.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">Visual C++ Redistributable supportati</a>; TechPowerUp, <a href="https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/">raccolta All-in-One</a>.</li>
+<li>Microsoft, <a href="https://www.microsoft.com/en-us/download/details.aspx?id=8109">DirectX End-User Runtimes June 2010</a>; TechPowerUp, <a href="https://www.techpowerup.com/download/directx-redistributable-runtime/">raccolta DirectX offline</a>.</li>
+<li>WinUtil, <a href="https://github.com/ChrisTitusTech/winutil/blob/07ccd8e2e755a706f31569808b31f5b77acad6a9/docs/src/content/docs/guides/win11creator.mdx">documentazione Creator al commit verificato</a> e <a href="https://github.com/ChrisTitusTech/winutil/blob/07ccd8e2e755a706f31569808b31f5b77acad6a9/functions/private/Invoke-WinUtilISOScript.ps1">script ISO</a>.</li>
+<li>Winhance, <a href="https://winhance.net/docs/guides/configuration-files.html">configurazioni</a>, <a href="https://winhance.net/docs/guides/wimutil.html">WIMUtil</a>, <a href="https://winhance.net/docs/guides/autounattend.html">Autounattend</a>, <a href="https://github.com/memstechtips/Winhance/blob/f23d554eb2d6400b1827bcc46b91294ffa53fbc9/src/Winhance.UI/Features/Common/Resources/AdvancedTools/autounattend-template.xml">template della release verificata</a>.</li>
+<li>Wintoys, <a href="https://apps.microsoft.com/detail/9p8ltpgcbzxd">Store dell'app</a>, <a href="https://bogdan-patraucean.github.io/about/wintoys/faq">FAQ autore</a> e <a href="https://bogdan-patraucean.github.io/about/wintoys/offline">limiti offline</a>.</li>
+<li>FR33THY, <a href="https://github.com/FR33THYFR33THY/Ultimate/tree/a0a33a57078434201f582b0db5107dcbb502292a">Ultimate fissato</a> e <a href="https://github.com/FR33THYFR33THY/WinSux/tree/91adbfd63b7ed2eb5fcf0821fd53405a3cf63573">WinSux fissato</a>; sorgenti consultati in sola lettura, non eseguiti.</li>
+<li>ZapTweaks, <a href="https://github.com/PrimeBuild-pc/ZapTweaks/blob/f2d190387e21e8aee8a1d0f8818e7792ebfaaf6e/lib/features/setup/presentation/guided_setup_page.dart">wizard al commit verificato</a>; <a href="/guide-materials/analisi/VERIFICA-TOOL-PRIMEBUILD-RETE-V3.md">analisi statica del progetto, §3</a>.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/add-a-custom-script-to-windows-setup?view=windows-11">script durante Windows Setup e limiti SetupComplete</a>.</li>
+<li>Microsoft DirectX, <a href="https://devblogs.microsoft.com/directx/hardware-accelerated-gpu-scheduling/">Hardware Accelerated GPU Scheduling</a>. Descrive il meccanismo introdotto nel 2020, non un confronto ON/OFF sulla build corrente.</li>
+<li>Microsoft Support, <a href="https://support.microsoft.com/en-us/windows/reinstall-windows-with-the-installation-media-d8369486-3e33-7d9c-dccc-859e2b022fc7">reinstallare Windows con il supporto di installazione</a>. La sequenza descrive un'installazione pulita; il numero del disco nell'esempio non identifica il bersaglio sul PC del lettore.</li>
+<li>FR33THY, <a href="https://www.youtube.com/watch?v=POFZSTsX0w8">AM5 (BIOS Settings &amp; Overclock Guide)</a>, guida video di terzi e commento dell'autore con correzione sui limiti PBO; esempio AM5, non valori universali. Consultato il 13 ottobre 2026.</li>
+<li>FR33THY, <a href="https://www.youtube.com/watch?v=-eEuodGf3sE">WinSux</a> e <a href="https://www.youtube.com/watch?v=Xc7l8PCTJyg">Ultimate</a>, video introduttivi collegati dai README dei rispettivi repository. La descrizione non sostituisce il codice; nessuno script è stato eseguito.</li>
+<li>FR33THY, <a href="https://github.com/FR33THYFR33THY/Ultimate/blob/a0a33a57078434201f582b0db5107dcbb502292a/1%20Check/1%20Bios%20Check.ps1">Ultimate — BIOS Check</a>, script che stampa indicazioni generiche, non modifica o rileva automaticamente il BIOS.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information">Windows 11 release information</a>. Date di disponibilità, build e fine del supporto per 25H2, 26H1 e 26H2.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows/whats-new/windows-11-version-26h1">Windows 11, version 26H1 for IT pros</a>. Release specializzata, non feature update; percorso di aggiornamento distinto.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows/whats-new/whats-new-windows-11-version-26h2">What's new in Windows 11, version 26H2</a>. Enablement package, servicing, driver trust e funzionalità abilitate.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows/release-health/status-windows-11-26h2">Windows 11, version 26H2 known issues</a>. Stato del rollout e problemi noti, inclusi i dispositivi USB Audio Class 1.0.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/how-to-determine-the-appropriate-page-file-size-for-64-bit-versions-of-windows">How to determine the appropriate page file size for 64-bit versions of Windows</a>. Minimi per i dump, commit limit e crescita del pagefile gestito dal sistema.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows-hardware/test/wpt/memory-footprint-optimization-exercise-1">Identify processes with large working sets</a>. Relazione fra memoria in uso, available, standby e modified.</li>
+<li>Microsoft, <a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/advancing-windows-driver-security-removing-trust-for-the-cross-signed-driver-pro/4504818">Advancing Windows driver security: removing trust for the cross-signed driver program</a>. Criterio WHCP, allow list e fase di valutazione.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows/whats-new/whats-new-windows-11-version-25h2">What's new in Windows 11, version 25H2</a>. Enablement package e ciclo di servicing della versione 25H2.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/windows/win32/memory/working-set">Working Set</a>. Definizione di working set, hard fault e soft fault.</li>
+</ol></details>
+<p>La <a href="/guide-materials/analisi/VERIFICA-SETUP-E-STRUMENTI-V3.md">verifica setup e strumenti del progetto</a> conserva commit, provenienza e limiti delle copie lette, compresi accessi 403 a pagine Dell/Microsoft non usati come consultazioni riuscite. Le informazioni su piani, servizi e scelte firmware non sostituiscono la documentazione del modello: non è stato fornito un hardware su cui verificare quei controlli.</p>
+</article><nav aria-label="Altre guide" class="mt-14 flex flex-wrap justify-between gap-6 border-t border-white/15 pt-6 text-sm"><a href="/guides/stabilita-occt/" class="max-w-xs text-zinc-300">Stabilità e overclock: CPU, GPU, RAM e test che contano →</a></nav></div></div></div></section></div>
+  </body>
+</html>
+
+
+
