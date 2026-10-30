@@ -31,7 +31,7 @@ const useSEO = ({
   title,
   description,
   path,
-  image = "/og-image.png",
+  image = "/og-image-v2.png",
   noindex = false,
   type = "website",
   datePublished,

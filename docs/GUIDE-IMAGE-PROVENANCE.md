@@ -97,9 +97,14 @@ Snapshot locale completo del commit `936d2f76ae2c2d7464222f455c4484e24f46664a`: 
 | `/images/guides/screenshots/nvidia-latency-pipeline-with-overlap.png` | NVIDIA | `b37ed6480a03284c6468b39a040aca52928ebeec2ab7b30443161c0a9c367b10` |
 | `/images/guides/screenshots/nvidia-system-latency.png` | NVIDIA | `f094db984f0b76f77e9b8cc5fb458f5cfd38d2ba8964eb001a3452b361a734e3` |
 | `/images/guides/screenshots/occt-3d-adaptive.png` | OCBASE / OCCT | `77dde0b3950b3a2b633888b22462814c463c22562693fabf88bdf15855b9d2e3` |
-| `/images/guides/screenshots/occt-cpu-ram.png` | OCBASE / OCCT | `8a3d8f8b874ecaf78fa5c72c8ae37999c6eaf6ec072c832bb898520bbdc1e389` |
+| `/images/guides/screenshots/occt-combined.png` | OCBASE / OCCT | `22d095f900d930cc1ac0edf00f0f3d98be4d62518d0b486c8860d8c42f2dbbb1` |
 | `/images/guides/screenshots/occt-cpu.png` | OCBASE / OCCT | `18772b272d6aba26ad8499436b8e04fe6a5ea460929ff5f4cc347a9eaafba852` |
+| `/images/guides/screenshots/occt-cpu-ram.png` | OCBASE / OCCT | `8a3d8f8b874ecaf78fa5c72c8ae37999c6eaf6ec072c832bb898520bbdc1e389` |
+| `/images/guides/screenshots/occt-linpack.png` | OCBASE / OCCT | `d3067e275fbcabe21743bde67b435d69fb32c46f253e8704cbd92d7808ffb0c9` |
 | `/images/guides/screenshots/occt-memory.png` | OCBASE / OCCT | `13e4054e6085d48758c7108e2ca80784abe7fe6096eef2c997356a38b647cedd` |
+| `/images/guides/screenshots/occt-monitoring-only.png` | OCBASE / OCCT | `4e494e0c67335f6294f436c72ad110ab49a7ada1f6add6cb0c408628f2cf2846` |
+| `/images/guides/screenshots/occt-power.png` | OCBASE / OCCT | `bef7c72f0a3ebe6198aa4648ecf04fd6baa97005b74bdd83cfdc13800bdcd793` |
+| `/images/guides/screenshots/occt-storage.png` | OCBASE / OCCT | `80b38904750c036e2dc624e310833f6c47f33174fa6f6cb97f1504a002fa0350` |
 | `/images/guides/screenshots/occt-vram.png` | OCBASE / OCCT | `e8ef99df6226f0a73d816fdcca67d262985469523689697f2d81be427689af8c` |
 | `/images/guides/screenshots/ui-apo-editor.png` | Jonas Thedering / Equalizer APO · GPL-2.0 | `7089a95774b13ba5c0bf03a935f03922da51070e2840c4c2e673ef10e9e17d73` |
 | `/images/guides/screenshots/ui-latencymon-main.png` | Resplendence | `0370327de131accb98894c195b2d06d807fab95004a0801b1b9c7ab8d38ffc16` |

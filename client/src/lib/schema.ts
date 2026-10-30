@@ -12,7 +12,7 @@ export const buildSchema = (location: string) => {
     alternateName: "PrimeBuild",
     url: `${SITE_URL}/`,
     logo: { "@type": "ImageObject", url: assetUrl("/logo.png?v=20260814"), width: 512, height: 512 },
-    image: assetUrl("/og-image.png"),
+    image: assetUrl("/og-image-v2.png"),
     email: "preventivi@primebuild.website",
     description: "Assemblaggio PC gaming su misura, assistenza tecnica e ottimizzazione a Montegrotto Terme, Padova e in tutta Italia.",
     address: {
@@ -151,7 +151,7 @@ export const buildSchema = (location: string) => {
           "@id": `${url}#article`,
           headline: guide.title,
           description: guide.description,
-          image: assetUrl("/og-image.png"),
+          image: assetUrl("/og-image-v2.png"),
           datePublished: guide.datePublished,
           dateModified: guide.dateModified,
           author: { "@id": `${SITE_URL}/#business` },
