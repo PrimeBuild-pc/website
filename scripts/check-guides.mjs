@@ -34,8 +34,8 @@ for(const guide of manifest) {
   assert.ok(!/non incorpora (?:nuove immagini|la figura|nuove figure)|non sono state incorporate|né incorporate/i.test(source),`${guide.file}: obsolete image disclaimer`);
   if(guide.id===2) {
     assert.ok(!source.includes('interfaccia **v13**'),'OCCT screenshot version is obsolete');
-    for(const topic of ['SSE, AVX, AVX2 e AVX-512','Core Cycling','Mirror Move','Check','Device selection']) assert.ok(source.includes(topic),`Missing OCCT explanation: ${topic}`);
-    for(const asset of ['occt-cpu','occt-cpu-ram','occt-memory','occt-3d-adaptive','occt-vram']) assert.ok(guide.figures.some(f=>f.asset===asset),`Missing real screenshot: ${asset}`);
+    for(const topic of ['SSE, AVX, AVX2 e AVX-512','Quale test per quale domanda','Core Cycling','Mirror Move','Check','Device selection']) assert.ok(source.includes(topic),`Missing OCCT explanation: ${topic}`);
+    for(const asset of ['occt-cpu','occt-cpu-ram','occt-memory','occt-3d-adaptive','occt-vram','occt-linpack','occt-storage','occt-power','occt-monitoring-only','occt-combined']) assert.ok(guide.figures.some(f=>f.asset===asset),`Missing real screenshot: ${asset}`);
   }
   if(guide.id===6) {
     for(const topic of ['### HDMI e DisplayPort: che cosa cambia nel collegamento','### Tabella delle generazioni e della banda','### Risoluzione, Hz e colore','### Perché si consiglia spesso DP sul PC e HDMI sulla console','### GPU NVIDIA e AMD','### Uscita GPU, cavo e ingresso monitor','al video DisplayPort']) assert.ok(source.includes(topic),`Missing display explanation: ${topic}`);

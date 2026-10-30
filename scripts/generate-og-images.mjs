@@ -1,4 +1,4 @@
-// Renders the 1200x630 social cards: client/public/og-image.png (default) and client/public/og/<slug>.png (one per guide).
+// Renders the 1200x630 social cards: client/public/og-image-v2.png (default) and client/public/og/<slug>.png (one per guide).
 import { mkdir, readFile } from 'node:fs/promises';
 import { chromium } from '@playwright/test';
 import manifest from '../client/src/content/guides/manifest.json' with {type:'json'};
@@ -23,7 +23,7 @@ h1{font-weight:700;font-size:${size}px;line-height:1.08;letter-spacing:-.025em;m
 <div class="foot"><span>${foot}</span><b>primebuild.website</b></div></main><div class="bar"></div>`;
 
 const cards = [
-  {file:'client/public/og-image.png', eyebrow:'PC gaming custom', title:'PC gaming progettati intorno a te', size:84, foot:'Montegrotto Terme (PD) · in tutta Italia'},
+  {file:'client/public/og-image-v2.png', eyebrow:'PC gaming custom', title:'PC gaming progettati intorno a te', size:84, foot:'Montegrotto Terme (PD) · in tutta Italia'},
   ...manifest.map(g => ({file:`client/public/og/${g.slug}.png`, eyebrow:`Guida ${String(g.id).padStart(2,'0')} / ${manifest.length}`, title:g.title, size:g.title.length > 55 ? 54 : 62, foot:'Guide tecniche · PC gaming e ottimizzazione'})),
 ];
 await mkdir('client/public/og', {recursive:true});

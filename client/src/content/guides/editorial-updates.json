@@ -57,6 +57,11 @@
       "reason": "Explain the controls shown in the official 3D Adaptive and VRAM screenshots."
     },
     {
+      "before": "## 9. MemTest86, WHEA e lettura dei sensori",
+      "insertFile": "occt-altri-test.md",
+      "reason": "User 2026-10-30: add the remaining OCCT stability-test panels (Linpack, Storage, Power, Monitoring only, Combined) with step-by-step options and a when-to-use guide."
+    },
+    {
       "before": "Le schermate ufficiali usate dal progetto mostrano l'interfaccia **v13**; la pagina download della precedente verifica indicava **17.1.7**. Non sono una cattura della GUI corrente installata. Il manuale contiene riferimenti di release diverse: controlli, disponibilità, limiti di durata e report vanno verificati per la versione/edizione effettiva.",
       "after": "Le schermate ufficiali incluse mostrano **OCCT 17.0.14 Supporter**, come riportato nella pagina Personal Features del produttore. Non sono una cattura della GUI installata sul PC del lettore. Il manuale contiene riferimenti di release diverse: controlli, disponibilità, limiti di durata e report vanno verificati per la versione/edizione effettiva.",
       "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
