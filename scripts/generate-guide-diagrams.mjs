@@ -33,6 +33,16 @@ const diagrams = {
   distribution: ['Dieci intervalli: un esempio didattico', 'samples', ['5', '5', '5', '5', '5', '5', '5', '5', '5', '20'], 'Dati inventati dalla guida: media 6,5 ms; mediana 5 ms. Non un benchmark.'],
   upscale: ['Ricostruzione dell’immagine', 'flow', ['Risoluzione interna', 'Dati del motore', 'Ricostruzione', 'Immagine d’uscita'], 'Upscaling e Frame Generation svolgono funzioni differenti.'],
   quality: ['Confrontare qualità e comportamento', 'radial', ['Dettaglio in movimento', 'Artefatti', 'Cadenza di base', 'Latenza'], 'Stessa scena e impostazioni annotate; nessun preset universale.'],
+  'pannelli-famiglie': ['Cinque famiglie di pannelli', 'compare', ['TN|Velocità', 'IPS|Versatilità', 'VA|Contrasto', 'OLED|Nero vero', 'Mini LED|Luminosità'], 'Nessuna famiglia vince su tutto; la scelta dipende da contenuto e ambiente.'],
+  'monitor-anatomia': ['Anatomia di un pannello', 'flow', ['Retroilluminazione', 'Polarizzatori', 'Cristallo liquido', 'Filtri colore', 'Pannello'], 'Strati e funzioni possono essere integrati in moduli diversi.'],
+  'response-gtg-mprt': ['GtG, MPRT e overdrive', 'compare', ['GtG|Transizione del pixel', 'MPRT|Persistenza e occhio', 'Overdrive|Velocità artificiale'], 'GtG e MPRT misurano cose diverse; un numero solo non descrive la nitidezza in movimento.'],
+  'hz-frame-time': ['Tempo per frame a diversi refresh', 'bars', ['60 Hz|16.667', '120 Hz|8.333', '240 Hz|4.167', '360 Hz|2.778', '500 Hz|2', '600 Hz|1.667'], '1000 / Hz = ms per frame; il frame rate effettivo dipende dal gioco.'],
+  'oled-miniled': ['OLED per pixel e Mini LED a zone', 'compare', ['OLED|Per pixel', 'Mini LED|Zone', 'VA|Retroilluminazione'], 'OLED illumina ogni pixel; Mini LED usa zone; VA e IPS usano una retroilluminazione.'],
+  'monitor-tv': ['Monitor e TV: compromessi diversi', 'compare', ['Monitor|DisplayPort e latenza', 'TV|HDMI 2.1 e dimensione'], 'Monitor e TV ottimizzano compromessi diversi.'],
+  'monitor-settings': ['Le impostazioni principali', 'radial', ['Luminosità', 'Contrasto', 'Gamma', 'Overdrive', 'VRR', 'HDR'], 'Una modifica alla volta; conserva i valori originali.'],
+  'brightness-response': ['Luminosità, BFI e overdrive', 'compare', ['Luminosità|Retroilluminazione o corrente', 'BFI/MPRT|Duty cycle più corto', 'Overdrive|Transizione più rapida'], 'La luminosità non è la manopola del GtG; il legame passa da BFI, ABL e percezione.'],
+  'competitive-immersive': ['Profili d\'uso e priorità', 'compare', ['FPS|24-27" 240-600 Hz', 'Immersione|32-48" 4K', 'Sim|34-49" ultrawide', 'Console|TV 4K 120'], 'La priorità cambia con il genere, non con l\'etichetta gaming.'],
+  'acquisto-monitor': ['Checklist di acquisto', 'flow', ['Distanza', 'Risoluzione', 'Pannello', 'Recensioni', 'Verifica'], 'Prima il requisito, poi la specifica.'],
 };
 
 // Technical plates use measured geometry only for the explicitly numeric examples.
@@ -61,8 +71,8 @@ function icon(type,x,y,scale=1){
   };
   return `<g transform="translate(${x} ${y}) scale(${scale})" fill="none" stroke="${accent}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">${paths[type]||paths.chip}</g>`;
 }
-const themes={memory:'memory',recovery:'shield',driver:'file',power:'chip',limits:'sliders','memory-clocks':'memory',validation:'wave',isr:'chip',latencymon:'clock',boundaries:'clock',fg:'monitor',cadence:'clock',vrr:'monitor',display:'monitor',scanout:'monitor',bandwidth:'network',input:'mouse',polling:'mouse',hidfilter:'mouse',fit:'audio',dac:'audio',transport:'audio',buffers:'audio',endpoint:'audio',noapo:'sliders',timers:'clock',mmcss:'chip',distribution:'wave',upscale:'monitor',quality:'monitor'};
-const flowIcons={recovery:['file','shield','sliders','wave','file'],validation:['file','sliders','file','wave','shield'],isr:['mouse','wave','chip','clock'],display:['chip','network','network','monitor','sliders'],input:['mouse','chip','network','monitor','monitor'],hidfilter:['mouse','sliders','mouse','file','shield'],dac:['wave','chip','sliders','audio'],endpoint:['file','network','audio','chip','audio'],mmcss:['file','file','clock','chip'],upscale:['monitor','chip','sliders','monitor']};
+const themes={memory:'memory',recovery:'shield',driver:'file',power:'chip',limits:'sliders','memory-clocks':'memory',validation:'wave',isr:'chip',latencymon:'clock',boundaries:'clock',fg:'monitor',cadence:'clock',vrr:'monitor',display:'monitor',scanout:'monitor',bandwidth:'network',input:'mouse',polling:'mouse',hidfilter:'mouse',fit:'audio',dac:'audio',transport:'audio',buffers:'audio',endpoint:'audio',noapo:'sliders',timers:'clock',mmcss:'chip',distribution:'wave',upscale:'monitor',quality:'monitor','pannelli-famiglie':'monitor','monitor-anatomia':'monitor','response-gtg-mprt':'clock','hz-frame-time':'clock','oled-miniled':'monitor','monitor-tv':'monitor','monitor-settings':'sliders','brightness-response':'sliders','competitive-immersive':'monitor','acquisto-monitor':'file'};
+const flowIcons={recovery:['file','shield','sliders','wave','file'],validation:['file','sliders','file','wave','shield'],isr:['mouse','wave','chip','clock'],display:['chip','network','network','monitor','sliders'],input:['mouse','chip','network','monitor','monitor'],hidfilter:['mouse','sliders','mouse','file','shield'],dac:['wave','chip','sliders','audio'],endpoint:['file','network','audio','chip','audio'],mmcss:['file','file','clock','chip'],upscale:['monitor','chip','sliders','monitor'],'monitor-anatomia':['monitor','wave','sliders','monitor','shield'],'acquisto-monitor':['file','sliders','shield','wave','file']};
 const backdrop=(w,h)=>`<defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#b16b30" stroke-opacity=".085"/></pattern><radialGradient id="glow"><stop stop-color="#742a05" stop-opacity=".28"/><stop offset="1" stop-color="#090909" stop-opacity="0"/></radialGradient></defs><rect width="${w}" height="${h}" fill="#090909"/><rect width="${w}" height="${h}" fill="url(#grid)"/><ellipse cx="220" cy="160" rx="520" ry="350" fill="url(#glow)"/>`;
 await mkdir('client/public/images/guides/diagrams',{recursive:true});
 for(const [id,[title,kind,items,note]] of Object.entries(diagrams)){
@@ -120,16 +130,17 @@ const covers=[
   ['WINDOWS','PARAMETRI','SCHEDULER · TIMER · VERIFICA','chip'],
   ['MISURE','& VERIFICA','FRAME TIME · LATENZA · METODO','wave'],
   ['UPSCALING','& FRAME GEN','DLSS · FSR · XeSS','monitor'],
+  ['MONITOR','GAMING','PANNELLI · HZ · RISPOSTA','monitor'],
 ];
 const {default:manifest}=await import('../client/src/content/guides/manifest.json',{with:{type:'json'}});
 await mkdir('client/public/images/guides/covers',{recursive:true});
 for(const [i,[a,b,sub,type]] of covers.entries()){
   const guide=manifest[i];assert.equal(guide.id,i+1);
   const size=s=>Math.min(103,Math.floor(830/(s.length*.62)));
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><title>${esc(guide.title)}</title>${backdrop(1000,1000)}<path d="M600 0L870 1000M620 0L890 1000" stroke="#a44808" stroke-opacity=".3" stroke-width="2"/><path d="M30 60V30H75" fill="none" stroke="#a44808"/><g font-family="Arial, sans-serif">${text(80,180,'PRIME BUILD · TECHNICAL GUIDE',19,accent)}${text(80,310,a,size(a))}${text(80,430,b,size(b),accent)}${text(80,495,sub,23,muted)}${line(80,550,180,550,accent,3)}${line(180,550,920,550,'#402818',1)}${text(80,605,'GUIDA',17,muted)}${text(80,700,String(i+1).padStart(2,'0'),96,ink)}${text(80,742,'/ 13',21,accent)}${icon(type,710,735,2.15)}${text(80,925,'PRIMEBUILD.WEBSITE',17,muted)}</g><path d="M0 998H1000" stroke="${accent}" stroke-width="4"/></svg>`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><title>${esc(guide.title)}</title>${backdrop(1000,1000)}<path d="M600 0L870 1000M620 0L890 1000" stroke="#a44808" stroke-opacity=".3" stroke-width="2"/><path d="M30 60V30H75" fill="none" stroke="#a44808"/><g font-family="Arial, sans-serif">${text(80,180,'PRIME BUILD · TECHNICAL GUIDE',19,accent)}${text(80,310,a,size(a))}${text(80,430,b,size(b),accent)}${text(80,495,sub,23,muted)}${line(80,550,180,550,accent,3)}${line(180,550,920,550,'#402818',1)}${text(80,605,'GUIDA',17,muted)}${text(80,700,String(i+1).padStart(2,'0'),96,ink)}${text(80,742,`/ ${manifest.length}`,21,accent)}${icon(type,710,735,2.15)}${text(80,925,'PRIMEBUILD.WEBSITE',17,muted)}</g><path d="M0 998H1000" stroke="${accent}" stroke-width="4"/></svg>`;
   await writeFile(`client/public/images/guides/covers/${guide.slug}.svg`,svg);
 }
-console.log(`${Object.keys(diagrams).length} technical plates and 13 covers generated.`);
+console.log(`${Object.keys(diagrams).length} technical plates and ${manifest.length} covers generated.`);
 
 // Maps of the controls named in the definitive text, explicitly not reconstructed screenshots.
 const occtMaps={

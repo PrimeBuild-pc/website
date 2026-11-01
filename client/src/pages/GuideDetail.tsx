@@ -56,7 +56,7 @@ export const GuideArticleView = ({guide,content,failed=false}: {guide:Guide;cont
         </details></aside>
         <div className="min-w-0">
           <div className="mb-6 flex flex-wrap gap-3 text-sm text-zinc-400">
-            <span className="text-primary">{String(guide.id).padStart(2,"0")} / 13</span>
+            <span className="text-primary">{String(guide.id).padStart(2,"0")} / {guides.length}</span>
             <time dateTime={guide.dateModified}>Aggiornata il {guide.date}</time>
             <Link href="/chi-siamo/">Team tecnico Prime Build</Link>
           </div>

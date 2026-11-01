@@ -28,7 +28,7 @@ const Guides = () => {
   useSEO({
     title: "Guide PC Gaming e Ottimizzazione | Prime Build",
     description:
-      "Guide tecniche Prime Build su PC gaming, latenza, DLSS, audio competitivo, rete e ottimizzazione Windows.",
+      "Guide tecniche Prime Build su monitor, latenza, DLSS, audio competitivo, rete e ottimizzazione Windows.",
     path: "/guides",
   });
 
@@ -79,7 +79,7 @@ const Guides = () => {
 
                 <div className="p-5">
                   <p className="text-xs uppercase tracking-wider text-primary">
-                    {String(guide.id).padStart(2, "0")} / 13
+                    {String(guide.id).padStart(2, "0")} / {guides.length}
                   </p>
                   <h2 className="mt-2 text-white font-bold text-lg leading-tight">
                     {guide.title}

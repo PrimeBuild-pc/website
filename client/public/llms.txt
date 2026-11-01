@@ -13,6 +13,7 @@
 - [Tutte le guide](https://primebuild.website/guides/)
 - [Setup audio competitivo](https://primebuild.website/guides/setup-audio/)
 - [Guida DLSS e Frame Generation](https://primebuild.website/guides/guida-dlss-frame-generation/)
+- [Monitor gaming: pannelli, tempi di risposta e impostazioni](https://primebuild.website/guides/monitor-gaming-pannelli/)
 - [Setup rete anti-bufferbloat](https://primebuild.website/guides/setup-rete-anti-bufferbloat/)
 - [Ottimizzazione build per 240Hz](https://primebuild.website/guides/ottimizzazione-build-240hz/)
 - [Low Latency Gaming Guide](https://primebuild.website/guides/low-latency-gaming-guide/)
