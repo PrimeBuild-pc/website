@@ -35,12 +35,8 @@ const diagrams = {
   quality: ['Confrontare qualità e comportamento', 'radial', ['Dettaglio in movimento', 'Artefatti', 'Cadenza di base', 'Latenza'], 'Stessa scena e impostazioni annotate; nessun preset universale.'],
   'pannelli-famiglie': ['Cinque famiglie di pannelli', 'compare', ['TN|Velocità', 'IPS|Versatilità', 'VA|Contrasto', 'OLED|Nero vero', 'Mini LED|Luminosità'], 'Nessuna famiglia vince su tutto; la scelta dipende da contenuto e ambiente.'],
   'monitor-anatomia': ['Anatomia di un pannello', 'flow', ['Retroilluminazione', 'Polarizzatori', 'Cristallo liquido', 'Filtri colore', 'Pannello'], 'Strati e funzioni possono essere integrati in moduli diversi.'],
-  'response-gtg-mprt': ['GtG, MPRT e overdrive', 'compare', ['GtG|Transizione del pixel', 'MPRT|Persistenza e occhio', 'Overdrive|Velocità artificiale'], 'GtG e MPRT misurano cose diverse; un numero solo non descrive la nitidezza in movimento.'],
   'hz-frame-time': ['Tempo per frame a diversi refresh', 'bars', ['60 Hz|16.667', '120 Hz|8.333', '240 Hz|4.167', '360 Hz|2.778', '500 Hz|2', '600 Hz|1.667'], '1000 / Hz = ms per frame; il frame rate effettivo dipende dal gioco.'],
-  'oled-miniled': ['OLED per pixel e Mini LED a zone', 'compare', ['OLED|Per pixel', 'Mini LED|Zone', 'VA|Retroilluminazione'], 'OLED illumina ogni pixel; Mini LED usa zone; VA e IPS usano una retroilluminazione.'],
   'monitor-tv': ['Monitor e TV: compromessi diversi', 'compare', ['Monitor|DisplayPort e latenza', 'TV|HDMI 2.1 e dimensione'], 'Monitor e TV ottimizzano compromessi diversi.'],
-  'monitor-settings': ['Le impostazioni principali', 'radial', ['Luminosità', 'Contrasto', 'Gamma', 'Overdrive', 'VRR', 'HDR'], 'Una modifica alla volta; conserva i valori originali.'],
-  'brightness-response': ['Luminosità, BFI e overdrive', 'compare', ['Luminosità|Retroilluminazione o corrente', 'BFI/MPRT|Duty cycle più corto', 'Overdrive|Transizione più rapida'], 'La luminosità non è la manopola del GtG; il legame passa da BFI, ABL e percezione.'],
   'competitive-immersive': ['Profili d\'uso e priorità', 'compare', ['FPS|24-27" 240-600 Hz', 'Immersione|32-48" 4K', 'Sim|34-49" ultrawide', 'Console|TV 4K 120'], 'La priorità cambia con il genere, non con l\'etichetta gaming.'],
   'acquisto-monitor': ['Checklist di acquisto', 'flow', ['Distanza', 'Risoluzione', 'Pannello', 'Recensioni', 'Verifica'], 'Prima il requisito, poi la specifica.'],
 };

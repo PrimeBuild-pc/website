@@ -954,6 +954,24 @@
     "sha256": "1f176c113883a6c6b8ce1f4f8e6f793f5aa07070768a930c6062fbc6ad3d884a",
     "figures": [
       {
+        "heading": "1. Che cosa determina davvero l'esperienza",
+        "asset": "monitor-input-chain",
+        "alt": "Dal gesto all'occhio: la catena della latenza",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "1. Che cosa determina davvero l'esperienza",
+        "asset": "monitor-desk",
+        "src": "/images/guides/photos/monitor-desk.webp",
+        "alt": "Postazione desktop con monitor e PC",
+        "caption": "Postazione desktop: il monitor è l'ultimo tratto della catena. Foto Pexels, color grading Prime Build.",
+        "credit": "Pexels / Atahan Demir",
+        "source": "https://www.pexels.com/photo/modern-gaming-desk-setup-with-rgb-lighting-30469973/",
+        "width": 1200,
+        "height": 800
+      },
+      {
         "heading": "2. Le famiglie di pannelli: TN, IPS, VA, OLED e Mini LED",
         "asset": "pannelli-famiglie",
         "alt": "Cinque famiglie di pannelli a confronto",
@@ -968,9 +986,23 @@
         "height": 600
       },
       {
+        "heading": "3. Anatomia di un pannello gaming",
+        "asset": "monitor-subpixel",
+        "alt": "Macro schematica dei subpixel RGB, QD-OLED e WOLED",
+        "width": 1200,
+        "height": 600
+      },
+      {
         "heading": "4. Response time: GtG, MPRT, overdrive e persistence",
         "asset": "response-gtg-mprt",
-        "alt": "GtG, MPRT e overdrive",
+        "alt": "Overdrive: curve GtG, overshoot e ringing",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "4. Response time: GtG, MPRT, overdrive e persistence",
+        "asset": "monitor-persistence",
+        "alt": "Persistence: 60 Hz, 240 Hz e 240 Hz con BFI",
         "width": 1200,
         "height": 600
       },
@@ -984,35 +1016,43 @@
       {
         "heading": "6. OLED, WOLED, QD-OLED e Mini LED: il confronto vero",
         "asset": "oled-miniled",
-        "alt": "OLED per pixel e Mini LED a zone",
+        "alt": "OLED per pixel e Mini LED a zone: simulazione del blooming",
         "width": 1200,
         "height": 600
       },
       {
         "heading": "7. Monitor o TV: quando ha senso scegliere l'uno o l'altro",
         "asset": "monitor-tv",
-        "alt": "Monitor e TV: compromessi diversi",
+        "src": "/images/guides/photos/monitor-tv.webp",
+        "alt": "TV con controller in un salotto",
+        "caption": "TV con controller in salotto: una soluzione diversa da un monitor da scrivania. Foto Pexels, color grading Prime Build.",
+        "credit": "Pexels / Jakub Zerdzicki",
+        "source": "https://www.pexels.com/photo/modern-gaming-setup-with-controller-and-tv-28850990/",
         "width": 1200,
-        "height": 600
+        "height": 800
       },
       {
         "heading": "8. Le impostazioni del monitor, una per una",
         "asset": "monitor-settings",
-        "alt": "Le impostazioni principali del monitor",
+        "alt": "Menu OSD annotato con le impostazioni principali",
         "width": 1200,
         "height": 600
       },
       {
         "heading": "9. La luminosità influisce sul response time?",
         "asset": "brightness-response",
-        "alt": "Luminosità, BFI e overdrive",
+        "alt": "BFI: luminosità e MPRT a diversi duty cycle",
         "width": 1200,
         "height": 600
       },
       {
         "heading": "10. Competitivo, immersione e generi: come scegliere",
         "asset": "competitive-immersive",
-        "alt": "Profili d'uso e priorità",
+        "src": "/images/guides/photos/monitor-competitive-immersive.webp",
+        "alt": "Competitivo e immersione: due postazioni a confronto",
+        "caption": "Competitivo e immersione non chiedono lo stesso display. Foto Pexels, composizione e color grading Prime Build.",
+        "credit": "Pexels / Yankrukov e Ron Lach",
+        "source": "https://www.pexels.com/license/",
         "width": 1200,
         "height": 600
       },
