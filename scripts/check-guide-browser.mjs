@@ -52,7 +52,7 @@ try {
     await page.goto(`${base}/guides/`);
     await page.locator('a[href*="stabilita-occt"]').first().waitFor();
     const covers=page.locator('img[alt^="Copertina guida"]');
-    assert.equal(await covers.count(),13);
+    assert.equal(await covers.count(),guides.length);
     for(const cover of await covers.all()) {
       await cover.scrollIntoViewIfNeeded();
       await cover.evaluate(el=>el.decode());

@@ -940,5 +940,89 @@
         "height": 640
       }
     ]
+  },
+  {
+    "id": 14,
+    "file": "14-monitor-gaming.md",
+    "title": "Monitor gaming: pannelli, tempi di risposta e impostazioni che contano",
+    "description": "Dal TN al QD-OLED, dal Mini LED alla TV: come leggere response time, MPRT, Hz, HDR e le impostazioni del monitor per scegliere il display giusto e verificarlo davvero.",
+    "date": "1 novembre 2026",
+    "datePublished": "2026-11-01",
+    "dateModified": "2026-11-01",
+    "slug": "monitor-gaming-pannelli",
+    "image": "/images/guides/covers/monitor-gaming-pannelli.svg",
+    "sha256": "1f176c113883a6c6b8ce1f4f8e6f793f5aa07070768a930c6062fbc6ad3d884a",
+    "figures": [
+      {
+        "heading": "2. Le famiglie di pannelli: TN, IPS, VA, OLED e Mini LED",
+        "asset": "pannelli-famiglie",
+        "alt": "Cinque famiglie di pannelli a confronto",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "3. Anatomia di un pannello gaming",
+        "asset": "monitor-anatomia",
+        "alt": "Strati e funzioni di un pannello",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "4. Response time: GtG, MPRT, overdrive e persistence",
+        "asset": "response-gtg-mprt",
+        "alt": "GtG, MPRT e overdrive",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "5. Hertz, frame rate e latenza: tre cose diverse",
+        "asset": "hz-frame-time",
+        "alt": "Tempo per frame a diversi refresh",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "6. OLED, WOLED, QD-OLED e Mini LED: il confronto vero",
+        "asset": "oled-miniled",
+        "alt": "OLED per pixel e Mini LED a zone",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "7. Monitor o TV: quando ha senso scegliere l'uno o l'altro",
+        "asset": "monitor-tv",
+        "alt": "Monitor e TV: compromessi diversi",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "8. Le impostazioni del monitor, una per una",
+        "asset": "monitor-settings",
+        "alt": "Le impostazioni principali del monitor",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "9. La luminosità influisce sul response time?",
+        "asset": "brightness-response",
+        "alt": "Luminosità, BFI e overdrive",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "10. Competitivo, immersione e generi: come scegliere",
+        "asset": "competitive-immersive",
+        "alt": "Profili d'uso e priorità",
+        "width": 1200,
+        "height": 600
+      },
+      {
+        "heading": "11. Comprare un monitor: checklist, feature utili e trappole",
+        "asset": "acquisto-monitor",
+        "alt": "Checklist di acquisto",
+        "width": 1200,
+        "height": 600
+      }
+    ]
   }
 ]

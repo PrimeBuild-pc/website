@@ -30,7 +30,7 @@ const pages = [
   {
     path: "/guides",
     title: "Guide PC Gaming e Ottimizzazione | Prime Build",
-    description: "Guide tecniche Prime Build su PC gaming, latenza, DLSS, audio competitivo, rete e ottimizzazione Windows.",
+    description: "Guide tecniche Prime Build su monitor, latenza, DLSS, audio competitivo, rete e ottimizzazione Windows.",
     image: "/og-image-v2.png",
     type: "website",
   },

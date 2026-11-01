@@ -87,12 +87,12 @@ function collapseSources(html){
 }
 
 export async function prepareGuides(){
-  assert.equal(manifest.length,13);
+  assert.equal(manifest.length,14);
   await mkdir('client/public/guide-content',{recursive:true});
   for(const guide of manifest){
     const result=renderGuide(await readGuideSource(guide),guide.figures);
     await writeFile(`client/public/guide-content/${guide.slug}.json`,JSON.stringify(result));
   }
-  console.log('Prepared 13 guides from preserved originals and explicit editorial amendments.');
+  console.log(`Prepared ${manifest.length} guides from preserved originals and explicit editorial amendments.`);
 }
 if(process.argv[1]?.replaceAll('\\','/').endsWith('/prepare-guides.mjs')) await prepareGuides();

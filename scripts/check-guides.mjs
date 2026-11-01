@@ -21,8 +21,8 @@ function canonical(nodes, original=false, pre=false) {
     return [[node.name,attributes,children]];
   });
 }
-assert.equal(manifest.length,13);
-assert.equal(new Set(manifest.map(g=>g.slug)).size,13);
+assert.equal(manifest.length,14);
+assert.equal(new Set(manifest.map(g=>g.slug)).size,14);
 let imageCount=0;
 for(const guide of manifest) {
   const bytes=await readFile(`client/src/content/guides/${guide.file}`);
@@ -70,4 +70,4 @@ assert.ok(section.indexOf('Options')<section.indexOf('<figure'));
 assert.ok(section.indexOf('<figure')<section.indexOf('<h3 id="results"'));
 assert.throws(()=>figureSrc({...sample,src:'/images/guides/../../secret.png'}));
 assert.throws(()=>renderGuide('### Settings',[{...sample,source:'javascript:alert(1)'}]));
-console.log(`All 13 guides passed; ${imageCount} figures and 13 covers.`);
+console.log(`All ${manifest.length} guides passed; ${imageCount} figures and ${manifest.length} covers.`);
