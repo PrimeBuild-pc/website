@@ -100,6 +100,11 @@
   ],
   "10-rete-domestica.md": [
     {
+      "before": "## 3. Disegna il percorso che hai davvero",
+      "insertFile": "rete-glossario.md",
+      "reason": "User 2026-11-01: add an expandable glossary for common network terms (NAT types, port forwarding, UPnP, DHCP, reverse proxy, ping, jitter, packet burst, bufferbloat, QoS/SQM, DMZ, gateway, DNS) with accessible examples and precise definitions."
+    },
+    {
       "before": "Questo testo non risolve i collaudi hardware, il recupero reale delle configurazioni né i permessi delle figure della consegna precedente. Non incorpora nuove immagini e non costituisce autorizzazione alla pubblicazione.",
       "after": "Questo testo non risolve i collaudi hardware né il recupero reale delle configurazioni. Gli schemi illustrativi inclusi non sono misure della rete del lettore.",
       "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
