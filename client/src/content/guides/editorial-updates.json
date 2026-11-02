@@ -109,5 +109,37 @@
       "after": "Questo testo non risolve i collaudi hardware né il recupero reale delle configurazioni. Gli schemi illustrativi inclusi non sono misure della rete del lettore.",
       "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
     }
+  ],
+  "14-monitor-gaming.md": [
+    {
+      "before": "La guida è una sintesi tecnica basata su documentazione pubblica e recensioni aggiornate a ottobre 2026.",
+      "after": "La guida è una sintesi tecnica basata su documentazione pubblica, recensioni e test aggiornati a novembre 2026.",
+      "reason": "User 2026-11-03: update the review window after adding the 2 November 2026 CS2 Kitchen test."
+    },
+    {
+      "before": "## 6. OLED, WOLED, QD-OLED e Mini LED: il confronto vero",
+      "insertFile": "monitor-cs2-latency.md",
+      "reason": "User 2026-11-03: integrate CS2 Kitchen's measured end-to-end latency comparison between the 500 Hz 1440p OLED and the 400 Hz 1080p TN, with test conditions and limits."
+    },
+    {
+      "before": "**Black eQualizer / Black Boost / Shadow Boost.**",
+      "insertFile": "monitor-blur-latency.md",
+      "reason": "User 2026-11-03: add the measured latency cost of DyAc 2 and OLED blur reduction, without turning single-run values into universal constants."
+    },
+    {
+      "before": "**Immersione.**",
+      "insertFile": "monitor-competitive-resolution.md",
+      "reason": "User 2026-11-03: add the 1440p OLED resolution, scaling and frame-time trade-off for competitive CS2."
+    },
+    {
+      "before": "**Refresh estremo senza GPU.**",
+      "insertFile": "monitor-buying-note.md",
+      "reason": "User 2026-11-03: add a buying caution about 27-inch 1440p OLED for competitive use when the GPU cannot sustain native resolution."
+    },
+    {
+      "before": "18. HDMI Forum, [HDMI 2.1 Specification](https://hdmiforum.org/hdmi-forum-releases-version-2-1-final-specification/), larghezza di banda e funzioni per console e TV.",
+      "after": "18. HDMI Forum, [HDMI 2.1 Specification](https://hdmiforum.org/hdmi-forum-releases-version-2-1-final-specification/), larghezza di banda e funzioni per console e TV.\n19. CS2 Kitchen, [Is OLED Actually Better Than TN for CS2?](https://www.youtube.com/watch?v=zzYVgtq-OWU), 2 novembre 2026. Misure end-to-end dichiarate dall'autore su BenQ MOBIUZ EX271QZ 500 Hz 1440p OLED e BenQ ZOWIE XL2566X+ 400 Hz 1080p TN con DyAc 2; medie, impostazioni e limiti sono riportati nel testo.",
+      "reason": "User 2026-11-03: cite the source video for the new measured examples and tables."
+    }
   ]
 }
