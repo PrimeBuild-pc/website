@@ -1,0 +1,1 @@
+- **27" 1440p OLED per il competitivo senza GPU adeguata.** La risoluzione inferiore può apparire morbida sul pannello e spingere al rendering nativo, con un costo in frame time che può annullare il vantaggio del refresh [19].
