@@ -1022,14 +1022,12 @@
       },
       {
         "heading": "7. Monitor o TV: quando ha senso scegliere l'uno o l'altro",
-        "asset": "monitor-tv",
-        "src": "/images/guides/photos/monitor-tv.webp",
-        "alt": "TV con controller in un salotto",
-        "caption": "TV con controller in salotto: una soluzione diversa da un monitor da scrivania. Foto Pexels, color grading Prime Build.",
-        "credit": "Pexels / Jakub Zerdzicki",
-        "source": "https://www.pexels.com/photo/modern-gaming-setup-with-controller-and-tv-28850990/",
+        "asset": "monitor-tv-sizes",
+        "src": "/images/guides/diagrams/monitor-tv-sizes.svg",
+        "alt": "Confronto in scala tra monitor da 32 e 34 pollici e TV da 42 e 48 pollici, con ultrawide da 49 pollici: diagonali, formati, curvature e distanze",
+        "caption": "Confronto in scala tra monitor e TV: diagonali, formati, curvature e distanze indicative. Le misure sono stimate dalla diagonale e dal formato, senza cornice.",
         "width": 1200,
-        "height": 800
+        "height": 900
       },
       {
         "heading": "8. Le impostazioni del monitor, una per una",
@@ -1047,14 +1045,12 @@
       },
       {
         "heading": "10. Competitivo, immersione e generi: come scegliere",
-        "asset": "competitive-immersive",
-        "src": "/images/guides/photos/monitor-competitive-immersive.webp",
-        "alt": "Competitivo e immersione: due postazioni a confronto",
-        "caption": "Competitivo e immersione non chiedono lo stesso display. Foto Pexels, composizione e color grading Prime Build.",
-        "credit": "Pexels / Yankrukov e Ron Lach",
-        "source": "https://www.pexels.com/license/",
+        "asset": "competitive-immersive-sizes",
+        "src": "/images/guides/diagrams/monitor-competitive-immersive-sizes.svg",
+        "alt": "Confronto in scala tra setup competitivo da 24-27 pollici e setup immersivo da 34-42 pollici: diagonali, formati, distanze e curvatura",
+        "caption": "Confronto in scala: 24,1 e 27 pollici piatti per il competitivo, 34 pollici curvo e 42 pollici per l'immersione. Misure indicative senza cornice; distanze e refresh sono punti di partenza.",
         "width": 1200,
-        "height": 600
+        "height": 800
       },
       {
         "heading": "11. Comprare un monitor: checklist, feature utili e trappole",
