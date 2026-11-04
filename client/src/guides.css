@@ -29,6 +29,11 @@
 .guide-prose th { background: #232327; color: #fff; font-weight: 600; }
 .guide-prose tbody tr:nth-child(even) { background: #ffffff04; }
 .guide-prose blockquote { border-left: 3px solid #ff8b3d; padding: .2rem 1.25rem; background: #ff8b3d08; }
+.guide-prose blockquote.guide-lead { margin-top: 0; padding: 1.1rem 1.25rem 1.15rem; background: #14110e; border: 1px solid #3a2a20; border-left: 3px solid #ff8b3d; border-radius: .75rem; }
+.guide-prose blockquote.guide-lead p { margin-block: .7rem; }
+.guide-prose blockquote.guide-lead p:first-child { margin-top: 0; }
+.guide-prose blockquote.guide-lead p:last-child { margin-bottom: 0; }
+.guide-prose blockquote.guide-lead strong { color: #ffb07a; }
 .guide-prose figure { margin: 2rem 0; }
 .guide-prose figure img { display: block; width: 100%; height: auto; border-radius: .5rem; }
 .guide-prose figcaption { font-size: .8rem; color: #b0b0b8; margin-top: .65rem; line-height: 1.5; }

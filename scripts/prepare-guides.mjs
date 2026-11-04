@@ -5,18 +5,36 @@ import { Marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
 import manifest from '../client/src/content/guides/manifest.json' with {type:'json'};
 import updates from '../client/src/content/guides/editorial-updates.json' with {type:'json'};
+import readerFixes from '../client/src/content/guides/reader-fixes.json' with {type:'json'};
+import readerLeads from '../client/src/content/guides/reader-leads.json' with {type:'json'};
 
-// Original Markdown stays immutable; only the user's explicit editorial amendments apply.
-export async function readGuideSource(guide) {
-  const bytes=await readFile(`client/src/content/guides/${guide.file}`);
-  assert.equal(createHash('sha256').update(bytes).digest('hex'),guide.sha256,`${guide.file}: original source changed`);
-  let source=bytes.toString('utf8').replaceAll('\r\n','\n');
-  for(const edit of updates[guide.file] || []) {
-    assert.ok(edit.before && source.split(edit.before).length===2,`${guide.file}: amendment target must occur exactly once`);
+async function applyEdits(source, edits, file) {
+  for(const edit of edits || []) {
+    assert.ok(edit.before && source.split(edit.before).length===2,`${file}: amendment target must occur exactly once`);
     if(edit.insertFile) assert.match(edit.insertFile,/^[a-z0-9-]+\.md$/);
     else assert.equal(typeof edit.after,'string');
     const after=edit.insertFile ? `${await readFile(new URL(`../client/src/content/guides/${edit.insertFile}`,import.meta.url),'utf8')}\n\n${edit.before}` : edit.after;
     source=source.replace(edit.before,()=>after);
+  }
+  return source;
+}
+
+function leadBlock(lead) {
+  const line=(label,text)=>`<p><strong>${escapeHtml(label)}</strong> ${escapeHtml(text)}</p>`;
+  return `<blockquote class="guide-lead">\n${line('Il problema.',lead.problem)}\n${line('Prima prova.',lead.first)}\n${line('Lascia stare.',lead.leave)}\n</blockquote>\n\n`;
+}
+
+// Original Markdown stays immutable; only explicit editorial amendments apply.
+export async function readGuideSource(guide) {
+  const bytes=await readFile(`client/src/content/guides/${guide.file}`);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),guide.sha256,`${guide.file}: original source changed`);
+  let source=bytes.toString('utf8').replaceAll('\r\n','\n');
+  source=await applyEdits(source, updates[guide.file], guide.file);
+  source=await applyEdits(source, readerFixes[guide.file], guide.file);
+  const lead=readerLeads[guide.file];
+  if(lead){
+    assert.match(source,/^# .+\n\n/,`${guide.file}: missing title for the lead`);
+    source=source.replace(/^(# .+\n\n)/,`$1${leadBlock(lead)}`);
   }
   return source;
 }

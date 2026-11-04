@@ -137,7 +137,7 @@ export const buildSchema = (location: string) => {
       "@id": `${pageUrl("/guides")}#webpage`,
       url: pageUrl("/guides"),
       name: "Guide PC gaming e ottimizzazione",
-      description: "Guide su PC gaming, monitor, latenza, rete, audio e ottimizzazione.",
+      description: "Guide Prime Build da leggere partendo dal problema: Windows, FPS, monitor, audio, rete o una modifica da verificare.",
       isPartOf: { "@id": `${SITE_URL}/#website` },
       inLanguage: "it-IT",
     });

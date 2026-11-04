@@ -1,24 +1,29 @@
 import { FaDesktop, FaTools, FaTachometerAlt, FaCheck, FaArrowRight } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { trackCTAClick } from "@/lib/analytics";
+import { services } from "@/data/services";
 import { SectionHeader } from "./SectionHeader";
 
-const ServiceCard = ({ 
-  icon, 
-  title, 
-  description, 
-  features, 
-  cta,
+const icons = {
+  "pc-gaming-su-misura": <FaDesktop />,
+  "assistenza-riparazione-pc": <FaTools />,
+  "ottimizzazione-pc-gaming": <FaTachometerAlt />,
+};
+
+const ServiceCard = ({
+  icon,
+  title,
+  description,
+  features,
   slug,
-  delay 
-}: { 
-  icon: React.ReactNode; 
-  title: string; 
-  description: string; 
-  features: string[]; 
-  cta: string;
+  delay,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  features: string[];
   slug: string;
-  delay: number; 
+  delay: number;
 }) => {
   return (
     <AnimatedElement delay={delay} className="surface-card group relative h-full overflow-hidden p-7 md:p-8">
@@ -29,8 +34,8 @@ const ServiceCard = ({
       <h3 className="mb-3 font-montserrat text-xl font-semibold">{title}</h3>
       <p className="mb-6 leading-relaxed text-neutral-400">{description}</p>
       <ul className="mb-7 space-y-3 text-sm text-neutral-300">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-center">
+        {features.map((feature) => (
+          <li key={feature} className="flex items-center">
             <FaCheck className="mr-2.5 text-xs text-primary" aria-hidden="true" />
             {feature}
           </li>
@@ -38,46 +43,16 @@ const ServiceCard = ({
       </ul>
       <a
         href={`/servizi/${slug}/`}
-        onClick={() => trackCTAClick(cta, 'services')}
+        onClick={() => trackCTAClick("Scopri il servizio", "services")}
         className="inline-flex items-center gap-2 font-semibold text-primary"
       >
-        {cta} <FaArrowRight className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+        Scopri il servizio <FaArrowRight className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
       </a>
     </AnimatedElement>
   );
 };
 
 const ServicesSection = () => {
-  const services = [
-    {
-      icon: <FaDesktop />,
-      title: "PC Gaming Custom",
-      description: "Assembliamo il PC Gaming dei tuoi sogni con componenti di alta qualità, selezionati in base alle tue esigenze e al tuo budget.",
-      features: ["Componenti premium", "Assemblaggio professionale", "Cable management impeccabile"],
-      cta: "Scopri il servizio",
-      slug: "pc-gaming-su-misura",
-      delay: 0.1
-    },
-    {
-      icon: <FaTools />,
-      title: "Riparazioni e Assistenza",
-      description: "Servizio di riparazione e assistenza tecnica professionale per risolvere qualsiasi problema hardware o software del tuo PC.",
-      features: ["Diagnosi professionale", "Riparazione rapida", "Supporto post-intervento"],
-      cta: "Scopri il servizio",
-      slug: "assistenza-riparazione-pc",
-      delay: 0.2
-    },
-    {
-      icon: <FaTachometerAlt />,
-      title: "Ottimizzazione",
-      description: "Massimizza le prestazioni del tuo PC con i nostri servizi di ottimizzazione, tweaking e boost per gaming e produttività.",
-      features: ["Overclock sicuro", "Ottimizzazione sistema", "Performance boost"],
-      cta: "Scopri il servizio",
-      slug: "ottimizzazione-pc-gaming",
-      delay: 0.3
-    }
-  ];
-
   return (
     <section id="services" className="bg-[#090909] py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -85,13 +60,21 @@ const ServicesSection = () => {
           <SectionHeader
             title="Servizi PC"
             highlight="su misura"
-            subtitle="Offriamo una gamma completa di servizi per soddisfare ogni tua esigenza nel mondo PC Gaming"
+            subtitle="Prima si ascolta, poi si misura. Ogni intervento resta spiegato e reversibile."
           />
         </AnimatedElement>
-        
+
         <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">
           {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
+            <ServiceCard
+              key={service.slug}
+              icon={icons[service.slug as keyof typeof icons]}
+              title={service.name}
+              description={service.description}
+              features={service.benefits.map((benefit) => benefit.title)}
+              slug={service.slug}
+              delay={0.1 * (index + 1)}
+            />
           ))}
         </div>
       </div>
@@ -100,5 +83,3 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-
-

@@ -11,12 +11,20 @@
 ## Guide tecniche
 
 - [Tutte le guide](https://primebuild.website/guides/)
-- [Setup audio competitivo](https://primebuild.website/guides/setup-audio/)
-- [Guida DLSS e Frame Generation](https://primebuild.website/guides/guida-dlss-frame-generation/)
-- [Monitor gaming: pannelli, tempi di risposta e impostazioni](https://primebuild.website/guides/monitor-gaming-pannelli/)
-- [Setup rete anti-bufferbloat](https://primebuild.website/guides/setup-rete-anti-bufferbloat/)
-- [Ottimizzazione build per 240Hz](https://primebuild.website/guides/ottimizzazione-build-240hz/)
-- [Low Latency Gaming Guide](https://primebuild.website/guides/low-latency-gaming-guide/)
+- [Windows 11: costruire una base misurabile](https://primebuild.website/guides/low-latency-gaming-guide/)
+- [Stabilità e overclock: CPU, GPU, RAM e test che contano](https://primebuild.website/guides/stabilita-occt/)
+- [Driver e LatencyMon: dal sintomo a una verifica utile](https://primebuild.website/guides/driver-latencymon/)
+- [CPU e GPU: la pipeline, PresentMon e il collo di bottiglia](https://primebuild.website/guides/ottimizzazione-build-240hz/)
+- [Sincronizzazione, presentazione e limiter: scegliere il compromesso giusto](https://primebuild.website/guides/sincronizzazione-limiter/)
+- [Display e cavi: verificare il segnale prima di ottimizzare](https://primebuild.website/guides/display-cavi/)
+- [Mouse, tastiere e USB: capire il percorso prima di cambiare il polling](https://primebuild.website/guides/input-usb/)
+- [Cuffie, IEM e DAC: scegliere la catena sonora in base al problema](https://primebuild.website/guides/audio-cuffie-dac/)
+- [Audio Windows, Peace ed EQ: configurare un percorso verificabile](https://primebuild.website/guides/setup-audio/)
+- [Rete domestica: trovare il problema prima di cambiare impostazioni](https://primebuild.website/guides/setup-rete-anti-bufferbloat/)
+- [Parametri Windows: interrupt, priorità e timer senza preset universali](https://primebuild.website/guides/parametri-windows/)
+- [Misure e verifica: capire se una modifica ha davvero aiutato](https://primebuild.website/guides/misure-verifica/)
+- [DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering](https://primebuild.website/guides/guida-dlss-frame-generation/)
+- [Monitor gaming: pannelli, tempi di risposta e impostazioni che contano](https://primebuild.website/guides/monitor-gaming-pannelli/)
 
 ## Identità e contatti
 

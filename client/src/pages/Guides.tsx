@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { guides } from "@/data/guides";
+import { guidePaths } from "@/data/guide-paths";
 import BackgroundEffect from "@/components/BackgroundEffect";
 import useSEO from "@/hooks/useSEO";
 
@@ -28,7 +29,7 @@ const Guides = () => {
   useSEO({
     title: "Guide PC Gaming e Ottimizzazione | Prime Build",
     description:
-      "Guide tecniche Prime Build su monitor, latenza, DLSS, audio competitivo, rete e ottimizzazione Windows.",
+      "Guide Prime Build da leggere partendo dal problema: Windows, FPS, monitor, audio, rete o una modifica da verificare.",
     path: "/guides",
   });
 
@@ -42,9 +43,31 @@ const Guides = () => {
             Guide PC Gaming e Ottimizzazione
           </h1>
           <p className="mt-3 text-sm md:text-base text-zinc-400 max-w-2xl">
-            Analisi tecniche, configurazioni avanzate e report per ottimizzare le tue performance competitive.
+            Ogni guida parte da un problema concreto. Scegli quello che ti succede, oppure scorri l'elenco completo.
           </p>
         </header>
+
+        <nav aria-label="Scegli in base al problema" className="mb-14">
+          <h2 className="font-montserrat text-xl font-semibold text-white md:text-2xl">Che cosa non va?</h2>
+          <ul className="mt-4 grid gap-3 md:grid-cols-2">
+            {guidePaths.map((path) => {
+              const guide = guides.find((item) => item.slug === path.slug);
+              return (
+                <li key={path.slug}>
+                  <Link
+                    href={`/guides/${path.slug}/`}
+                    className="group flex h-full flex-col rounded-lg border border-white/10 bg-zinc-900/50 px-4 py-3 transition-colors hover:border-primary"
+                  >
+                    <span className="text-sm leading-relaxed text-white md:text-base">{path.problem}</span>
+                    <span className="mt-1 text-sm font-semibold text-primary">{guide?.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        <h2 className="mb-6 font-montserrat text-xl font-semibold text-white md:text-2xl">Tutte le guide</h2>
 
         <motion.div
           variants={gridVariants}

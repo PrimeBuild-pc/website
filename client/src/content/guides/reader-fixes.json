@@ -1,0 +1,168 @@
+{
+  "01-windows-setup.md": [
+    {
+      "before": "### Pack Prime Build opzionale\n\nIl [pack First Setup v4 già presente](../discord-revisione-v5/pacchetti/PrimeBuild-FirstSetup-v4.zip) raccoglie un menu per app, diagnostica, input e avvio audio. Non è un requisito per seguire i passaggi manuali e non applica automaticamente gli altri menu. Il [README degli script](../discord-revisione-v5/scripts/README.md) descrive privilegi e limiti: sorgenti non firmati, Windows 11 client build 26200+, cartelle script/TEMP senza `!`, provenienza dell'intero ZIP da verificare e collaudi funzionali ancora pendenti.\n\nSe lo scegli in una successiva attività autorizzata, estrai il pack intero in una cartella nuova e usa il launcher BAT, senza mescolare file o versioni. First Setup richiede elevazione per le azioni amministrative. La coda distingue installazioni WinGet da URL che aprono pagine: pagina aperta non significa app installata. Le voci WinUtil/Winhance non eseguono un launcher remoto; installazioni silenziose e accordi automatici delle voci WinGet sono invece azioni del pack da leggere prima della conferma.\n\nLa policy driver opzionale conserva lo stato precedente di quella sola impostazione in `%LOCALAPPDATA%\\PrimeBuild\\Backups\\WU-driver-policy.json`, nel profilo che esegue l'azione elevata. Credenziali di un altro amministratore possono quindi usare un altro profilo. Il ritorno verifica identità e stato e archivia il backup: non ripristina driver, GPO o tutto Windows. Se fallisce, conserva messaggio e backup; non forzare il registro. I pack correnti non annullano i vecchi preset di timer, servizi o MMCSS.",
+      "after": "### Pack Prime Build opzionale\n\nI passaggi di questa guida si fanno a mano, dalle Impostazioni di Windows. I vecchi pacchetti Prime Build v4 non sono più distribuiti da questo sito: non estrarre uno ZIP trovato altrove e non mescolare file di versioni diverse.\n\nSe sul PC è già presente una cartella o un'attività di quei pacchetti, non aggiungerne un'altra sopra. In Utilità di pianificazione rimuovi solo le attività che riconosci come Prime Build, dopo aver confrontato nome, account e azione. Non disattivare antivirus, SmartScreen o criteri di gruppo per far partire uno script.\n\nSe in passato avevi cambiato la policy dei driver, riportala allo stato che avevi annotato. Un file di backup nel profilo non ripristina da solo driver, criteri di gruppo o tutto Windows."
+    }
+  ],
+  "03-driver-latencymon.md": [
+    {
+      "before": "## Il pack Diagnostica non sostituisce LatencyMon\n\nIl [pack PrimeBuild-Diagnostica v4 già presente](../discord-revisione-v5/pacchetti/PrimeBuild-Diagnostica-v4.zip) contiene letture di MMCSS, BCD, rete/QoS e inventario USB. È autonomo: non serve scaricare il pack completo First Setup. Il [README](../discord-revisione-v5/scripts/README.md) indica di estrarre tutto in una cartella nuova e usare il BAT, lasciando insieme i componenti interni. Sono sorgenti non firmati con collaudi funzionali ancora pendenti.\n\nLe letture non sono benchmark, non cambiano quei parametri e non ripristinano presunti default. BCD legge `bcdedit /enum {current}` e richiede privilegi amministrativi: per quella lettura chiudi il BAT e riaprilo con **tasto destro → Esegui come amministratore**. Il menu non si eleva automaticamente; se mancano i privilegi, la lettura fallisce senza modificare BCD. USB è un inventario PnP, non la topologia completa di USBTreeView. Una lettura fallita può lasciare un report parziale: conserva il messaggio e non trattare il resto come completo. Non disattivare protezioni o policy gestite per far partire il pack.\n\nQuesto strumento non raccoglie le cinque schede LatencyMon, non esegue pulizie o installazioni driver tramite DDU/RAPR/SDIO e non annulla vecchi tweak MMCSS, timer o servizi. Prima di condividere il report, rimuovi gli identificativi personali; un inventario non diagnostica da solo il responsabile dello stutter. Il contratto è stato letto in sola lettura, non eseguito.",
+      "after": "## Il pack Diagnostica non sostituisce LatencyMon\n\nLatencyMon si legge dalle sue cinque schede. Questa guida non pubblica uno script di diagnostica: le letture di MMCSS, BCD, rete e USB si fanno con gli strumenti già descritti sopra.\n\nSe in passato hai estratto un pacchetto Prime Build, non mescolarlo con un'altra versione e non disattivare protezioni o criteri di gruppo per farlo partire. In Utilità di pianificazione rimuovi solo un'attività che riconosci. Una lettura BCD, se ti serve, è `bcdedit /enum {current}` da un prompt aperto come amministratore: è una lettura, non una modifica. Un inventario USB non è la topologia completa e non dice da solo chi causa lo stutter."
+    },
+    {
+      "before": "11. Materiale locale: PNG `analisi/fonti-v3/latencymon-cattura-originale.png`, riletto visivamente per i valori, e [registro di acquisizioni/limiti](../analisi/REVISIONE-TEMATICA.md).",
+      "after": "11. Cattura originale di LatencyMon, riletta visivamente per i valori, e [registro di acquisizioni/limiti](../analisi/REVISIONE-TEMATICA.md)."
+    }
+  ],
+  "07-input-usb.md": [
+    {
+      "before": "### Che cosa fa il pack Input Prime Build\n\nIl [pack Input v4 esistente](../discord-revisione-v5/pacchetti/PrimeBuild-Input-v4.zip) è autonomo. Se scegli di usarlo, verifica la provenienza dello ZIP, estrailo interamente in una cartella nuova e apri `Avvia-PrimeBuild.bat` con doppio clic. Non aprire i PS1 interni e non mescolare versioni. Il launcher e i contratti sono stati letti, non eseguiti [6].\n\nIl menu offre stato mouse, disattivazione accelerazione, ripristino e inventario USB. Il controllo comune richiede **Windows 11 client, build almeno 26200**: il superamento del controllo non certifica le build future. Prima scegli **Mostra lo stato** e conserva l'esito. Per il confronto scegli **Disattiva accelerazione** e digita `DisableAcceleration` soltanto alla richiesta di conferma; verifica poi stato e comportamento del cursore. Per annullare scegli **Ripristina dal backup**, conferma con `Restore` e controlla i parametri riletti. Le conferme distinguono maiuscole e minuscole; annullare non applica la modifica.\n\nLa modifica dei parametri del mouse usa `SystemParametersInfo` per i soli tre parametri di soglia/accelerazione, nel **proprio utente**; non servono credenziali di un altro amministratore. Non cambia DPI, velocità cursore, curve MarkC, Raw Input, FSO o interrupt. Non include, installa o rimuove HIDUSBF.\n\nIl backup è `%LOCALAPPDATA%\\PrimeBuild\\Backups\\mouse-parameters.json`. La funzione rifiuta di sovrascriverlo; il ripristino controlla identità del PC, utente e stato corrente. Se non corrispondono, o se la scrittura fallisce, conserva backup ed errore e fermati. Non importare valori di registro per aggirare il controllo. Un ripristino riuscito archivia il backup con nome unico: riporta questi tre parametri ai valori precedenti, ma non annulla un vecchio MouseCurveFlat o un pack di tweak completo.\n\nIl BAT usa `ExecutionPolicy Bypass` nel solo processo PowerShell avviato, senza modificare policy persistenti. I criteri di gruppo (GPO) e le protezioni restano in vigore. Se l'avvio è bloccato da policy o sicurezza, non disabilitarle. I sorgenti non firmati richiedono ancora collaudo funzionale autorizzato: il menu non certifica compatibilità o benefici.",
+      "after": "### Che cosa fa il pack Input Prime Build\n\nIl sito non distribuisce più un pacchetto per il mouse. L'accelerazione del puntatore si cambia dal percorso Windows già scritto sopra: Impostazioni, Bluetooth e dispositivi, Mouse, Impostazioni aggiuntive del mouse, Opzioni puntatore. Togli soltanto Migliora precisione puntatore. Questa modifica non cambia DPI, velocità del cursore, curve MarkC, Raw Input, ottimizzazioni a schermo intero o interrupt, e non installa né rimuove HIDUSBF.\n\nSe un vecchio pacchetto aveva già scritto un backup in `%LOCALAPPDATA%\\PrimeBuild\\Backups\\mouse-parameters.json`, non importare valori di registro per aggirarlo. Per tornare indietro rimetti la casella nello stato che avevi annotato. Non disattivare antivirus, SmartScreen o criteri di gruppo per avviare uno script."
+    },
+    {
+      "before": "l'inventario Plug and Play (PnP) del pack Prime Build non lo sostituisce.",
+      "after": "un inventario Plug and Play non lo sostituisce."
+    },
+    {
+      "before": " Copia letta: `analisi/ms-raw.txt`.",
+      "after": ""
+    },
+    {
+      "before": " Copia letta: `fonti/documentazione-script/ms-usb.txt`.",
+      "after": ""
+    },
+    {
+      "before": " Copia integrale letta: `analisi/hidusbf.txt`, con storia fino al 3 ottobre 2026.",
+      "after": " Storia del progetto letta fino al 3 ottobre 2026."
+    },
+    {
+      "before": " Testo primario letto in `analisi/valve-api.json`;",
+      "after": ""
+    },
+    {
+      "before": " Letti transcript locale e inventario `analisi/INVENTARIO-FIGURE-FORNITE-V3.md`;",
+      "after": " Letti il transcript e l'inventario delle figure fornite;"
+    },
+    {
+      "before": "6. Prime Build, [contratti dei pack v4](../discord-revisione-v5/scripts/README.md), launcher, `PrimeBuild-Mouse.ps1`, `PrimeBuild-USB.ps1` e helper comune, letti in sola lettura. Nessun avvio operativo.",
+      "after": "6. Prime Build, contratti dei vecchi pacchetti Input, letti in sola lettura durante la redazione e non più distribuiti dal sito. Nessun avvio operativo."
+    }
+  ],
+  "08-audio-cuffie-dac.md": [
+    {
+      "before": " Copia letta integralmente: `analisi/ms-audio.txt`.",
+      "after": ""
+    },
+    {
+      "before": " Letti `fonti/transcript video 1.txt`, la sorgente audio corrente e `analisi/INVENTARIO-FIGURE-FORNITE-V3.md`.",
+      "after": " Letti il transcript, la sorgente audio e l'inventario delle figure fornite."
+    },
+    {
+      "before": " README letto: `analisi/autoeq.txt`;",
+      "after": " README letto;"
+    },
+    {
+      "before": "4. Prime Build, fonti editoriali lette: `fonti/prime-build-audio-setup-guide.html`, originale storico `attached_assets/guida audio/index.html` e contenuto renderizzato `client/src/content/setup-audio-sections.html`, nel repository sito consultato solo sui percorsi assegnati.",
+      "after": "4. Prime Build, fonti editoriali precedenti del sito, rilette per questa guida."
+    }
+  ],
+  "09-audio-windows-eq.md": [
+    {
+      "before": "### Avvio automatico: solo dopo una prova convincente\n\nIl [pack Audio v4 esistente](../discord-revisione-v5/pacchetti/PrimeBuild-Audio-v4.zip) è autonomo [4]. Non scarica né include l'EXE terzo. Per un eventuale uso verifica lo ZIP, estrailo interamente in una cartella nuova e apri `Avvia-PrimeBuild.bat` con doppio clic, **nel tuo utente** e senza credenziali di un altro account. Non aprire i PS1 interni.\n\nIl menu mostra stato, creazione e rimozione dell'avvio. Il controllo comune richiede **Windows 11 client, build almeno 26200**: superarlo non certifica driver, tool o build future. Prima usa Stato: mostra soltanto la task Prime Build omonima del tuo utente, se presente. Controlla separatamente in Utilità di pianificazione gli altri avvii, in Gestione attività i processi e nella cartella Esecuzione automatica gli eventuali collegamenti; Stato non ne fornisce un inventario completo. La creazione apre il selettore di `low_audio_latency.exe`; annullarlo non crea nulla. Dopo una prova manuale stabile, seleziona il file locale e conferma **INSTALLA**. La selezione non autentica il contenuto del binario.\n\nIl contratto dello script crea una task all'accesso del proprio utente interattivo, **RunLevel Limited**, senza password, SYSTEM, elevazione forzata o argomenti personalizzati. Non avvia immediatamente il tool. Una versione che richiede altri privilegi, un percorso spostato o una policy possono impedirne il funzionamento. Verifica al successivo accesso processo, endpoint e stabilità; «task creata» non prova «audio modificato».\n\nLo script rifiuta una task omonima esistente e un altro avvio che esegua direttamente lo stesso EXE, senza cancellarlo. Wrapper, cartella Esecuzione automatica e avvii indiretti possono sfuggire al riconoscimento: controllali manualmente. In Utilità di pianificazione confronta account, azione, percorso e argomenti. La task del pack usa nome `PrimeBuild-LowAudioLatency-<SID>` e descrizione v3 di compatibilità, pur essendo distribuita nel pack v4; non rinominarla per suggerire una release nuova.\n\nPer annullare, confronta prima la task con i dati registrati: account, percorso locale dell'EXE, argomenti vuoti, accesso interattivo e livello Limited. Il riconoscimento dello script controlla nome, descrizione, utente e una singola azione col nome dell'EXE, ma non verifica tutti questi dettagli: se la task è stata alterata o non la riconosci, fermati. Altrimenti usa la rimozione del pack e conferma **RIMUOVI**, oppure disabilita/rimuovi solo la task identificata in Utilità di pianificazione. **Rimuovere l'avvio non termina il processo già aperto**: chiudilo separatamente, verifica le altre istanze e controlla che non riparta all'accesso successivo. Cancellare soltanto l'EXE lascia una task non funzionante. Non riutilizzare il vecchio `startup.bat` e non eliminare attività sconosciute per somiglianza del nome.\n\nI BAT impiegano `ExecutionPolicy Bypass` soltanto nel processo PowerShell avviato; i criteri di gruppo (GPO) e le protezioni restano in vigore. I sorgenti non firmati richiedono ancora collaudo funzionale su PC autorizzato. Questa descrizione deriva da lettura statica, non da una task creata qui.",
+      "after": "### Avvio automatico: solo dopo una prova convincente\n\nIl sito non distribuisce più un pacchetto per creare questa attività. Dopo una prova manuale stabile di un `low_audio_latency.exe` locale, puoi creare tu una sola attività all'accesso del tuo utente, con livello Limitato, senza password e senza privilegi di sistema. «Attività creata» non significa «audio modificato»: al successivo accesso controlla processo, endpoint e stabilità.\n\nSe esiste già un'attività `PrimeBuild-LowAudioLatency-<SID>`, confronta account, percorso dell'eseguibile e argomenti. Rimuovi solo quell'attività identificata, da Utilità di pianificazione. Rimuovere l'avvio non chiude un processo già aperto: terminalo a parte e verifica che non riparta. Non disattivare antivirus, SmartScreen o criteri di gruppo, e non cancellare attività che non riconosci."
+    },
+    {
+      "before": ", copia integrale `analisi/ms-audio.txt`:",
+      "after": ":"
+    },
+    {
+      "before": ", copia integrale `analisi/eqapo.txt`:",
+      "after": ":"
+    },
+    {
+      "before": " Copie integrali `fonti/documentazione-script/lal-readme.txt`, `lal-source.txt`, `lal-sound.txt`:",
+      "after": " Sorgente e README letti:"
+    },
+    {
+      "before": "4. Prime Build, [README dei pack](../discord-revisione-v5/scripts/README.md), `PrimeBuild-LowAudioLatency-Startup.ps1`, helper comune e launcher v4, letti in sola lettura. Nessuna task creata e nessuna prova UAC o picker effettuata.",
+      "after": "4. Prime Build, contratto del vecchio avvio audio, letto in sola lettura durante la redazione e non più distribuito dal sito. Nessuna attività creata e nessuna prova effettuata."
+    },
+    {
+      "before": " e `analisi/INVENTARIO-FIGURE-FORNITE-V3.md`.",
+      "after": " e l'inventario delle figure fornite."
+    },
+    {
+      "before": "6. Prime Build, `fonti/prime-build-audio-setup-guide.html`, fonti audio storiche e [registro delle acquisizioni](../analisi/REVISIONE-TEMATICA.md), con `analisi/fonti-v3/FIGURE-AGGIUNTE.json`.",
+      "after": "6. Prime Build, fonti audio precedenti e [registro delle acquisizioni](../analisi/REVISIONE-TEMATICA.md)."
+    },
+    {
+      "before": ", copia integrale `analisi/autoeq.txt`:",
+      "after": ":"
+    }
+  ],
+  "10-rete-domestica.md": [
+    {
+      "before": "Nella ricerca archiviata Broadbandmap era in manutenzione e BUL aveva un errore TLS: non è stata disattivata la verifica del certificato. Nessun indirizzo personale è stato interrogato. I messaggi positivi contenuti nei template dei verificatori non sono risultati per un'abitazione specifica. La disponibilità va controllata quando serve davvero.",
+      "after": "Una mappa in manutenzione o un errore di certificato non è una verifica di copertura. Non disattivare il controllo del certificato per far caricare la pagina. I messaggi dei template non sono il risultato della tua abitazione: controlla la disponibilità quando ti serve davvero, senza pubblicare il civico."
+    },
+    {
+      "before": "Il [pack Diagnostica v4](../discord-revisione-v5/pacchetti/PrimeBuild-Diagnostica-v4.zip) è un'alternativa per leggere adattatori e policy QoS, non per fare benchmark o applicare configurazioni. Le istruzioni e i limiti sono nel [README degli script](../discord-revisione-v5/scripts/README.md). Prima di condividere un inventario elimina identificativi, MAC, IP e nomi non necessari. Se non emerge un problema riproducibile, fermati qui.",
+      "after": "Le letture di adattatori e code si fanno con i comandi già mostrati sopra. Il sito non pubblica un pacchetto di diagnostica. Prima di condividere un inventario elimina identificativi, MAC, IP e nomi non necessari. Se non emerge un problema riproducibile, fermati qui."
+    },
+    {
+      "before": "[Waveform](https://www.waveform.com/tools/bufferbloat) è un'alternativa citata anche da OpenWrt. Nella ricerca archiviata l'accesso diretto restituiva 403: formula, backend, UI e privacy correnti non sono stati verificati. Non trasferire a Waveform i percentili di LibreQoS o confrontare lettere prodotte da metodi diversi.",
+      "after": "[Waveform](https://www.waveform.com/tools/bufferbloat) è un'alternativa citata anche da OpenWrt. Formula, backend e privacy possono cambiare: leggi la pagina corrente prima di usarlo. Non trasferire a Waveform i percentili di LibreQoS o confrontare lettere prodotte da metodi diversi."
+    }
+  ],
+  "11-parametri-windows.md": [
+    {
+      "before": "Il [pack Diagnostica v4](../discord-revisione-v5/pacchetti/PrimeBuild-Diagnostica-v4.zip) legge servizio e profili MMCSS, BCD, adattatori/policy QoS e inventario USB. Estrai tutto in una cartella nuova e avvia `Avvia-PrimeBuild.bat`, senza mescolare versioni; la lettura BCD richiede Esegui come amministratore sul BAT. I sorgenti sono non firmati e il collaudo funzionale resta pendente: verifica la provenienza e fermati se una policy gestita blocca l'avvio. Consulta il [README](../discord-revisione-v5/scripts/README.md). Un errore può lasciare un report parziale; nessun output prova partecipazione del gioco a MMCSS, priorità Internet o latenza USB. Lo script non corregge vecchi preset e non modifica timer o hypervisor.",
+      "after": "Il sito non pubblica un pacchetto di diagnostica. Servizio e profili MMCSS, BCD, adattatori e inventario USB si leggono con gli strumenti già citati in questa guida. Una lettura non prova che il gioco partecipi a MMCSS, né una priorità di Internet, né la latenza USB. Non estrarre script trovati altrove e non disattivare una protezione per farli partire."
+    }
+  ],
+  "12-misure-verifica.md": [
+    {
+      "before": "## 11. Script e allegati: inventario non significa misura\n\nI quattro pack operativi restano **v4**, anche nella distribuzione editoriale v5. Sono autonomi: non serve First Setup per usare un pack tematico. I sorgenti sono non firmati e richiedono ancora validazione funzionale su PC di prova autorizzato [10].\n\n| Pack esistente | Per che cosa serve | Che cosa non dimostra |\n|---|---|---|\n| [Diagnostica v4](../discord-revisione-v5/pacchetti/PrimeBuild-Diagnostica-v4.zip) | Letture MMCSS, BCD, adattatori/QoS e inventario USB | Partecipazione del gioco a MMCSS, timer attivo, priorità Internet o benchmark USB. |\n| [First Setup v4](../discord-revisione-v5/pacchetti/PrimeBuild-FirstSetup-v4.zip) | Organizza setup e include le funzioni dei pack tematici | Necessità di applicare tutto o guadagno di latenza. |\n| [Input v4](../discord-revisione-v5/pacchetti/PrimeBuild-Input-v4.zip) | Stato/parametri di accelerazione del puntatore e inventario USB | Raw Input del gioco, latenza fisica del mouse o installazione/rimozione HIDUSBF. |\n| [Audio v4](../discord-revisione-v5/pacchetti/PrimeBuild-Audio-v4.zip) | Gestisce l'avvio LowAudioLatency dopo una prova manuale stabile | Periodo realmente accettato dall'endpoint o latenza acustica. Il tool esterno non è incluso né certificato. |\n\nPer l'uso previsto, verifica la provenienza, estrai **tutto** lo ZIP appropriato in una cartella nuova e apri `Avvia-PrimeBuild.bat`. Non lanciare PS1 sparsi e non mescolare componenti/versioni. BCD richiede Esegui come amministratore sul BAT; gli altri contratti sono nel README. Il launcher usa ExecutionPolicy Bypass soltanto nel processo avviato, senza disabilitare antivirus, SmartScreen o policy gestite: se una protezione blocca l'avvio, fermati.\n\nUna lettura può fallire e lasciare il report parziale. La diagnostica non esegue benchmark e non ripristina presunti default. Nessuno script annulla automaticamente timer, MMCSS, servizi, FSO, QoS o filtri dei vecchi pack. Rimuovere un avvio audio, inoltre, non equivale a terminare un processo già aperto. Non usare questi allegati per dichiarare recuperato un sistema senza controllo individuale.",
+      "after": "## 11. Script e allegati: inventario non significa misura\n\nQuesta guida non distribuisce pacchetti, script o PDF operativi. I controlli descritti nei capitoli precedenti bastano per annotare una misura e tornare indietro.\n\nSe sul PC è rimasta una cartella o un'attività di una versione precedente, non mescolarla con file nuovi e non trattarla come la procedura pubblicata. In Utilità di pianificazione rimuovi solo un'attività che riconosci, dopo aver confrontato nome e azione. Rimuovere un avvio audio non chiude un processo già aperto. Non disattivare antivirus, SmartScreen o criteri di gruppo per eseguire uno script, e non dichiarare il sistema recuperato senza un controllo singolo."
+    },
+    {
+      "before": "10. Prime Build, [README degli script mantenuti](../discord-revisione-v5/scripts/README.md) e [sorgente Diagnostica](../discord-revisione-v5/scripts/PrimeBuild-Diagnostica.ps1), letti senza eseguirli.",
+      "after": "10. Prime Build, contratti dei vecchi script di diagnostica, letti senza eseguirli durante la redazione e non più distribuiti dal sito."
+    }
+  ],
+  "13-dlss-fsr-frame-generation.md": [
+    {
+      "before": "Questa guida considera Windows 11 25H2/26H2 e lo stato documentale di ottobre 2026.",
+      "after": "Questa guida considera Windows 11 25H2/26H2. La matrice di supporto resta quella verificata al 23 ottobre 2026; il calendario DLSS 5 include l'annuncio NVIDIA del 3 novembre 2026."
+    },
+    {
+      "before": "Il calendario ufficiale delle implementazioni è: RTX Remix il 23 ottobre 2026, Hogwarts Legacy il 5 novembre 2026, Where Winds Meet nella parte finale di novembre 2026 [19].",
+      "after": "Il calendario letto a ottobre indicava RTX Remix il 23 ottobre 2026, Hogwarts Legacy il 5 novembre 2026 e Where Winds Meet nella parte finale di novembre [19]. Il 3 novembre 2026 NVIDIA ha precisato Hogwarts Legacy al 5 novembre, War Thunder a metà novembre e Where Winds Meet al 23 novembre, su RTX 50, RTX Spark e GeForce NOW. Sono date di annuncio, non prove eseguite qui [23]."
+    },
+    {
+      "before": "| Fine novembre 2026 | Where Winds Meet: DLSS 5 | Annunciato, senza giorno esatto [19]. |",
+      "after": "| Metà novembre 2026 | War Thunder: DLSS 5 | Annunciato da NVIDIA il 3 novembre 2026; non verificato su questo PC [23]. |\n| 23 novembre 2026 | Where Winds Meet: DLSS 5 | Data indicata da NVIDIA il 3 novembre 2026; non verificato su questo PC [23]. |"
+    },
+    {
+      "before": "22. TechPowerUp (@TechPowerUp), [post su X del 30 agosto 2026](https://x.com/TechPowerUp/status/2094103704597098568), consultato il 23 ottobre 2026. DLSS 5 su RTX 30: prestazioni e stabilità non utilizzabili.",
+      "after": "22. TechPowerUp (@TechPowerUp), [post su X del 30 agosto 2026](https://x.com/TechPowerUp/status/2094103704597098568), consultato il 23 ottobre 2026. DLSS 5 su RTX 30: prestazioni e stabilità non utilizzabili.\n23. NVIDIA, [DLSS 5 With 3D-Guided Neural Rendering Comes To Hogwarts Legacy On November 5th, War Thunder and Where Winds Meet Later This Month](https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/), 3 novembre 2026. Hogwarts Legacy il 5 novembre, War Thunder a metà novembre, Where Winds Meet il 23 novembre. Claim del produttore, non misure di questo PC."
+    }
+  ],
+  "05-sincronizzazione-limiter.md": [
+    {
+      "before": ", copie locali `analisi/fonti-v3/render-amd-antilag.txt` e `analisi/amd-sdk.txt`:",
+      "after": ":"
+    }
+  ],
+  "06-display-cavi.md": [
+    {
+      "before": ", copia locale in `analisi/vesa-dsc.txt` e `fonti/documentazione-script/dp-faq.txt`:",
+      "after": ":"
+    },
+    {
+      "before": ", copia locale `fonti/documentazione-script/hdmi.txt`:",
+      "after": ":"
+    }
+  ]
+}

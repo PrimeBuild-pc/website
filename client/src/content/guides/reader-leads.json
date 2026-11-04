@@ -1,0 +1,72 @@
+{
+  "01-windows-setup.md": {
+    "problem": "Windows è pieno di tweak, e non sai che cosa è cambiato.",
+    "first": "Annota versione Windows, CPU, GPU, RAM e piano energia. Se il PC funziona, non reinstallare.",
+    "leave": "Debloat in blocco, chiusura di processi sconosciuti, driver «più nuovi» senza il modello."
+  },
+  "02-stabilita-occt.md": {
+    "problem": "Un overclock che alza gli FPS può anche rendere il PC instabile.",
+    "first": "Torna al profilo stabile e cambia una sola cosa.",
+    "leave": "Copiare i numeri di una schermata OCCT. Sono un esempio di interfaccia, non un preset."
+  },
+  "03-driver-latencymon.md": {
+    "problem": "LatencyMon mette un driver in cima e sembra la causa.",
+    "first": "Ripeti la stessa scena e guarda se il nome in cima resta lo stesso.",
+    "leave": "Considerare verde «PC a posto» o rosso «mouse lento»."
+  },
+  "04-cpu-gpu-presentmon.md": {
+    "problem": "Tanti FPS e il gioco risponde tardi, oppure la media è alta e l'immagine scatta.",
+    "first": "Registra la stessa scena due volte, senza cambiare impostazioni.",
+    "leave": "Usare gli FPS medi come misura del ritardo del clic."
+  },
+  "05-sincronizzazione-limiter.md": {
+    "problem": "Vuoi meno ritardo, niente tearing, o un'immagine più regolare. Non si ottengono insieme al massimo.",
+    "first": "Scrivi che cosa vuoi migliorare, poi prova una sola voce: cap, Reflex o V-Sync.",
+    "leave": "Attivare insieme cap, Reflex, boost e sync «per sicurezza»."
+  },
+  "06-display-cavi.md": {
+    "problem": "Il monitor non va alla modalità che ti aspetti, o pensi che un cavo più caro renda il PC più reattivo.",
+    "first": "Controlla risoluzione, Hz e HDR nel sistema e nel menu del monitor, con il cavo che hai già.",
+    "leave": "Cambiare cavo prima di aver letto la modalità attiva."
+  },
+  "07-input-usb.md": {
+    "problem": "Il puntatore o i tasti sembrano in ritardo e la colpa sembra del polling.",
+    "first": "Prova la stessa scena su un'altra porta USB diretta, senza hub.",
+    "leave": "Installare filtri come HIDUSBF prima di aver escluso gioco, USB e superficie."
+  },
+  "08-audio-cuffie-dac.md": {
+    "problem": "I passi arrivano, ma non capisci da dove, oppure la voce copre tutto.",
+    "first": "Sistema la tenuta della cuffia e ascolta un evento del tuo personaggio, non solo quelli degli altri.",
+    "leave": "Comprare un DAC o alzare il volume per «sentire meglio» se il problema è la tenuta o la voce troppo alta."
+  },
+  "09-audio-windows-eq.md": {
+    "problem": "L'equalizzazione non si sente, oppure la voce diventa più forte e copre i passi.",
+    "first": "Conferma che l'uscita che stai ascoltando è quella su cui agisce Peace.",
+    "leave": "Copiare un preset di un'altra cuffia e abbassare il buffer a caso."
+  },
+  "10-rete-domestica.md": {
+    "problem": "La linea è veloce nei test e lenta appena parte un download, oppure solo in una stanza.",
+    "first": "Confronta la stessa azione in cavo e in Wi-Fi, a riposo e durante un trasferimento.",
+    "leave": "Cambiare DNS, MTU o chiavi di registro prima di sapere se il ritardo cresce sotto carico."
+  },
+  "11-parametri-windows.md": {
+    "problem": "Un timer da 0,5 ms o una priorità «High» promettono un PC più rapido.",
+    "first": "Scrivi quale sintomo vuoi cambiare e come lo misurerai. Se non c'è un sintomo, non toccare il registro.",
+    "leave": "Applicare un pacchetto di valori trovati online."
+  },
+  "12-misure-verifica.md": {
+    "problem": "Dopo una modifica non sai se è migliorato davvero.",
+    "first": "Misura prima, cambia una cosa, rimisura, poi torna indietro e rimisura.",
+    "leave": "Tenere solo il risultato migliore o guardare solo la media."
+  },
+  "13-dlss-fsr-frame-generation.md": {
+    "problem": "Gli FPS triplicano con la frame generation e il gioco non sembra tre volte più reattivo.",
+    "first": "Leggi se la voce è upscaling, frame generation o neural rendering. Sono tre funzioni diverse.",
+    "leave": "Dividere la latenza per il moltiplicatore di FPS."
+  },
+  "14-monitor-gaming.md": {
+    "problem": "La scatola dice 240 Hz, 0,03 ms o HDR 1000 e non sai che cosa compra quel numero.",
+    "first": "Confronta refresh, tempo di risposta e se la GPU regge quella risoluzione.",
+    "leave": "Scegliere solo gli Hz, o un OLED da 27 pollici a 1440p se la GPU non tiene i frame nativi nel gioco che usi."
+  }
+}
