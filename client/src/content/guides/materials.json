@@ -32,25 +32,25 @@
   {
     "path": "discord-revisione-v5/pacchetti/PrimeBuild-Audio-v4.zip",
     "sha256": "c73fe4bc9bdaafd95ff49058b4f4fc31d48ceadcd728ee00a2849dc6fea99287",
-    "status": "included",
-    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+    "status": "archived-not-linked",
+    "reason": "Retired from the public site on 2026-11-04. The guides no longer link to this pack."
   },
   {
     "path": "discord-revisione-v5/pacchetti/PrimeBuild-Diagnostica-v4.zip",
     "sha256": "065fdef771c550396c41ad1ba3f39e5dd816f0274f1be73173836c81fa859987",
-    "status": "included",
+    "status": "archived-not-linked",
     "reason": "Unchanged attachment explicitly linked by definitive Markdown."
   },
   {
     "path": "discord-revisione-v5/pacchetti/PrimeBuild-FirstSetup-v4.zip",
     "sha256": "5086d10e4ead12bd82b9e49d462bebb5381618216ce8367e68da50e0f681278e",
-    "status": "included",
+    "status": "archived-not-linked",
     "reason": "Unchanged attachment explicitly linked by definitive Markdown."
   },
   {
     "path": "discord-revisione-v5/pacchetti/PrimeBuild-Input-v4.zip",
     "sha256": "d96e3bf74e3448305da0180746deae0139a54b7b3e1a719f1ee666ad65707d79",
-    "status": "included",
+    "status": "archived-not-linked",
     "reason": "Unchanged attachment explicitly linked by definitive Markdown."
   },
   {
@@ -98,13 +98,13 @@
   {
     "path": "discord-revisione-v5/scripts/PrimeBuild-Diagnostica.ps1",
     "sha256": "0b7af433a63c8bc23c4c74f18f2fba8a2cce97e3d83d92404cf87088a9725ca8",
-    "status": "included",
-    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+    "status": "archived-not-linked",
+    "reason": "Retired from the public site on 2026-11-04. The guides no longer link to this script."
   },
   {
     "path": "discord-revisione-v5/scripts/README.md",
     "sha256": "5be69a513c77a79175abe385aa67255beb6aebe33fc420243e2c7806e155a185",
-    "status": "included",
-    "reason": "Unchanged attachment explicitly linked by definitive Markdown."
+    "status": "archived-not-linked",
+    "reason": "Retired from the public site on 2026-11-04. Replaced by a short notice that the packs are no longer distributed."
   }
 ]

@@ -26,7 +26,7 @@ const HeroBackground = ({ variant }: { variant: Background }) => {
       <div className="matrix-field absolute inset-0" aria-hidden="true">
         <div className="matrix-reticle"><span /><span /><span /></div>
         <div className="matrix-panel matrix-panel-a"><b>PRIME // CORE</b><span>BUILD STATUS: READY</span><span>THERMAL LINK: STABLE</span></div>
-        <div className="matrix-panel matrix-panel-b"><b>SYS.01</b><span>LATENCY 01.6MS</span><span>FRAME SYNC ACTIVE</span></div>
+        <div className="matrix-panel matrix-panel-b"><b>SYS.01</b><span>BASELINE: OPEN</span><span>ONE CHANGE</span></div>
         <div className="matrix-bracket matrix-bracket-left" />
         <div className="matrix-bracket matrix-bracket-right" />
         {Array.from({ length: 18 }, (_, index) => (

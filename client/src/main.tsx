@@ -3,6 +3,10 @@ import App from "./App";
 import "./index.css";
 import "./guides.css";
 
+if (new URLSearchParams(location.search).get("motion") === "on") {
+  document.documentElement.classList.add("motion-preview");
+}
+
 const hasCoarsePointer = matchMedia("(hover: none) and (pointer: coarse)").matches;
 const updateMotionState = () => {
   const inactive = document.hidden || (!hasCoarsePointer && !document.hasFocus());
