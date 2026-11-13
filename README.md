@@ -47,7 +47,7 @@ Repository del sito ufficiale di Prime Build, realtà italiana specializzata in 
 
 ## Supporta Prime Build
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y6U02AIRB8) [![PayPal](https://img.shields.io/badge/Supporta%20su-PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT)
+[![Ko-fi](https://img.shields.io/badge/Supporta%20su-Ko--fi-FF5E5B?style=plastic&logo=ko-fi&logoColor=white)](https://ko-fi.com/primebuild) [![PayPal](https://img.shields.io/badge/Supporta%20su-PayPal-0070BA?style=plastic&logo=paypal&logoColor=white)](https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT)
 
 ## Contatti
 
