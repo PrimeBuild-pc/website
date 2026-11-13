@@ -93,6 +93,11 @@
   ],
   "08-audio-cuffie-dac.md": [
     {
+      "before": "### Quando cambiare uscita ha un motivo concreto",
+      "insertFile": "audio-volume-latenza.md",
+      "reason": "Aggiunta richiesta: volume, latenza e configurazione audio, preservando la guida originale."
+    },
+    {
       "before": "Non sono state incorporate nuove immagini o ricostruite curve. Campioni grezzi, intervalli di confidenza, provenienza del grafico blu, compatibilità e diritti di riuso restano aperti.",
       "after": "Le figure incorporate dai materiali forniti riportano la fonte originale; non sono state ricostruite curve. Campioni grezzi, intervalli di confidenza, provenienza del grafico blu non incorporato e compatibilità restano aperti.",
       "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
