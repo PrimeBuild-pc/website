@@ -1,0 +1,15 @@
+# Redirect www to non-www (canonical)
+https://www.primebuild.website/* https://primebuild.website/:splat 301
+
+/sitemap.xml    /sitemap.xml   200
+
+# Retired unsigned packs. The guides explain the manual Windows steps.
+/guide-materials/discord-revisione-v5/pacchetti/PrimeBuild-FirstSetup-v4.zip /guides/low-latency-gaming-guide/ 301
+/guide-materials/discord-revisione-v5/pacchetti/PrimeBuild-Diagnostica-v4.zip /guides/driver-latencymon/ 301
+/guide-materials/discord-revisione-v5/pacchetti/PrimeBuild-Input-v4.zip /guides/input-usb/ 301
+/guide-materials/discord-revisione-v5/pacchetti/PrimeBuild-Audio-v4.zip /guides/setup-audio/ 301
+/guide-materials/discord-revisione-v5/scripts/PrimeBuild-Diagnostica.ps1 /guides/driver-latencymon/ 301
+/guide-materials/discord-revisione-v5/pdf/* /guides/ 301
+
+# SPA fallback - all routes go to index.html
+/*    /index.html   200

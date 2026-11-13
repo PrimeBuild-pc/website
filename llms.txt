@@ -1,0 +1,39 @@
+# Prime Build
+
+> Prime Build progetta e assembla PC gaming su misura, offre assistenza tecnica e ottimizzazione con sede a Montegrotto Terme (Padova) e servizi disponibili in tutta Italia.
+
+## Servizi
+
+- [PC gaming su misura](https://primebuild.website/servizi/pc-gaming-su-misura/): consulenza, selezione componenti, assemblaggio, test e supporto post-vendita.
+- [Assistenza e riparazione PC](https://primebuild.website/servizi/assistenza-riparazione-pc/): diagnosi hardware e software, riparazioni, upgrade e supporto da remoto.
+- [Ottimizzazione PC gaming](https://primebuild.website/servizi/ottimizzazione-pc-gaming/): analisi di prestazioni, frametime, temperature, driver, rete e configurazione Windows.
+
+## Guide tecniche
+
+- [Tutte le guide](https://primebuild.website/guides/)
+- [Windows 11: costruire una base misurabile](https://primebuild.website/guides/low-latency-gaming-guide/)
+- [Stabilità e overclock: CPU, GPU, RAM e test che contano](https://primebuild.website/guides/stabilita-occt/)
+- [Driver e LatencyMon: dal sintomo a una verifica utile](https://primebuild.website/guides/driver-latencymon/)
+- [CPU e GPU: la pipeline, PresentMon e il collo di bottiglia](https://primebuild.website/guides/ottimizzazione-build-240hz/)
+- [Sincronizzazione, presentazione e limiter: scegliere il compromesso giusto](https://primebuild.website/guides/sincronizzazione-limiter/)
+- [Display e cavi: verificare il segnale prima di ottimizzare](https://primebuild.website/guides/display-cavi/)
+- [Mouse, tastiere e USB: capire il percorso prima di cambiare il polling](https://primebuild.website/guides/input-usb/)
+- [Cuffie, IEM e DAC: scegliere la catena sonora in base al problema](https://primebuild.website/guides/audio-cuffie-dac/)
+- [Audio Windows, Peace ed EQ: configurare un percorso verificabile](https://primebuild.website/guides/setup-audio/)
+- [Rete domestica: trovare il problema prima di cambiare impostazioni](https://primebuild.website/guides/setup-rete-anti-bufferbloat/)
+- [Parametri Windows: interrupt, priorità e timer senza preset universali](https://primebuild.website/guides/parametri-windows/)
+- [Misure e verifica: capire se una modifica ha davvero aiutato](https://primebuild.website/guides/misure-verifica/)
+- [DLSS, FSR e frame generation: ricostruzione, interpolazione e neural rendering](https://primebuild.website/guides/guida-dlss-frame-generation/)
+- [Monitor gaming: pannelli, tempi di risposta e impostazioni che contano](https://primebuild.website/guides/monitor-gaming-pannelli/)
+
+## Identità e contatti
+
+- [Chi siamo](https://primebuild.website/chi-siamo/)
+- Sito ufficiale: https://primebuild.website/
+- Sede: Montegrotto Terme, 35036 (PD), Italia
+- Email: preventivi@primebuild.website
+- Instagram: https://www.instagram.com/prime_build_/
+- GitHub: https://github.com/PrimeBuild-pc
+- Discord: https://discord.gg/ERUwSxE79q
+
+Le configurazioni e i prezzi pubblicati sono indicativi. Ogni preventivo viene verificato e personalizzato al momento della richiesta.

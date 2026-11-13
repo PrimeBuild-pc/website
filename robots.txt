@@ -1,0 +1,11 @@
+# robots.txt for primebuild.website
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
+User-agent: *
+Allow: /
+Disallow: /guide-materials/discord-revisione-v5/pacchetti/
+Disallow: /guide-materials/discord-revisione-v5/scripts/
+Disallow: /guide-materials/discord-revisione-v5/pdf/
+
+# Sitemap location
+Sitemap: https://primebuild.website/sitemap.xml

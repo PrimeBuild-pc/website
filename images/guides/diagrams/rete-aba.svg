@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Confronto A → B → A: una sola modifica</title>
+<desc id="desc">Tre stati originali A, modifica singola B e ritorno A; stessa metodologia, workload e destinazione. Scheda senza numeri: durata e campioni, RTT idle e loaded con statistica, loss e timeout, throughput e CPU, sintomo e ripristino. Nessun voto inventato.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="800" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Confronto A → B → A: una sola modifica</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<rect x="40" y="165" width="340" height="147" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="210.0" y="213.34" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">A / riferimento</text>
+<text x="210.0" y="247.34" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">Valori originali</text>
+<text x="210.0" y="281.34000000000003" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">ripetizioni annotate</text>
+<path d="M 380 239 L 430 239" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="430" y="165" width="340" height="147" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="600.0" y="213.34" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">B / prova</text>
+<text x="600.0" y="247.34" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">Una sola modifica</text>
+<text x="600.0" y="281.34000000000003" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">stesse condizioni</text>
+<path d="M 770 239 L 820 239" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="820" y="165" width="340" height="147" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="990.0" y="213.34" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">A / ritorno</text>
+<text x="990.0" y="247.34" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">Ripristino esatto</text>
+<text x="990.0" y="281.34000000000003" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">confronto ripetuto</text>
+<text x="40" y="360" font-size="26" fill="#4ade80" text-anchor="start" font-weight="400">STESSO PC · POSTAZIONE · ENDPOINT · TOOL · CARICO</text>
+<rect x="40" y="390" width="1120" height="57" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="64" y="428" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Metodo</text>
+<text x="290" y="428" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Versione, protocollo, durata e campioni</text>
+<rect x="40" y="457" width="1120" height="57" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="64" y="495" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">RTT</text>
+<text x="290" y="495" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Riposo e sotto carico, statistica usata</text>
+<rect x="40" y="524" width="1120" height="57" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="64" y="562" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Perdita</text>
+<text x="290" y="562" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Tipo di sonda e timeout</text>
+<rect x="40" y="591" width="1120" height="57" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="64" y="629" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Costi / esito</text>
+<text x="290" y="629" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Throughput, CPU, stabilità, sintomo, ritorno</text>
+<path d="M 40 702 L 1160 702" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="738" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Scheda da compilare: nessun dato inventato, voto A+ o benchmark.</text>
+<text x="40" y="770" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Differenza piccola o A instabile → esito indeterminato; non aggiungere tweak.</text>
+</svg>
