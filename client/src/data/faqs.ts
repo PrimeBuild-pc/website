@@ -18,7 +18,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: "Quanto costa un PC Gaming assemblato da Prime Build?",
-    answer: "I nostri PC Gaming partono indicativamente da 750€ per configurazioni entry-level. Il prezzo può variare in base al mercato, alla disponibilità dei componenti e alle esigenze specifiche. Non esiste una soglia minima fissa: valutiamo ogni caso, anche utilizzando componenti già in possesso del cliente, parti usate o ricondizionate, per realizzare la miglior configurazione possibile in base al budget. Preventivi gratuiti e personalizzati."
+    answer: "I nostri PC Gaming partono indicativamente da 800€ per configurazioni entry-level. Il prezzo può variare in base al mercato, alla disponibilità dei componenti e alle esigenze specifiche. Non esiste una soglia minima fissa: valutiamo ogni caso, anche utilizzando componenti già in possesso del cliente, parti usate o ricondizionate, per realizzare la miglior configurazione possibile in base al budget. Preventivi gratuiti e personalizzati."
   },
   {
     question: "Offrite assistenza tecnica per PC già assemblati?",
