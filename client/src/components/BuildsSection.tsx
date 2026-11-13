@@ -50,14 +50,14 @@ const BuildsSection = () => {
   const builds: Build[] = useMemo(() => [
     {
       tagline: "Gaming 1080p fluido",
-      price: "750€",
+      price: "800€",
       description:
         "La configurazione ideale per chi vuole entrare nel mondo del gaming ad alte prestazioni senza spendere una fortuna.",
-      image: "/low.webp",
+      image: "/build-800.webp",
       specs: [
         { name: "Processore", value: "AMD Ryzen 5 5500X3D", performance: 60 },
-        { name: "Scheda Video", value: "NVIDIA RTX 5060 8GB", performance: 62 },
-        { name: "RAM", value: "32GB DDR4 3600MHz", performance: 70 },
+        { name: "Scheda Video", value: "NVIDIA RTX 3070 8GB", performance: 62 },
+        { name: "RAM", value: "16GB DDR4 3600MHz", performance: 65 },
         { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },
         { name: "Raffreddamento", value: "Air Cooling", performance: 60 },
       ],
@@ -70,9 +70,9 @@ const BuildsSection = () => {
       image: "/mid.webp",
       specs: [
         { name: "Processore", value: "AMD Ryzen 7 7800X3D", performance: 85 },
-        { name: "Scheda Video", value: "NVIDIA RTX 5070 12GB", performance: 80 },
-        { name: "RAM", value: "32GB DDR5 6200MHz", performance: 82 },
-        { name: "Storage", value: "NVMe SSD 2TB", performance: 88 },
+        { name: "Scheda Video", value: "AMD Radeon RX 9070 GRE 12GB", performance: 80 },
+        { name: "RAM", value: "32GB DDR5 6000MHz", performance: 82 },
+        { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },
         {
           name: "Raffreddamento",
           value: "AIO Liquid Cooling 360mm",
@@ -82,15 +82,15 @@ const BuildsSection = () => {
     },
     {
       tagline: "Gaming 4K | Streaming | Workstation",
-      price: "2900€",
+      price: "3000€",
       description:
         "La soluzione definitiva per gaming 4K, streaming professionale e carichi di lavoro intensi.",
-      image: "/high.webp",
+      image: "/build-3000.webp",
       specs: [
-        { name: "Processore", value: "AMD Ryzen 9 9950X3D", performance: 95 },
+        { name: "Processore", value: "AMD Ryzen 7 9800X3D", performance: 95 },
         { name: "Scheda Video", value: "NVIDIA RTX 5080", performance: 92 },
-        { name: "RAM", value: "64GB DDR5 6400MHz", performance: 97 },
-        { name: "Storage", value: "NVMe SSD 4TB", performance: 94 },
+        { name: "RAM", value: "32GB DDR5 6000MHz", performance: 82 },
+        { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },
         {
           name: "Raffreddamento",
           value: "AIO Liquid Cooling 360mm",
@@ -107,8 +107,8 @@ const BuildsSection = () => {
           <SectionHeader
             title="Una base per"
             highlight="ogni obiettivo"
-            subtitle="Tre configurazioni indicative, sempre adattate ai prezzi del momento e a ciò che ti serve davvero."
-            italicText="Prezzi e componenti sono esempi: ogni preventivo è personalizzato."
+            subtitle="Tre esempi di configurazioni realizzate, da adattare a ciò che ti serve davvero."
+            italicText="I prezzi si riferiscono a build già realizzate e possono variare con il mercato e la disponibilità dei componenti. Ogni preventivo è personalizzato e aggiornato al momento della richiesta."
           />
         </AnimatedElement>
 
@@ -165,7 +165,7 @@ const BuildsSection = () => {
                     alt={`PC Gaming da ${build.price} - ${build.tagline} - Build custom Prime Build`}
                     width={600}
                     height={384}
-                    className="h-[22rem] w-full object-cover transition duration-700 group-hover:scale-[1.025] sm:h-[30rem]"
+                    className={`h-[22rem] w-full object-cover transition duration-700 group-hover:scale-[1.025] sm:h-[30rem] ${index === 2 ? "object-[center_35%]" : ""}`}
                   />
                   <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-black/65 p-4 backdrop-blur-xl">
                     <p className="font-semibold text-white">{build.tagline}</p>

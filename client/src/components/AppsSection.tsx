@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaDownload, FaPaypal } from "react-icons/fa";
+import { FaArrowRight, FaDownload, FaGithub, FaPaypal } from "react-icons/fa";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { trackDownload, trackExternalLink } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
@@ -192,6 +192,29 @@ const AppsSection = () => {
             );
           })}
         </div>
+
+        <AnimatedElement className="mx-auto mt-8 max-w-6xl" delay={0.15}>
+          <div className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+            <div>
+              <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+                In continuo sviluppo
+              </p>
+              <p className="text-sm leading-relaxed text-neutral-300">
+                Nuove idee, progetti e aggiornamenti prendono forma su GitHub.
+              </p>
+            </div>
+            <a
+              href="https://github.com/PrimeBuild-pc?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackExternalLink("Tutte le repository Prime Build", "https://github.com/PrimeBuild-pc?tab=repositories")}
+              className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full border border-white/20 px-5 text-sm font-semibold text-white transition hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:self-auto"
+            >
+              <FaGithub aria-hidden="true" /> Tutti i progetti <FaArrowRight aria-hidden="true" className="ml-1 text-xs" />
+            </a>
+          </div>
+        </AnimatedElement>
 
         <AnimatedElement className="mt-14 text-center" delay={0.2}>
           <div className="surface-card mx-auto max-w-2xl p-7 md:p-9">
