@@ -1,4 +1,56 @@
 {
+  "01-windows-setup.md": [
+    {
+      "before": "Se B migliora solo quando A peggiora, o se il risultato cambia senza una modifica, stai misurando rumore, temperatura, cache o rete. La regola vale per un piano energia, un driver, un'opzione del gioco e un tool di debloat.",
+      "after": "Se B migliora solo quando A peggiora, o se il risultato cambia senza una modifica, stai misurando rumore, temperatura, cache o rete. La regola vale per un piano energia, un driver, un'opzione del gioco e un tool di debloat.\n\nLa stessa logica vale quando il risultato non è tuo. Uno screenshot di FPS non basta: in CS2 l'autore del video [31] mostra che rimuovere i bot o lasciare aperta la console può alzare il numero senza aver migliorato il PC. Chiedi una registrazione continua con informazioni di build e schermata finale, oppure i dati grezzi di PresentMon/CapFrameX; guarda frame time e picchi, non solo media e P1. Ripeti la scena più volte — nell'esempio dell'autore 5–10 — e conserva i dati: non è una soglia universale, ma una singola cattura è più facile da scegliere a posteriori. Se un pacchetto a pagamento mostra solo uno screenshot, non è una misura. La [guida misure](12-misure-verifica.md) entra nel dettaglio di percentili, acquisizione e fonti.",
+      "reason": "User 2026-11-16: integrate the video's benchmark-verification method into the existing A-B-A paragraph; no new section and no duplicated measurement theory."
+    },
+    {
+      "before": "| RAM installata, configurazione e profilo (JEDEC/XMP/EXPO) | Distingue capacità, frequenza e stabilità. |",
+      "after": "| RAM installata, configurazione e profilo (JEDEC/XMP/EXPO) | Distingue capacità, frequenza e stabilità. |\n| Link GPU e slot M.2 (PCIe x16/x8, corsie condivise) | Spiega colli di bottiglia e configurazioni involontarie. |",
+      "reason": "Add PCIe link-width verification to the existing baseline inventory."
+    },
+    {
+      "before": "| Piano e modalità di alimentazione, profilo OEM | Cambiano boost, ventole e transizioni. |",
+      "after": "| Piano e modalità di alimentazione, profilo OEM | Cambiano boost, ventole e transizioni. |\n| Temperature e clock effettivi sotto carico reale | Distinguono un guadagno da un throttling. |",
+      "reason": "Add sustained thermal/clock verification to the existing baseline inventory."
+    },
+    {
+      "before": "Per una modifica sul Windows già installato puoi verificare **Protezione sistema** e creare un punto di ripristino, controllando l'esito. È un aiuto per alcune modifiche del sistema, non un'assicurazione contro cancellazioni, firmware fallito o perdita dei dati personali.",
+      "after": "Per una modifica sul Windows già installato puoi verificare **Protezione sistema** e creare un punto di ripristino, controllando l'esito. È un aiuto per alcune modifiche del sistema, non un'assicurazione contro cancellazioni, firmware fallito o perdita dei dati personali.\n\nSe una modifica al firmware impedisce l'avvio, non improvvisare sequenze di reset: il primo recupero è il **clear CMOS** previsto dal manuale, con alimentazione staccata e residuo scaricato tenendo premuto il pulsante di accensione, usando il pulsante, il jumper o la batteria secondo il modello. Dopo il riavvio riconfigura una voce alla volta e verifica TPM, Secure Boot, storage e avvio. La [guida stabilità](02-stabilita-occt.md) descrive profili, memory training e rollback; qui basta non improvvisare sequenze di reset.",
+      "reason": "Add the first-aid clear-CMOS step to the existing recovery section, cross-referencing the detailed OC guide instead of duplicating it."
+    },
+    {
+      "before": "Avvia la voce **UEFI della USB** nel menu temporaneo di boot.",
+      "after": "Un controllo vicino riguarda le **corsie PCIe**: secondo scheda madre e slot M.2 popolati, la GPU può funzionare a **x8** invece di **x16**. Non è automaticamente un difetto e in alcuni giochi la differenza è piccola, ma va letto nel manuale della scheda e verificato con GPU-Z o HWiNFO. Per un PC solo gaming, evita di occupare uno slot che riduce la larghezza della GPU senza una necessità; per un PC di lavoro, la scelta può essere consapevole.\n\nAvvia la voce **UEFI della USB** nel menu temporaneo di boot.",
+      "reason": "Add PCIe lane sharing to the existing storage/controller section, where M.2 slot choices are already discussed."
+    },
+    {
+      "before": "Per una singola installazione, ISO Microsoft conservata, Rufus e selezioni manuali sono più facili da controllare. I builder restano alternative legittime quando serve automatizzare un percorso già verificato. Un **answer file**, spesso `autounattend.xml`, contiene risposte per Setup e può avviare script: non è innocuo per il solo fatto di essere XML.",
+      "after": "Per una singola installazione, ISO Microsoft conservata, Rufus e selezioni manuali sono più facili da controllare. I builder restano alternative legittime quando serve automatizzare un percorso già verificato. Un **answer file**, spesso `autounattend.xml`, contiene risposte per Setup e può avviare script: non è innocuo per il solo fatto di essere XML. Un flusso minimo è ISO Microsoft → USB → generazione e verifica del file → copia nella radice della USB → avvio. Se la stessa USB serve su PC diversi, lascia manuale la scelta del disco; tieni sulla USB il driver LAN/Wi-Fi estratto, perché un'installazione nuova può non avere rete e l'installer già pronto evita di doverlo cercare da un altro PC. Prova il media in una VM o su un disco cancellabile prima del PC principale.\n\nLeggi il file prima di usarlo. Può creare un account amministratore con password vuota o autologon, disattivare la cifratura, saltare i controlli TPM/Secure Boot/RAM, rimuovere app e funzionalità, cambiare registro e avviare script. Non è un template neutro: se non sai spiegare ogni risposta, usa il percorso manuale o parti da un file minimo e aggiungi una sola risposta per volta. L'automazione non elimina backup, chiave BitLocker e verifica delle funzioni.",
+      "reason": "Expand the existing answer-file paragraph with the video's practical unattended workflow and the security checks it requires."
+    },
+    {
+      "before": "Il **frame time** descrive l'intervallo temporale dei frame nella metrica raccolta, non la latenza completa input→fotone. Una frequenza a riposo più alta o il minimo CPU al 100% non dimostrano un vantaggio; il minimo al 100% può anche impedire risparmi energetici e il contatore CPU non dice da solo dove il gioco stia attendendo. La [guida misure](12-misure-verifica.md) approfondisce i confronti; il metodo essenziale è già qui.",
+      "after": "Il **frame time** descrive l'intervallo temporale dei frame nella metrica raccolta, non la latenza completa input→fotone. Una frequenza a riposo più alta o il minimo CPU al 100% non dimostrano un vantaggio; il minimo al 100% può anche impedire risparmi energetici e il contatore CPU non dice da solo dove il gioco stia attendendo. La [guida misure](12-misure-verifica.md) approfondisce i confronti; il metodo essenziale è già qui.\n\nPrima di attribuire un guadagno a un piano energia o a un tweak, verifica che il sistema non stia riducendo le frequenze per temperatura. Su un notebook un supporto raffreddante può migliorare i primi minuti, ma non elimina il limite termico; su un desktop contano airflow, polvere e curva ventole. Annota temperature e clock effettivi sotto carico reale, non solo FPS: un guadagno che scompare dopo dieci minuti può essere un limite termico, non un tweak stabile. La [guida stabilità](02-stabilita-occt.md) spiega come leggere clock effettivi e throttling.",
+      "reason": "Add the thermal-throttling check to the existing power-plan test, so a temporary gain is not mistaken for a stable one."
+    },
+    {
+      "before": "Mantieni **TPM, Secure Boot, Defender, firewall e protezioni come integrità della memoria/VBS** nella baseline. Possono avere costi dipendenti dal carico, ma spegnerle cambia sicurezza e talvolta requisiti degli anti-cheat. Non è equivalente a chiudere un launcher. Nessun colore di LatencyMon o benchmark di un'altra CPU giustifica automaticamente quelle disattivazioni.",
+      "after": "Mantieni **TPM, Secure Boot, Defender, firewall e protezioni come integrità della memoria/VBS** nella baseline. Possono avere costi dipendenti dal carico, ma spegnerle cambia sicurezza e talvolta requisiti degli anti-cheat. Non è equivalente a chiudere un launcher. Nessun colore di LatencyMon o benchmark di un'altra CPU giustifica automaticamente quelle disattivazioni. Lo stesso vale per **SVM/IOMMU** e per le funzioni di virtualizzazione: su alcuni sistemi hanno un costo misurabile, ma disattivarle riduce protezioni e può impedire l'uso di anti-cheat che richiedono Secure Boot/TPM; l'autore del video [31] riporta il caso FACEIT. Se le provi, annota stato e requisiti del gioco, misura A-B-A e ripristina: non è una baseline.",
+      "reason": "Extend the existing security baseline to SVM/IOMMU without recommending their disablement; note the anti-cheat trade-off."
+    },
+    {
+      "before": "Le fonti del progetto sono istantanee documentali raccolte nell'ottobre 2026. Un sorgente letto non autentica automaticamente il binario di release o i suoi download successivi. Non sono stati collaudati firmware, storage, OOBE, installer, builder, rollback o guadagni su hardware del lettore. Le fonti 22–30 sono state consultate il 23 ottobre 2026 per aggiornare la parte su versioni, memoria e driver.",
+      "after": "Le fonti del progetto sono istantanee documentali raccolte nell'ottobre 2026. Un sorgente letto non autentica automaticamente il binario di release o i suoi download successivi. Non sono stati collaudati firmware, storage, OOBE, installer, builder, rollback o guadagni su hardware del lettore. Le fonti 22–30 sono state consultate il 23 ottobre 2026 per aggiornare la parte su versioni, memoria e driver; la fonte 31 è stata consultata il 16 novembre 2026 ed è un video di terzi, non una prova indipendente.",
+      "reason": "Record the consultation date and the evidentiary limit of the new video source."
+    },
+    {
+      "before": "30. Microsoft, [Working Set](https://learn.microsoft.com/en-us/windows/win32/memory/working-set). Definizione di working set, hard fault e soft fault.",
+      "after": "30. Microsoft, [Working Set](https://learn.microsoft.com/en-us/windows/win32/memory/working-set). Definizione di working set, hard fault e soft fault.\n31. CS2 Kitchen, [This CS2 FPS BOOST Guide is FREE and OPEN SOURCE.](https://www.youtube.com/watch?v=Lu6X6lhSU_U), 16 novembre 2026. Video di terzi: prove su hardware dell'autore e protocollo non replicato da Prime Build; usato per esempi di metodo e limiti, non come preset.",
+      "reason": "Add the video as a cited third-party source for the benchmark-verification examples."
+    }
+  ],
   "06-display-cavi.md": [
     {
       "before": "## 4. DisplayPort: versione, link rate e certificazione del cavo",
