@@ -1,4 +1,5 @@
 import { FaInstagram, FaDiscord, FaPaypal } from "react-icons/fa";
+import { SiKofi } from "react-icons/si";
 import { Link } from "wouter";
 import { trackSocialClick, trackExternalLink } from "@/lib/analytics";
 
@@ -9,6 +10,10 @@ const Footer = () => {
 
   const handlePayPalClick = () => {
     trackExternalLink('PayPal Donation Footer', 'https://paypal.me/PrimeBuildOfficial');
+  };
+
+  const handleKofiClick = () => {
+    trackExternalLink('Ko-fi Donation Footer', 'https://ko-fi.com/primebuild');
   };
 
   return (
@@ -108,6 +113,18 @@ const Footer = () => {
                     className="flex items-center text-[#168bd2] transition-colors hover:text-[#4eb2ec]"
                   >
                     <FaPaypal className="mr-2" aria-hidden="true" /> Supportaci
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://ko-fi.com/primebuild"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleKofiClick}
+                    aria-label="Supporta Prime Build su Ko-fi"
+                    className="flex items-center text-[#ff5e5b] transition-colors hover:text-[#ff8a87]"
+                  >
+                    <SiKofi className="mr-2" aria-hidden="true" /> Supporta su Ko-fi
                   </a>
                 </li>
               </ul>
