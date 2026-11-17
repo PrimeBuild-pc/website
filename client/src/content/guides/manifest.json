@@ -338,9 +338,9 @@
     "file": "05-sincronizzazione-limiter.md",
     "title": "Sincronizzazione, presentazione e limiter: scegliere il compromesso giusto",
     "description": "Cap, V-Sync e Reflex non si sommano. Scegli il compromesso e verificalo.",
-    "date": "4 novembre 2026",
+    "date": "17 novembre 2026",
     "datePublished": "2026-10-23",
-    "dateModified": "2026-11-04",
+    "dateModified": "2026-11-17",
     "slug": "sincronizzazione-limiter",
     "image": "/images/guides/covers/sincronizzazione-limiter.svg",
     "sha256": "ed40d414547dbfe02ff7d623cb580f90cd105defc5b69e0904d2af4426a594c1",
@@ -398,6 +398,17 @@
         "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
         "width": 1779,
         "height": 995
+      },
+      {
+        "asset": "rtss-setup",
+        "src": "/images/guides/screenshots/rtss-setup.jpg",
+        "heading": "RTSS: Async, Front/Back Edge e modalità NVIDIA Reflex",
+        "alt": "RTSS Properties: Async a sinistra, NVIDIA Reflex a destra",
+        "caption": "Schermata del post, recuperata da archivio: a sinistra Async, a destra NVIDIA Reflex; il post sostiene che la seconda riduca la latenza. Non è un preset verificato.",
+        "credit": "u/Carl2X / Reddit",
+        "source": "https://www.reddit.com/r/OptimizedGaming/comments/1i2de1p/psa_dont_use_rtsschange_your_rtss_framerate/",
+        "width": 828,
+        "height": 758
       }
     ]
   },
