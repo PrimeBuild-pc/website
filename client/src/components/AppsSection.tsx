@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaArrowRight, FaDownload, FaGithub, FaPaypal } from "react-icons/fa";
+import { SiKofi } from "react-icons/si";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { trackDownload, trackExternalLink } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
@@ -26,6 +27,10 @@ const handleRepoClick = (appName: string, url: string) => {
 
 const handlePayPalClick = () => {
   trackExternalLink('PayPal Donation', 'https://paypal.me/PrimeBuildOfficial');
+};
+
+const handleKofiClick = () => {
+  trackExternalLink('Ko-fi Donation', 'https://ko-fi.com/primebuild');
 };
 
 const AppsSection = () => {
@@ -222,16 +227,28 @@ const AppsSection = () => {
             <p className="text-neutral-400 mb-6">
               Le app restano gratuite e open source. Se ti sono utili, una donazione ci aiuta a mantenerle e migliorarle.
             </p>
-            <a
-              href="https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handlePayPalClick}
-              aria-label="Supportaci su PayPal con una donazione"
-              className="inline-flex min-h-12 items-center rounded-full bg-[#0070BA] px-7 font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#168bd2]"
-            >
-              <FaPaypal className="mr-2 text-xl" aria-hidden="true" /> Supportaci su PayPal
-            </a>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href="https://paypal.me/PrimeBuildOfficial?country.x=IT&locale.x=it_IT"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handlePayPalClick}
+                aria-label="Supportaci su PayPal con una donazione"
+                className="inline-flex min-h-12 items-center rounded-full bg-[#0070BA] px-7 font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#168bd2]"
+              >
+                <FaPaypal className="mr-2 text-xl" aria-hidden="true" /> Supportaci su PayPal
+              </a>
+              <a
+                href="https://ko-fi.com/primebuild"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleKofiClick}
+                aria-label="Supportaci su Ko-fi con una donazione"
+                className="inline-flex min-h-12 items-center rounded-full bg-[#ff5e5b] px-7 font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#ff8a87]"
+              >
+                <SiKofi className="mr-2 text-xl" aria-hidden="true" /> Supportaci su Ko-fi
+              </a>
+            </div>
           </div>
         </AnimatedElement>
       </div>
