@@ -15,7 +15,7 @@ const NavBar = () => {
       setScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -78,8 +78,8 @@ const NavBar = () => {
       aria-label="Menu principale"
     >
       <div className={cn(
-        "mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-300 md:px-5",
-        scrolled ? "border-white/15 bg-black/85 shadow-2xl shadow-black/40 backdrop-blur-2xl" : "border-white/10 bg-black/45 backdrop-blur-xl"
+        "mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full border px-4 py-2.5 [transition:background-color_.3s,border-color_.3s,box-shadow_.3s] md:px-5",
+        scrolled ? "border-white/15 border-t-white/25 bg-black/70 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150" : "border-white/10 border-t-white/20 bg-black/40 backdrop-blur-xl backdrop-saturate-150"
       )}>
         <Link href="/" className="flex items-center gap-2.5">
           <img src="/logo.png?v=20260814" alt="Prime Build" width={38} height={38} className="h-9 w-9 object-contain" />

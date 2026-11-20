@@ -88,10 +88,20 @@
   }
 }
 
+@media (prefers-reduced-transparency: reduce) {
+  .backdrop-blur-sm, .backdrop-blur-md, .backdrop-blur-xl, .backdrop-blur-2xl, .button-secondary, .surface-card {
+    -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  }
+  nav > div { background: #0b0b0b !important; }
+}
+@media (prefers-contrast: more) {
+  .button-secondary, .surface-card, nav > div { border-color: rgba(255,255,255,.55) !important; }
+}
+
 @layer components {
   .button-primary,
   .button-secondary {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-300 sm:min-h-14 sm:px-7 sm:text-base;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold [transition:transform_.2s_cubic-bezier(.22,1,.36,1),background-color_.2s,border-color_.2s] active:scale-[0.97] active:duration-100 sm:min-h-14 sm:px-7 sm:text-base;
   }
   .button-primary {
     @apply bg-primary text-black shadow-[0_12px_40px_hsl(var(--primary)/.18)] hover:-translate-y-0.5 hover:bg-[#ff7a1a];
@@ -99,6 +109,8 @@
   .button-secondary {
     @apply border border-white/15 bg-white/[0.035] text-white backdrop-blur-md hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.07];
   }
+  .button-primary:active,
+  .button-secondary:active { transform: scale(.97); transition-duration: .1s, .2s, .2s; }
   .surface-card {
     @apply rounded-3xl border border-white/[0.08] bg-white/[0.035] backdrop-blur-sm transition duration-300 hover:border-primary/30 hover:bg-white/[0.055];
   }
@@ -340,7 +352,7 @@
   .hero-enter-delay { animation-delay: .38s; }
   .brand-enter-left { animation: brand-left .85s cubic-bezier(.22,1,.36,1) both; }
   .brand-enter-right { animation: brand-right .85s .08s cubic-bezier(.22,1,.36,1) both; }
-  .mobile-menu-enter { animation: menu-enter .22s ease-out both; transform-origin: top; }
+  .mobile-menu-enter { animation: menu-enter .28s cubic-bezier(.22, 1, .36, 1) both; transform-origin: top right; }
   .reveal {
     opacity: 0;
     transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 28px), 0);
