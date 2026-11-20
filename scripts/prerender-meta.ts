@@ -36,8 +36,8 @@ const pages = [
   },
   ...guides.map((guide) => ({
     path: `/guides/${guide.slug}`,
-    title: `${guide.title} | Prime Build`,
-    description: guide.description,
+    title: `${guide.seoTitle} | Prime Build`,
+    description: guide.seoDescription,
     image: `/og/${guide.slug}.png`,
     type: "article",
     datePublished: guide.datePublished,
@@ -123,6 +123,6 @@ await writeFile(join(DIST, "404.html"), notFound);
 console.log(`Generated metadata and content shells for ${pages.length} routes.`);
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(page => `<url><loc>${pageUrl(page.path)}</loc></url>`).join("\n")}</urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(page => `<url><loc>${pageUrl(page.path)}</loc>${"dateModified" in page ? `<lastmod>${page.dateModified}</lastmod>` : ""}</url>`).join("\n")}</urlset>
 `;
 await writeFile(join(DIST, "sitemap.xml"), sitemap);
