@@ -58,7 +58,7 @@ const BuildsSection = () => {
         { name: "Processore", value: "AMD Ryzen 5 5500X3D", performance: 60 },
         { name: "Scheda Video", value: "NVIDIA RTX 3070 8GB", performance: 62 },
         { name: "RAM", value: "16GB DDR4 3600MHz", performance: 65 },
-        { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },
+        { name: "Storage", value: "NVMe SSD 1TB Gen 4.0", performance: 75 },
         { name: "Raffreddamento", value: "Air Cooling", performance: 60 },
       ],
     },
@@ -72,7 +72,7 @@ const BuildsSection = () => {
         { name: "Processore", value: "AMD Ryzen 7 7800X3D", performance: 85 },
         { name: "Scheda Video", value: "AMD Radeon RX 9070 GRE 12GB", performance: 80 },
         { name: "RAM", value: "32GB DDR5 6000MHz", performance: 82 },
-        { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },
+        { name: "Storage", value: "NVMe SSD 1TB Gen 4.0", performance: 75 },
         {
           name: "Raffreddamento",
           value: "AIO Liquid Cooling 360mm",
@@ -87,10 +87,10 @@ const BuildsSection = () => {
         "La soluzione definitiva per gaming 4K, streaming professionale e carichi di lavoro intensi.",
       image: "/build-3000.webp",
       specs: [
-        { name: "Processore", value: "AMD Ryzen 7 9800X3D", performance: 95 },
+        { name: "Processore", value: "AMD Ryzen 7 9850X3D", performance: 95 },
         { name: "Scheda Video", value: "NVIDIA RTX 5080", performance: 92 },
         { name: "RAM", value: "32GB DDR5 6000MHz", performance: 82 },
-        { name: "Storage", value: "NVMe SSD 1TB", performance: 75 },
+        { name: "Storage", value: "NVMe SSD 2TB Gen 5.0", performance: 75 },
         {
           name: "Raffreddamento",
           value: "AIO Liquid Cooling 360mm",
