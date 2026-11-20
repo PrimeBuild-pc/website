@@ -236,7 +236,7 @@ const AppsSection = () => {
                 aria-label="Supportaci su PayPal con una donazione"
                 className="inline-flex min-h-12 items-center rounded-full bg-[#0070BA] px-7 font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#168bd2]"
               >
-                <FaPaypal className="mr-2 text-xl" aria-hidden="true" /> Supportaci su PayPal
+                <FaPaypal className="mr-2 text-xl" aria-hidden="true" /> PayPal
               </a>
               <a
                 href="https://ko-fi.com/primebuild"
@@ -244,9 +244,9 @@ const AppsSection = () => {
                 rel="noopener noreferrer"
                 onClick={handleKofiClick}
                 aria-label="Supportaci su Ko-fi con una donazione"
-                className="inline-flex min-h-12 items-center rounded-full bg-[#ff5e5b] px-7 font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#ff8a87]"
+                className="inline-flex min-h-12 items-center rounded-full bg-[#72a4f2] px-7 font-medium text-[#0b0b0b] transition hover:-translate-y-0.5 hover:bg-[#8fb8f7]"
               >
-                <SiKofi className="mr-2 text-xl" aria-hidden="true" /> Supportaci su Ko-fi
+                <SiKofi className="mr-2 text-xl" aria-hidden="true" /> Ko-fi
               </a>
             </div>
           </div>
