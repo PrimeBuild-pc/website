@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc" font-family="Arial, sans-serif">
+<title id="title">Curva B: risposta e correzione sono diverse</title>
+<desc id="desc">Risposta ipotetica arancione, riferimento stilizzato tratteggiato e correzione blu di segno opposto agli scarti. Illustrazione senza valori né modello di cuffia: non è un target AutoEq reale o un preset. Il target reale non deve essere piatto.</desc>
+<rect width="1200" height="640" fill="#0b0f14"/>
+<text x="40" y="45" font-size="24" fill="#ff6600">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="88" font-size="34" font-weight="700" fill="#e5e7eb">Curva B: risposta e correzione sono diverse</text>
+<path d="M 40 112 H 1160" stroke="#8896a7" stroke-width="2"/>
+<path d="M 40 159 H 95" stroke="#ff6600" stroke-width="5"/>
+<text x="108" y="167" font-size="24" fill="#e5e7eb">Risposta ipotetica</text>
+<path d="M 410 159 H 465" stroke="#b5c0ce" stroke-width="3" stroke-dasharray="8 8"/>
+<text x="478" y="167" font-size="24" fill="#e5e7eb">Target stilizzato</text>
+<path d="M 780 159 H 835" stroke="#60a5fa" stroke-width="5"/>
+<text x="848" y="167" font-size="24" fill="#e5e7eb">Correzione</text>
+<path d="M 145 220 V 475 H 1100" fill="none" stroke="#8896a7" stroke-width="2"/>
+<path d="M 145 350 H 1100" stroke="#b5c0ce" stroke-width="3" stroke-dasharray="8 8"/>
+<path d="M 145 350 C 220 350 250 255 330 255 S 460 350 520 350 S 605 415 690 415 S 780 280 865 280 S 1010 350 1100 350" fill="none" stroke="#ff6600" stroke-width="5"/>
+<path d="M 145 350 C 220 350 250 445 330 445 S 460 350 520 350 S 605 285 690 285 S 780 420 865 420 S 1010 350 1100 350" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<text x="145" y="513" font-size="24" fill="#e5e7eb">Frequenza crescente → posizioni qualitative, nessun valore di filtro</text>
+<text x="40" y="566" font-size="24" fill="#b5c0ce">Schema senza misure: il target reale non è necessariamente piatto.</text>
+<text x="40" y="602" font-size="24" fill="#b5c0ce">Modello, misura, target, filtri e headroom determinano il profilo reale.</text>
+</svg>

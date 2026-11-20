@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Ethernet: il canale è l’intero collegamento</title>
+<desc id="desc">Modello ordinario del canale: 90 metri di permanent link e 10 metri complessivi di patch cord, fino a 100 metri. Tabella 1G Cat5e/Cat6, 10G Cat6 condizionato 37–55 metri e Cat6A fino a 100 metri. Non indica benefici di ping.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="800" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Ethernet: il canale è l’intero collegamento</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="169" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">MODELLO ORDINARIO — lunghezze nominali, non misurate</text>
+<rect x="40" y="211" width="215" height="107" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="147.5" y="256.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Patch cord</text>
+<text x="147.5" y="288.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">lato apparato</text>
+<rect x="300" y="211" width="600" height="107" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="600.0" y="256.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Permanent link / cablaggio fisso</text>
+<text x="600.0" y="288.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">90 m</text>
+<rect x="945" y="211" width="215" height="107" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="1052.5" y="256.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Patch cord</text>
+<text x="1052.5" y="288.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">lato presa</text>
+<path d="M 255 264 L 300 264" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<path d="M 900 264 L 945 264" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<path d="M 60 330 V 359 H 1140 V 330" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="600" y="393" font-size="26" fill="#e5e7eb" text-anchor="middle" font-weight="400">Patch cord complessivi: 10 m → canale totale: 100 m</text>
+<rect x="40" y="431" width="1120" height="58" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="64" y="469" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">1 Gbit/s</text>
+<text x="330" y="469" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Cat5e / Cat6</text>
+<text x="630" y="469" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Canale fino a 100 m</text>
+<rect x="40" y="499" width="1120" height="58" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="64" y="537" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">10 Gbit/s</text>
+<text x="330" y="537" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Cat6</text>
+<text x="630" y="537" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">37–55 m: serve verifica</text>
+<rect x="40" y="567" width="1120" height="58" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="64" y="605" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">10 Gbit/s</text>
+<text x="330" y="605" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Cat6A</text>
+<text x="630" y="605" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Canale fino a 100 m</text>
+<text x="40" y="674" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Porte, prese, connettori e posa devono rispettare il requisito.</text>
+<path d="M 40 702 L 1160 702" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="738" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Lunghezze del modello standard; posa e cordoni possono richiedere derating.</text>
+<text x="40" y="770" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Cat6 “circa 55 m” non è una garanzia. Categoria maggiore ≠ ping minore.</text>
+</svg>

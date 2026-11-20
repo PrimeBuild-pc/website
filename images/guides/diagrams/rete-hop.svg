@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Hop silenzioso ≠ perdita end-to-end</title>
+<desc id="desc">Due esempi sintetici a quattro hop, destinazione inclusa: nel primo un hop limita le risposte ma gli hop successivi e la destinazione rispondono; nel secondo risposte mancanti persistono fino alla destinazione. Solo indizi, non localizzazione certa.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="800" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Hop silenzioso ≠ perdita end-to-end</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="161" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">ESEMPIO DIDATTICO — NON BENCHMARK, NON DATI DEL TUO PC</text>
+<text x="40" y="203" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="700">A / risposta dell’hop diversa dall’inoltro</text>
+<rect x="40" y="232" width="250" height="99" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="165.0" y="273.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Hop 1</text>
+<text x="165.0" y="305.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Risponde</text>
+<path d="M 290 281 L 325 281" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="325" y="232" width="250" height="99" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="450.0" y="273.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Hop 2</text>
+<text x="450.0" y="305.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Risponde poco</text>
+<path d="M 575 281 L 610 281" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="610" y="232" width="250" height="99" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="735.0" y="273.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Hop 3</text>
+<text x="735.0" y="305.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Risponde</text>
+<path d="M 860 281 L 895 281" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="895" y="232" width="250" height="99" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="1020.0" y="273.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Destinazione</text>
+<text x="1020.0" y="305.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Risponde</text>
+<text x="40" y="367" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Hop 2: risposte limitate; endpoint sano nel campione.</text>
+<text x="40" y="399" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Non dimostra perdita del traffico attraversato.</text>
+<text x="40" y="442" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="700">B / anomalia che persiste fino alla destinazione</text>
+<rect x="40" y="471" width="250" height="99" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="165.0" y="512.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Hop 1</text>
+<text x="165.0" y="544.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Risponde</text>
+<path d="M 290 520 L 325 520" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="325" y="471" width="250" height="99" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="450.0" y="512.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Hop 2</text>
+<text x="450.0" y="544.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Mancanti</text>
+<path d="M 575 520 L 610 520" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="610" y="471" width="250" height="99" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="735.0" y="512.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Hop 3</text>
+<text x="735.0" y="544.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Mancanti</text>
+<path d="M 860 520 L 895 520" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="895" y="471" width="250" height="99" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="1020.0" y="512.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Destinazione</text>
+<text x="1020.0" y="544.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Mancanti</text>
+<text x="40" y="606" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Perdita nelle sonde fino all’endpoint: indizio da correlare.</text>
+<text x="40" y="638" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">Non prova il punto guasto; anche il server può limitare ICMP.</text>
+<path d="M 40 702 L 1160 702" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="738" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Tabelle sintetiche qualitative, non output di un tool o misura di una linea.</text>
+<text x="40" y="770" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Non sommare RTT né sottrarre righe per stimare il ritardo di ogni tratta.</text>
+</svg>

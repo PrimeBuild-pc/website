@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Dal provider alla casa: tre accessi</title>
+<desc id="desc">FTTH, FTTC e FWA su tre righe bidirezionali: rete ISP e distribuzione, apparato di accesso in casa, WAN e router. Sotto, LAN Ethernet e Wi-Fi distinte. Oltre l’ISP: peering o transito, rete del servizio e server; il ritorno può differire.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="900" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Dal provider alla casa: tre accessi</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="155" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Server ⇄ rete servizio ⇄ peering / transito ⇄ rete ISP</text>
+<text x="40" y="191" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">APPARATI ISP</text>
+<text x="480" y="191" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">CASA: ACCESSO → WAN → ROUTER</text>
+<path d="M 445 208 L 445 576" fill="none" stroke="#8896a7" stroke-width="3" stroke-dasharray="9 7"/>
+<text x="40" y="284" font-size="26" fill="#4ade80" text-anchor="start" font-weight="700">FTTH</text>
+<rect x="145" y="232" width="275" height="88" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="282.5" y="268.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">OLT / distribuzione</text>
+<text x="282.5" y="300.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">fibra e splitter</text>
+<rect x="488" y="232" width="218" height="88" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="597.0" y="268.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Borchia</text>
+<text x="597.0" y="300.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">ONT</text>
+<path d="M 420 276 L 488 276" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="454" y="224" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Fibra</text>
+<rect x="810" y="232" width="160" height="88" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="890.0" y="284.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Router</text>
+<path d="M 706 276 L 810 276" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="758" y="224" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">WAN</text>
+<text x="1000" y="283" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">LAN ↓</text>
+<path d="M 970 276 L 990 276" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="40" y="404" font-size="26" fill="#4ade80" text-anchor="start" font-weight="700">FTTC</text>
+<rect x="145" y="352" width="275" height="88" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="282.5" y="388.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Rete ISP</text>
+<text x="282.5" y="420.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">armadio VDSL</text>
+<rect x="488" y="352" width="218" height="88" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="597.0" y="388.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Presa</text>
+<text x="597.0" y="420.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">modem VDSL</text>
+<path d="M 420 396 L 488 396" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="454" y="344" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Rame</text>
+<rect x="810" y="352" width="160" height="88" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="890.0" y="404.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Router</text>
+<path d="M 706 396 L 810 396" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="758" y="344" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">WAN</text>
+<text x="1000" y="403" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">LAN ↓</text>
+<path d="M 970 396 L 990 396" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="40" y="524" font-size="26" fill="#4ade80" text-anchor="start" font-weight="700">FWA</text>
+<rect x="145" y="472" width="275" height="88" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="282.5" y="508.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Rete ISP</text>
+<text x="282.5" y="540.1600000000001" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">stazione radio</text>
+<rect x="488" y="472" width="218" height="88" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="597.0" y="508.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">CPE / modem</text>
+<text x="597.0" y="540.1600000000001" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">di accesso</text>
+<path d="M 420 516 L 488 516" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="454" y="464" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Radio</text>
+<rect x="810" y="472" width="160" height="88" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="890.0" y="524.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Router</text>
+<path d="M 706 516 L 810 516" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="758" y="464" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">WAN</text>
+<text x="1000" y="523" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">LAN ↓</text>
+<path d="M 970 516 L 990 516" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="40" y="595" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">RAMI LAN COMUNI — funzioni anche integrate nel router</text>
+<rect x="40" y="646" width="185" height="99" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="132.5" y="687.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">LAN del</text>
+<text x="132.5" y="719.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">router</text>
+<path d="M 225 695 H 275 V 643 H 350" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 275 695 V 752 H 350" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="350" y="610" width="180" height="74" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="440.0" y="655.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Switch</text>
+<rect x="785" y="610" width="300" height="74" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="935.0" y="655.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">PC Ethernet</text>
+<path d="M 530 647 L 785 647" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="653" y="630" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Ethernet</text>
+<rect x="350" y="717" width="180" height="74" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="440.0" y="762.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">AP</text>
+<rect x="785" y="717" width="300" height="74" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="935.0" y="762.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">PC Wi-Fi</text>
+<path d="M 530 754 L 785 754" fill="none" stroke="#8896a7" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<text x="653" y="737" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Wi-Fi</text>
+<path d="M 40 802 L 1160 802" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="838" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Schema semplificato: apparati e funzioni possono essere integrati.</text>
+<text x="40" y="870" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Percorso reale dipende dalla rete; ritorno anche diverso. Non è una misura.</text>
+</svg>
