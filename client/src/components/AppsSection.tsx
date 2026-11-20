@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaArrowRight, FaDownload, FaGithub, FaPaypal } from "react-icons/fa";
-import { SiKofi } from "react-icons/si";
 import AnimatedElement from "@/lib/AnimatedElement";
 import { trackDownload, trackExternalLink } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
@@ -246,7 +245,7 @@ const AppsSection = () => {
                 aria-label="Supportaci su Ko-fi con una donazione"
                 className="inline-flex min-h-12 items-center rounded-full bg-[#72a4f2] px-7 font-medium text-[#0b0b0b] transition hover:-translate-y-0.5 hover:bg-[#8fb8f7]"
               >
-                <SiKofi className="mr-2 text-xl" aria-hidden="true" /> Ko-fi
+                <svg viewBox="0 0 24 24" className="mr-2 h-6 w-6" aria-hidden="true"><path d="M3 6h14v7a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z" fill="#fff" /><path d="M17 8h1.5a2.5 2.5 0 0 1 0 5H17" fill="none" stroke="#fff" strokeWidth="2" /><path d="M10 15.2l-3.1-3a1.9 1.9 0 0 1 2.7-2.7l.4.4.4-.4a1.9 1.9 0 0 1 2.7 2.7z" fill="#ff5e5b" /></svg> Ko-fi
               </a>
             </div>
           </div>
