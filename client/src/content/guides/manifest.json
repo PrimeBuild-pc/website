@@ -6,9 +6,9 @@
     "description": "Una base Windows che puoi riconoscere e confrontare, prima di qualsiasi tweak.",
     "seoTitle": "Windows 11 per il gaming: base misurabile",
     "seoDescription": "Come preparare Windows 11 per il gaming: recupero, driver, energia e sicurezza, con una base che puoi misurare e ripristinare prima di ogni tweak.",
-    "date": "16 novembre 2026",
+    "date": "20 novembre 2026",
     "datePublished": "2025-12-06",
-    "dateModified": "2026-11-16",
+    "dateModified": "2026-11-20",
     "slug": "low-latency-gaming-guide",
     "image": "/images/guides/covers/low-latency-gaming-guide.svg",
     "sha256": "cc0e3c5d80f30413b12c1043f29be7572e54c7db988fa581525fbbe661b6c2ad",
@@ -388,17 +388,6 @@
         "height": 2160
       },
       {
-        "asset": "limiter-200",
-        "src": "/images/guides/screenshots/limiter-200.png",
-        "heading": "Che cosa dimostra il benchmark CS2 Kitchen",
-        "alt": "CS2 Kitchen: confronto fra limiter al cap 200",
-        "caption": "Confronto del video CS2 Kitchen con cap 200: configurazione e metodo dell’autore, non una penalità fissa attribuibile al limiter.",
-        "credit": "CS2 Kitchen",
-        "source": "https://www.youtube.com/watch?v=zNHFAAJkIvo",
-        "width": 1788,
-        "height": 1006
-      },
-      {
         "asset": "fullscreen-borderless",
         "src": "/images/guides/screenshots/fullscreen-borderless.png",
         "heading": "Una prova per gioco, con ripristino",
@@ -499,13 +488,6 @@
         "height": 600
       },
       {
-        "heading": "2. Quanto cambia l'attesa ideale fra 125 e 8000 Hz",
-        "asset": "polling",
-        "alt": "Intervallo nominale dei report",
-        "width": 1200,
-        "height": 600
-      },
-      {
         "heading": "4. Leggere la topologia USB, non il colore delle prese",
         "asset": "usb-percorsi",
         "alt": "USB: porte diverse, topologia condivisa",
@@ -557,13 +539,6 @@
         "heading": "La cuffia va adattata prima di equalizzarla",
         "asset": "fit",
         "alt": "Prima della curva EQ",
-        "width": 1200,
-        "height": 600
-      },
-      {
-        "heading": "Il motore, l'API e i buffer restano nel percorso",
-        "asset": "buffers",
-        "alt": "Durata di un blocco a 48 kHz",
         "width": 1200,
         "height": 600
       },
@@ -745,20 +720,6 @@
         "heading": "3. Disegna il percorso che hai davvero",
         "asset": "rete-percorsi",
         "alt": "Dal provider alla casa: tre accessi",
-        "width": 1200,
-        "height": 900
-      },
-      {
-        "heading": "6. Scegli Ethernet per il requisito, non per la scritta «gaming»",
-        "asset": "ethernet-canale",
-        "alt": "Ethernet: il canale è l’intero collegamento",
-        "width": 1200,
-        "height": 800
-      },
-      {
-        "heading": "7. T568A e T568B: cambia il colore, non la prestazione",
-        "asset": "ethernet-t568",
-        "alt": "T568A e T568B: stessi requisiti, stessi tempi",
         "width": 1200,
         "height": 900
       },
@@ -1042,13 +1003,6 @@
         "heading": "4. Response time: GtG, MPRT, overdrive e persistence",
         "asset": "monitor-persistence",
         "alt": "Persistence: 60 Hz, 240 Hz e 240 Hz con BFI",
-        "width": 1200,
-        "height": 600
-      },
-      {
-        "heading": "5. Hertz, frame rate e latenza: tre cose diverse",
-        "asset": "hz-frame-time",
-        "alt": "Tempo per frame a diversi refresh",
         "width": 1200,
         "height": 600
       },

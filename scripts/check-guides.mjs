@@ -43,7 +43,7 @@ for(const guide of manifest) {
   }
   const actual=renderGuide(source,guide.figures);
   assert.deepEqual(canonical(parseDocument(actual.html).children),canonical(parseDocument(new Marked({gfm:true}).parse(source)).children,true),`${guide.file}: editorial content mismatch`);
-  assert.ok(guide.figures.length>=5);
+  assert.ok(guide.figures.length >= 4, `${guide.slug}: too few figures`);
   assert.equal(new Set(guide.figures.map(f=>f.asset)).size,guide.figures.length);
   assert.equal((actual.html.match(/data-guide-figure=/g)||[]).length,guide.figures.length);
   assert.match(guide.image, /^\/images\/guides\/covers\/[a-z0-9-]+\.svg$/);

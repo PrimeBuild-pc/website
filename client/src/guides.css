@@ -37,6 +37,88 @@
 .guide-prose figure { margin: 2rem 0; }
 .guide-prose figure img { display: block; width: 100%; height: auto; border-radius: .5rem; }
 .guide-prose figcaption { font-size: .8rem; color: #b0b0b8; margin-top: .65rem; line-height: 1.5; }
+.guide-fps-chart {
+  background: #111115;
+  border: 1px solid #414147;
+  border-radius: .75rem;
+  padding: clamp(.85rem, 3vw, 1.5rem);
+}
+.guide-fps-chart figcaption {
+  margin: 0;
+  color: #fafafa;
+  font-size: 1.15rem;
+  font-weight: 650;
+}
+.guide-fps-chart figcaption span {
+  display: block;
+  color: #b0b0b8;
+  font-size: .85rem;
+  font-weight: 400;
+}
+.guide-fps-chart ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.guide-fps-chart li { margin: 0; padding: 0; }
+.guide-fps-chart .guide-fps-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1rem;
+  margin: .85rem 0;
+  font-size: .79rem;
+}
+.guide-fps-media { --bar-color: #d0d0dc; }
+.guide-fps-p99 { --bar-color: #ff8735; }
+.guide-fps-p1 { --bar-color: #ffc793; }
+.guide-fps-legend li::before {
+  content: '';
+  display: inline-block;
+  width: .6rem;
+  height: .6rem;
+  margin-right: .4rem;
+  border-radius: .15rem;
+  background: var(--bar-color);
+}
+.guide-fps-group {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr);
+  align-items: center;
+  gap: .35rem .8rem;
+  border-top: 1px solid #36363b;
+  padding-block: .8rem;
+  font-size: .87rem;
+}
+.guide-fps-group:last-child { padding-bottom: 0; }
+.guide-fps-group li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 3.5rem;
+  align-items: center;
+  gap: .65rem;
+  line-height: 1.55;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.guide-fps-group meter {
+  display: block;
+  appearance: none;
+  width: 100%;
+  height: .58rem;
+  background: #252529;
+  border: 0;
+  border-radius: .15rem;
+}
+.guide-fps-group meter::-webkit-meter-bar {
+  background: #252529;
+  border: 0;
+  border-radius: .15rem;
+  height: .58rem;
+}
+.guide-fps-group meter::-webkit-meter-optimum-value { background: var(--bar-color); border-radius: .15rem; }
+.guide-fps-group meter::-moz-meter-bar { background: var(--bar-color); border-radius: .15rem; }
+@media (max-width: 640px) {
+  .guide-fps-group { grid-template-columns: minmax(0, 1fr); }
+}
 @media (min-width: 1100px) {
   .guide-layout { grid-template-columns: 16rem minmax(0, 52rem); gap: 3rem; }
   .guide-index { position: sticky; top: 7rem; align-self: start; max-height: calc(100dvh - 9rem); overflow-y: auto; padding-right: .8rem; }
