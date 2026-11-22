@@ -1,0 +1,31 @@
+name: Website checks
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: Verify website
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+      - run: npm ci
+      - run: npm audit --audit-level=high
+      - run: npm run check
+      - run: npm run build
+      - run: npm run check:guide-links
+      - run: npx playwright install --with-deps chromium
+      - name: Test the production build in Chromium
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4185 --strictPort &
+          preview=$!
+          trap 'kill "$preview" 2>/dev/null || true' EXIT
+          curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 1 http://127.0.0.1:4185/ >/dev/null
+          npm run check:browser -- http://127.0.0.1:4185
