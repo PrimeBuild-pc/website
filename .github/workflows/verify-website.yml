@@ -17,7 +17,11 @@ jobs:
         with:
           node-version-file: .node-version
       - run: npm ci
-      - run: npm audit --audit-level=high
+      - name: Check for new vulnerable dependencies
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
+        with:
+          fail-on-severity: high
       - run: npm run check
       - run: npm run build
       - run: npm run check:guide-links

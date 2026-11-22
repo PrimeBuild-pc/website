@@ -5,6 +5,10 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 5
+    groups:
+      npm-majors:
+        patterns: ["*"]
+        update-types: ["major"]
     reviewers: [PrimeBuild-pc]
     labels: ["dependencies"]
   - package-ecosystem: "github-actions"
