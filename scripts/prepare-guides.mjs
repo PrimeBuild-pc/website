@@ -88,8 +88,8 @@ export function renderGuide(source, figures=[]) {
   const rendered=parser.parse(source);const body=rendered+pending.map(f=>f.html).join('');
   for(const figure of figures) assert.ok(allHeadings.includes(figure.heading),`Missing figure section: ${figure.heading}`);
   const clean=sanitizeHtml(body,{
-    allowedTags:[...sanitizeHtml.defaults.allowedTags,'img','figure','figcaption','details','summary'],
-    allowedAttributes:{'*':['id','class'],a:['href','title','target','rel','aria-label'],img:['src','alt','width','height','loading','decoding'],div:['class','tabindex','role','aria-label'],pre:['tabindex','aria-label'],figure:['data-guide-figure'],ol:['start'],th:['align'],td:['align'],code:['class']},
+    allowedTags:[...sanitizeHtml.defaults.allowedTags,'img','figure','figcaption','details','summary','meter'],
+    allowedAttributes:{'*':['id','class'],a:['href','title','target','rel','aria-label'],img:['src','alt','width','height','loading','decoding'],div:['class','tabindex','role','aria-label'],pre:['tabindex','aria-label'],figure:['data-guide-figure'],meter:['min','max','value','aria-hidden'],ol:['start'],th:['align'],td:['align'],code:['class']},
     allowedSchemes:['https','http','mailto'],allowProtocolRelative:false,
   });
   return {html:collapseSources(clean),toc:headings};
