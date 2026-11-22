@@ -1,0 +1,26 @@
+name: Node LTS security releases
+on:
+  schedule:
+    - cron: '23 6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Check the pinned Node version
+        shell: bash
+        run: |
+          set -euo pipefail
+          pinned=$(tr -d '\r\n' < .node-version)
+          line=${pinned%%.*}
+          latest=$(curl --fail --silent --show-error --max-time 30 https://nodejs.org/dist/index.json |
+            jq -er --arg prefix "v$line." '[.[] | select(.security and (.version | startswith($prefix)))][0].version | ltrimstr("v")')
+          if [[ "$(printf '%s\n' "$pinned" "$latest" | sort -V | head -n1)" != "$latest" ]]; then
+            echo "::error::Node $pinned is behind security release $latest. Update .node-version and the minimum Node version."
+            exit 1
+          fi

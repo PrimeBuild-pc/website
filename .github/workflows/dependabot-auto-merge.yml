@@ -1,26 +1,64 @@
-name: dependabot-auto-merge
+name: Dependabot patch merge
 on:
-  pull_request:
-    types: [opened, ready_for_review, reopened, synchronize]
-permissions:
-  pull-requests: write
+  pull_request_target:
+    branches: [main]
+    types: [opened, reopened, synchronize, ready_for_review]
+permissions: {}
+concurrency:
+  group: dependabot-patch-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 jobs:
-  automerge:
-    if: github.actor == 'dependabot[bot]'
+  merge:
+    if: >-
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'dependabot/npm_and_yarn/') &&
+      !github.event.pull_request.draft
     runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      actions: write
+      checks: read
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      PR: ${{ github.event.pull_request.number }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     steps:
-      - id: meta
-        uses: dependabot/fetch-metadata@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      # Policy: solo patch/minor (modifica qui se vuoi includere i major o solo security)
-      - name: Check policy
+      - id: metadata
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+      - name: Verify and merge an npm patch
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        shell: bash
         run: |
-          t="${{ steps.meta.outputs.update-type }}"
-          [ "$t" = "version-update:semver-patch" ] || [ "$t" = "version-update:semver-minor" ] || exit 1
-
-      - name: Enable auto-merge
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          merge-method: squash
+          set -euo pipefail
+          files=$(gh api --paginate "repos/$GH_REPO/pulls/$PR/files" --jq '.[].filename')
+          if ! grep -Fxq 'package-lock.json' <<< "$files" ||
+             grep -Evqx 'package(-lock)?\.json' <<< "$files"; then
+            echo "This change needs a manual review."
+            exit 0
+          fi
+          for attempt in {1..45}; do
+            current=$(gh pr view "$PR" --json headRefOid,state)
+            if ! jq -e --arg sha "$HEAD_SHA" '.state == "OPEN" and .headRefOid == $sha' <<< "$current" >/dev/null; then
+              echo "The PR changed while checks were running."
+              exit 0
+            fi
+            checks=$(gh api "repos/$GH_REPO/commits/$HEAD_SHA/check-runs?per_page=100")
+            if jq -e '
+              def passed($name; $app):
+                any(.check_runs[]; .name == $name and .app.id == $app and .conclusion == "success");
+              passed("Verify website"; 15368) and passed("Cloudflare Pages"; 85455)
+              and passed("Analyze (javascript-typescript)"; 15368)
+            ' <<< "$checks" >/dev/null; then
+              gh pr review "$PR" --approve --body "Verifica sito, CodeQL e preview Cloudflare completati."
+              gh pr merge "$PR" --squash --match-head-commit "$HEAD_SHA" --delete-branch
+              gh workflow run deploy.yml --ref main
+              exit 0
+            fi
+            sleep 12
+          done
+          echo "::error::Required checks did not all pass. The PR remains open."
+          exit 1
