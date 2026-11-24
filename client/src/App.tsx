@@ -35,7 +35,7 @@ const App = () => (
     <SkipLink />
     <div className="flex min-h-screen flex-col bg-[#050505] text-white">
       <NavBar />
-      <main id="main-content" className="flex-grow"><Router /></main>
+      <main id="main-content" className="grow"><Router /></main>
       <Footer />
     </div>
     <Toaster />

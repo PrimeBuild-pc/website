@@ -27,13 +27,13 @@ const ServiceCard = ({
 }) => {
   return (
     <AnimatedElement delay={delay} className="surface-card group relative h-full overflow-hidden p-7 md:p-8">
-      <div className="absolute right-0 top-0 h-24 w-24 rounded-bl-full bg-primary/[0.06]" />
+      <div className="absolute right-0 top-0 h-24 w-24 rounded-bl-full bg-primary/6" />
       <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-xl text-primary transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
         {icon}
       </div>
       <h3 className="mb-3 font-montserrat text-xl font-semibold">{title}</h3>
       <p className="mb-6 leading-relaxed text-neutral-400">{description}</p>
-      <ul className="mb-7 space-y-3 text-sm text-neutral-300">
+      <ul className="mb-7 stack-y-3 text-sm text-neutral-300">
         {features.map((feature) => (
           <li key={feature} className="flex items-center">
             <FaCheck className="mr-2.5 text-xs text-primary" aria-hidden="true" />

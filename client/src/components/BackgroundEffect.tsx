@@ -13,7 +13,7 @@ const BackgroundEffect = ({ className = "" }: BackgroundEffectProps) => {
       <div className="absolute inset-0 opacity-70">
         <ParticleCanvas />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/10 to-black/40" />
     </div>
   );
 };

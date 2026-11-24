@@ -26,7 +26,7 @@ const Privacy = () => {
           Privacy Policy e Cookie Policy
         </h1>
 
-        <div className="prose prose-invert prose-neutral max-w-none space-y-8">
+        <div className="prose prose-invert prose-neutral max-w-none stack-y-8">
           <section>
             <p className="text-neutral-300 text-sm">
               Ultimo aggiornamento: 24 luglio 2026
@@ -49,7 +49,7 @@ const Privacy = () => {
             <p className="text-neutral-300 mb-4">
               Quando compili il modulo di contatto, raccogliamo:
             </p>
-            <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
+            <ul className="list-disc list-inside text-neutral-300 stack-y-1 ml-4">
               <li>Nome</li>
               <li>Indirizzo email</li>
               <li>Oggetto e contenuto del messaggio</li>
@@ -60,7 +60,7 @@ const Privacy = () => {
             <p className="text-neutral-300 mb-4">
               Previo tuo consenso, tramite Google Analytics raccogliamo dati anonimi quali:
             </p>
-            <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
+            <ul className="list-disc list-inside text-neutral-300 stack-y-1 ml-4">
               <li>Pagine visitate e tempo di permanenza</li>
               <li>Tipo di dispositivo e browser utilizzato</li>
               <li>Paese di provenienza (non la posizione esatta)</li>
@@ -75,7 +75,7 @@ const Privacy = () => {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">3. Finalita del Trattamento</h2>
             <p className="text-neutral-300 mb-4">I tuoi dati vengono utilizzati per:</p>
-            <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
+            <ul className="list-disc list-inside text-neutral-300 stack-y-1 ml-4">
               <li><strong>Rispondere e inviare conferme operative</strong> per le richieste trasmesse tramite il modulo</li>
               <li><strong>Qualificare le richieste di preventivo</strong> e preparare la stima scelta dall'utente</li>
               <li><strong>Migliorare il sito web</strong> analizzando statistiche anonime di utilizzo</li>
@@ -90,7 +90,7 @@ const Privacy = () => {
             <p className="text-neutral-300 mb-4">
               Sono essenziali per il funzionamento del sito e non richiedono consenso:
             </p>
-            <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
+            <ul className="list-disc list-inside text-neutral-300 stack-y-1 ml-4">
               <li><code>cookie-consent</code> - Memorizza la tua scelta sui cookie</li>
             </ul>
 
@@ -98,7 +98,7 @@ const Privacy = () => {
             <p className="text-neutral-300 mb-4">
               Utilizziamo Google Analytics 4 per raccogliere statistiche anonime:
             </p>
-            <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
+            <ul className="list-disc list-inside text-neutral-300 stack-y-1 ml-4">
               <li><code>_ga</code> - Identificatore anonimo (durata: 2 anni)</li>
               <li><code>_ga_*</code> - Mantiene lo stato della sessione (durata: 2 anni)</li>
             </ul>
@@ -113,7 +113,7 @@ const Privacy = () => {
             <p className="text-neutral-300">
               I tuoi dati non vengono venduti a terzi. Potrebbero essere condivisi solo con:
             </p>
-            <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4 mt-4">
+            <ul className="list-disc list-inside text-neutral-300 stack-y-1 ml-4 mt-4">
               <li><strong>Google LLC</strong> - Per Google Analytics e, se compilato, per il questionario Google Forms</li>
               <li><strong>Cloudflare Inc.</strong> - Per hosting, protezione anti-spam e gestione tecnica delle richieste</li>
               <li><strong>Resend</strong> - Per l'invio delle email operative e delle conferme automatiche</li>
@@ -122,7 +122,7 @@ const Privacy = () => {
 
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">6. Conservazione dei Dati</h2>
-            <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
+            <ul className="list-disc list-inside text-neutral-300 stack-y-1 ml-4">
               <li>I messaggi e le risposte al questionario vengono conservati per il tempo necessario a valutare ed evadere la richiesta</li>
               <li>I dati di Google Analytics vengono conservati per 14 mesi, poi automaticamente eliminati</li>
             </ul>
@@ -131,7 +131,7 @@ const Privacy = () => {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-4">7. I Tuoi Diritti (GDPR)</h2>
             <p className="text-neutral-300 mb-4">Ai sensi del Regolamento UE 2016/679 (GDPR), hai diritto a:</p>
-            <ul className="list-disc list-inside text-neutral-300 space-y-1 ml-4">
+            <ul className="list-disc list-inside text-neutral-300 stack-y-1 ml-4">
               <li><strong>Accesso</strong> - Richiedere quali dati abbiamo su di te</li>
               <li><strong>Rettifica</strong> - Correggere dati inesatti</li>
               <li><strong>Cancellazione</strong> - Richiedere l'eliminazione dei tuoi dati</li>
@@ -171,7 +171,7 @@ const Privacy = () => {
               Per qualsiasi domanda riguardante questa Privacy Policy o il trattamento dei tuoi dati,
               puoi contattarci a:
             </p>
-            <ul className="list-none text-neutral-300 space-y-1 mt-4">
+            <ul className="list-none text-neutral-300 stack-y-1 mt-4">
               <li>Email: <a href="mailto:preventivi@primebuild.website" className="text-primary hover:underline">preventivi@primebuild.website</a></li>
               <li>Instagram: <a href="https://www.instagram.com/prime_build_/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@prime_build_</a></li>
               <li>Discord: <a href="https://discord.gg/ERUwSxE79q" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Prime Build Community</a></li>

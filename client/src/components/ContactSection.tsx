@@ -207,7 +207,7 @@ const ContactSection = () => {
                 alignment="left"
               />
               
-              <form className="space-y-6" onSubmit={handleSubmit}>
+              <form className="stack-y-6" onSubmit={handleSubmit}>
                 {/* Honeypot field (hidden) */}
                 <div style={{ position: 'absolute', left: '-9999px', top: '-9999px' }} aria-hidden="true">
                   <label htmlFor="website">Website</label>
@@ -310,7 +310,7 @@ const ContactSection = () => {
                   Informazioni di <span className="text-primary">contatto</span>
                 </h3>
                 
-                <div className="space-y-6">
+                <div className="stack-y-6">
                   {contactInfo.map((item, index) => (
                     <div key={index} className="flex items-start">
                       <div className="bg-primary/10 p-3 rounded-lg mr-4">
@@ -325,7 +325,7 @@ const ContactSection = () => {
                   
                   <div className="pt-2">
                     <h4 className="font-medium mb-3 text-lg text-primary">Contattaci preferibilmente su:</h4>
-                    <div className="flex flex-col space-y-3">
+                    <div className="flex flex-col stack-y-3">
                       {socialLinks.map((link, index) => (
                         <a
                           key={index}
@@ -333,7 +333,7 @@ const ContactSection = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => handleSocialClick(link.name, link.url)}
-                          className="flex items-center rounded-xl border border-white/[0.08] bg-white/[0.035] p-3 transition-colors hover:border-primary/30 hover:bg-primary/10"
+                          className="flex items-center rounded-xl border border-white/8 bg-white/[0.035] p-3 transition-colors hover:border-primary/30 hover:bg-primary/10"
                           aria-label={`Contattaci su ${link.name}`}
                         >
                           <div className="bg-primary/20 p-2 rounded-full mr-3" aria-hidden="true">

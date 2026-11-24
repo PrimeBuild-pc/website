@@ -140,7 +140,7 @@ const AppsSection = () => {
             return (
               <AnimatedElement
                 key={index}
-                className="surface-card glow-card relative flex w-[82vw] max-w-[300px] flex-shrink-0 snap-center flex-col overflow-hidden md:w-auto md:max-w-none"
+                className="surface-card glow-card relative flex w-[82vw] max-w-[300px] shrink-0 snap-center flex-col overflow-hidden md:w-auto md:max-w-none"
                 delay={0.1 * index}
               >
                 {/* wrapper interno a colonna per riempire l'altezza */}
@@ -149,7 +149,7 @@ const AppsSection = () => {
                   <h3 className="mb-3 font-montserrat text-xl font-semibold">{app.name}</h3>
                   <p className="mb-5 text-sm leading-relaxed text-neutral-400">{app.description}</p>
 
-                  <ul className="space-y-2 mb-6">
+                  <ul className="stack-y-2 mb-6">
                     {app.features.map((feature, i) => (
                       <li key={i} className="flex items-center text-sm text-neutral-300">
                         <span className="text-primary mr-2">•</span> {feature}
@@ -198,7 +198,7 @@ const AppsSection = () => {
         </div>
 
         <AnimatedElement className="mx-auto mt-8 max-w-6xl" delay={0.15}>
-          <div className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+          <div className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/3 p-6 sm:flex-row sm:items-center sm:justify-between sm:px-7">
             <div>
               <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
                 <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />

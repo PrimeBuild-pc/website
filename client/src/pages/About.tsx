@@ -25,7 +25,7 @@ const About = () => {
             ["Prima si misura", "Temperature, stabilità, frametime e comportamento reale contano più dei numeri promozionali."],
             ["Tutto deve essere chiaro", "Componenti, interventi e limiti vengono spiegati prima di procedere e verificati alla fine."],
           ].map(([title, text]) => (
-            <section key={title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <section key={title} className="rounded-2xl border border-white/10 bg-white/3 p-6">
               <h2 className="text-xl font-semibold">{title}</h2>
               <p className="mt-3 leading-relaxed text-neutral-400">{text}</p>
             </section>
@@ -45,7 +45,7 @@ const About = () => {
 
         <section className="mt-14 border-t border-white/10 pt-10">
           <h2 className="text-3xl font-bold">Identità e contatti ufficiali</h2>
-          <ul className="mt-5 space-y-3 text-neutral-300">
+          <ul className="mt-5 stack-y-3 text-neutral-300">
             <li>Sede operativa: Montegrotto Terme, 35036 (PD), Italia</li>
             <li>Email: <a className="text-primary underline" href="mailto:preventivi@primebuild.website">preventivi@primebuild.website</a></li>
             <li><a className="text-primary underline" href="https://www.instagram.com/prime_build_/" target="_blank" rel="noopener noreferrer">Instagram</a></li>

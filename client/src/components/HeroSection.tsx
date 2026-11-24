@@ -102,7 +102,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="home" className={`relative isolate flex min-h-[100svh] items-center overflow-hidden bg-[#050505] pt-24 ${isVisible ? "" : "motion-idle"}`}>
+    <section ref={sectionRef} id="home" className={`relative isolate flex min-h-svh items-center overflow-hidden bg-[#050505] pt-24 ${isVisible ? "" : "motion-idle"}`}>
       <HeroBackground variant={background} />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 py-20 text-center sm:px-8">
@@ -117,7 +117,7 @@ const HeroSection = () => {
         </h1>
 
         <div className="mx-auto mt-10 max-w-2xl">
-          <p className="text-base leading-relaxed text-neutral-300 sm:text-lg md:text-xl">
+          <p className="text-base leading-relaxed text-neutral-300 sm:text-lg sm:leading-7 md:text-xl md:leading-7">
             PC gaming progettati intorno a te. Consulenza reale, assemblaggio preciso e prestazioni ottimizzate senza sprechi.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">

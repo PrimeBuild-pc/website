@@ -152,7 +152,7 @@ const NavBar = () => {
               Chi siamo
             </Link>
             <a href="/#contact" onClick={closeMenu} role="menuitem" className="block py-2 px-4 hover:bg-neutral-800 rounded focus-visible:ring-2 focus-visible:ring-primary">Contatti</a>
-            <div className="flex space-x-4 p-4">
+            <div className="flex stack-x-4 p-4">
               <a
                 href="https://www.instagram.com/prime_build_/"
                 target="_blank"
