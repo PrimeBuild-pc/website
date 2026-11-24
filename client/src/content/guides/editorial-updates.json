@@ -147,6 +147,16 @@
       "before": "Questa versione Markdown non incorpora nuove figure né risolve i permessi di riuso.",
       "after": "Le schermate ufficiali riportano versione e fonte nelle didascalie; non sono acquisizioni di test sul PC del lettore.",
       "reason": "User-requested image integration: update obsolete no-image/version statements; retain technical and measurement limits."
+    },
+    {
+      "before": "### 5.5 Errori, temperatura e diagnosi",
+      "insertFile": "ram-community-tools.md",
+      "reason": "User 2026-11-24: integrate useful MemTestHelper (integralfx) and related open-source RAM tooling, linking sources instead of duplicating them."
+    },
+    {
+      "before": "I tempi proposti sono tappe indicative di una prova sorvegliata",
+      "insertFile": "ram-community-fonti.md",
+      "reason": "User 2026-11-24: sources 25-29 for the MemTestHelper and related RAM tools section."
     }
   ],
   "03-driver-latencymon.md": [
@@ -324,6 +334,38 @@
       "before": "Scegli dal sintomo misurato, non da un valore obbligatorio di utilizzo, bitrate o modello hardware.",
       "after": "Scegli dal sintomo misurato, non da un valore obbligatorio di utilizzo, bitrate o modello hardware.\n\n### Encoder: dove finisce il lavoro di codifica\n\nLa scelta dell'encoder non elimina il costo della trasmissione: lo sposta. Con **x264**, cioè la codifica software, il lavoro ricade sulla CPU. Se il gioco è già limitato dal thread principale o dal numero di core, OBS può sottrarre tempo alla simulazione e peggiorare frame time e coda dei frame lenti. Gli encoder hardware — **NVENC** su GeForce, **AMF** su Radeon, **Quick Sync** sulle GPU Intel — usano blocchi dedicati e di solito scaricano la CPU, ma non sono gratuiti: condividono memoria, banda e pianificazione con il rendering. Se la GPU è saturata dal gioco, la codifica può restare indietro e OBS segnala frame saltati per **ritardo di codifica**, non di rendering.\n\nIl confronto utile cambia una sola cosa. Mantieni scena, gioco, cap, risoluzione e bitrate; alterna x264 e l'encoder hardware, ripeti ogni condizione e confronta frame time del gioco, frame saltati per rendering, frame saltati per codifica e carico CPU. Se il limite è la CPU, un encoder hardware è il primo candidato; se è la GPU, abbassa dettagli o cap prima di cambiare bitrate. Non trattare **HAGS** o la modalità gioco come protezioni dell'encoder: sono ipotesi da verificare con lo stesso confronto A-B-A, non regole. Lo stesso vale per **Reflex** e **Anti-Lag**: agiscono sulla coda di rendering del gioco, non sul flusso OBS, e un eventuale effetto con stream attivo si misura, non si presume (vedi [sincronizzazione e limiter](05-sincronizzazione-limiter.md)). Con la frame generation attiva, la codifica compete per le stesse risorse GPU: [la guida dedicata](13-dlss-fsr-frame-generation.md) spiega perché il numero di FPS mostrato non basta.\n\nRicorda infine che lo stream a frequenza fissa non mostra la latenza che senti: il ritardo del filmato dipende da buffer, encoder, rete e piattaforma, non dal clic→fotone del tuo monitor.",
       "reason": "User 2026-11-20: old Low Latency Gaming Guide streaming chapter (encoder choice, NVENC/AMF vs x264, Reflex/Anti-Lag with a stream) was missing; added as a measured, A-B-A subsection inside the existing OBS section."
+    }
+  ],
+  "13-dlss-fsr-frame-generation.md": [
+    {
+      "before": "e oltre 400 giochi e applicazioni dichiarati [1].",
+      "after": "e oltre 400 giochi e applicazioni dichiarati da NVIDIA.",
+      "reason": "User 2026-11-24: name the resource in the sentence instead of a numbered citation."
+    },
+    {
+      "before": "cinque frame generati [2]. Il 2X",
+      "after": "cinque frame generati, secondo NVIDIA. Il 2X",
+      "reason": "User 2026-11-24: name the resource in the sentence instead of a numbered citation."
+    },
+    {
+      "before": "con il driver 26.10.1 del 20 ottobre 2026 [7][8].",
+      "after": "con il driver 26.10.1 del 20 ottobre 2026, come riportano l'annuncio di AMD e le note di rilascio di Adrenalin.",
+      "reason": "User 2026-11-24: name the resource in the sentence instead of a numbered citation."
+    },
+    {
+      "before": "secondo la pagina dei giochi supportati [9].",
+      "after": "secondo la pagina AMD dei giochi supportati.",
+      "reason": "User 2026-11-24: name the resource in the sentence instead of a numbered citation."
+    },
+    {
+      "before": "OptiScaler può sostituire l'upscaler nativo e instradare FSR 4 su GPU discrete RDNA 3 e RDNA 4; è un percorso della community, non un supporto AMD ufficiale [10].",
+      "after": "Secondo il [repository di OptiScaler](https://github.com/optiscaler/OptiScaler), il progetto può sostituire l'upscaler nativo e instradare FSR 4 su GPU discrete RDNA 3 e RDNA 4; è un percorso della community, non un supporto AMD ufficiale.",
+      "reason": "User 2026-11-24: name the resource in the sentence instead of a numbered citation."
+    },
+    {
+      "before": "Al momento della revisione, OptiScaler risultava `v0.9.4` del 18 luglio 2026, OptiPatcher una release `rolling` del 14 maggio 2026, DLSS Swapper `v1.2.7.0` del 18 ottobre 2026 e DLSS Enabler `v0.9.4` del 19 luglio 2026 [10][11][12][13]. UPSCALE IT risultava `1.0.1` del 13 giugno 2026 e DLSS 5 MANAGER `1.3.7` del 19 ottobre 2026 [14][15].",
+      "after": "Al momento della revisione, [OptiScaler](https://github.com/optiscaler/OptiScaler) risultava `v0.9.4` del 18 luglio 2026, [OptiPatcher](https://github.com/optiscaler/OptiPatcher) una release `rolling` del 14 maggio 2026, [DLSS Swapper](https://github.com/beeradmoore/dlss-swapper) `v1.2.7.0` del 18 ottobre 2026 e [DLSS Enabler](https://github.com/artur-graniszewski/DLSS-Enabler) `v0.9.4` del 19 luglio 2026. [UPSCALE IT](https://github.com/NODIX-TECH/UPSCALE-IT) risultava `1.0.1` del 13 giugno 2026 e [DLSS 5 MANAGER](https://github.com/NODIX-TECH/DLSS-5-MANAGER) `1.3.7` del 19 ottobre 2026.",
+      "reason": "User 2026-11-24: name the resource in the sentence instead of a numbered citation."
     }
   ]
 }
