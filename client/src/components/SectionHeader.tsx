@@ -19,12 +19,12 @@ export function SectionHeader({
   return (
     <header className={`mb-12 md:mb-16 ${centered ? "text-center" : "text-left"}`}>
       <span className="section-kicker">Prime Build</span>
-      <h2 className="font-montserrat text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
+      <h2 className="font-montserrat text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl sm:leading-10 md:text-5xl md:leading-none">
         {title}{title && highlight ? " " : ""}
         {highlight && <span className="text-primary">{highlight}</span>}
       </h2>
       {subtitle && (
-        <p className={`mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg ${centered ? "mx-auto" : ""}`}>
+        <p className={`mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg md:leading-7 ${centered ? "mx-auto" : ""}`}>
           {subtitle}
         </p>
       )}

@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-white/[0.08] bg-[#050505] py-14" role="contentinfo">
+    <footer className="border-t border-white/8 bg-[#050505] py-14" role="contentinfo">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-8">
@@ -39,7 +39,7 @@ const Footer = () => {
               <p className="text-neutral-400 text-sm mb-6">
                 Realizziamo PC Gaming su misura per un'esperienza di gioco senza compromessi
               </p>
-              <div className="flex space-x-4">
+              <div className="flex stack-x-4">
                 <a
                   href="https://www.instagram.com/prime_build_/"
                   target="_blank"
@@ -67,7 +67,7 @@ const Footer = () => {
               <p className="text-lg font-bold font-montserrat mb-4 text-primary">
                 Link Rapidi
               </p>
-              <ul className="space-y-2 text-neutral-400">
+              <ul className="stack-y-2 text-neutral-400">
                 <li>
                   <a href="/#home" className="hover:text-primary transition-colors">
                     Home
@@ -134,7 +134,7 @@ const Footer = () => {
               <p className="text-lg font-bold font-montserrat mb-4 text-primary">
                 Servizi
               </p>
-              <ul className="space-y-2 text-neutral-400">
+              <ul className="stack-y-2 text-neutral-400">
                 <li>
                   <a href="/servizi/pc-gaming-su-misura/" className="hover:text-primary transition-colors">
                     PC Gaming Custom
@@ -164,7 +164,7 @@ const Footer = () => {
             <p className="order-2 mt-4 text-sm text-neutral-400 md:order-1 md:mt-0">
               © {new Date().getFullYear()} Prime Build. Tutti i diritti riservati.
             </p>
-            <nav className="order-1 flex space-x-6 text-sm text-neutral-400 md:order-2" aria-label="Link legali">
+            <nav className="order-1 flex stack-x-6 text-sm text-neutral-400 md:order-2" aria-label="Link legali">
               <Link href="/privacy/" className="transition-colors hover:text-primary">Privacy Policy</Link>
               <Link href="/privacy/" className="transition-colors hover:text-primary">Cookie Policy</Link>
             </nav>

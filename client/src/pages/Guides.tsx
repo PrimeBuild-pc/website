@@ -58,7 +58,7 @@ const Guides = () => {
                     href={`/guides/${path.slug}/`}
                     className="group flex h-full flex-col rounded-lg border border-white/10 bg-zinc-900/50 px-4 py-3 transition-colors hover:border-primary"
                   >
-                    <span className="text-sm leading-relaxed text-white md:text-base">{path.problem}</span>
+                    <span className="text-sm leading-relaxed text-white md:text-base md:leading-6">{path.problem}</span>
                     <span className="mt-1 text-sm font-semibold text-primary">{guide?.title}</span>
                   </Link>
                 </li>

@@ -130,7 +130,7 @@ const BuildsSection = () => {
                   </div>
                   <p className="mb-7 max-w-xl leading-relaxed text-neutral-400">{build.description}</p>
 
-                  <div className="space-y-4">
+                  <div className="stack-y-4">
                     {build.specs.map((spec, i) => (
                       <div key={i}>
                         <div className="mb-1.5 flex justify-between gap-4 text-sm">
@@ -159,13 +159,13 @@ const BuildsSection = () => {
                   </div>
                 </div>
 
-                <div className={`group relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-black ${index % 2 ? "lg:order-1" : ""}`}>
+                <div className={`group relative overflow-hidden rounded-4xl border border-white/8 bg-black ${index % 2 ? "lg:order-1" : ""}`}>
                   <ImageWithFallback
                     src={build.image}
                     alt={`PC Gaming da ${build.price} - ${build.tagline} - Build custom Prime Build`}
                     width={600}
                     height={384}
-                    className={`h-[22rem] w-full object-cover transition duration-700 group-hover:scale-[1.025] sm:h-[30rem] ${index === 2 ? "object-[center_35%]" : ""}`}
+                    className={`h-88 w-full object-cover transition duration-700 group-hover:scale-[1.025] sm:h-120 ${index === 2 ? "object-[center_35%]" : ""}`}
                   />
                   <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-black/65 p-4 backdrop-blur-xl">
                     <p className="font-semibold text-white">{build.tagline}</p>

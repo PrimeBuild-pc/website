@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
 @config "../../tailwind.config.ts";
 
 @font-face {
@@ -43,6 +44,7 @@
 
 @layer base {
   * { @apply border-border; }
+  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
   html { scroll-behavior: smooth; }
   body {
     @apply overflow-x-hidden bg-[#050505] font-sans text-white antialiased;
@@ -111,7 +113,7 @@
   .button-primary:active,
   .button-secondary:active { transform: scale(.97); transition-duration: .1s, .2s, .2s; }
   .surface-card {
-    @apply rounded-3xl border border-white/[0.08] bg-white/[0.035] backdrop-blur-sm transition duration-300 hover:border-primary/30 hover:bg-white/[0.055];
+    @apply rounded-3xl border border-white/8 bg-white/[0.035] backdrop-blur-sm transition duration-300 hover:border-primary/30 hover:bg-white/5.5;
   }
   .section-kicker {
     @apply mb-4 block text-xs font-semibold uppercase tracking-[0.22em] text-primary;
@@ -439,4 +441,18 @@ html.motion-paused *::after,
 @keyframes scan {
   0%, 20% { transform: translateX(-100%); }
   70%, 100% { transform: translateX(100%); }
+}
+
+/* Equivalenti di space-x/y di Tailwind 3 (margine sugli elementi successivi); in v4 space-x/y funziona diversamente e sposterebbe i layout. */
+@utility stack-y-* {
+  & > :not([hidden]) ~ :not([hidden]) {
+    margin-top: calc(var(--spacing) * --value(integer));
+    margin-bottom: 0;
+  }
+}
+@utility stack-x-* {
+  & > :not([hidden]) ~ :not([hidden]) {
+    margin-left: calc(var(--spacing) * --value(integer));
+    margin-right: 0;
+  }
 }

@@ -111,9 +111,9 @@ export default function GallerySection() {
               <div
                 key={i}
                 role="listitem"
-                className="h-[284px] w-[160px] flex-shrink-0 rounded-3xl sm:h-[356px] sm:w-[200px] lg:h-[426px] lg:w-[240px]"
+                className="h-[284px] w-[160px] shrink-0 rounded-3xl sm:h-[356px] sm:w-[200px] lg:h-[426px] lg:w-[240px]"
               >
-                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-3xl border border-white/[0.08] bg-black">
+                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-3xl border border-white/8 bg-black">
                   <ImageWithFallback
                     src={img.src}
                     alt={img.alt}
@@ -126,8 +126,8 @@ export default function GallerySection() {
             ))}
           </div>
           {/* Gradient edges, reduced width to minimize side gaps */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-black via-black/10 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-black via-black/10 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-linear-to-r from-black via-black/10 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-linear-to-l from-black via-black/10 to-transparent" />
         </div>
       </div>
     </section>
