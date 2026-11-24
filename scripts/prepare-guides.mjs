@@ -36,7 +36,8 @@ export async function readGuideSource(guide) {
     assert.match(source,/^# .+\n\n/,`${guide.file}: missing title for the lead`);
     source=source.replace(/^(# .+\n\n)/,`$1${leadBlock(lead)}`);
   }
-  return source;
+  // Numbered citations like [8] or [1–3] stay in the original; readers see the sources list at the end instead.
+  return source.replace(/(?:[ \t]?\[\d+(?:\s*[,–-]\s*\d+)*\](?!\())+/g,'');
 }
 
 export const escapeHtml = value => value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
