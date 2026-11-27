@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Code sotto carico: cosa controlla SQM</title>
+<desc id="desc">Upload con una coda lunga senza controllo, rispetto a coda gestita e shaping sul router. Un collo di bottiglia ISP resta a valle. Download tratteggiato: pacchetti già accodati nell’ISP non sono richiamabili. fq_codel gestisce code e AQM, HTB può fare shaping; CAKE integra shaping e fairness.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="800" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">Code sotto carico: cosa controlla SQM</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="160" font-size="26" fill="#4ade80" text-anchor="start" font-weight="400">UPLOAD →</text>
+<text x="40" y="204" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="700">Senza controllo: il traffico attende in coda</text>
+<rect x="40" y="230" width="150" height="108" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="115.0" y="276.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">PC /</text>
+<text x="115.0" y="308.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">flussi</text>
+<rect x="235" y="230" width="400" height="108" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<rect x="260" y="262" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<rect x="305" y="262" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<rect x="350" y="262" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<rect x="395" y="262" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<rect x="440" y="262" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<rect x="485" y="262" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<rect x="530" y="262" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<text x="435" y="368" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Router / coda non gestita</text>
+<path d="M 190 284 L 235 284" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 635 284 L 815 284" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="719" y="264" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Uscita</text>
+<rect x="815" y="230" width="345" height="108" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="987.5" y="276.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Accesso ISP</text>
+<text x="987.5" y="308.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">collo di bottiglia</text>
+<text x="40" y="399" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="700">Con SQM: coda gestita + shaping</text>
+<rect x="40" y="425" width="150" height="108" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="115.0" y="471.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">PC /</text>
+<text x="115.0" y="503.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">flussi</text>
+<rect x="235" y="425" width="400" height="108" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<rect x="260" y="457" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<rect x="305" y="457" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<rect x="350" y="457" width="32" height="35" rx="3" fill="#e5e7eb" stroke="none" stroke-width="2"/>
+<text x="435" y="563" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Router / coda gestita</text>
+<path d="M 190 479 L 235 479" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 635 479 L 815 479" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="719" y="459" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Shaping</text>
+<rect x="815" y="425" width="345" height="108" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="987.5" y="471.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Accesso ISP</text>
+<text x="987.5" y="503.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">collo di bottiglia</text>
+<text x="40" y="614" font-size="24" fill="#e5e7eb" text-anchor="start" font-weight="400">fq_codel = code / AQM + shaper separato (es. HTB). CAKE li integra.</text>
+<path d="M 1160 660 L 40 660" fill="none" stroke="#8896a7" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#arrow)"/>
+<text x="600" y="649" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">← DOWNLOAD: la coda già nell’ISP non si ritira</text>
+<path d="M 40 702 L 1160 702" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="738" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">SQM controlla le code raggiungibili e ha limiti: nessuna promessa di coda zero.</text>
+<text x="40" y="770" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Non riduce distanza né ripara accesso ISP. Blocchi e lunghezze non sono misure.</text>
+</svg>

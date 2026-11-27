@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">USB: porte diverse, topologia condivisa</title>
+<desc id="desc">Controller host collegato al root hub; ramo diretto al dispositivo A e ramo tramite hub ai dispositivi B e C. Due prese possono condividere controller o hub; colore della porta non indica qualità né latenza. Schema di topologia, non misure.</desc>
+<style>[fill="#4ade80"]{fill:#ff6600}[stroke="#4ade80"]{stroke:#ff6600}</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+<marker id="back" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 9 1 L 1 5 L 9 9" fill="none" stroke="#8896a7" stroke-width="2"/></marker>
+</defs>
+<rect x="0" y="0" width="1200" height="640" rx="0" fill="#0b0f14" stroke="none" stroke-width="2"/>
+<text x="40" y="45" font-size="24" fill="#4ade80" text-anchor="start" font-weight="400">PRIME BUILD / SCHEMA ORIGINALE</text>
+<text x="40" y="94" font-size="36" fill="#e5e7eb" text-anchor="start" font-weight="700">USB: porte diverse, topologia condivisa</text>
+<path d="M 40 118 L 1160 118" fill="none" stroke="#8896a7" stroke-width="3"/>
+<rect x="40" y="206" width="225" height="108" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="152.5" y="252.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Controller</text>
+<text x="152.5" y="284.15999999999997" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">host</text>
+<rect x="355" y="206" width="225" height="108" rx="12" fill="#131c26" stroke="#4ade80" stroke-width="2"/>
+<text x="467.5" y="252.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Root hub</text>
+<text x="467.5" y="284.15999999999997" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">porte logiche</text>
+<path d="M 265 260 L 355 260" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)" marker-start="url(#back)"/>
+<rect x="820" y="163" width="340" height="93" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="990.0" y="201.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Dispositivo A</text>
+<text x="990.0" y="233.66" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">collegamento diretto</text>
+<rect x="680" y="341" width="195" height="92" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="777.5" y="395.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Hub</text>
+<rect x="955" y="319" width="205" height="80" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="1057.5" y="367.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Dispositivo B</text>
+<rect x="955" y="430" width="205" height="80" rx="12" fill="#131c26" stroke="#8896a7" stroke-width="2"/>
+<text x="1057.5" y="478.16" font-size="24" fill="#e5e7eb" text-anchor="middle" font-weight="400">Dispositivo C</text>
+<path d="M 580 237 H 725 V 209 H 820" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 580 286 H 620 V 387 H 680" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 875 387 H 918 V 359 H 955" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 918 387 V 470 H 955" fill="none" stroke="#8896a7" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="40" y="470" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">Due prese possono condividere</text>
+<text x="40" y="504" font-size="26" fill="#e5e7eb" text-anchor="start" font-weight="400">controller e rami della topologia.</text>
+<path d="M 40 542 L 1160 542" fill="none" stroke="#8896a7" stroke-width="3"/>
+<text x="40" y="578" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Linee = collegamenti logici; non banda disponibile o qualità delle porte.</text>
+<text x="40" y="610" font-size="24" fill="#b5c0ce" text-anchor="start" font-weight="400">Colore / forma non certificano latenza. Nessuna porta è qui misurata.</text>
+</svg>
