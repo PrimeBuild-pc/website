@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TweakHub - Store review evidence</title>
+<meta name="description" content="Why TweakHub uses runFullTrust, allowElevation and unvirtualizedResources, with test evidence.">
+<link rel="icon" href="/favicon.ico">
+<style>:root { color-scheme: dark; --bg: #050505; --fg: #f5f5f5; --muted: #a1a1aa; --line: #27272a; --card: #0f0f11; --accent: #ff6a00; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header, main, footer { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+header { padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); color: var(--muted); }
+header a { color: var(--fg); text-decoration: none; }
+.brand { font-family: Montserrat, system-ui, sans-serif; font-weight: 700; color: var(--accent); }
+main { padding-top: 24px; padding-bottom: 48px; }
+h1, h2, h3 { font-family: Montserrat, system-ui, sans-serif; line-height: 1.25; }
+h1 { font-size: 1.9rem; margin: 0.4em 0; }
+h2 { font-size: 1.4rem; margin-top: 2em; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+h3 { font-size: 1.1rem; margin-top: 1.6em; }
+a { color: var(--accent); }
+p, li { overflow-wrap: anywhere; }
+code { font: 0.88em ui-monospace, Consolas, monospace; background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1px 4px; }
+pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow-x: auto; white-space: pre-wrap; }
+pre code { border: 0; padding: 0; background: none; }
+blockquote { margin: 1em 0; padding: 8px 16px; border-left: 3px solid var(--accent); background: var(--card); }
+table { display: block; overflow-x: auto; border-collapse: collapse; margin: 1em 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; vertical-align: top; text-align: left; }
+th { background: var(--card); }
+img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+.meta { color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+footer { color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; padding-bottom: 32px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<header><a href="/" class="brand">Prime Build</a> <span>/</span> <a href="/apps/tweakhub/support/">TweakHub support</a></header>
+<main><h1>TweakHub Store review evidence</h1><p class="meta">Screenshots, manifests and scripts from the virtualization tests of 27 Nov 2026 (Windows 11 25H2, build 26200). Explained in <a href="../">the capability justification</a>, sections 2.5 and 2.6.</p><ul>
+<li><a href="app-1.8.3-settings-before-uninstall.png">app-1.8.3-settings-before-uninstall.png</a><br><img src="app-1.8.3-settings-before-uninstall.png" alt="app-1.8.3-settings-before-uninstall.png" loading="lazy"></li>
+<li><a href="manifests/Default.AppxManifest.xml">manifests/Default.AppxManifest.xml</a></li>
+<li><a href="manifests/Disabled.AppxManifest.xml">manifests/Disabled.AppxManifest.xml</a></li>
+<li><a href="manifests/Flex.AppxManifest.xml">manifests/Flex.AppxManifest.xml</a></li>
+<li><a href="manifests/FlexHklm.AppxManifest.xml">manifests/FlexHklm.AppxManifest.xml</a></li>
+<li><a href="manifests/FlexHklm.makeappx-error.txt">manifests/FlexHklm.makeappx-error.txt</a></li>
+<li><a href="manifests/FlexNoCap.AppxManifest.xml">manifests/FlexNoCap.AppxManifest.xml</a></li>
+<li><a href="probe/child.ps1">probe/child.ps1</a></li>
+<li><a href="probe/pack.ps1">probe/pack.ps1</a></li>
+<li><a href="probe/probe.ps1">probe/probe.ps1</a></li>
+<li><a href="probe/run.ps1">probe/run.ps1</a></li>
+<li><a href="probe/setup.ps1">probe/setup.ps1</a></li>
+<li><a href="probe/verify.ps1">probe/verify.ps1</a></li>
+<li><a href="vm-default-virtualization.png">vm-default-virtualization.png</a><br><img src="vm-default-virtualization.png" alt="vm-default-virtualization.png" loading="lazy"></li>
+<li><a href="vm-disabled-submitted.png">vm-disabled-submitted.png</a><br><img src="vm-disabled-submitted.png" alt="vm-disabled-submitted.png" loading="lazy"></li>
+<li><a href="vm-flex-with-capability.png">vm-flex-with-capability.png</a><br><img src="vm-flex-with-capability.png" alt="vm-flex-with-capability.png" loading="lazy"></li>
+<li><a href="vm-flex-without-capability.png">vm-flex-without-capability.png</a><br><img src="vm-flex-without-capability.png" alt="vm-flex-without-capability.png" loading="lazy"></li>
+<li><a href="vm-install.png">vm-install.png</a><br><img src="vm-install.png" alt="vm-install.png" loading="lazy"></li>
+</ul></main>
+<footer>© 2025–2026 Prime Build · <a href="/apps/tweakhub/support/">TweakHub support</a> · <a href="/">primebuild.website</a></footer>
+</body>
+</html>

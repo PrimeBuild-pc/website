@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TweakHub - Microsoft Store capability justification</title>
+<meta name="description" content="Why TweakHub uses runFullTrust, allowElevation and unvirtualizedResources, with test evidence.">
+<link rel="icon" href="/favicon.ico">
+<style>:root { color-scheme: dark; --bg: #050505; --fg: #f5f5f5; --muted: #a1a1aa; --line: #27272a; --card: #0f0f11; --accent: #ff6a00; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header, main, footer { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+header { padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); color: var(--muted); }
+header a { color: var(--fg); text-decoration: none; }
+.brand { font-family: Montserrat, system-ui, sans-serif; font-weight: 700; color: var(--accent); }
+main { padding-top: 24px; padding-bottom: 48px; }
+h1, h2, h3 { font-family: Montserrat, system-ui, sans-serif; line-height: 1.25; }
+h1 { font-size: 1.9rem; margin: 0.4em 0; }
+h2 { font-size: 1.4rem; margin-top: 2em; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+h3 { font-size: 1.1rem; margin-top: 1.6em; }
+a { color: var(--accent); }
+p, li { overflow-wrap: anywhere; }
+code { font: 0.88em ui-monospace, Consolas, monospace; background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1px 4px; }
+pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow-x: auto; white-space: pre-wrap; }
+pre code { border: 0; padding: 0; background: none; }
+blockquote { margin: 1em 0; padding: 8px 16px; border-left: 3px solid var(--accent); background: var(--card); }
+table { display: block; overflow-x: auto; border-collapse: collapse; margin: 1em 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; vertical-align: top; text-align: left; }
+th { background: var(--card); }
+img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+.meta { color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+footer { color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; padding-bottom: 32px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<header><a href="/" class="brand">Prime Build</a> <span>/</span> <a href="/apps/tweakhub/support/">TweakHub support</a></header>
+<main>
+<p class="meta">Public copy of the TweakHub capability justification for the Microsoft Store (policy 10.6.3). Support: <a href="mailto:primebuild.official@gmail.com">primebuild.official@gmail.com</a>. Evidence files: <a href="evidence/">screenshots, manifests and test scripts</a>.</p>
+<h1>TweakHub: Microsoft Store capability justification (policy 10.6.3)</h1>
+<p>Product ID <code>9P5R2R5TRKL3</code> · package <code>LorenzoMassafra.TweakHub</code> · package for resubmission: <code>1.8.3.0</code> (x64, manifest <code>packaging/msix/AppxManifest.xml</code>, unchanged since 1.8.1). 1.8.2.0 ran WinUtil through the hash-approved flow (gap G3); 1.8.3.0 adds the in-app uninstall notice and the support link (gaps G1, G2). The Microsoft report of 24 Nov 2026 denied <code>allowElevation</code> and <code>unvirtualizedResources</code> and asked the questions answered in section 2.
+Support: <code>primebuild.official@gmail.com</code> · support page <code>https://primebuild.website/apps/tweakhub/support/</code> · privacy policy <code>https://primebuild.website/apps/tweakhub/privacy/</code> · public copy of this document <code>https://primebuild.website/apps/tweakhub/store-justification/</code> · source: <code>https://github.com/PrimeBuild-pc/TweakHub</code> (MIT).</p>
+<p>Everything below was read from the code and manifest of this repository. Where something was <strong>not</strong> tested or is not true, it says so (see &quot;Not verified&quot; and &quot;Gaps found&quot;).</p>
+<hr>
+<h2>1. Text entered in Partner Center</h2>
+<p>Each restricted-capability field accepts at most <strong>500 characters</strong>, so the fields carry a summary and the link to the public copy of this document; the answers to every question go in &quot;Notes for certification&quot; (limit 6,000). Links point to primebuild.website, not GitHub, as the report requires.</p>
+<p><strong>runFullTrust</strong> (444 characters)</p>
+<blockquote>
+<p>TweakHub (WPF/.NET) is a Windows 11 tuning and diagnostics utility. It changes real Windows settings the user selects (registry, services, power plans, drivers, hosts file) through Win32 APIs and system tools a UWP app cannot call, so it runs as a full-trust packaged desktop app. No service, driver, scheduled task or auto-start is installed. Full 10.6.3 answers with VM test logs: <a href="https://primebuild.website/apps/tweakhub/store-justification/">https://primebuild.website/apps/tweakhub/store-justification/</a></p>
+</blockquote>
+<p><strong>allowElevation</strong> (494 characters)</p>
+<blockquote>
+<p>The manifest is asInvoker; the app runs at medium IL and nothing is elevated at start-up. Only after the user clicks and confirms an operation that needs admin rights, TweakHub starts one child (reg.exe, powercfg.exe, a hash-checked powershell.exe script or an elevated restart of itself) with the standard UAC prompt. Scripts run only if their SHA-256 matches what the user approved. No silent elevation, service or elevated task. Details: primebuild.website/apps/tweakhub/store-justification/</p>
+</blockquote>
+<p><strong>unvirtualizedResources</strong> (494 characters)</p>
+<blockquote>
+<p>Package-wide (desktop6 registry and file-system write virtualization disabled). Tested on Win11 25H2: with default virtualization HKCU tweaks land in the private package hive and the backup goes to LocalCache, so the elevated child cannot read it and undo is lost. Flexible Virtualization fixes files but only listed HKCU keys; custom tweaks and playbooks use any HKCU path. Keys, paths, logs: <a href="https://primebuild.website/apps/tweakhub/store-justification/">https://primebuild.website/apps/tweakhub/store-justification/</a> Support: <a href="mailto:primebuild.official@gmail.com">primebuild.official@gmail.com</a></p>
+</blockquote>
+<p><strong>Notes for certification</strong> (4497 characters)</p>
+<pre><code class="language-text">TweakHub 1.8.3 - notes for certification
+Support: primebuild.official@gmail.com - support page: https://primebuild.website/apps/tweakhub/support/
+Full answers to the 10.6.3 questions, with VM test logs: https://primebuild.website/apps/tweakhub/store-justification/
+
+Changes since the 24 Nov 2026 report: in-app &quot;Before you uninstall&quot; notice (About page); support link to primebuild.website; reproducible VM tests of default and Flexible Virtualization (points 5 and 6 below).
+
+Safe smoke test: start TweakHub without elevation; open Devices, Links and Security to view inventory and status; open a Registry tweak preview without applying it; open Power Plan and About. To see elevation, apply one HKLM registry tweak, accept UAC, then restore it from the app. Use a disposable VM for anything else; do not run firmware, Tron or destructive cleanup scripts for a smoke test. The Store build has no self-update (it opens the Store page).
+
+Answers to the 10.6.3 questions
+1-2. Virtualization is disabled package-wide (desktop6 RegistryWriteVirtualization and FileSystemWriteVirtualization = disabled); no ExcludedKeys or ExcludedDirectories. Targets written: HKLM\SOFTWARE\Policies\..., HKLM\SOFTWARE\Microsoft\Windows and Windows NT\CurrentVersion\..., HKLM\SYSTEM\CurrentControlSet\Control\..., \Services\&lt;name&gt; (start type), \Enum\&lt;device&gt;\Device Parameters\Interrupt Management (MSI, affinity); HKCU\Control Panel\Desktop and \Mouse, HKCU\Software\Microsoft\Windows\CurrentVersion\..., HKCU\Software\Microsoft\GameBar, HKCU\System\GameConfigStore, HKCU\Software\Microsoft\DirectX, plus custom tweaks the user defines. Files: %LOCALAPPDATA%\TweakHub (settings, backups, undo, log, tools), %PROGRAMDATA%\TweakHub-DriverBackups and TweakHub-Tron-*, temp folders, the hosts file (Adobe block script only), GPU shader caches (cleanup).
+3. The packaged UI (medium IL) writes its own data and HKCU values. One elevated child per confirmed operation writes HKLM, services, power plans, driver store and hosts. Tested: the elevated child has no package identity (GetCurrentPackageFullName returns 15700).
+4. Yes, all user-initiated and previewed, registry values backed up first: the HKLM keys above; service start types; scheduled tasks only when the user disables or restores one on the Startup page (plus one temporary limited task for a winget uninstall, deleted after use); nothing in Program Files; under Windows: temp, DISM/SFC, hosts file, driver store via pnputil; third-party data: only GPU shader caches and temp, no browser profiles. Policy reset can remove third-party policy keys the user selects, after a backup.
+5. Reproduced on Windows 11 25H2 (26200): the same payload packed with three manifests, a probe run inside the package doing what TweakHub does. With default virtualization the HKCU writes never reach the real hive (private package User.dat), the backup record goes to Packages\&lt;PFN&gt;\LocalCache, the elevated child cannot see it, and the undo record it writes is lost. With virtualization disabled every write is visible and backup/undo is shared.
+6. Flexible Virtualization prototype tested: ExcludedDirectory $(KnownFolder:LocalAppData)\TweakHub fixes the shared backup/undo; ExcludedKey works only for listed HKCU keys (GameBar reached Windows, Control Panel\Mouse did not); HKLM keys are rejected by the schema. TweakHub&#39;s HKCU targets are open-ended (custom tweaks, imported playbooks, restored Run keys), so a fixed list would silently break them.
+7. Yes. Every write starts from a user action and confirmation. No background writer, service, auto-start or self-update in the Store build.
+8. Downloads happen only on user action: Tron from bmrf.org (SHA-256 from the publisher&#39;s list, re-checked after copy); Microsoft Safety Scanner from go.microsoft.com and the Gaming Repair Tool from aka.ms (Microsoft Authenticode required); Marius Heier scripts from tools.mariusheier.com and WinUtil from christitus.com, redirected to github.com (SHA-256 shown, consent per hash, changed file refused; WinUtil can fetch more at run time, which TweakHub does not check); winget packages (winget hashes). Stored in temp or %LOCALAPPDATA%\TweakHub\Store\Apps. No automatic updates.
+9. Uninstall removes the app only; Windows changes stay. Stated in the app (About, &quot;Before you uninstall&quot;), on the support page and in the privacy policy: restore from the app first, then delete %LOCALAPPDATA%\TweakHub and the %PROGRAMDATA%\TweakHub-* folders; remove winget apps with winget uninstall.
+</code></pre>
+<hr>
+<h2>2. Point-by-point answers</h2>
+<h3>2.1 Exact paths and keys excluded from virtualization</h3>
+<p>None are listed individually. The manifest does not use <code>ExcludedKeys</code> or <code>ExcludedDirectories</code>. Virtualization is switched off for the <strong>entire package</strong>. Effective scope = whatever the user asks TweakHub to change:</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Targets written by TweakHub (observed in code)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Registry, machine</td>
+<td><code>HKLM\SOFTWARE\Policies\Microsoft\...</code> (≈50 references: Windows Update, Defender-related policies, telemetry, Windows AI, etc.), <code>HKLM\SOFTWARE\Policies\WindowsNotepad</code>, <code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\...</code>, <code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\...</code>, <code>HKLM\SOFTWARE\Microsoft\WindowsUpdate</code>, <code>HKLM\SYSTEM\CurrentControlSet\Control\...</code> (priority, power, GPU/graphics, memory), <code>HKLM\SYSTEM\CurrentControlSet\Services\...</code> (service start type, driver parameters), <code>HKLM\SYSTEM\CurrentControlSet\Enum\&lt;device&gt;\Device Parameters\Interrupt Management\...</code> (MSI mode and affinity)</td>
+</tr>
+<tr>
+<td>Registry, user</td>
+<td><code>HKCU\Control Panel\Desktop</code> and <code>\Mouse</code>, <code>HKCU\Software\Microsoft\Windows\CurrentVersion\...</code> (Explorer, privacy, themes), <code>HKCU\Software\Microsoft\GameBar</code>, <code>HKCU\System\GameConfigStore</code>, <code>HKCU\Software\Microsoft\DirectX</code>, <code>HKCU\Software\Policies\Microsoft\...</code>, plus user-defined custom tweaks</td>
+</tr>
+<tr>
+<td>File system</td>
+<td><code>%LOCALAPPDATA%\TweakHub\Store\{Data,Apps,Machine}</code> (settings, <code>registry-backup.json</code>, <code>operations.jsonl</code>, undo records, tools, pending-restart state), <code>%PROGRAMDATA%\TweakHub-DriverBackups</code>, <code>%PROGRAMDATA%\TweakHub-Tron-*</code> (admin-only), <code>%SystemRoot%\Temp</code> and the user temp folder (hash-checked script files, temp cleanup), <code>%SystemRoot%\System32\drivers\etc\hosts</code> (only the Adobe block/unblock script), GPU shader caches under <code>%LOCALAPPDATA%</code> (cache cleanup), driver-store packages via <code>pnputil</code></td>
+</tr>
+</tbody></table>
+<h3>2.2 Whole package or specific keys/directories?</h3>
+<p>Whole package: <code>&lt;desktop6:RegistryWriteVirtualization&gt;disabled&lt;/…&gt;</code> and <code>&lt;desktop6:FileSystemWriteVirtualization&gt;disabled&lt;/…&gt;</code> in <code>&lt;Properties&gt;</code>, together with the <code>unvirtualizedResources</code> capability. No <code>ExcludedKeys</code>/<code>ExcludedDirectories</code>.</p>
+<h3>2.3 Writes by the packaged app vs. the elevated child</h3>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>What it writes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Packaged app (medium IL, user token)</td>
+<td>Its own data (<code>Store\Data</code>: settings, favourites, profiles, <code>registry-backup.json</code>, <code>operations.jsonl</code>, undo records, script history, consent files), downloaded tools under <code>Store\Apps</code>, <code>HKCU</code> tweaks that a standard user can write (<code>RegistryService</code> writes directly when no elevation is needed), temp script files, exports the user selects</td>
+</tr>
+<tr>
+<td>Elevated child (one per user-confirmed operation, UAC every time)</td>
+<td><code>reg.exe add/delete</code> for HKLM and <code>HKCU\Software\Policies</code> (<code>RegistryService.RunElevatedReg</code>); <code>powercfg.exe</code> (<code>PowerService.RunMutationAsync</code>); hash-checked PowerShell (<code>PowerShellService.ExecuteScriptAsync(requireAdministrator)</code>): services (<code>sc.exe config</code>, <code>Set-Service</code>), driver store (<code>pnputil</code>), power-plan values, hosts file, cleanup scripts, device enable/disable/removal; interactive scripts (<code>AutomatedScriptsPage</code>); Tron (<code>TronService</code>); third-party scripts, WinUtil included (<code>ThirdPartyScriptService</code>); installer of a TweakHub update (outside the Store build, see 2.8); elevated restart of TweakHub itself (<code>App.RestartElevated</code>, offered for bulk operations/playbooks)</td>
+</tr>
+</tbody></table>
+<h3>2.4 Writes to HKLM, Windows, Program Files, services, scheduled tasks, browser/app data, third-party resources</h3>
+<p>All are user-initiated and each is previewed (and, where the change is a registry value, backed up before it is written).</p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Purpose</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HKLM policy/system/service keys (table 2.1)</td>
+<td>Tweaks and policy resets the user ticks; undo restores the saved value</td>
+<td><code>TweakService</code>, <code>RegistryService</code>, <code>PolicyService</code>, <code>OptionalServicesService</code></td>
+</tr>
+<tr>
+<td>Policy reset covers <strong>third-party</strong> policy keys (for example <code>HKLM\SOFTWARE\Policies\Google\Chrome</code>)</td>
+<td>The Policies page lists forced policies found on the PC and lets the user reset the ones TweakHub did not create; it backs them up first. Nothing is touched until the user picks a category.</td>
+<td><code>PolicyService.ResetAsync</code></td>
+</tr>
+<tr>
+<td>Services</td>
+<td>Set start type (<code>sc.exe config</code>, <code>Set-Service</code>) for optional services, Windows Update preset, Startup page; optional stop</td>
+<td><code>OptionalServicesService</code>, <code>Scripts/WindowsUpdatePreset.ps1</code>, <code>SystemTriageService</code></td>
+</tr>
+<tr>
+<td>Scheduled tasks</td>
+<td><strong>Created</strong>: none permanently (one short-lived limited-rights task, below). <strong>Changed/removed</strong>: tasks the user disables/removes/restores on the Startup page (restore re-registers the saved XML).</td>
+<td><code>SystemTriageService</code>; <code>ToolDownloadService.UninstallWithoutElevationAsync</code> registers a limited task named <code>TweakHub-&lt;guid&gt;</code> for a <code>winget uninstall</code> and unregisters it in <code>finally</code></td>
+</tr>
+<tr>
+<td>Program Files / Windows</td>
+<td>No file is written in Program Files. Under <code>%SystemRoot%</code>: temp files, <code>Temp</code> cleanup, DISM/SFC component cleanup and repair (<code>component-cleanup</code>, <code>dism-sfc-chkdsk</code>), hosts file (Adobe block list only), driver store via <code>pnputil</code></td>
+<td><code>BuiltInScripts</code>, <code>DriverStoreService</code></td>
+</tr>
+<tr>
+<td>Third-party app data</td>
+<td>Only GPU shader caches (NVIDIA/AMD/Intel DX/GL caches) and temp folders, by the cleanup scripts. No browser profile, cookie, password or history file is read or written. (Browser vendors appear only as policy key names.)</td>
+<td><code>BuiltInScripts</code> <code>shader-cache-cleanup</code>, <code>temp-cleanup</code></td>
+</tr>
+<tr>
+<td>Installed apps</td>
+<td><code>winget install/uninstall</code> of a package the user picked; Copilot/AI components removal script</td>
+<td><code>ToolDownloadService</code>, <code>BuiltInScripts</code> <code>remove-windows-ai</code></td>
+</tr>
+<tr>
+<td>Network settings</td>
+<td>DNS provider change on the Security page, with the previous configuration saved</td>
+<td><code>PrivacyService</code></td>
+</tr>
+</tbody></table>
+<h3>2.5 Reproducible failure with standard MSIX virtualization</h3>
+<p><strong>Reproduced on 27 Nov 2026</strong> on the test VM <code>NeuroTune-W11</code> (Windows 11 Pro 25H2, build 26200.9974, account with UAC). Evidence, scripts and manifests: [<a href="evidence/">evidence folder</a>](evidence/).</p>
+<p>Method. The 1.8.2.0 Store payload (<code>dotnet publish -p:StorePackage=true</code>) was packed three times, changing only the manifest, and signed with a throw-away test certificate:</p>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Manifest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Disabled</code></td>
+<td>the submitted manifest: <code>desktop6:RegistryWriteVirtualization</code> and <code>FileSystemWriteVirtualization</code> = <code>disabled</code>, <code>unvirtualizedResources</code></td>
+</tr>
+<tr>
+<td><code>Default</code></td>
+<td>standard MSIX virtualization: no <code>desktop6</code> switches, no <code>unvirtualizedResources</code></td>
+</tr>
+<tr>
+<td><code>Flex</code></td>
+<td>Flexible Virtualization: <code>ExcludedDirectory $(KnownFolder:LocalAppData)\TweakHub</code>, <code>ExcludedKey HKEY_CURRENT_USER\Software\Microsoft\GameBar</code>, <code>unvirtualizedResources</code></td>
+</tr>
+</tbody></table>
+<p>A probe (<code>probe.ps1</code>) was started <strong>inside</strong> each package with <code>Invoke-CommandInDesktopPackage</code> from a non-elevated shell, so it ran with the package identity at medium integrity, as TweakHub&#39;s UI does. It performs TweakHub&#39;s own sequence: two HKCU writes (<code>GameBar</code>, <code>Control Panel\Mouse</code>), the backup record in <code>%LOCALAPPDATA%\TweakHub\Store\Data</code>, a script file in <code>%TEMP%</code>, then one elevated child through <code>runas</code> (UAC accepted), which runs <code>reg.exe add HKLM\...</code>, reads the backup, writes the undo record and runs the temp script. <code>verify.ps1</code> then checked everything from an ordinary process outside the package. The TweakHub UI itself was not driven; the probe uses the same mechanisms (package identity, <code>RegistryService</code>&#39;s direct HKCU write, <code>runas</code> child) so the result can be repeated by anyone with the scripts.</p>
+<p>Results (screenshots <code>vm-*.png</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Check, seen from outside the package</th>
+<th>Disabled</th>
+<th>Default</th>
+<th>Flex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HKCU <code>Software\Microsoft\GameBar</code> value written by the UI</td>
+<td>in Windows</td>
+<td><strong>missing</strong></td>
+<td>in Windows (excluded key)</td>
+</tr>
+<tr>
+<td>HKCU <code>Control Panel\Mouse</code> value written by the UI</td>
+<td>in Windows</td>
+<td><strong>missing</strong></td>
+<td><strong>missing</strong></td>
+</tr>
+<tr>
+<td>Private package hive <code>SystemAppData\Helium\User.dat</code></td>
+<td>not created</td>
+<td>created</td>
+<td>created</td>
+</tr>
+<tr>
+<td>HKLM value written by the elevated child</td>
+<td>in Windows</td>
+<td>in Windows</td>
+<td>in Windows</td>
+</tr>
+<tr>
+<td>Backup record written by the UI</td>
+<td>real path</td>
+<td><strong>only in <code>Packages\&lt;PFN&gt;\LocalCache\Local\TweakHub\...</code></strong></td>
+<td>real path</td>
+</tr>
+<tr>
+<td>Elevated child can read that backup</td>
+<td>yes</td>
+<td><strong>no</strong></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Undo record written by the child, seen by the UI</td>
+<td>yes</td>
+<td><strong>no (lost: the folder exists only in LocalCache)</strong></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Script in <code>%TEMP%</code> written by the UI and run by the child</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Package identity of the elevated child</td>
+<td>none (<code>GetCurrentPackageFullName</code> = 15700)</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<p>What this means for TweakHub with standard virtualization:</p>
+<ol>
+<li>Every HKCU tweak applied directly by the UI reports success but never reaches Windows: it lands in the package&#39;s private hive.</li>
+<li>The registry backup and undo records are split between the package&#39;s private copy and the real folder. The elevated child cannot read the backup taken before a change, and the undo record it writes is lost, so &quot;restore&quot; cannot work.</li>
+<li>HKLM changes are <strong>not</strong> affected: the elevated child runs outside the package. Earlier versions of this document said HKLM writes would be lost; the test shows they are not.</li>
+<li><code>%TEMP%</code> (an existing folder) was not redirected in this test.</li>
+</ol>
+<p>Not tested: the elevated restart of TweakHub itself (<code>App.RestartElevated</code>) and whether that second process keeps the package identity.</p>
+<h3>2.6 MSIX Flexible Virtualization</h3>
+<p><strong>Prototype built and tested</strong> (variant <code>Flex</code> above, plus two schema checks):</p>
+<ul>
+<li><strong>Filesystem: sufficient.</strong> One <code>ExcludedDirectory</code>, <code>$(KnownFolder:LocalAppData)\TweakHub</code>, made backup and undo records shared between the UI and the elevated child (table above).</li>
+<li><strong>Registry: only for keys listed in advance.</strong> The excluded <code>HKCU\Software\Microsoft\GameBar</code> reached Windows; <code>HKCU\Control Panel\Mouse</code>, not listed, stayed in the private hive.</li>
+<li><strong>HKLM cannot be listed.</strong> A manifest with <code>ExcludedKey HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows</code> is rejected by MakeAppx (<code>C00CE169</code>, pattern <code>HKEY_CURRENT_USER\...</code> or <code>HKCU\...</code>; <code>manifests/FlexHklm.makeappx-error.txt</code>). HKLM does not need it anyway, since only the elevated child writes there.</li>
+<li><strong>Without <code>unvirtualizedResources</code>.</strong> The same <code>Flex</code> manifest without the capability packed, installed (sideloaded, trusted test certificate) and behaved the same (<code>vm-flex-without-capability.png</code>). Whether Store ingestion accepts Flexible Virtualization without the capability was not tested.</li>
+</ul>
+<p>Why a key list is still insufficient for TweakHub: the HKCU paths written by the UI are open-ended and user-controlled. Custom registry tweaks and imported playbooks accept any HKCU path (<code>CustomRegistryTweak</code>, <code>PlaybookService</code>), and the Startup page restores arbitrary Run keys. Any key not in the list would be silently written to the private hive, which is failure 1 in 2.5. The built-in catalogue alone could be listed (<code>HKCU\Control Panel\Desktop</code>, <code>\Mouse</code>, <code>HKCU\Software\Microsoft\Windows\CurrentVersion\...</code>, <code>GameBar</code>, <code>HKCU\System\GameConfigStore</code>, <code>HKCU\Software\Microsoft\DirectX</code>), so a Flexible Virtualization manifest is a possible fallback if the package-wide exclusion is refused, at the cost of custom HKCU tweaks in the Store build.</p>
+<h3>2.7 <code>unvirtualizedResources</code> only for documented, user-chosen operations</h3>
+<p>Yes, by design and by the code paths found: every write in 2.3/2.4 starts from a user action (button, confirmation dialog or an imported playbook that the user confirms and, for administrator steps, re-confirms after an elevated restart with a fingerprint check). There is no background writer, no start-up registration, no service, no auto-run task and no update self-installation in the Store build. <code>ElevationHardeningTests</code> and <code>StorePackageTests</code> cover the elevation and package rules. The test suite does not prove that no other path exists; this is a code review, not a proof.</p>
+<h3>2.8 Downloaded executables and tools</h3>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Source domain</th>
+<th>Saved to</th>
+<th>Validation</th>
+<th>Updates</th>
+<th>User action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TweakHub update (EXE build)</td>
+<td><code>api.github.com</code>, <code>github.com</code> release assets</td>
+<td>temp/download folder, held open until run</td>
+<td>SHA-256 from the release&#39;s <code>.sha256</code> asset; asset URLs validated</td>
+<td><strong>Disabled in the Store build</strong>: <code>UpdateService</code> returns before any network work and, on request, opens the Microsoft Store page</td>
+<td>confirmation dialog</td>
+</tr>
+<tr>
+<td>Tron (OSINT/cleanup tool)</td>
+<td><code>bmrf.org/repos/tron/</code></td>
+<td><code>Store\Data\Tools\Tron</code>; run copy in <code>%PROGRAMDATA%\TweakHub-Tron-&lt;guid&gt;</code> (admin-only ACL)</td>
+<td>SHA-256 and size from the publisher&#39;s <code>sha256sums.txt</code> over HTTPS (no redirects); hash re-checked after copy; settings checked (no auto-run/email/upload/reboot)</td>
+<td>Latest listed version is offered; re-download manual</td>
+<td>separate steps: download, extract, run (UAC)</td>
+</tr>
+<tr>
+<td>Microsoft Safety Scanner</td>
+<td><code>go.microsoft.com/fwlink/?LinkId=212732</code></td>
+<td>temp folder</td>
+<td>Authenticode <code>Valid</code> and subject <code>O=Microsoft...</code> required</td>
+<td>manual</td>
+<td>user starts it</td>
+</tr>
+<tr>
+<td>Marius Heier latency scripts</td>
+<td><code>tools.mariusheier.com</code></td>
+<td>temp, deleted before run</td>
+<td>Script downloaded once; SHA-256 shown; consent stored <strong>per hash</strong>; elevated window refuses a changed script</td>
+<td>re-consent if the script changes</td>
+<td>consent dialog + UAC</td>
+</tr>
+<tr>
+<td><code>ctt-winutil</code> (Chris Titus Tech WinUtil)</td>
+<td><code>christitus.com/win</code>, which redirects over HTTPS to the GitHub release asset <code>github.com/ChrisTitusTech/winutil/releases/latest/download/winutil.ps1</code></td>
+<td>temp, deleted before run</td>
+<td>Same flow as the Marius Heier scripts (<code>ThirdPartyScriptService.ConfirmAndRunAsync</code>): downloaded once, SHA-256 shown, consent stored <strong>per hash</strong>, elevated window refuses a changed file. <strong>The hash covers only the main script.</strong> WinUtil itself can download more at run time (for example the packages and configurations the user picks in its window, installed through winget or Chocolatey); TweakHub does not check those. No signature check: the script is not Authenticode-signed</td>
+<td>re-consent when a new WinUtil release changes the file</td>
+<td>consent dialog (shows the hash) + UAC</td>
+</tr>
+<tr>
+<td>winget packages</td>
+<td>Windows Package Manager (<code>winget</code>)</td>
+<td>managed by winget</td>
+<td>winget&#39;s own manifest hashes</td>
+<td>winget</td>
+<td>user picks the package</td>
+</tr>
+<tr>
+<td>External tool catalogue entries (vendor sites)</td>
+<td>vendor domains (e.g. <code>asus.com</code>, <code>msi.com</code>, <code>gigabyte.com</code>, <code>techpowerup.com</code>, <code>hwinfo.com</code>)</td>
+<td><strong>not downloaded by TweakHub</strong>: the link opens in the user&#39;s browser</td>
+<td>the browser and the vendor</td>
+<td>n/a</td>
+<td>user clicks</td>
+</tr>
+<tr>
+<td>Gaming Repair Tool (<code>microsoft-store-repair</code>, <code>gaming-services-repair</code>)</td>
+<td><code>aka.ms/GamingRepairTool</code> (Microsoft)</td>
+<td>temp</td>
+<td><code>Get-AuthenticodeSignature</code> checked in the script</td>
+<td>manual</td>
+<td>user starts it</td>
+</tr>
+</tbody></table>
+<p>No tool is downloaded or run at install time or in the background.</p>
+<h3>2.9 What remains after uninstall, where it is stated, how to restore and clean up</h3>
+<p>Uninstalling an MSIX removes the package files and its data inside the package container. It does <strong>not</strong> revert anything TweakHub applied to Windows. Remaining items and removal:</p>
+<table>
+<thead>
+<tr>
+<th>Remains</th>
+<th>Location</th>
+<th>How to remove</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Applied tweaks, policies, service start types, power plan values, hosts entries</td>
+<td>Windows</td>
+<td>Restore from the app <strong>before</strong> uninstalling (every tweak has Undo/Restore; policies page can reset). After uninstall, change them by hand or reinstall and restore.</td>
+</tr>
+<tr>
+<td>Backups, undo records, logs, settings, downloaded tools</td>
+<td><code>%LOCALAPPDATA%\TweakHub</code> (<code>Store\Data</code>, <code>Store\Apps</code>, <code>Store\Machine</code>, <code>crash.log</code>)</td>
+<td>Delete the folder after restoring</td>
+</tr>
+<tr>
+<td>Driver backups</td>
+<td><code>%PROGRAMDATA%\TweakHub-DriverBackups</code> (admin-only)</td>
+<td>Restore drivers first if needed (<code>driver-restore</code> script), then delete the folder as administrator</td>
+</tr>
+<tr>
+<td>Tron run copy</td>
+<td><code>%PROGRAMDATA%\TweakHub-Tron-*</code></td>
+<td>Delete as administrator; older copies are removed on the next Tron run</td>
+</tr>
+<tr>
+<td>Packages installed by winget through TweakHub</td>
+<td>Windows</td>
+<td><code>winget uninstall</code> or Settings → Apps</td>
+</tr>
+</tbody></table>
+<p>Where declared: in the app (Store build, About page, &quot;Before you uninstall&quot;, six languages, since 1.8.3), on the support page <code>https://primebuild.website/apps/tweakhub/support/</code>, in the Store listing description, in <code>docs/PRIVACY.md</code> (&quot;Uninstalling TweakHub&quot;) and in <code>packaging/msix/README.md</code>.</p>
+<hr>
+<h2>3. Gaps found</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Gap</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>G1</td>
+<td>Uninstall behaviour was only in the repository docs</td>
+<td><strong>Fixed in 1.8.3.0</strong>: &quot;Before you uninstall&quot; notice on the About page of the Store build (6 languages), the support page on primebuild.website and the Store listing description.</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Support contact was GitHub Issues only (not accepted by Microsoft)</td>
+<td><strong>Fixed</strong>: email and website in <code>docs/PRIVACY.md</code>, support page on primebuild.website, &quot;Website and support&quot; link on the About page (1.8.3.0), support contact and website in Partner Center. GitHub stays a secondary channel for bug reports.</td>
+</tr>
+<tr>
+<td>G3</td>
+<td><code>ctt-winutil</code> runs <code>irm christitus.com/win | iex</code> with no hash or signature. It is behind a confirmation dialog and UAC, but it is remote code that can change, which a reviewer may flag independently of the capabilities</td>
+<td><strong>Fixed in 1.8.2.0, in every build (Store and GitHub)</strong>: the card no longer runs <code>irm | iex</code>. It uses the Marius Heier flow: one download to a temporary file, SHA-256 shown, consent tied to that hash, UAC, and the elevated window refuses the file if it changed after approval. Remaining limit, stated in 2.8 and <code>docs/PRIVACY.md</code>: the hash covers only the main script, and WinUtil can download further components at run time. Covered by <code>ElevationHardeningTests.ThirdPartyScriptRunsOnlyTheApprovedCopy(true)</code>.</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Tron&#39;s expected hash comes from the same publisher host as the file (integrity against transport/corruption, not against a compromised publisher)</td>
+<td>Documented; no change.</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Elevated-virtualization failure was argued, not demonstrated</td>
+<td><strong>Closed 27 Nov 2026</strong>: reproduced on the test VM (2.5) and Flexible Virtualization prototyped (2.6); evidence in <a href="evidence/">evidence folder</a>.</td>
+</tr>
+<tr>
+<td>G6</td>
+<td>The MSIX README says &quot;Public support: GitHub Issues&quot; and &quot;Output: artifacts/msix/1.7.0.0&quot; (outdated example version)</td>
+<td>Support line fixed; version example left as is.</td>
+</tr>
+</tbody></table>
+<p>The manifest is unchanged. The package for resubmission is <code>TweakHub_1.8.3.0_x64-Store.msix</code>, built by the &quot;Validate Microsoft Store package&quot; workflow (<code>.github/workflows/store-package-preview.yml</code>, pinned .NET SDK 10.0.403) with <code>packaging/msix/Build-Msix.ps1</code>.</p>
+<h2>4. Not verified</h2>
+<ul>
+<li>Microsoft&#39;s current wording of 10.6.3.</li>
+<li>The TweakHub UI was not driven on the VM; the probe in 2.5 reproduces its mechanisms inside the same package. The elevated restart of TweakHub itself was not tested.</li>
+<li>Whether Store ingestion accepts Flexible Virtualization without <code>unvirtualizedResources</code> (it works when sideloaded, 2.6). Behaviour on Windows builds older than 26200.</li>
+<li>The Store listing was checked in Partner Center on 27 Nov 2026 (see section 1 and the listing notes in the PR).</li>
+<li>The registry list in 2.1 comes from a static scan of string literals; keys built at run time (device ids, user input) are described by category.</li>
+</ul>
+
+</main>
+<footer>© 2025–2026 Prime Build · <a href="/apps/tweakhub/support/">TweakHub support</a> · <a href="/">primebuild.website</a></footer>
+</body>
+</html>
