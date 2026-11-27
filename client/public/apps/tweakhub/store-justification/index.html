@@ -56,14 +56,14 @@ Support: <code>primebuild.official@gmail.com</code> · support page <code>https:
 <blockquote>
 <p>Package-wide (desktop6 registry and file-system write virtualization disabled). Tested on Win11 25H2: with default virtualization HKCU tweaks land in the private package hive and the backup goes to LocalCache, so the elevated child cannot read it and undo is lost. Flexible Virtualization fixes files but only listed HKCU keys; custom tweaks and playbooks use any HKCU path. Keys, paths, logs: <a href="https://primebuild.website/apps/tweakhub/store-justification/">https://primebuild.website/apps/tweakhub/store-justification/</a> Support: <a href="mailto:primebuild.official@gmail.com">primebuild.official@gmail.com</a></p>
 </blockquote>
-<p><strong>Notes for certification</strong> (4497 characters)</p>
+<p><strong>Notes for certification</strong> (4506 characters)</p>
 <pre><code class="language-text">TweakHub 1.8.3 - notes for certification
 Support: primebuild.official@gmail.com - support page: https://primebuild.website/apps/tweakhub/support/
 Full answers to the 10.6.3 questions, with VM test logs: https://primebuild.website/apps/tweakhub/store-justification/
 
-Changes since the 24 Nov 2026 report: in-app &quot;Before you uninstall&quot; notice (About page); support link to primebuild.website; reproducible VM tests of default and Flexible Virtualization (points 5 and 6 below).
+Changes since the 24 Nov 2026 report: in-app &quot;Before you uninstall&quot; notice (Settings page); support link to primebuild.website; reproducible VM tests of default and Flexible Virtualization (points 5 and 6 below).
 
-Safe smoke test: start TweakHub without elevation; open Devices, Links and Security to view inventory and status; open a Registry tweak preview without applying it; open Power Plan and About. To see elevation, apply one HKLM registry tweak, accept UAC, then restore it from the app. Use a disposable VM for anything else; do not run firmware, Tron or destructive cleanup scripts for a smoke test. The Store build has no self-update (it opens the Store page).
+Safe smoke test: start TweakHub without elevation; open Devices, Links and Security to view inventory and status; open a Registry tweak preview without applying it; open Power Plan and Settings. To see elevation, apply one HKLM registry tweak, accept UAC, then restore it from the app. Use a disposable VM for anything else; do not run firmware, Tron or destructive cleanup scripts for a smoke test. The Store build has no self-update (it opens the Store page).
 
 Answers to the 10.6.3 questions
 1-2. Virtualization is disabled package-wide (desktop6 RegistryWriteVirtualization and FileSystemWriteVirtualization = disabled); no ExcludedKeys or ExcludedDirectories. Targets written: HKLM\SOFTWARE\Policies\..., HKLM\SOFTWARE\Microsoft\Windows and Windows NT\CurrentVersion\..., HKLM\SYSTEM\CurrentControlSet\Control\..., \Services\&lt;name&gt; (start type), \Enum\&lt;device&gt;\Device Parameters\Interrupt Management (MSI, affinity); HKCU\Control Panel\Desktop and \Mouse, HKCU\Software\Microsoft\Windows\CurrentVersion\..., HKCU\Software\Microsoft\GameBar, HKCU\System\GameConfigStore, HKCU\Software\Microsoft\DirectX, plus custom tweaks the user defines. Files: %LOCALAPPDATA%\TweakHub (settings, backups, undo, log, tools), %PROGRAMDATA%\TweakHub-DriverBackups and TweakHub-Tron-*, temp folders, the hosts file (Adobe block script only), GPU shader caches (cleanup).
@@ -73,7 +73,7 @@ Answers to the 10.6.3 questions
 6. Flexible Virtualization prototype tested: ExcludedDirectory $(KnownFolder:LocalAppData)\TweakHub fixes the shared backup/undo; ExcludedKey works only for listed HKCU keys (GameBar reached Windows, Control Panel\Mouse did not); HKLM keys are rejected by the schema. TweakHub&#39;s HKCU targets are open-ended (custom tweaks, imported playbooks, restored Run keys), so a fixed list would silently break them.
 7. Yes. Every write starts from a user action and confirmation. No background writer, service, auto-start or self-update in the Store build.
 8. Downloads happen only on user action: Tron from bmrf.org (SHA-256 from the publisher&#39;s list, re-checked after copy); Microsoft Safety Scanner from go.microsoft.com and the Gaming Repair Tool from aka.ms (Microsoft Authenticode required); Marius Heier scripts from tools.mariusheier.com and WinUtil from christitus.com, redirected to github.com (SHA-256 shown, consent per hash, changed file refused; WinUtil can fetch more at run time, which TweakHub does not check); winget packages (winget hashes). Stored in temp or %LOCALAPPDATA%\TweakHub\Store\Apps. No automatic updates.
-9. Uninstall removes the app only; Windows changes stay. Stated in the app (About, &quot;Before you uninstall&quot;), on the support page and in the privacy policy: restore from the app first, then delete %LOCALAPPDATA%\TweakHub and the %PROGRAMDATA%\TweakHub-* folders; remove winget apps with winget uninstall.
+9. Uninstall removes the app only; Windows changes stay. Stated in the app (Settings, &quot;Before you uninstall&quot;), on the support page and in the privacy policy: restore from the app first, then delete %LOCALAPPDATA%\TweakHub and the %PROGRAMDATA%\TweakHub-* folders; remove winget apps with winget uninstall.
 </code></pre>
 <hr>
 <h2>2. Point-by-point answers</h2>
@@ -391,7 +391,7 @@ Answers to the 10.6.3 questions
 <td><code>winget uninstall</code> or Settings → Apps</td>
 </tr>
 </tbody></table>
-<p>Where declared: in the app (Store build, About page, &quot;Before you uninstall&quot;, six languages, since 1.8.3), on the support page <code>https://primebuild.website/apps/tweakhub/support/</code>, in the Store listing description, in <code>docs/PRIVACY.md</code> (&quot;Uninstalling TweakHub&quot;) and in <code>packaging/msix/README.md</code>.</p>
+<p>Where declared: in the app (Store build, Settings page, &quot;Before you uninstall&quot;, six languages, since 1.8.3), on the support page <code>https://primebuild.website/apps/tweakhub/support/</code>, in the Store listing description, in <code>docs/PRIVACY.md</code> (&quot;Uninstalling TweakHub&quot;) and in <code>packaging/msix/README.md</code>.</p>
 <hr>
 <h2>3. Gaps found</h2>
 <table>
@@ -405,12 +405,12 @@ Answers to the 10.6.3 questions
 <tbody><tr>
 <td>G1</td>
 <td>Uninstall behaviour was only in the repository docs</td>
-<td><strong>Fixed in 1.8.3.0</strong>: &quot;Before you uninstall&quot; notice on the About page of the Store build (6 languages), the support page on primebuild.website and the Store listing description.</td>
+<td><strong>Fixed in 1.8.3.0</strong>: &quot;Before you uninstall&quot; notice on the Settings page of the Store build (6 languages), the support page on primebuild.website and the Store listing description.</td>
 </tr>
 <tr>
 <td>G2</td>
 <td>Support contact was GitHub Issues only (not accepted by Microsoft)</td>
-<td><strong>Fixed</strong>: email and website in <code>docs/PRIVACY.md</code>, support page on primebuild.website, &quot;Website and support&quot; link on the About page (1.8.3.0), support contact and website in Partner Center. GitHub stays a secondary channel for bug reports.</td>
+<td><strong>Fixed</strong>: email and website in <code>docs/PRIVACY.md</code>, support page on primebuild.website, &quot;Website and support&quot; link on the Settings page (1.8.3.0), support contact and website in Partner Center. GitHub stays a secondary channel for bug reports.</td>
 </tr>
 <tr>
 <td>G3</td>
