@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TweakHub support</title>
+<meta name="description" content="Support, contact, uninstall instructions and privacy summary for TweakHub, a Windows 11 tuning and diagnostics utility by Prime Build.">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="../page.css">
+</head>
+<body>
+<header><a href="/" class="brand">Prime Build</a> <span>/</span> TweakHub support</header>
+<main>
+<h1>TweakHub support</h1>
+<p>TweakHub is a free Windows 11 tuning and diagnostics utility by Prime Build. It changes only the Windows settings you choose, shows a preview first, backs up registry values before changing them and lets you restore them from the app.</p>
+
+<div class="card">
+<h2 style="margin-top:0;border:0">Contact</h2>
+<ul>
+<li>Email: <a href="mailto:primebuild.official@gmail.com">primebuild.official@gmail.com</a> (questions, problems, privacy requests)</li>
+<li>Website: <a href="https://primebuild.website/">primebuild.website</a></li>
+<li>Bug reports with logs can also be opened on the public source repository linked in the app (Settings, GitHub repository).</li>
+</ul>
+<p class="meta">Please include your TweakHub version (Settings page) and Windows build. Do not send passwords or license keys.</p>
+</div>
+
+<h2>Before you uninstall</h2>
+<p>Uninstalling TweakHub (Microsoft Store, installer or portable folder) removes the app, <strong>not the changes it made to Windows</strong>. Registry values, policies, service start types, power-plan values, hosts-file entries, removed or disabled devices and apps installed through winget stay as they are.</p>
+<ol>
+<li><strong>Restore first.</strong> Open TweakHub and undo what you changed: each tweak has Undo/Restore, the Policies page can reset policies, and driver packages can be added back from their backup.</li>
+<li><strong>Then delete what is left</strong>, once you no longer need to restore anything:
+<ul>
+<li><code>%LOCALAPPDATA%\TweakHub</code>: settings, backups, undo records, operation log, downloaded tools, crash log.</li>
+<li><code>%PROGRAMDATA%\TweakHub-DriverBackups</code>: driver backups (needs an administrator).</li>
+<li><code>%PROGRAMDATA%\TweakHub-Tron-*</code>: only if you ran Tron (needs an administrator).</li>
+</ul></li>
+<li>Apps you installed through winget are removed with <code>winget uninstall</code> or Settings &gt; Apps.</li>
+</ol>
+<p>The same notice is in the app: Settings, <em>Before you uninstall</em>.</p>
+
+<h2>Updates</h2>
+<p>The Microsoft Store version is updated by the Microsoft Store. <em>Check for updates</em> in TweakHub opens its Store page.</p>
+
+<h2>Privacy in short</h2>
+<ul>
+<li>No account, no telemetry, no analytics, no ads. TweakHub has no server.</li>
+<li>Your data (settings, backups, logs) stays on your PC in the folders listed above.</li>
+<li>Network requests happen only for features you start: the breached-password check sends only the first 5 characters of a SHA-1 hash; tools and scripts you choose are downloaded from their publisher and checked (signature or SHA-256) before use; links open in your browser.</li>
+</ul>
+
+<h2>Administrator rights</h2>
+<p>TweakHub starts without administrator rights. When an operation you confirm needs them, Windows shows the standard UAC prompt for that operation only. There is no background service, no scheduled task of ours and no auto-start.</p>
+
+<h2>For Microsoft Store reviewers</h2>
+<p><a href="/apps/tweakhub/store-justification/">Capability justification (runFullTrust, allowElevation, unvirtualizedResources)</a>, with test evidence.</p>
+</main>
+<footer>© 2025–2026 Prime Build · <a href="/">primebuild.website</a></footer>
+</body>
+</html>
