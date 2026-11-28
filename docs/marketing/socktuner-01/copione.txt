@@ -1,0 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hai una connessione veloce, ma durante la partita il ping é ballerino?
+
+Per capire cosa sta succedendo sto sviluppando SockTuner, una delle app di PrimeBuild.
+
+Ti permette di controllare la connessione, osservare latenza e stabilità e consultare suggerimenti basati sui risultati.
+
+Se decidi di provare una modifica, puoi confrontare le misure prima e dopo e ripristinare le impostazioni supportate.
+
+È ancora in alpha: cerco persone che vogliano provarla e raccontarmi cosa funziona e cosa va migliorato.
+
+Il progetto è gratuito e Open Source su GitHub: trovi il link nella descrizione.
